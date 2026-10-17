@@ -41,17 +41,26 @@ def get(path, tries=4):
 
 def main():
     force = "--force" in sys.argv
+    # A dump older than this is re-fetched. TCGCSV publishes once a day, so a
+    # file from today is fresh; without this the daily cron would skip every
+    # group forever and the site would keep serving the first harvest's prices.
+    max_age_h = 20.0
+    if "--max-age" in sys.argv:
+        max_age_h = float(sys.argv[sys.argv.index("--max-age") + 1])
     os.makedirs(OUT, exist_ok=True)
     groups = get(f"{CAT}/groups")["results"]
-    log(f"harvest start: {len(groups)} groups")
+    log(f"harvest start: {len(groups)} groups (max-age {max_age_h}h, force={force})")
     done = 0
+    skipped = 0
     singles = 0
     for g in groups:
         gid = g["groupId"]
         path = os.path.join(OUT, f"{gid}.json.gz")
         if os.path.exists(path) and not force:
-            done += 1
-            continue
+            age_h = (time.time() - os.path.getmtime(path)) / 3600.0
+            if age_h < max_age_h:
+                skipped += 1
+                continue
         try:
             products = get(f"{CAT}/{gid}/products")
             prices = get(f"{CAT}/{gid}/prices")
