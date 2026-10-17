@@ -1,36 +1,35 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Carddex
 
-## Getting Started
+The complete English Pokémon TCG single-card catalogue with daily market prices —
+searchable, filterable, sortable. 28,056 cards, 213 sets, USD.
 
-First, run the development server:
+**Live:** https://pokemon.laserraptorai.duckdns.org
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+Next.js 16 · React 19 · Tailwind 4 · standalone Docker image · deployed on Coolify.
+
+## What's in here
+
+```
+src/app/page.tsx            hero + catalogue
+src/app/kaart/[id]/page.tsx card detail (prices, history, neighbours, JSON-LD)
+src/app/sets/page.tsx       every set with card count and total market value
+src/app/about/page.tsx      source, method, caveats
+src/app/api/cards/route.ts  pre-gzipped catalogue (1.4 MB)
+src/app/api/sets/route.ts   sets + stats
+src/app/api/history/[id]/route.ts  per-card price series
+src/components/             Catalogue, FilterPanel, CardTile, PriceTable, PriceChart
+src/lib/                    data resolution, types, formatting
+ops/                        harvest / normalise / history / publish pipeline
+docs/PRD.md                 what this is and what it is not
+docs/DEPLOY.md              deploy shape, data volumes, daily refresh, gotchas
+e2e/smoke.spec.ts           Playwright smoke tests (desktop + mobile)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Data
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Card metadata and prices come from [TCGCSV](https://tcgcsv.com), which republishes
+TCGplayer's daily product and price dumps as open JSON — no API key, no scraping.
+A product counts as a single when its `extendedData` carries a `Number` (card number);
+that is what excludes sealed product. Images are hotlinked from TCGplayer's CDN.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Not affiliated with Nintendo, Creatures Inc. or The Pokémon Company.

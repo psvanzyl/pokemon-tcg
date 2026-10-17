@@ -1,0 +1,14 @@
+node_modules
+.next
+.git
+.github
+e2e
+ops
+docs
+test-results
+playwright-report
+data/raw
+data/harvest.log
+data/harvest.out
+data/history.jsonl
+*.tsbuildinfo

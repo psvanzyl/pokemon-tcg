@@ -1,0 +1,13 @@
+{
+  "snapshot": "2026-10-17",
+  "snapshotTs": 1792254070,
+  "cards": 28056,
+  "sets": 213,
+  "priced": 27667,
+  "unpriced": 389,
+  "dupeIds": 0,
+  "rarities": 29,
+  "types": 96,
+  "source": "tcgcsv.com (TCGplayer daily dumps)",
+  "currency": "USD"
+}

@@ -1,9 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
-  cacheComponents: true,
-  partialPrefetching: true,
+  // Standalone output: the Coolify image only ships the server bundle + static assets.
+  output: "standalone",
+
   turbopack: {
     rules: {
       "*.css": {
@@ -11,6 +11,16 @@ const nextConfig: NextConfig = {
         as: "*.css",
       },
     },
+  },
+
+  async headers() {
+    return [
+      {
+        // Fallback copy of the catalogue, served straight from the image.
+        source: "/data/:path*",
+        headers: [{ key: "Cache-Control", value: "public, max-age=3600" }],
+      },
+    ];
   },
 };
 
