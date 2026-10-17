@@ -52,11 +52,11 @@ function Section({
 }) {
   const [open, setOpen] = useState(defaultOpen);
   return (
-    <div className="border-b border-ink-700/70 px-3 py-3 last:border-b-0">
+    <div className="border-b border-line/70 px-3 py-3 last:border-b-0">
       <button
         type="button"
         onClick={() => setOpen((o) => !o)}
-        className="mb-2 flex w-full items-center justify-between text-[11px] font-semibold uppercase tracking-wider text-muted transition hover:text-slate-fg"
+        className="mb-2 flex w-full items-center justify-between text-[11px] font-semibold uppercase tracking-wider text-muted transition hover:text-fg"
       >
         {title}
         <ChevronDown className={`h-3.5 w-3.5 transition ${open ? "rotate-180" : ""}`} />
@@ -87,15 +87,15 @@ function CheckList({
         return (
           <label
             key={v}
-            className={`flex cursor-pointer items-center gap-2 rounded-md px-1.5 py-1 text-[13px] transition hover:bg-ink-800 ${
-              on ? "text-slate-fg" : "text-muted"
+            className={`flex cursor-pointer items-center gap-2 rounded-md px-1.5 py-1 text-[13px] transition hover:bg-raised ${
+              on ? "text-fg" : "text-muted"
             }`}
           >
             <input
               type="checkbox"
               checked={on}
               onChange={() => onToggle(v)}
-              className="h-3.5 w-3.5 rounded border-ink-600 bg-ink-900"
+              className="h-3.5 w-3.5 rounded border-line-strong bg-field"
             />
             <span className="min-w-0 flex-1 truncate">{v}</span>
             <span className="flex-none text-[10px] tabular-nums text-muted/70">{n}</span>
@@ -164,8 +164,8 @@ export default function FilterPanel({
   const active = countActive(filters);
 
   return (
-    <aside className="flex h-full w-full flex-col overflow-hidden rounded-xl border border-ink-700 bg-ink-850/70 lg:w-[272px] lg:flex-none">
-      <div className="flex items-center gap-2 border-b border-ink-700/70 px-3 py-2.5">
+    <aside className="flex h-full w-full flex-col overflow-hidden rounded-xl border border-line bg-panel/70 lg:w-[272px] lg:flex-none">
+      <div className="flex items-center gap-2 border-b border-line/70 px-3 py-2.5">
         <span className="text-[11px] font-semibold uppercase tracking-wider text-muted">
           Filters
         </span>
@@ -186,7 +186,7 @@ export default function FilterPanel({
           <button
             type="button"
             onClick={onClose}
-            className="text-[11px] text-muted transition hover:text-slate-fg lg:hidden"
+            className="text-[11px] text-muted transition hover:text-fg lg:hidden"
           >
             <X className="h-4 w-4" />
           </button>
@@ -199,7 +199,7 @@ export default function FilterPanel({
             value={setQuery}
             onChange={(e) => setSetQuery(e.target.value)}
             placeholder="Find a set…"
-            className="mb-2 w-full rounded-md border border-ink-600 bg-ink-900 px-2 py-1.5 text-[13px] outline-none placeholder:text-muted/60 focus:border-poke-red/70"
+            className="mb-2 w-full rounded-md border border-line-strong bg-field px-2 py-1.5 text-[13px] outline-none placeholder:text-muted/60 focus:border-poke-red/70"
           />
           <div className="max-h-64 space-y-0.5 overflow-y-auto pr-1">
             {visibleSets.map((s) => {
@@ -207,8 +207,8 @@ export default function FilterPanel({
               return (
                 <label
                   key={s.id}
-                  className={`flex cursor-pointer items-center gap-2 rounded-md px-1.5 py-1 text-[13px] transition hover:bg-ink-800 ${
-                    on ? "text-slate-fg" : "text-muted"
+                  className={`flex cursor-pointer items-center gap-2 rounded-md px-1.5 py-1 text-[13px] transition hover:bg-raised ${
+                    on ? "text-fg" : "text-muted"
                   }`}
                 >
                   <input
@@ -221,7 +221,7 @@ export default function FilterPanel({
                           : [...filters.sets, s.id],
                       })
                     }
-                    className="h-3.5 w-3.5 rounded border-ink-600 bg-ink-900"
+                    className="h-3.5 w-3.5 rounded border-line-strong bg-field"
                   />
                   <span className="min-w-0 flex-1 truncate" title={s.name}>
                     {s.name}
@@ -249,7 +249,7 @@ export default function FilterPanel({
                 onPatch({ min: e.target.value === "" ? null : Number(e.target.value) })
               }
               placeholder="min"
-              className="w-full rounded-md border border-ink-600 bg-ink-900 px-2 py-1.5 text-[13px] outline-none placeholder:text-muted/60 focus:border-poke-red/70"
+              className="w-full rounded-md border border-line-strong bg-field px-2 py-1.5 text-[13px] outline-none placeholder:text-muted/60 focus:border-poke-red/70"
             />
             <span className="text-muted">–</span>
             <input
@@ -261,7 +261,7 @@ export default function FilterPanel({
                 onPatch({ max: e.target.value === "" ? null : Number(e.target.value) })
               }
               placeholder="max"
-              className="w-full rounded-md border border-ink-600 bg-ink-900 px-2 py-1.5 text-[13px] outline-none placeholder:text-muted/60 focus:border-poke-red/70"
+              className="w-full rounded-md border border-line-strong bg-field px-2 py-1.5 text-[13px] outline-none placeholder:text-muted/60 focus:border-poke-red/70"
             />
           </div>
           <div className="flex flex-wrap gap-1.5">
@@ -276,8 +276,8 @@ export default function FilterPanel({
                   }
                   className={`rounded-full border px-2 py-0.5 text-[11px] transition ${
                     on
-                      ? "border-poke-red/70 bg-poke-red/15 text-slate-fg"
-                      : "border-ink-600 text-muted hover:border-ink-600/80 hover:text-slate-fg"
+                      ? "border-poke-red/70 bg-poke-red/15 text-fg"
+                      : "border-line-strong text-muted hover:border-line-strong/80 hover:text-fg"
                   }`}
                 >
                   {b.label}
@@ -290,7 +290,7 @@ export default function FilterPanel({
               type="checkbox"
               checked={filters.priced}
               onChange={(e) => onPatch({ priced: e.target.checked })}
-              className="h-3.5 w-3.5 rounded border-ink-600 bg-ink-900"
+              className="h-3.5 w-3.5 rounded border-line-strong bg-field"
             />
             Only cards with a price
           </label>

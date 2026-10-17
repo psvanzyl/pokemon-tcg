@@ -76,15 +76,15 @@ export default async function CardPage({
   return (
     <div className="mx-auto w-full max-w-[1200px] px-3 py-5 sm:px-5">
       <nav className="mb-4 flex flex-wrap items-center gap-1.5 text-[12px] text-muted">
-        <Link href="/" className="hover:text-slate-fg">
+        <Link href="/" className="hover:text-fg">
           Catalogue
         </Link>
         <span>/</span>
-        <Link href={`/?sets=${card.set}`} className="hover:text-slate-fg">
+        <Link href={`/?sets=${card.set}`} className="hover:text-fg">
           {set?.name ?? `Set ${card.set}`}
         </Link>
         <span>/</span>
-        <span className="text-slate-fg">{card.n}</span>
+        <span className="text-fg">{card.n}</span>
       </nav>
 
       <div className="grid gap-6 md:grid-cols-[300px_minmax(0,1fr)]">
@@ -93,13 +93,13 @@ export default async function CardPage({
             src={big}
             srcSet={`${card.img} 1x, ${big} 2x`}
             alt={card.n}
-            className="w-full rounded-xl border border-ink-700 bg-ink-900 object-contain"
+            className="w-full rounded-xl border border-line bg-surface object-contain"
           />
           <a
             href={card.url}
             target="_blank"
             rel="noopener noreferrer nofollow"
-            className="mt-3 flex items-center justify-center gap-1.5 rounded-lg border border-ink-700 bg-ink-850 px-3 py-2 text-center text-[13px] text-slate-fg transition hover:border-poke-red/60"
+            className="mt-3 flex items-center justify-center gap-1.5 rounded-lg border border-line bg-panel px-3 py-2 text-center text-[13px] text-fg transition hover:border-poke-red/60"
           >
             View on TCGplayer <ExternalLink className="h-3.5 w-3.5" />
           </a>
@@ -114,7 +114,7 @@ export default async function CardPage({
             {card.rar ? ` · ${card.rar}` : ""}
           </p>
 
-          <div className="mt-4 flex flex-wrap items-end gap-x-6 gap-y-2 rounded-xl border border-ink-700 bg-ink-850/60 p-4">
+          <div className="mt-4 flex flex-wrap items-end gap-x-6 gap-y-2 rounded-xl border border-line bg-surface p-4">
             <div>
               <div className="text-[11px] uppercase tracking-wider text-muted">
                 {headlineIsMarket ? "Market price (USD)" : "Mid price (USD)"}
@@ -158,13 +158,13 @@ export default async function CardPage({
             <h2 className="mb-2 text-[13px] font-semibold uppercase tracking-wider text-muted">
               Card details
             </h2>
-            <dl className="grid grid-cols-2 gap-x-4 gap-y-2 rounded-lg border border-ink-700 bg-ink-850/40 p-4 text-[13px] sm:grid-cols-3">
+            <dl className="grid grid-cols-2 gap-x-4 gap-y-2 rounded-lg border border-line bg-surface p-4 text-[13px] sm:grid-cols-3">
               {meta
                 .filter(([, v]) => v)
                 .map(([k, v]) => (
                   <div key={k} className="min-w-0">
                     <dt className="text-[11px] uppercase tracking-wider text-muted">{k}</dt>
-                    <dd className="truncate text-slate-fg" title={v ?? ""}>
+                    <dd className="truncate text-fg" title={v ?? ""}>
                       {v}
                     </dd>
                   </div>

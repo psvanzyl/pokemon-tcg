@@ -42,6 +42,8 @@ dumps); the value is in the index, the facets and the speed.
       price-history chart, TCGplayer link, 12 neighbours from the same set.
 - [x] Catalogue payload ≤ 1.5 MB gzipped and served pre-compressed; first paint < 2 s on LAN.
 - [x] Mobile layout with a slide-in filter drawer, no horizontal overflow at 390 px.
+- [x] Light theme by default, with a light / dark / system switcher in the header; the
+      mark is a Poké Ball seen from the front (red top, white bottom, black equator).
 - [x] Honest about its data: source, freshness, currency and caveats stated on /about.
 - [x] No paywall, no login, no tracking.
 

@@ -1,50 +1,94 @@
 @import "tailwindcss";
 
+/* ---------------------------------------------------------------------------
+   Theming. Light is the default; a `carddex-theme` key in localStorage holds
+   "light" | "dark" | "system", and layout.tsx sets `.dark` on <html> before
+   first paint so there is no flash. The palette is a semantic surface scale:
+   every utility (bg-panel, border-line, text-muted …) resolves through these
+   variables, so a component never needs a `dark:` variant for its base look.
+   --------------------------------------------------------------------------- */
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
-  --color-ink-950: #070a10;
-  --color-ink-900: #0b1018;
-  --color-ink-850: #101725;
-  --color-ink-800: #151d2c;
-  --color-ink-700: #1d2739;
-  --color-ink-600: #24304a;
-  --color-slate-fg: #e7eefb;
-  --color-muted: #8fa0bb;
-  --color-poke-red: #ee3b3b;
-  --color-poke-gold: #f5c518;
-  --color-poke-blue: #3b82f6;
+  /* --- light (default) ---------------------------------------------------- */
+  --color-canvas: #ffffff; /* page background */
+  --color-surface: #f5f7fb; /* recessed fills: table heads, image wells, notices */
+  --color-panel: #ffffff; /* cards, panels, buttons */
+  --color-raised: #edf0f6; /* hover, active pills, skeletons */
+  --color-field: #ffffff; /* form controls */
+  --color-line: #e4e8f0; /* default border */
+  --color-line-strong: #ccd4e0; /* inputs, chips */
+  --color-fg: #0b1220; /* primary text */
+  --color-muted: #5a6a84; /* secondary text */
+  --color-scrim: rgba(15, 23, 42, 0.45); /* modal / drawer backdrop */
+  --color-poke-red: #d92b2b;
+  --color-poke-gold: #9a6b06;
+  --color-poke-blue: #2563eb;
+
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
-:root {
-  color-scheme: dark;
-}
+@layer base {
+  :root {
+    color-scheme: light;
+  }
 
-html,
-body {
-  background: var(--color-ink-950);
-  color: var(--color-slate-fg);
-}
+  /* Dark values are the palette the site originally shipped with, so the dark
+     theme is a no-op regression-wise. */
+  html.dark {
+    color-scheme: dark;
+    --color-canvas: #070a10;
+    --color-surface: #0b1018;
+    --color-panel: #101725;
+    --color-raised: #151d2c;
+    --color-field: #0b1018;
+    --color-line: #1d2739;
+    --color-line-strong: #24304a;
+    --color-fg: #e7eefb;
+    --color-muted: #8fa0bb;
+    --color-scrim: rgba(7, 10, 16, 0.7);
+    --color-poke-red: #ee3b3b;
+    --color-poke-gold: #f5c518;
+    --color-poke-blue: #3b82f6;
+  }
 
-body {
-  font-family: var(--font-sans);
-  -webkit-font-smoothing: antialiased;
-}
+  html,
+  body {
+    background: var(--color-canvas);
+    color: var(--color-fg);
+  }
 
-* {
-  scrollbar-color: #24304a #0b1018;
-  scrollbar-width: thin;
-}
+  body {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
 
-::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-}
-::-webkit-scrollbar-track {
-  background: #0b1018;
-}
-::-webkit-scrollbar-thumb {
-  background: #24304a;
-  border-radius: 999px;
+  * {
+    scrollbar-color: var(--color-line-strong) var(--color-canvas);
+    scrollbar-width: thin;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-canvas);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-line-strong);
+    border-radius: 999px;
+  }
+
+  ::selection {
+    background: color-mix(in srgb, var(--color-poke-red) 25%, transparent);
+  }
+
+  input[type="checkbox"],
+  input[type="range"] {
+    accent-color: var(--color-poke-red);
+  }
 }
 
 @keyframes rise {
@@ -60,12 +104,4 @@ body {
 
 .rise {
   animation: rise 0.35s ease both;
-}
-
-input[type="checkbox"] {
-  accent-color: var(--color-poke-red);
-}
-
-input[type="range"] {
-  accent-color: var(--color-poke-red);
 }

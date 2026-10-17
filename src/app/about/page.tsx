@@ -16,7 +16,7 @@ export default function AboutPage() {
 
       <div className="mt-4 space-y-5 text-[14px] leading-relaxed text-muted">
         <section>
-          <h2 className="mb-1.5 text-[15px] font-semibold text-slate-fg">What this is</h2>
+          <h2 className="mb-1.5 text-[15px] font-semibold text-fg">What this is</h2>
           <p>
             A complete index of the English Pokémon Trading Card Game singles catalogue:{" "}
             {stats?.cards.toLocaleString("en-US") ?? "28,000+"} cards across{" "}
@@ -26,12 +26,12 @@ export default function AboutPage() {
         </section>
 
         <section>
-          <h2 className="mb-1.5 text-[15px] font-semibold text-slate-fg">Where the data comes from</h2>
+          <h2 className="mb-1.5 text-[15px] font-semibold text-fg">Where the data comes from</h2>
           <p>
             Card metadata (name, set, card number, rarity, type, HP, stage) and images come
             from the TCGplayer catalogue, pulled through{" "}
             <a
-              className="text-slate-fg underline decoration-ink-600 hover:decoration-poke-red"
+              className="text-fg underline decoration-line-strong hover:decoration-poke-red"
               href="https://tcgcsv.com"
               target="_blank"
               rel="noopener noreferrer"
@@ -44,18 +44,18 @@ export default function AboutPage() {
         </section>
 
         <section>
-          <h2 className="mb-1.5 text-[15px] font-semibold text-slate-fg">How the prices work</h2>
+          <h2 className="mb-1.5 text-[15px] font-semibold text-fg">How the prices work</h2>
           <p>
-            All prices are in <strong className="text-slate-fg">US dollars</strong> and come
+            All prices are in <strong className="text-fg">US dollars</strong> and come
             from TCGplayer&apos;s marketplace aggregates for each print variant:
           </p>
           <ul className="mt-2 list-disc space-y-1 pl-5">
             <li>
-              <span className="text-slate-fg">Market</span> — TCGplayer&apos;s own weighted
+              <span className="text-fg">Market</span> — TCGplayer&apos;s own weighted
               recent-sales figure. This is the headline number on every card.
             </li>
             <li>
-              <span className="text-slate-fg">Low / Mid / High</span> — the cheapest, median
+              <span className="text-fg">Low / Mid / High</span> — the cheapest, median
               and most expensive listing currently on the marketplace.
             </li>
             <li>
@@ -72,16 +72,16 @@ export default function AboutPage() {
         </section>
 
         <section>
-          <h2 className="mb-1.5 text-[15px] font-semibold text-slate-fg">Freshness</h2>
+          <h2 className="mb-1.5 text-[15px] font-semibold text-fg">Freshness</h2>
           <p>
             The catalogue is rebuilt from the source dumps once a day. Current snapshot:{" "}
-            <span className="text-slate-fg">{stats?.snapshot ?? "—"}</span>
+            <span className="text-fg">{stats?.snapshot ?? "—"}</span>
             {stats ? ` (${stats.priced.toLocaleString("en-US")} of ${stats.cards.toLocaleString("en-US")} cards priced)` : null}.
           </p>
         </section>
 
         <section>
-          <h2 className="mb-1.5 text-[15px] font-semibold text-slate-fg">Scope &amp; caveats</h2>
+          <h2 className="mb-1.5 text-[15px] font-semibold text-fg">Scope &amp; caveats</h2>
           <ul className="list-disc space-y-1 pl-5">
             <li>
               Singles only — sealed product (booster boxes, ETBs, tins) is deliberately not

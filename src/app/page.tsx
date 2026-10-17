@@ -12,7 +12,7 @@ export default function Home() {
   const stats = getStats();
   return (
     <>
-      <section className="border-b border-ink-700/70 bg-gradient-to-b from-ink-900 to-ink-950">
+      <section className="border-b border-line/70 bg-gradient-to-b from-surface to-canvas">
         <div className="mx-auto w-full max-w-[1600px] px-3 py-5 sm:px-5 sm:py-6">
           <h1 className="text-[22px] font-semibold tracking-tight sm:text-[26px]">
             The complete English Pokémon card index
@@ -22,7 +22,7 @@ export default function Home() {
             market price, searchable, filterable and sortable.{" "}
             {stats ? (
               <>
-                <span className="text-slate-fg">{stats.cards.toLocaleString("en-US")}</span>{" "}
+                <span className="text-fg">{stats.cards.toLocaleString("en-US")}</span>{" "}
                 cards across {stats.sets} sets · prices in USD · last refresh{" "}
                 {stats.snapshot}.
               </>

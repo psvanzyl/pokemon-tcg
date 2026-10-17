@@ -316,7 +316,7 @@ export default function Catalogue() {
               value={raw}
               onChange={(e) => setRaw(e.target.value)}
               placeholder="Search 28,000+ cards — name, set or card number (e.g. Charizard, 4/102)"
-              className="w-full rounded-xl border border-ink-700 bg-ink-850 py-2.5 pl-10 pr-9 text-[14px] outline-none transition placeholder:text-muted/60 focus:border-poke-red/70 focus:bg-ink-800"
+              className="w-full rounded-xl border border-line-strong bg-field py-2.5 pl-10 pr-9 text-[14px] outline-none transition placeholder:text-muted/60 focus:border-poke-red/70 focus:bg-field"
             />
             <Search className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-muted" />
             {raw && (
@@ -324,7 +324,7 @@ export default function Catalogue() {
                 type="button"
                 aria-label="Clear search"
                 onClick={() => setRaw("")}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-muted transition hover:text-slate-fg"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-muted transition hover:text-fg"
               >
                 <X className="h-4 w-4" />
               </button>
@@ -334,7 +334,7 @@ export default function Catalogue() {
             <button
               type="button"
               onClick={() => setDrawer(true)}
-              className="flex items-center gap-1.5 rounded-xl border border-ink-700 bg-ink-850 px-3 py-2.5 text-[13px] text-slate-fg transition hover:border-poke-red/60 lg:hidden"
+              className="flex items-center gap-1.5 rounded-xl border border-line bg-panel px-3 py-2.5 text-[13px] text-fg transition hover:border-poke-red/60 lg:hidden"
             >
               <SlidersHorizontal className="h-4 w-4" />
               Filters
@@ -347,7 +347,7 @@ export default function Catalogue() {
             <select
               value={sort}
               onChange={(e) => setSort(e.target.value as SortKey)}
-              className="rounded-xl border border-ink-700 bg-ink-850 px-2.5 py-2.5 text-[13px] text-slate-fg outline-none focus:border-poke-red/70"
+              className="rounded-xl border border-line-strong bg-field px-2.5 py-2.5 text-[13px] text-fg outline-none focus:border-poke-red/70"
             >
               {SORTS.map((s) => (
                 <option key={s.key} value={s.key}>
@@ -355,14 +355,14 @@ export default function Catalogue() {
                 </option>
               ))}
             </select>
-            <div className="hidden rounded-xl border border-ink-700 bg-ink-850 p-0.5 sm:flex">
+            <div className="hidden rounded-xl border border-line bg-panel p-0.5 sm:flex">
               {(["grid", "list"] as View[]).map((v) => (
                 <button
                   key={v}
                   type="button"
                   onClick={() => setView(v)}
                   className={`flex items-center gap-1.5 rounded-[9px] px-2.5 py-1.5 text-[12px] capitalize transition ${
-                    view === v ? "bg-ink-700 text-slate-fg" : "text-muted hover:text-slate-fg"
+                    view === v ? "bg-line text-fg" : "text-muted hover:text-fg"
                   }`}
                 >
                   {v === "grid" ? (
@@ -378,7 +378,7 @@ export default function Catalogue() {
         </div>
 
         <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[12px] text-muted">
-          <span className="text-slate-fg">
+          <span className="text-fg">
             {loading || cards === null ? (
               <span className="text-muted">Loading the catalogue…</span>
             ) : (
@@ -442,12 +442,12 @@ export default function Catalogue() {
               {Array.from({ length: 18 }).map((_, i) => (
                 <div
                   key={i}
-                  className="animate-pulse rounded-xl border border-ink-700 bg-ink-850/60"
+                  className="animate-pulse rounded-xl border border-line bg-surface"
                 >
-                  <div className="aspect-[245/342] rounded-t-xl bg-ink-800/70" />
+                  <div className="aspect-[245/342] rounded-t-xl bg-raised/70" />
                   <div className="space-y-1.5 p-2.5">
-                    <div className="h-3 w-3/4 rounded bg-ink-800" />
-                    <div className="h-2.5 w-1/2 rounded bg-ink-800" />
+                    <div className="h-3 w-3/4 rounded bg-raised" />
+                    <div className="h-2.5 w-1/2 rounded bg-raised" />
                   </div>
                 </div>
               ))}
@@ -455,8 +455,8 @@ export default function Catalogue() {
           )}
 
           {!loading && !error && result.length === 0 && (
-            <div className="rounded-xl border border-ink-700 bg-ink-850/60 p-10 text-center">
-              <p className="text-[15px] text-slate-fg">No cards match these filters.</p>
+            <div className="rounded-xl border border-line bg-surface p-10 text-center">
+              <p className="text-[15px] text-fg">No cards match these filters.</p>
               <p className="mt-1 text-[13px] text-muted">
                 Try a broader search, or reset the filters.
               </p>
@@ -493,7 +493,7 @@ export default function Catalogue() {
               <button
                 type="button"
                 onClick={() => setVisible((v) => v + PAGE)}
-                className="rounded-xl border border-ink-700 bg-ink-850 px-4 py-2 text-[13px] text-slate-fg transition hover:border-poke-red/60"
+                className="rounded-xl border border-line bg-panel px-4 py-2 text-[13px] text-fg transition hover:border-poke-red/60"
               >
                 Load {Math.min(PAGE, result.length - visible)} more
               </button>
@@ -509,7 +509,7 @@ export default function Catalogue() {
       {drawer && (
         <div className="fixed inset-0 z-50 flex lg:hidden">
           <div
-            className="absolute inset-0 bg-ink-950/70 backdrop-blur-sm"
+            className="absolute inset-0 bg-scrim backdrop-blur-sm"
             onClick={() => setDrawer(false)}
           />
           <div className="relative ml-auto h-full w-[86%] max-w-[340px] p-2">

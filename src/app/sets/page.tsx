@@ -41,7 +41,7 @@ export default function SetsPage() {
       <p className="mt-1 max-w-3xl text-[13px] text-muted">
         {sets.length} English sets · {stats?.cards.toLocaleString("en-US") ?? "—"} cards ·{" "}
         combined market value of one of every card:{" "}
-        <span className="text-slate-fg">${grand.toLocaleString("en-US", { maximumFractionDigits: 0 })}</span>{" "}
+        <span className="text-fg">${grand.toLocaleString("en-US", { maximumFractionDigits: 0 })}</span>{" "}
         (cheapest print of each card, USD).
       </p>
       <p className="mt-1 max-w-3xl text-[12px] text-muted">
@@ -49,10 +49,10 @@ export default function SetsPage() {
         original date there, so theirs shows as — rather than the date TCGplayer added the group.
       </p>
 
-      <div className="mt-4 overflow-x-auto rounded-xl border border-ink-700">
+      <div className="mt-4 overflow-x-auto rounded-xl border border-line">
         <table className="w-full min-w-[640px] border-collapse text-[13px]">
           <thead>
-            <tr className="bg-ink-850 text-left text-[11px] uppercase tracking-wider text-muted">
+            <tr className="bg-surface text-left text-[11px] uppercase tracking-wider text-muted">
               <th className="px-3 py-2 font-medium">Set</th>
               <th className="px-3 py-2 font-medium">Code</th>
               <th className="px-3 py-2 font-medium">Released</th>
@@ -65,13 +65,13 @@ export default function SetsPage() {
             {ordered.map((s) => {
               const v = values.get(s.id) ?? 0;
               return (
-                <tr key={s.id} className="border-t border-ink-700/70 hover:bg-ink-850/60">
+                <tr key={s.id} className="border-t border-line/70 hover:bg-surface">
                   <td className="px-3 py-2">
-                    <Link href={`/?sets=${s.id}`} className="text-slate-fg hover:text-poke-red">
+                    <Link href={`/?sets=${s.id}`} className="text-fg hover:text-poke-red">
                       {s.name}
                     </Link>
                     {s.supplemental && (
-                      <span className="ml-2 rounded-full border border-ink-600 px-1.5 py-0.5 text-[10px] text-muted">
+                      <span className="ml-2 rounded-full border border-line-strong px-1.5 py-0.5 text-[10px] text-muted">
                         supplemental
                       </span>
                     )}

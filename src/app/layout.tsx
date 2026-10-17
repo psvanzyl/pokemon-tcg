@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Geist, Geist_Mono } from "next/font/google";
 import { getStats } from "@/lib/data";
+import PokeBall from "@/components/PokeBall";
+import ThemeToggle from "@/components/ThemeToggle";
 import "./globals.css";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
@@ -25,20 +27,26 @@ export const metadata: Metadata = {
   },
 };
 
+/**
+ * Runs before first paint. Default is light; only a stored "dark" (or
+ * "system" on a dark OS) turns the `.dark` class on, so the page never
+ * flashes the wrong theme.
+ */
+const THEME_INIT = `(function(){try{var m=localStorage.getItem("carddex-theme");if(m!=="light"&&m!=="dark"&&m!=="system")m="light";var d=m==="dark"||(m==="system"&&window.matchMedia("(prefers-color-scheme: dark)").matches);var r=document.documentElement;r.classList.toggle("dark",d);r.style.colorScheme=d?"dark":"light";}catch(e){}})();`;
+
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   const stats = getStats();
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <script dangerouslySetInnerHTML={{ __html: THEME_INIT }} />
         <div className="flex min-h-screen flex-col">
-          <header className="sticky top-0 z-40 border-b border-ink-700/80 bg-ink-950/85 backdrop-blur">
+          <header className="sticky top-0 z-40 border-b border-line/80 bg-canvas/85 backdrop-blur">
             <div className="mx-auto flex h-14 w-full max-w-[1600px] items-center gap-3 px-3 sm:px-5">
-              <Link href="/" className="flex items-center gap-2.5">
-                <span className="grid h-8 w-8 place-items-center rounded-full border-2 border-white/90 bg-gradient-to-b from-poke-red to-poke-red/70 text-[13px] font-black text-white shadow-inner">
-                  <span className="grid h-3 w-3 place-items-center rounded-full border-2 border-white bg-ink-950" />
-                </span>
+              <Link href="/" className="flex items-center gap-2.5" aria-label="Carddex home">
+                <PokeBall className="h-8 w-8 flex-none drop-shadow-sm" />
                 <span className="text-[15px] font-semibold tracking-tight">
                   Card<span className="text-poke-red">dex</span>
                 </span>
@@ -46,43 +54,46 @@ export default function RootLayout({
               <nav className="ml-2 hidden items-center gap-1 text-sm text-muted sm:flex">
                 <Link
                   href="/"
-                  className="rounded-md px-2.5 py-1.5 transition hover:bg-ink-800 hover:text-slate-fg"
+                  className="rounded-md px-2.5 py-1.5 transition hover:bg-raised hover:text-fg"
                 >
                   Catalogue
                 </Link>
                 <Link
                   href="/sets"
-                  className="rounded-md px-2.5 py-1.5 transition hover:bg-ink-800 hover:text-slate-fg"
+                  className="rounded-md px-2.5 py-1.5 transition hover:bg-raised hover:text-fg"
                 >
                   Sets
                 </Link>
                 <Link
                   href="/about"
-                  className="rounded-md px-2.5 py-1.5 transition hover:bg-ink-800 hover:text-slate-fg"
+                  className="rounded-md px-2.5 py-1.5 transition hover:bg-raised hover:text-fg"
                 >
                   About
                 </Link>
               </nav>
-              <div className="ml-auto text-[11px] leading-tight text-muted sm:text-right">
-                <div className="font-medium text-slate-fg/90">
-                  {stats ? `${stats.cards.toLocaleString("en-US")} cards · ${stats.sets} sets` : "28,000+ cards"}
+              <div className="ml-auto flex items-center gap-3">
+                <div className="hidden text-[11px] leading-tight text-muted md:block md:text-right">
+                  <div className="font-medium text-fg/90">
+                    {stats ? `${stats.cards.toLocaleString("en-US")} cards · ${stats.sets} sets` : "28,000+ cards"}
+                  </div>
+                  <div>USD market prices, refreshed daily</div>
                 </div>
-                <div>USD market prices, refreshed daily</div>
+                <ThemeToggle />
               </div>
             </div>
           </header>
           <main className="flex-1">{children}</main>
-          <footer className="border-t border-ink-700/80 bg-ink-900/60">
+          <footer className="border-t border-line/80 bg-surface/60">
             <div className="mx-auto flex w-full max-w-[1600px] flex-col gap-1.5 px-3 py-5 text-[11px] text-muted sm:flex-row sm:items-center sm:justify-between sm:px-5">
               <p>
                 Prices from TCGplayer via TCGCSV daily dumps · USD · not affiliated
                 with Nintendo, Creatures or The Pokémon Company.
               </p>
               <p className="flex gap-3">
-                <Link href="/sets" className="hover:text-slate-fg">
+                <Link href="/sets" className="hover:text-fg">
                   Sets
                 </Link>
-                <Link href="/about" className="hover:text-slate-fg">
+                <Link href="/about" className="hover:text-fg">
                   About &amp; method
                 </Link>
               </p>

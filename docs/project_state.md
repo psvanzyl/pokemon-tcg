@@ -62,11 +62,49 @@ Dataset: **28,056 singles · 213 sets · 27,667 priced**.
   segment), `/sets`, `/about`.
 - APIs: `/api/cards` (pre-gzipped catalogue), `/api/sets`, `/api/history/[id]`.
 
+## Branding & theming (2026-10-17)
+- **Mark:** `src/components/PokeBall.tsx` — an inline SVG of a Poké Ball seen from the
+  front: red upper hemisphere (`#e3342f`), white lower hemisphere, black equator
+  (`#111114`), black outline, centre button, gloss highlight. Fixed colours on purpose —
+  the ball is red/white/black in both themes. Used in the header; the same artwork ships
+  as the favicon (`src/app/favicon.ico`, drawn by `ops/favicon_gen.py` with PIL — the
+  script is the source of truth, re-run it after changing the mark) and as
+  `src/app/icon.svg`. Site name stays **Carddex**.
+- **Light is the default; dark and system are opt-in.** The choice lives in
+  `localStorage["carddex-theme"]` = `light | dark | system`. An inline script in
+  `layout.tsx` (first child of `<body>`, runs before first paint) toggles `.dark` on
+  `<html>`; no stored value → light. `src/components/ThemeToggle.tsx` renders the
+  three-way Sun/Moon/Monitor control in the header and re-paints on
+  `prefers-color-scheme` changes while the mode is `system`.
+- **Tailwind 4 theming contract:** `@custom-variant dark (&:where(.dark, .dark *))` plus a
+  semantic surface scale declared in `@theme` (light) and overridden in `html.dark`:
+  `canvas` (page), `surface` (recessed fills: table heads, image wells, notices),
+  `panel` (cards/panels/buttons), `raised` (hover, active pills, skeletons), `field`
+  (form controls), `line` / `line-strong` (borders), `fg` / `muted` (text), `scrim`
+  (modal backdrop), `poke-red` / `poke-gold` / `poke-blue` (accents, contrast-tuned per
+  theme: gold is `#9a6b06` on white, `#f5c518` on black).
+  **Consequence: components never need a `dark:` variant for their base look** — the
+  token flips. The old `ink-950…600` / `slate-fg` names are gone; do not reintroduce
+  them. The only `dark:` variants left are in `CardTile.tsx`'s `RARITY_TONE` map (Tailwind
+  palette chips need a light tone *and* a dark tone) and the up/down colour in
+  `PriceChart.tsx`.
+- Dark values are the palette the site originally shipped with, so dark is a
+  regression-free no-op; light is the new work.
+
 ## QA — verified 2026-10-17
-- **`npx playwright test` from `app/`: 14/14 green against the live URL** (desktop +
-  Pixel 7 projects), `BASE_URL=https://pokemon.laserraptorai.duckdns.org`.
-- Screenshots captured for `/`, `/sets`, `/about`, `/kaart/84198` at 1440 px and 390 px
-  and reviewed: no overflow, no placeholder text, real data, contrast fine.
+- **`npx playwright test` from `app/`: 18/18 green against a local production build**
+  (desktop + Pixel 7 projects). 14 catalogue smoke tests plus 4 new ones in
+  `e2e/theme.spec.ts` (default is light · light→dark→system cycle · persistence across
+  reload · OS preference honoured in `system` · the mark's three hemisphere fills).
+- **`node ops/qa-theme.mjs` (against `next start -p 3001`): 29/29 checks passed** —
+  default-light, toggle, persistence, `system` following an emulated OS preference, body
+  background actually resolving to `rgb(255,255,255)` in light and `rgb(7,10,16)` in
+  dark, zero uncaught JS errors, zero horizontal overflow on all four routes at 1440 px
+  and 390 px in both themes.
+- Screenshots captured for `/`, `/sets`, `/about`, `/kaart/84198` at 1440 px and 390 px,
+  both themes, plus header/toggle close-ups and the mobile filter drawer, and reviewed by
+  eye: cards, rarity chips, gold prices, tables, chart and the drawer backdrop all read
+  correctly in light mode; dark is unchanged.
 - Search verified: charizard → 205, "charizard star" → 16 (correct card first).
 - Refresh pipeline run end-to-end: harvest → normalize → history → publish to the volume
   → container restart → live `/api/sets` 200.
@@ -78,7 +116,10 @@ Dataset: **28,056 singles · 213 sets · 27,667 priced**.
   That overwrote the catalogue home page and shipped a broken site for one deploy. Always
   rsync one file per destination path, or mirror whole directories.
 - The Hermes browser tool's screenshot IPC can wedge on the 28k-tile catalogue page;
-  Playwright on CT141 (`shots.mjs`) is the reliable way to capture page images.
+  Playwright on CT141 (`ops/shots.mjs`, `ops/qa-theme.mjs`) is the reliable way to capture
+  page images.
+- A stale `next start` on port 3001 from an earlier session will silently serve the *old*
+  build (the symptom is `/icon.svg` 404). Kill it before QA: `ss -ltnp | grep :3001`.
 
 ## Open items
 1. **Domain: decided — the site stays on `pokemon.laserraptorai.duckdns.org`.** knuck.eu is
@@ -87,4 +128,5 @@ Dataset: **28,056 singles · 213 sets · 27,667 priced**.
 2. Optional: make the GitHub repo private (needs a new Coolify deploy key on the repo).
 3. Optional: price history holds one snapshot; the chart fills in as the daily cron runs.
 4. `app/ops/shots.mjs` is the Playwright screenshot helper — keep it for page captures when
-   the browser tool's screenshot IPC wedges.
+   the browser tool's screenshot IPC wedges. `app/ops/qa-theme.mjs` is the theme/logo
+   regression harness (behaviour + screenshots); run it after any token or layout change.

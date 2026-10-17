@@ -23,14 +23,14 @@ export default function PriceChart({ id, start }: { id: number; start: string })
   }, [id]);
 
   if (!hist) {
-    return <div className="h-[120px] animate-pulse rounded-lg border border-ink-700 bg-ink-850/60" />;
+    return <div className="h-[120px] animate-pulse rounded-lg border border-line bg-surface" />;
   }
 
   if (hist.values.length < 2) {
     return (
-      <div className="rounded-lg border border-ink-700 bg-ink-850/60 p-3 text-[13px] text-muted">
+      <div className="rounded-lg border border-line bg-surface p-3 text-[13px] text-muted">
         Price history starts here. The index takes a daily snapshot of every card, so
-        this chart fills in from <span className="text-slate-fg">{start}</span> onward —
+        this chart fills in from <span className="text-fg">{start}</span> onward —
         check back in a few days for a trend line.
       </div>
     );
@@ -52,12 +52,14 @@ export default function PriceChart({ id, start }: { id: number; start: string })
   const up = change >= 0;
 
   return (
-    <div className="rounded-lg border border-ink-700 bg-ink-850/60 p-3">
+    <div className="rounded-lg border border-line bg-surface p-3">
       <div className="mb-2 flex items-baseline justify-between text-[12px]">
         <span className="text-muted">
           {hist.dates[0]} → {hist.dates[hist.dates.length - 1]} · {vals.length} snapshots
         </span>
-        <span className={`tabular-nums ${up ? "text-emerald-400" : "text-poke-red"}`}>
+        <span
+          className={`tabular-nums ${up ? "text-emerald-600 dark:text-emerald-400" : "text-poke-red"}`}
+        >
           {up ? "▲" : "▼"} {Math.abs(change).toFixed(1)}%
         </span>
       </div>
