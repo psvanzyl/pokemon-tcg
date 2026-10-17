@@ -50,13 +50,13 @@ export default function SetsPage() {
       </p>
 
       <div className="mt-4 overflow-x-auto rounded-xl border border-line">
-        <table className="w-full min-w-[640px] border-collapse text-[13px]">
+        <table className="w-full min-w-[760px] border-collapse text-[13px]">
           <thead>
             <tr className="bg-surface text-left text-[11px] uppercase tracking-wider text-muted">
               <th className="px-3 py-2 font-medium">Set</th>
-              <th className="px-3 py-2 font-medium">Code</th>
-              <th className="px-3 py-2 font-medium">Released</th>
-              <th className="px-3 py-2 text-right font-medium">Cards</th>
+              <th className="whitespace-nowrap px-3 py-2 font-medium">Code</th>
+              <th className="whitespace-nowrap px-3 py-2 font-medium">Released</th>
+              <th className="whitespace-nowrap px-3 py-2 text-right font-medium">Cards</th>
               <th className="px-3 py-2 text-right font-medium">Set value</th>
               <th className="px-3 py-2 text-right font-medium">Avg / card</th>
             </tr>
@@ -76,15 +76,15 @@ export default function SetsPage() {
                       </span>
                     )}
                   </td>
-                  <td className="px-3 py-2 text-muted">{s.abbr || "—"}</td>
-                  <td className="px-3 py-2 tabular-nums text-muted">
+                  <td className="whitespace-nowrap px-3 py-2 text-muted">{s.abbr || "—"}</td>
+                  <td className="whitespace-nowrap px-3 py-2 tabular-nums text-muted">
                     {isUnknownDate(s) ? (
                       <span title="TCGplayer has no original release date for this group">—</span>
                     ) : (
                       (s.released ?? "—")
                     )}
                   </td>
-                  <td className="px-3 py-2 text-right tabular-nums text-muted">{s.cards}</td>
+                  <td className="whitespace-nowrap px-3 py-2 text-right tabular-nums text-muted">{s.cards}</td>
                   <td className="px-3 py-2 text-right tabular-nums text-poke-gold">
                     {v ? moneyShort(v) : "—"}
                   </td>
