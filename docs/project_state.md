@@ -101,6 +101,16 @@ Dataset: **28,056 singles · 213 sets · 27,667 priced**.
   background actually resolving to `rgb(255,255,255)` in light and `rgb(7,10,16)` in
   dark, zero uncaught JS errors, zero horizontal overflow on all four routes at 1440 px
   and 390 px in both themes.
+- **`node ops/qa-live.mjs` against the deployed site: 9/9 checks passed** (base URL comes
+  from `BASE`, defaults to the live domain): light is the default even when the OS prefers
+  dark, the white/near-black body background resolves from the tokens, the Poké Ball mark
+  is visible, dark applies and survives a reload, zero JS errors, and the mobile `/sets`
+  table has no overflow and no wrapped date cell.
+- **Sets-table fix:** hyphenated dates are breakable, so the Released column's min-content
+  width was the width of `202` — at 390 px the cell wrapped to `202` / `16`. Released, Code
+  and Cards are now `whitespace-nowrap` and the table min-width went 640 → 760 px, so the
+  container scrolls instead of squeezing a column below its content.
+  `node ops/qa-mobile.mjs` guards it (line boxes per cell via a `Range`, plus overflow).
 - Screenshots captured for `/`, `/sets`, `/about`, `/kaart/84198` at 1440 px and 390 px,
   both themes, plus header/toggle close-ups and the mobile filter drawer, and reviewed by
   eye: cards, rarity chips, gold prices, tables, chart and the drawer backdrop all read
@@ -129,4 +139,9 @@ Dataset: **28,056 singles · 213 sets · 27,667 priced**.
 3. Optional: price history holds one snapshot; the chart fills in as the daily cron runs.
 4. `app/ops/shots.mjs` is the Playwright screenshot helper — keep it for page captures when
    the browser tool's screenshot IPC wedges. `app/ops/qa-theme.mjs` is the theme/logo
-   regression harness (behaviour + screenshots); run it after any token or layout change.
+   regression harness (behaviour + screenshots); `app/ops/qa-live.mjs` runs the same
+   behavioural checks against a deployed URL; `app/ops/qa-mobile.mjs` guards the narrow
+   viewport (390 px) layout. Run them after any token, layout or table change.
+5. Housekeeping: a `next start` preview of this app sits on CT141 port 3001 and one of
+   rugby-cards on 3101, both launched by hand. Production is Coolify — these are only for
+   local QA, so they are safe to kill when the ports are needed.
