@@ -60,7 +60,9 @@ export default function AboutPage() {
             </li>
             <li>
               The price shown in the catalogue is the <em>cheapest market price</em> across a
-              card&apos;s print variants, so a Reverse Holofoil-only bargain still surfaces.
+              card&apos;s print variants, so a Reverse Holofoil-only bargain still surfaces. Where
+              TCGplayer reports no market price at all, the card falls back to its mid price and
+              the card page says so.
             </li>
             <li>
               A daily snapshot of every card is stored, which is what the price-history chart

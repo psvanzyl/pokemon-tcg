@@ -16,6 +16,25 @@ export default function SetsPage() {
   const stats = getStats();
   const grand = [...values.values()].reduce((a, b) => a + b, 0);
 
+  // TCGplayer's group date is the set's real release date for most sets, but a
+  // batch of promotional groups carries only the date the group was added to
+  // their system — 19 sets cannot share one release date. Those are marked
+  // unknown and sorted last instead of masquerading as the newest sets.
+  const dateCounts = new Map<string, number>();
+  for (const s of sets) {
+    if (s.released) dateCounts.set(s.released, (dateCounts.get(s.released) ?? 0) + 1);
+  }
+  const bulkDates = new Set(
+    [...dateCounts.entries()].filter(([, n]) => n >= 5).map(([d]) => d),
+  );
+  const isUnknownDate = (s: { released: string | null }) => !!s.released && bulkDates.has(s.released);
+  const ordered = [...sets].sort((a, b) => {
+    const au = isUnknownDate(a);
+    const bu = isUnknownDate(b);
+    if (au !== bu) return au ? 1 : -1;
+    return (b.released ?? "").localeCompare(a.released ?? "");
+  });
+
   return (
     <div className="mx-auto w-full max-w-[1200px] px-3 py-5 sm:px-5">
       <h1 className="text-[22px] font-semibold tracking-tight sm:text-[26px]">Sets</h1>
@@ -24,6 +43,10 @@ export default function SetsPage() {
         combined market value of one of every card:{" "}
         <span className="text-slate-fg">${grand.toLocaleString("en-US", { maximumFractionDigits: 0 })}</span>{" "}
         (cheapest print of each card, USD).
+      </p>
+      <p className="mt-1 max-w-3xl text-[12px] text-muted">
+        Release dates come from TCGplayer&apos;s set metadata. A handful of promotional groups have no
+        original date there, so theirs shows as — rather than the date TCGplayer added the group.
       </p>
 
       <div className="mt-4 overflow-x-auto rounded-xl border border-ink-700">
@@ -39,7 +62,7 @@ export default function SetsPage() {
             </tr>
           </thead>
           <tbody>
-            {sets.map((s) => {
+            {ordered.map((s) => {
               const v = values.get(s.id) ?? 0;
               return (
                 <tr key={s.id} className="border-t border-ink-700/70 hover:bg-ink-850/60">
@@ -54,7 +77,13 @@ export default function SetsPage() {
                     )}
                   </td>
                   <td className="px-3 py-2 text-muted">{s.abbr || "—"}</td>
-                  <td className="px-3 py-2 tabular-nums text-muted">{s.released ?? "—"}</td>
+                  <td className="px-3 py-2 tabular-nums text-muted">
+                    {isUnknownDate(s) ? (
+                      <span title="TCGplayer has no original release date for this group">—</span>
+                    ) : (
+                      (s.released ?? "—")
+                    )}
+                  </td>
                   <td className="px-3 py-2 text-right tabular-nums text-muted">{s.cards}</td>
                   <td className="px-3 py-2 text-right tabular-nums text-poke-gold">
                     {v ? moneyShort(v) : "—"}
