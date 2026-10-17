@@ -13,26 +13,28 @@ test.describe("catalogue smoke", () => {
     // wait for the catalogue to hydrate and paint tiles
     const tiles = page.locator('a[href^="/kaart/"]');
     await expect(tiles.first()).toBeVisible({ timeout: 30_000 });
-    expect(await tiles.count()).toBeGreaterThan(20);
+    await expect.poll(() => tiles.count(), { timeout: 30_000 }).toBeGreaterThan(20);
 
-    // a price badge is present on at least one tile
-    await expect(page.locator("text=/\\$\\d/").first()).toBeVisible();
+    // the first tile carries a price badge
+    await expect(tiles.first().locator("text=/\\$[\\d,]/").first()).toBeVisible();
 
     expect(errors, `uncaught JS errors: ${errors.join(" | ")}`).toHaveLength(0);
   });
 
   test("search narrows the result set", async ({ page }) => {
     await page.goto("/");
-    const count = page.locator("strong.tabular-nums").first();
-    await expect(count).toBeVisible({ timeout: 30_000 });
-    const before = await count.innerText();
+    const count = page.locator('[data-testid="result-count"]');
+    const readCount = async () => Number((await count.innerText()).replace(/[^0-9]/g, ""));
+
+    // the count element is absent while the catalogue loads — wait for real data
+    await expect.poll(readCount, { timeout: 30_000 }).toBeGreaterThan(1000);
+    const before = await readCount();
 
     await page.getByPlaceholder(/Search 28,000/).fill("charizard");
-    await page.waitForTimeout(700);
+    await expect.poll(readCount, { timeout: 15_000 }).toBeLessThan(before);
 
-    const after = await count.innerText();
-    expect(Number(after.replace(/,/g, ""))).toBeLessThan(Number(before.replace(/,/g, "")));
-    expect(Number(after.replace(/,/g, ""))).toBeGreaterThan(10);
+    const after = await readCount();
+    expect(after).toBeGreaterThan(10);
 
     await expect(page.locator('a[href^="/kaart/"]').first()).toBeVisible();
     await expect(page.locator("body")).toContainText(/charizard/i);
@@ -43,10 +45,8 @@ test.describe("catalogue smoke", () => {
     await expect(page.locator('a[href^="/kaart/"]').first()).toBeVisible({ timeout: 30_000 });
     await expect(page.locator("body")).toContainText("Secret Rare");
 
-    // price-desc: first tile price >= second tile price
-    const prices = await page
-      .locator('a[href^="/kaart/"] .text-poke-gold')
-      .allInnerTexts();
+    // price-desc: the first six tile prices must be descending
+    const prices = await page.locator('a[href^="/kaart/"] .text-poke-gold').allInnerTexts();
     const nums = prices
       .slice(0, 6)
       .map((t) => Number(t.replace(/[^0-9.]/g, "")))

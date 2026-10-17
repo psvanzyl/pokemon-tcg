@@ -1,0 +1,1792 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: smoke.spec.ts >> catalogue smoke >> search narrows the result set
+- Location: e2e/smoke.spec.ts:24:7
+
+# Error details
+
+```
+Error: expect(received).toBeLessThan(expected)
+
+Expected: < 0
+Received:   205
+```
+
+# Page snapshot
+
+```yaml
+- generic [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - link "Carddex" [ref=e5] [cursor=pointer]:
+          - /url: /
+        - navigation [ref=e9]:
+          - link "Catalogue" [ref=e10] [cursor=pointer]:
+            - /url: /
+          - link "Sets" [ref=e11] [cursor=pointer]:
+            - /url: /sets
+          - link "About" [ref=e12] [cursor=pointer]:
+            - /url: /about
+        - generic [ref=e13]:
+          - generic [ref=e14]: 28,056 cards · 213 sets
+          - generic [ref=e15]: USD market prices, refreshed daily
+    - main [ref=e16]:
+      - generic [ref=e18]:
+        - heading "The complete English Pokémon card index" [level=1] [ref=e19]
+        - paragraph [ref=e20]: Every single card in the English Pokémon TCG catalogue with its current market price, searchable, filterable and sortable. 28,056 cards across 213 sets · prices in USD · last refresh 2026-10-17.
+      - generic [ref=e21]:
+        - generic [ref=e22]:
+          - generic [ref=e23]:
+            - generic [ref=e24]:
+              - textbox "Search 28,000+ cards — name, set or card number (e.g. Charizard, 4/102)" [active] [ref=e25]: charizard
+              - button "Clear search" [ref=e26]
+            - generic [ref=e30]:
+              - combobox [ref=e31]:
+                - 'option "Price: high → low" [selected]'
+                - 'option "Price: low → high"'
+                - 'option "Name: A → Z"'
+                - 'option "Name: Z → A"'
+                - 'option "Set: newest first"'
+                - 'option "Set: oldest first"'
+                - 'option "Rarity: rarest first"'
+                - option "Card number"
+              - generic [ref=e32]:
+                - button "grid" [ref=e33]
+                - button "list" [ref=e39]
+          - generic [ref=e42]:
+            - generic [ref=e43]:
+              - strong [ref=e44]: "205"
+              - text: cards
+            - generic [ref=e45]: of 28,056 · snapshot 2026-10-17 · 213 sets
+            - button "clear 1 filter" [ref=e46]
+        - generic [ref=e47]:
+          - complementary [ref=e49]:
+            - generic [ref=e50]:
+              - generic [ref=e51]: Filters
+              - generic [ref=e52]: "1"
+              - button "Reset" [ref=e53]
+            - generic [ref=e54]:
+              - generic [ref=e55]:
+                - button "Set" [ref=e56]
+                - textbox "Find a set…" [ref=e59]
+                - generic [ref=e60]:
+                  - generic [ref=e61] [cursor=pointer]:
+                    - checkbox "POP Series 7 0" [ref=e62]
+                    - generic "POP Series 7" [ref=e63]
+                    - generic [ref=e64]: "0"
+                  - generic [ref=e65] [cursor=pointer]:
+                    - checkbox "POP Series 1 0" [ref=e66]
+                    - generic "POP Series 1" [ref=e67]
+                    - generic [ref=e68]: "0"
+                  - generic [ref=e69] [cursor=pointer]:
+                    - checkbox "Nintendo Promos 0" [ref=e70]
+                    - generic "Nintendo Promos" [ref=e71]
+                    - generic [ref=e72]: "0"
+                  - generic [ref=e73] [cursor=pointer]:
+                    - checkbox "POP Series 6 0" [ref=e74]
+                    - generic "POP Series 6" [ref=e75]
+                    - generic [ref=e76]: "0"
+                  - generic [ref=e77] [cursor=pointer]:
+                    - checkbox "POP Series 5 0" [ref=e78]
+                    - generic "POP Series 5" [ref=e79]
+                    - generic [ref=e80]: "0"
+                  - generic [ref=e81] [cursor=pointer]:
+                    - checkbox "POP Series 3 0" [ref=e82]
+                    - generic "POP Series 3" [ref=e83]
+                    - generic [ref=e84]: "0"
+                  - generic [ref=e85] [cursor=pointer]:
+                    - checkbox "POP Series 9 0" [ref=e86]
+                    - generic "POP Series 9" [ref=e87]
+                    - generic [ref=e88]: "0"
+                  - generic [ref=e89] [cursor=pointer]:
+                    - checkbox "POP Series 2 0" [ref=e90]
+                    - generic "POP Series 2" [ref=e91]
+                    - generic [ref=e92]: "0"
+                  - generic [ref=e93] [cursor=pointer]:
+                    - checkbox "POP Series 8 0" [ref=e94]
+                    - generic "POP Series 8" [ref=e95]
+                    - generic [ref=e96]: "0"
+                  - generic [ref=e97] [cursor=pointer]:
+                    - checkbox "POP Series 4 0" [ref=e98]
+                    - generic "POP Series 4" [ref=e99]
+                    - generic [ref=e100]: "0"
+                  - generic [ref=e101] [cursor=pointer]:
+                    - 'checkbox "EX Trainer Kit 2: Plusle & Minun 0" [ref=e102]'
+                    - 'generic "EX Trainer Kit 2: Plusle & Minun" [ref=e103]'
+                    - generic [ref=e104]: "0"
+                  - generic [ref=e105] [cursor=pointer]:
+                    - 'checkbox "EX Trainer Kit 1: Latias & Latios 0" [ref=e106]'
+                    - 'generic "EX Trainer Kit 1: Latias & Latios" [ref=e107]'
+                    - generic [ref=e108]: "0"
+                  - generic [ref=e109] [cursor=pointer]:
+                    - checkbox "Alternate Art Promos 0" [ref=e110]
+                    - generic "Alternate Art Promos" [ref=e111]
+                    - generic [ref=e112]: "0"
+                  - generic [ref=e113] [cursor=pointer]:
+                    - checkbox "Burger King Promos 0" [ref=e114]
+                    - generic "Burger King Promos" [ref=e115]
+                    - generic [ref=e116]: "0"
+                  - generic [ref=e117] [cursor=pointer]:
+                    - checkbox "Pikachu World Collection Promos 0" [ref=e118]
+                    - generic "Pikachu World Collection Promos" [ref=e119]
+                    - generic [ref=e120]: "0"
+                  - generic [ref=e121] [cursor=pointer]:
+                    - checkbox "Blister Exclusives 1" [ref=e122]
+                    - generic "Blister Exclusives" [ref=e123]
+                    - generic [ref=e124]: "1"
+                  - generic [ref=e125] [cursor=pointer]:
+                    - checkbox "Professor Program Promos 0" [ref=e126]
+                    - generic "Professor Program Promos" [ref=e127]
+                    - generic [ref=e128]: "0"
+                  - generic [ref=e129] [cursor=pointer]:
+                    - checkbox "Miscellaneous Cards & Products 7" [ref=e130]
+                    - generic "Miscellaneous Cards & Products" [ref=e131]
+                    - generic [ref=e132]: "7"
+                  - generic [ref=e133] [cursor=pointer]:
+                    - checkbox "First Partner Pack 0" [ref=e134]
+                    - generic "First Partner Pack" [ref=e135]
+                    - generic [ref=e136]: "0"
+                  - generic [ref=e137] [cursor=pointer]:
+                    - 'checkbox "ME: 30th Celebration 0" [ref=e138]'
+                    - 'generic "ME: 30th Celebration" [ref=e139]'
+                    - generic [ref=e140]: "0"
+                  - generic [ref=e141] [cursor=pointer]:
+                    - 'checkbox "ME: 30th Celebration Classic Collection 1" [ref=e142]'
+                    - 'generic "ME: 30th Celebration Classic Collection" [ref=e143]'
+                    - generic [ref=e144]: "1"
+                  - generic [ref=e145] [cursor=pointer]:
+                    - 'checkbox "ME05: Pitch Black 0" [ref=e146]'
+                    - 'generic "ME05: Pitch Black" [ref=e147]'
+                    - generic [ref=e148]: "0"
+                  - generic [ref=e149] [cursor=pointer]:
+                    - 'checkbox "ME04: Chaos Rising 0" [ref=e150]'
+                    - 'generic "ME04: Chaos Rising" [ref=e151]'
+                    - generic [ref=e152]: "0"
+                  - generic [ref=e153] [cursor=pointer]:
+                    - 'checkbox "ME03: Perfect Order 0" [ref=e154]'
+                    - 'generic "ME03: Perfect Order" [ref=e155]'
+                    - generic [ref=e156]: "0"
+                  - generic [ref=e157] [cursor=pointer]:
+                    - 'checkbox "ME: Ascended Heroes 2" [ref=e158]'
+                    - 'generic "ME: Ascended Heroes" [ref=e159]'
+                    - generic [ref=e160]: "2"
+                  - generic [ref=e161] [cursor=pointer]:
+                    - 'checkbox "ME02: Phantasmal Flames 4" [ref=e162]'
+                    - 'generic "ME02: Phantasmal Flames" [ref=e163]'
+                    - generic [ref=e164]: "4"
+                  - generic [ref=e165] [cursor=pointer]:
+                    - 'checkbox "ME01: Mega Evolution 0" [ref=e166]'
+                    - 'generic "ME01: Mega Evolution" [ref=e167]'
+                    - generic [ref=e168]: "0"
+                  - generic [ref=e169] [cursor=pointer]:
+                    - 'checkbox "ME: Mega Evolution Promo 3" [ref=e170]'
+                    - 'generic "ME: Mega Evolution Promo" [ref=e171]'
+                    - generic [ref=e172]: "3"
+                  - generic [ref=e173] [cursor=pointer]:
+                    - 'checkbox "MEE: Mega Evolution Energies 0" [ref=e174]'
+                    - 'generic "MEE: Mega Evolution Energies" [ref=e175]'
+                    - generic [ref=e176]: "0"
+                  - generic [ref=e177] [cursor=pointer]:
+                    - 'checkbox "SV: Black Bolt 0" [ref=e178]'
+                    - 'generic "SV: Black Bolt" [ref=e179]'
+                    - generic [ref=e180]: "0"
+                  - generic [ref=e181] [cursor=pointer]:
+                    - 'checkbox "SV: White Flare 0" [ref=e182]'
+                    - 'generic "SV: White Flare" [ref=e183]'
+                    - generic [ref=e184]: "0"
+                  - generic [ref=e185] [cursor=pointer]:
+                    - 'checkbox "SV10: Destined Rivals 0" [ref=e186]'
+                    - 'generic "SV10: Destined Rivals" [ref=e187]'
+                    - generic [ref=e188]: "0"
+                  - generic [ref=e189] [cursor=pointer]:
+                    - 'checkbox "SV09: Journey Together 0" [ref=e190]'
+                    - 'generic "SV09: Journey Together" [ref=e191]'
+                    - generic [ref=e192]: "0"
+                  - generic [ref=e193] [cursor=pointer]:
+                    - checkbox "McDonald's Promos 2024 1" [ref=e194]
+                    - generic "McDonald's Promos 2024" [ref=e195]
+                    - generic [ref=e196]: "1"
+                  - generic [ref=e197] [cursor=pointer]:
+                    - 'checkbox "SV: Prismatic Evolutions 0" [ref=e198]'
+                    - 'generic "SV: Prismatic Evolutions" [ref=e199]'
+                    - generic [ref=e200]: "0"
+                  - generic [ref=e201] [cursor=pointer]:
+                    - 'checkbox "SV08: Surging Sparks 0" [ref=e202]'
+                    - 'generic "SV08: Surging Sparks" [ref=e203]'
+                    - generic [ref=e204]: "0"
+                  - generic [ref=e205] [cursor=pointer]:
+                    - 'checkbox "SV07: Stellar Crown 0" [ref=e206]'
+                    - 'generic "SV07: Stellar Crown" [ref=e207]'
+                    - generic [ref=e208]: "0"
+                  - generic [ref=e209] [cursor=pointer]:
+                    - checkbox "Trick or Trade BOOster Bundle 2024 0" [ref=e210]
+                    - generic "Trick or Trade BOOster Bundle 2024" [ref=e211]
+                    - generic [ref=e212]: "0"
+                  - generic [ref=e213] [cursor=pointer]:
+                    - 'checkbox "SV: Shrouded Fable 0" [ref=e214]'
+                    - 'generic "SV: Shrouded Fable" [ref=e215]'
+                    - generic [ref=e216]: "0"
+                  - generic [ref=e217] [cursor=pointer]:
+                    - checkbox "Battle Academy 2024 0" [ref=e218]
+                    - generic "Battle Academy 2024" [ref=e219]
+                    - generic [ref=e220]: "0"
+                  - generic [ref=e221] [cursor=pointer]:
+                    - 'checkbox "SV06: Twilight Masquerade 0" [ref=e222]'
+                    - 'generic "SV06: Twilight Masquerade" [ref=e223]'
+                    - generic [ref=e224]: "0"
+                  - generic [ref=e225] [cursor=pointer]:
+                    - 'checkbox "SV05: Temporal Forces 0" [ref=e226]'
+                    - 'generic "SV05: Temporal Forces" [ref=e227]'
+                    - generic [ref=e228]: "0"
+                  - generic [ref=e229] [cursor=pointer]:
+                    - 'checkbox "SV: Paldean Fates 2" [ref=e230]'
+                    - 'generic "SV: Paldean Fates" [ref=e231]'
+                    - generic [ref=e232]: "2"
+                  - generic [ref=e233] [cursor=pointer]:
+                    - checkbox "Trading Card Game Classic 1" [ref=e234]
+                    - generic "Trading Card Game Classic" [ref=e235]
+                    - generic [ref=e236]: "1"
+                  - generic [ref=e237] [cursor=pointer]:
+                    - 'checkbox "SV04: Paradox Rift 0" [ref=e238]'
+                    - 'generic "SV04: Paradox Rift" [ref=e239]'
+                    - generic [ref=e240]: "0"
+                  - generic [ref=e241] [cursor=pointer]:
+                    - 'checkbox "SV: Scarlet & Violet 151 3" [ref=e242]'
+                    - 'generic "SV: Scarlet & Violet 151" [ref=e243]'
+                    - generic [ref=e244]: "3"
+                  - generic [ref=e245] [cursor=pointer]:
+                    - checkbox "McDonald's Promos 2023 0" [ref=e246]
+                    - generic "McDonald's Promos 2023" [ref=e247]
+                    - generic [ref=e248]: "0"
+                  - generic [ref=e249] [cursor=pointer]:
+                    - checkbox "Trick or Trade BOOster Bundle 2023 0" [ref=e250]
+                    - generic "Trick or Trade BOOster Bundle 2023" [ref=e251]
+                    - generic [ref=e252]: "0"
+                  - generic [ref=e253] [cursor=pointer]:
+                    - 'checkbox "SV03: Obsidian Flames 4" [ref=e254]'
+                    - 'generic "SV03: Obsidian Flames" [ref=e255]'
+                    - generic [ref=e256]: "4"
+                  - generic [ref=e257] [cursor=pointer]:
+                    - checkbox "Southeast Asia Exclusives 0" [ref=e258]
+                    - generic "Southeast Asia Exclusives" [ref=e259]
+                    - generic [ref=e260]: "0"
+                  - generic [ref=e261] [cursor=pointer]:
+                    - 'checkbox "SV02: Paldea Evolved 0" [ref=e262]'
+                    - 'generic "SV02: Paldea Evolved" [ref=e263]'
+                    - generic [ref=e264]: "0"
+                  - generic [ref=e265] [cursor=pointer]:
+                    - 'checkbox "SV: Scarlet & Violet Promo Cards 4" [ref=e266]'
+                    - 'generic "SV: Scarlet & Violet Promo Cards" [ref=e267]'
+                    - generic [ref=e268]: "4"
+                  - generic [ref=e269] [cursor=pointer]:
+                    - 'checkbox "SV01: Scarlet & Violet Base Set 0" [ref=e270]'
+                    - 'generic "SV01: Scarlet & Violet Base Set" [ref=e271]'
+                    - generic [ref=e272]: "0"
+                  - generic [ref=e273] [cursor=pointer]:
+                    - 'checkbox "SVE: Scarlet & Violet Energies 0" [ref=e274]'
+                    - 'generic "SVE: Scarlet & Violet Energies" [ref=e275]'
+                    - generic [ref=e276]: "0"
+                  - generic [ref=e277] [cursor=pointer]:
+                    - 'checkbox "SWSH: Crown Zenith 3" [ref=e278]'
+                    - 'generic "SWSH: Crown Zenith" [ref=e279]'
+                    - generic [ref=e280]: "3"
+                  - generic [ref=e281] [cursor=pointer]:
+                    - 'checkbox "SWSH: Crown Zenith: Galarian Gallery 0" [ref=e282]'
+                    - 'generic "SWSH: Crown Zenith: Galarian Gallery" [ref=e283]'
+                    - generic [ref=e284]: "0"
+                  - generic [ref=e285] [cursor=pointer]:
+                    - checkbox "Prize Pack Series Cards 9" [ref=e286]
+                    - generic "Prize Pack Series Cards" [ref=e287]
+                    - generic [ref=e288]: "9"
+                  - generic [ref=e289] [cursor=pointer]:
+                    - 'checkbox "SWSH12: Silver Tempest Trainer Gallery 0" [ref=e290]'
+                    - 'generic "SWSH12: Silver Tempest Trainer Gallery" [ref=e291]'
+                    - generic [ref=e292]: "0"
+                  - generic [ref=e293] [cursor=pointer]:
+                    - 'checkbox "SWSH12: Silver Tempest 0" [ref=e294]'
+                    - 'generic "SWSH12: Silver Tempest" [ref=e295]'
+                    - generic [ref=e296]: "0"
+                  - generic [ref=e297] [cursor=pointer]:
+                    - 'checkbox "SWSH11: Lost Origin 0" [ref=e298]'
+                    - 'generic "SWSH11: Lost Origin" [ref=e299]'
+                    - generic [ref=e300]: "0"
+                  - generic [ref=e301] [cursor=pointer]:
+                    - 'checkbox "SWSH11: Lost Origin Trainer Gallery 1" [ref=e302]'
+                    - 'generic "SWSH11: Lost Origin Trainer Gallery" [ref=e303]'
+                    - generic [ref=e304]: "1"
+                  - generic [ref=e305] [cursor=pointer]:
+                    - checkbox "Trick or Trade BOOster Bundle 0" [ref=e306]
+                    - generic "Trick or Trade BOOster Bundle" [ref=e307]
+                    - generic [ref=e308]: "0"
+                  - generic [ref=e309] [cursor=pointer]:
+                    - checkbox "McDonald's Promos 2022 0" [ref=e310]
+                    - generic "McDonald's Promos 2022" [ref=e311]
+                    - generic [ref=e312]: "0"
+                  - generic [ref=e313] [cursor=pointer]:
+                    - checkbox "Pokemon GO 2" [ref=e314]
+                    - generic "Pokemon GO" [ref=e315]
+                    - generic [ref=e316]: "2"
+                  - generic [ref=e317] [cursor=pointer]:
+                    - 'checkbox "SWSH10: Astral Radiance 0" [ref=e318]'
+                    - 'generic "SWSH10: Astral Radiance" [ref=e319]'
+                    - generic [ref=e320]: "0"
+                  - generic [ref=e321] [cursor=pointer]:
+                    - 'checkbox "SWSH10: Astral Radiance Trainer Gallery 0" [ref=e322]'
+                    - 'generic "SWSH10: Astral Radiance Trainer Gallery" [ref=e323]'
+                    - generic [ref=e324]: "0"
+                  - generic [ref=e325] [cursor=pointer]:
+                    - checkbox "Battle Academy 2022 0" [ref=e326]
+                    - generic "Battle Academy 2022" [ref=e327]
+                    - generic [ref=e328]: "0"
+                  - generic [ref=e329] [cursor=pointer]:
+                    - 'checkbox "SWSH09: Brilliant Stars 5" [ref=e330]'
+                    - 'generic "SWSH09: Brilliant Stars" [ref=e331]'
+                    - generic [ref=e332]: "5"
+                  - generic [ref=e333] [cursor=pointer]:
+                    - 'checkbox "SWSH09: Brilliant Stars Trainer Gallery 0" [ref=e334]'
+                    - 'generic "SWSH09: Brilliant Stars Trainer Gallery" [ref=e335]'
+                    - generic [ref=e336]: "0"
+                  - generic [ref=e337] [cursor=pointer]:
+                    - 'checkbox "SWSH08: Fusion Strike 0" [ref=e338]'
+                    - 'generic "SWSH08: Fusion Strike" [ref=e339]'
+                    - generic [ref=e340]: "0"
+                  - generic [ref=e341] [cursor=pointer]:
+                    - checkbox "Celebrations 0" [ref=e342]
+                    - generic "Celebrations" [ref=e343]
+                    - generic [ref=e344]: "0"
+                  - generic [ref=e345] [cursor=pointer]:
+                    - 'checkbox "Celebrations: Classic Collection 1" [ref=e346]'
+                    - 'generic "Celebrations: Classic Collection" [ref=e347]'
+                    - generic [ref=e348]: "1"
+                  - generic [ref=e349] [cursor=pointer]:
+                    - 'checkbox "SWSH07: Evolving Skies 0" [ref=e350]'
+                    - 'generic "SWSH07: Evolving Skies" [ref=e351]'
+                    - generic [ref=e352]: "0"
+                  - generic [ref=e353] [cursor=pointer]:
+                    - 'checkbox "SWSH06: Chilling Reign 0" [ref=e354]'
+                    - 'generic "SWSH06: Chilling Reign" [ref=e355]'
+                    - generic [ref=e356]: "0"
+                  - generic [ref=e357] [cursor=pointer]:
+                    - 'checkbox "SWSH05: Battle Styles 0" [ref=e358]'
+                    - 'generic "SWSH05: Battle Styles" [ref=e359]'
+                    - generic [ref=e360]: "0"
+                  - generic [ref=e361] [cursor=pointer]:
+                    - checkbox "Shining Fates 0" [ref=e362]
+                    - generic "Shining Fates" [ref=e363]
+                    - generic [ref=e364]: "0"
+                  - generic [ref=e365] [cursor=pointer]:
+                    - 'checkbox "Shining Fates: Shiny Vault 1" [ref=e366]'
+                    - 'generic "Shining Fates: Shiny Vault" [ref=e367]'
+                    - generic [ref=e368]: "1"
+                  - generic [ref=e369] [cursor=pointer]:
+                    - checkbox "McDonald's 25th Anniversary Promos 0" [ref=e370]
+                    - generic "McDonald's 25th Anniversary Promos" [ref=e371]
+                    - generic [ref=e372]: "0"
+                  - generic [ref=e373] [cursor=pointer]:
+                    - 'checkbox "SWSH04: Vivid Voltage 1" [ref=e374]'
+                    - 'generic "SWSH04: Vivid Voltage" [ref=e375]'
+                    - generic [ref=e376]: "1"
+                  - generic [ref=e377] [cursor=pointer]:
+                    - checkbox "Champion's Path 2" [ref=e378]
+                    - generic "Champion's Path" [ref=e379]
+                    - generic [ref=e380]: "2"
+                  - generic [ref=e381] [cursor=pointer]:
+                    - 'checkbox "SWSH03: Darkness Ablaze 2" [ref=e382]'
+                    - 'generic "SWSH03: Darkness Ablaze" [ref=e383]'
+                    - generic [ref=e384]: "2"
+                  - generic [ref=e385] [cursor=pointer]:
+                    - checkbox "Battle Academy 42" [ref=e386]
+                    - generic "Battle Academy" [ref=e387]
+                    - generic [ref=e388]: "42"
+                  - generic [ref=e389] [cursor=pointer]:
+                    - 'checkbox "SWSH02: Rebel Clash 0" [ref=e390]'
+                    - 'generic "SWSH02: Rebel Clash" [ref=e391]'
+                    - generic [ref=e392]: "0"
+                  - generic [ref=e393] [cursor=pointer]:
+                    - 'checkbox "SWSH01: Sword & Shield Base Set 0" [ref=e394]'
+                    - 'generic "SWSH01: Sword & Shield Base Set" [ref=e395]'
+                    - generic [ref=e396]: "0"
+                  - generic [ref=e397] [cursor=pointer]:
+                    - 'checkbox "SWSH: Sword & Shield Promo Cards 8" [ref=e398]'
+                    - 'generic "SWSH: Sword & Shield Promo Cards" [ref=e399]'
+                    - generic [ref=e400]: "8"
+                  - generic [ref=e401] [cursor=pointer]:
+                    - checkbox "SM - Cosmic Eclipse 3" [ref=e402]
+                    - generic "SM - Cosmic Eclipse" [ref=e403]
+                    - generic [ref=e404]: "3"
+                  - generic [ref=e405] [cursor=pointer]:
+                    - checkbox "McDonald's Promos 2019 0" [ref=e406]
+                    - generic "McDonald's Promos 2019" [ref=e407]
+                    - generic [ref=e408]: "0"
+                  - generic [ref=e409] [cursor=pointer]:
+                    - checkbox "Hidden Fates 1" [ref=e410]
+                    - generic "Hidden Fates" [ref=e411]
+                    - generic [ref=e412]: "1"
+                  - generic [ref=e413] [cursor=pointer]:
+                    - 'checkbox "Hidden Fates: Shiny Vault 1" [ref=e414]'
+                    - 'generic "Hidden Fates: Shiny Vault" [ref=e415]'
+                    - generic [ref=e416]: "1"
+                  - generic [ref=e417] [cursor=pointer]:
+                    - checkbox "SM - Unified Minds 0" [ref=e418]
+                    - generic "SM - Unified Minds" [ref=e419]
+                    - generic [ref=e420]: "0"
+                  - generic [ref=e421] [cursor=pointer]:
+                    - checkbox "SM - Unbroken Bonds 3" [ref=e422]
+                    - generic "SM - Unbroken Bonds" [ref=e423]
+                    - generic [ref=e424]: "3"
+                  - generic [ref=e425] [cursor=pointer]:
+                    - checkbox "Detective Pikachu 1" [ref=e426]
+                    - generic "Detective Pikachu" [ref=e427]
+                    - generic [ref=e428]: "1"
+                  - generic [ref=e429] [cursor=pointer]:
+                    - checkbox "SM - Team Up 1" [ref=e430]
+                    - generic "SM - Team Up" [ref=e431]
+                    - generic [ref=e432]: "1"
+                  - generic [ref=e433] [cursor=pointer]:
+                    - checkbox "SM - Lost Thunder 0" [ref=e434]
+                    - generic "SM - Lost Thunder" [ref=e435]
+                    - generic [ref=e436]: "0"
+                  - generic [ref=e437] [cursor=pointer]:
+                    - checkbox "McDonald's Promos 2018 0" [ref=e438]
+                    - generic "McDonald's Promos 2018" [ref=e439]
+                    - generic [ref=e440]: "0"
+                  - generic [ref=e441] [cursor=pointer]:
+                    - checkbox "Dragon Majesty 1" [ref=e442]
+                    - generic "Dragon Majesty" [ref=e443]
+                    - generic [ref=e444]: "1"
+                  - generic [ref=e445] [cursor=pointer]:
+                    - checkbox "SM - Celestial Storm 0" [ref=e446]
+                    - generic "SM - Celestial Storm" [ref=e447]
+                    - generic [ref=e448]: "0"
+                  - generic [ref=e449] [cursor=pointer]:
+                    - checkbox "World Championship Decks 2" [ref=e450]
+                    - generic "World Championship Decks" [ref=e451]
+                    - generic [ref=e452]: "2"
+                  - generic [ref=e453] [cursor=pointer]:
+                    - checkbox "SM - Forbidden Light 0" [ref=e454]
+                    - generic "SM - Forbidden Light" [ref=e455]
+                    - generic [ref=e456]: "0"
+                  - generic [ref=e457] [cursor=pointer]:
+                    - 'checkbox "SM Trainer Kit: Alolan Sandslash & Alolan Ninetales 0" [ref=e458]'
+                    - 'generic "SM Trainer Kit: Alolan Sandslash & Alolan Ninetales" [ref=e459]'
+                    - generic [ref=e460]: "0"
+                  - generic [ref=e461] [cursor=pointer]:
+                    - checkbox "SM - Ultra Prism 0" [ref=e462]
+                    - generic "SM - Ultra Prism" [ref=e463]
+                    - generic [ref=e464]: "0"
+                  - generic [ref=e465] [cursor=pointer]:
+                    - checkbox "McDonald's Promos 2017 0" [ref=e466]
+                    - generic "McDonald's Promos 2017" [ref=e467]
+                    - generic [ref=e468]: "0"
+                  - generic [ref=e469] [cursor=pointer]:
+                    - checkbox "SM - Crimson Invasion 0" [ref=e470]
+                    - generic "SM - Crimson Invasion" [ref=e471]
+                    - generic [ref=e472]: "0"
+                  - generic [ref=e473] [cursor=pointer]:
+                    - checkbox "Shining Legends 0" [ref=e474]
+                    - generic "Shining Legends" [ref=e475]
+                    - generic [ref=e476]: "0"
+                  - generic [ref=e477] [cursor=pointer]:
+                    - checkbox "SM - Burning Shadows 2" [ref=e478]
+                    - generic "SM - Burning Shadows" [ref=e479]
+                    - generic [ref=e480]: "2"
+                  - generic [ref=e481] [cursor=pointer]:
+                    - checkbox "SM - Guardians Rising 0" [ref=e482]
+                    - generic "SM - Guardians Rising" [ref=e483]
+                    - generic [ref=e484]: "0"
+                  - generic [ref=e485] [cursor=pointer]:
+                    - 'checkbox "SM Trainer Kit: Lycanroc & Alolan Raichu 0" [ref=e486]'
+                    - 'generic "SM Trainer Kit: Lycanroc & Alolan Raichu" [ref=e487]'
+                    - generic [ref=e488]: "0"
+                  - generic [ref=e489] [cursor=pointer]:
+                    - checkbox "SM Base Set 0" [ref=e490]
+                    - generic "SM Base Set" [ref=e491]
+                    - generic [ref=e492]: "0"
+                  - generic [ref=e493] [cursor=pointer]:
+                    - checkbox "SM Promos 9" [ref=e494]
+                    - generic "SM Promos" [ref=e495]
+                    - generic [ref=e496]: "9"
+                  - generic [ref=e497] [cursor=pointer]:
+                    - checkbox "XY - Evolutions 5" [ref=e498]
+                    - generic "XY - Evolutions" [ref=e499]
+                    - generic [ref=e500]: "5"
+                  - generic [ref=e501] [cursor=pointer]:
+                    - checkbox "Deck Exclusives 4" [ref=e502]
+                    - generic "Deck Exclusives" [ref=e503]
+                    - generic [ref=e504]: "4"
+                  - generic [ref=e505] [cursor=pointer]:
+                    - checkbox "McDonald's Promos 2016 0" [ref=e506]
+                    - generic "McDonald's Promos 2016" [ref=e507]
+                    - generic [ref=e508]: "0"
+                  - generic [ref=e509] [cursor=pointer]:
+                    - checkbox "XY - Steam Siege 0" [ref=e510]
+                    - generic "XY - Steam Siege" [ref=e511]
+                    - generic [ref=e512]: "0"
+                  - generic [ref=e513] [cursor=pointer]:
+                    - checkbox "League & Championship Cards 1" [ref=e514]
+                    - generic "League & Championship Cards" [ref=e515]
+                    - generic [ref=e516]: "1"
+                  - generic [ref=e517] [cursor=pointer]:
+                    - checkbox "XY - Fates Collide 0" [ref=e518]
+                    - generic "XY - Fates Collide" [ref=e519]
+                    - generic [ref=e520]: "0"
+                  - generic [ref=e521] [cursor=pointer]:
+                    - 'checkbox "XY Trainer Kit: Pikachu Libre & Suicune 0" [ref=e522]'
+                    - 'generic "XY Trainer Kit: Pikachu Libre & Suicune" [ref=e523]'
+                    - generic [ref=e524]: "0"
+                  - generic [ref=e525] [cursor=pointer]:
+                    - checkbox "Generations 2" [ref=e526]
+                    - generic "Generations" [ref=e527]
+                    - generic [ref=e528]: "2"
+                  - generic [ref=e529] [cursor=pointer]:
+                    - 'checkbox "Generations: Radiant Collection 1" [ref=e530]'
+                    - 'generic "Generations: Radiant Collection" [ref=e531]'
+                    - generic [ref=e532]: "1"
+                  - generic [ref=e533] [cursor=pointer]:
+                    - checkbox "XY - BREAKpoint 0" [ref=e534]
+                    - generic "XY - BREAKpoint" [ref=e535]
+                    - generic [ref=e536]: "0"
+                  - generic [ref=e537] [cursor=pointer]:
+                    - checkbox "McDonald's Promos 2015 0" [ref=e538]
+                    - generic "McDonald's Promos 2015" [ref=e539]
+                    - generic [ref=e540]: "0"
+                  - generic [ref=e541] [cursor=pointer]:
+                    - checkbox "XY - BREAKthrough 0" [ref=e542]
+                    - generic "XY - BREAKthrough" [ref=e543]
+                    - generic [ref=e544]: "0"
+                  - generic [ref=e545] [cursor=pointer]:
+                    - checkbox "XY - Ancient Origins 0" [ref=e546]
+                    - generic "XY - Ancient Origins" [ref=e547]
+                    - generic [ref=e548]: "0"
+                  - generic [ref=e549] [cursor=pointer]:
+                    - checkbox "XY - Roaring Skies 0" [ref=e550]
+                    - generic "XY - Roaring Skies" [ref=e551]
+                    - generic [ref=e552]: "0"
+                  - generic [ref=e553] [cursor=pointer]:
+                    - 'checkbox "XY Trainer Kit: Latias & Latios 0" [ref=e554]'
+                    - 'generic "XY Trainer Kit: Latias & Latios" [ref=e555]'
+                    - generic [ref=e556]: "0"
+                  - generic [ref=e557] [cursor=pointer]:
+                    - checkbox "Jumbo Cards 19" [ref=e558]
+                    - generic "Jumbo Cards" [ref=e559]
+                    - generic [ref=e560]: "19"
+                  - generic [ref=e561] [cursor=pointer]:
+                    - checkbox "Double Crisis 0" [ref=e562]
+                    - generic "Double Crisis" [ref=e563]
+                    - generic [ref=e564]: "0"
+                  - generic [ref=e565] [cursor=pointer]:
+                    - checkbox "XY - Primal Clash 0" [ref=e566]
+                    - generic "XY - Primal Clash" [ref=e567]
+                    - generic [ref=e568]: "0"
+                  - generic [ref=e569] [cursor=pointer]:
+                    - 'checkbox "XY Trainer Kit: Bisharp & Wigglytuff 0" [ref=e570]'
+                    - 'generic "XY Trainer Kit: Bisharp & Wigglytuff" [ref=e571]'
+                    - generic [ref=e572]: "0"
+                  - generic [ref=e573] [cursor=pointer]:
+                    - checkbox "XY - Phantom Forces 0" [ref=e574]
+                    - generic "XY - Phantom Forces" [ref=e575]
+                    - generic [ref=e576]: "0"
+                  - generic [ref=e577] [cursor=pointer]:
+                    - checkbox "XY - Furious Fists 0" [ref=e578]
+                    - generic "XY - Furious Fists" [ref=e579]
+                    - generic [ref=e580]: "0"
+                  - generic [ref=e581] [cursor=pointer]:
+                    - checkbox "McDonald's Promos 2014 0" [ref=e582]
+                    - generic "McDonald's Promos 2014" [ref=e583]
+                    - generic [ref=e584]: "0"
+                  - generic [ref=e585] [cursor=pointer]:
+                    - checkbox "XY - Flashfire 7" [ref=e586]
+                    - generic "XY - Flashfire" [ref=e587]
+                    - generic [ref=e588]: "7"
+                  - generic [ref=e589] [cursor=pointer]:
+                    - 'checkbox "XY Trainer Kit: Sylveon & Noivern 0" [ref=e590]'
+                    - 'generic "XY Trainer Kit: Sylveon & Noivern" [ref=e591]'
+                    - generic [ref=e592]: "0"
+                  - generic [ref=e593] [cursor=pointer]:
+                    - checkbox "XY Base Set 0" [ref=e594]
+                    - generic "XY Base Set" [ref=e595]
+                    - generic [ref=e596]: "0"
+                  - generic [ref=e597] [cursor=pointer]:
+                    - checkbox "XY Promos 5" [ref=e598]
+                    - generic "XY Promos" [ref=e599]
+                    - generic [ref=e600]: "5"
+                  - generic [ref=e601] [cursor=pointer]:
+                    - checkbox "Kalos Starter Set 0" [ref=e602]
+                    - generic "Kalos Starter Set" [ref=e603]
+                    - generic [ref=e604]: "0"
+                  - generic [ref=e605] [cursor=pointer]:
+                    - checkbox "Legendary Treasures 1" [ref=e606]
+                    - generic "Legendary Treasures" [ref=e607]
+                    - generic [ref=e608]: "1"
+                  - generic [ref=e609] [cursor=pointer]:
+                    - 'checkbox "Legendary Treasures: Radiant Collection 0" [ref=e610]'
+                    - 'generic "Legendary Treasures: Radiant Collection" [ref=e611]'
+                    - generic [ref=e612]: "0"
+                  - generic [ref=e613] [cursor=pointer]:
+                    - checkbox "Plasma Blast 0" [ref=e614]
+                    - generic "Plasma Blast" [ref=e615]
+                    - generic [ref=e616]: "0"
+                  - generic [ref=e617] [cursor=pointer]:
+                    - checkbox "Plasma Freeze 0" [ref=e618]
+                    - generic "Plasma Freeze" [ref=e619]
+                    - generic [ref=e620]: "0"
+                  - generic [ref=e621] [cursor=pointer]:
+                    - checkbox "Plasma Storm 1" [ref=e622]
+                    - generic "Plasma Storm" [ref=e623]
+                    - generic [ref=e624]: "1"
+                  - generic [ref=e625] [cursor=pointer]:
+                    - checkbox "Boundaries Crossed 1" [ref=e626]
+                    - generic "Boundaries Crossed" [ref=e627]
+                    - generic [ref=e628]: "1"
+                  - generic [ref=e629] [cursor=pointer]:
+                    - checkbox "Dragon Vault 0" [ref=e630]
+                    - generic "Dragon Vault" [ref=e631]
+                    - generic [ref=e632]: "0"
+                  - generic [ref=e633] [cursor=pointer]:
+                    - checkbox "Dragons Exalted 0" [ref=e634]
+                    - generic "Dragons Exalted" [ref=e635]
+                    - generic [ref=e636]: "0"
+                  - generic [ref=e637] [cursor=pointer]:
+                    - checkbox "McDonald's Promos 2012 0" [ref=e638]
+                    - generic "McDonald's Promos 2012" [ref=e639]
+                    - generic [ref=e640]: "0"
+                  - generic [ref=e641] [cursor=pointer]:
+                    - checkbox "Dark Explorers 0" [ref=e642]
+                    - generic "Dark Explorers" [ref=e643]
+                    - generic [ref=e644]: "0"
+                  - generic [ref=e645] [cursor=pointer]:
+                    - checkbox "Next Destinies 0" [ref=e646]
+                    - generic "Next Destinies" [ref=e647]
+                    - generic [ref=e648]: "0"
+                  - generic [ref=e649] [cursor=pointer]:
+                    - checkbox "Noble Victories 0" [ref=e650]
+                    - generic "Noble Victories" [ref=e651]
+                    - generic [ref=e652]: "0"
+                  - generic [ref=e653] [cursor=pointer]:
+                    - 'checkbox "BW Trainer Kit: Excadrill & Zoroark 0" [ref=e654]'
+                    - 'generic "BW Trainer Kit: Excadrill & Zoroark" [ref=e655]'
+                    - generic [ref=e656]: "0"
+                  - generic [ref=e657] [cursor=pointer]:
+                    - checkbox "Emerging Powers 0" [ref=e658]
+                    - generic "Emerging Powers" [ref=e659]
+                    - generic [ref=e660]: "0"
+                  - generic [ref=e661] [cursor=pointer]:
+                    - checkbox "McDonald's Promos 2011 0" [ref=e662]
+                    - generic "McDonald's Promos 2011" [ref=e663]
+                    - generic [ref=e664]: "0"
+                  - generic [ref=e665] [cursor=pointer]:
+                    - checkbox "Black and White 0" [ref=e666]
+                    - generic "Black and White" [ref=e667]
+                    - generic [ref=e668]: "0"
+                  - generic [ref=e669] [cursor=pointer]:
+                    - checkbox "Black and White Promos 0" [ref=e670]
+                    - generic "Black and White Promos" [ref=e671]
+                    - generic [ref=e672]: "0"
+                  - generic [ref=e673] [cursor=pointer]:
+                    - checkbox "Call of Legends 0" [ref=e674]
+                    - generic "Call of Legends" [ref=e675]
+                    - generic [ref=e676]: "0"
+                  - generic [ref=e677] [cursor=pointer]:
+                    - checkbox "Triumphant 0" [ref=e678]
+                    - generic "Triumphant" [ref=e679]
+                    - generic [ref=e680]: "0"
+                  - generic [ref=e681] [cursor=pointer]:
+                    - checkbox "Undaunted 0" [ref=e682]
+                    - generic "Undaunted" [ref=e683]
+                    - generic [ref=e684]: "0"
+                  - generic [ref=e685] [cursor=pointer]:
+                    - checkbox "Unleashed 0" [ref=e686]
+                    - generic "Unleashed" [ref=e687]
+                    - generic [ref=e688]: "0"
+                  - generic [ref=e689] [cursor=pointer]:
+                    - 'checkbox "HGSS Trainer Kit: Gyarados & Raichu 0" [ref=e690]'
+                    - 'generic "HGSS Trainer Kit: Gyarados & Raichu" [ref=e691]'
+                    - generic [ref=e692]: "0"
+                  - generic [ref=e693] [cursor=pointer]:
+                    - checkbox "HeartGold SoulSilver 0" [ref=e694]
+                    - generic "HeartGold SoulSilver" [ref=e695]
+                    - generic [ref=e696]: "0"
+                  - generic [ref=e697] [cursor=pointer]:
+                    - checkbox "HGSS Promos 0" [ref=e698]
+                    - generic "HGSS Promos" [ref=e699]
+                    - generic [ref=e700]: "0"
+                  - generic [ref=e701] [cursor=pointer]:
+                    - checkbox "Rumble 0" [ref=e702]
+                    - generic "Rumble" [ref=e703]
+                    - generic [ref=e704]: "0"
+                  - generic [ref=e705] [cursor=pointer]:
+                    - checkbox "Arceus 1" [ref=e706]
+                    - generic "Arceus" [ref=e707]
+                    - generic [ref=e708]: "1"
+                  - generic [ref=e709] [cursor=pointer]:
+                    - checkbox "Supreme Victors 2" [ref=e710]
+                    - generic "Supreme Victors" [ref=e711]
+                    - generic [ref=e712]: "2"
+                  - generic [ref=e713] [cursor=pointer]:
+                    - checkbox "Rising Rivals 0" [ref=e714]
+                    - generic "Rising Rivals" [ref=e715]
+                    - generic [ref=e716]: "0"
+                  - generic [ref=e717] [cursor=pointer]:
+                    - checkbox "Platinum 0" [ref=e718]
+                    - generic "Platinum" [ref=e719]
+                    - generic [ref=e720]: "0"
+                  - generic [ref=e721] [cursor=pointer]:
+                    - checkbox "Stormfront 1" [ref=e722]
+                    - generic "Stormfront" [ref=e723]
+                    - generic [ref=e724]: "1"
+                  - generic [ref=e725] [cursor=pointer]:
+                    - checkbox "Countdown Calendar Promos 0" [ref=e726]
+                    - generic "Countdown Calendar Promos" [ref=e727]
+                    - generic [ref=e728]: "0"
+                  - generic [ref=e729] [cursor=pointer]:
+                    - checkbox "Legends Awakened 0" [ref=e730]
+                    - generic "Legends Awakened" [ref=e731]
+                    - generic [ref=e732]: "0"
+                  - generic [ref=e733] [cursor=pointer]:
+                    - checkbox "Majestic Dawn 0" [ref=e734]
+                    - generic "Majestic Dawn" [ref=e735]
+                    - generic [ref=e736]: "0"
+                  - generic [ref=e737] [cursor=pointer]:
+                    - checkbox "Great Encounters 0" [ref=e738]
+                    - generic "Great Encounters" [ref=e739]
+                    - generic [ref=e740]: "0"
+                  - generic [ref=e741] [cursor=pointer]:
+                    - checkbox "Secret Wonders 1" [ref=e742]
+                    - generic "Secret Wonders" [ref=e743]
+                    - generic [ref=e744]: "1"
+                  - generic [ref=e745] [cursor=pointer]:
+                    - 'checkbox "DP Trainer Kit: Manaphy & Lucario 0" [ref=e746]'
+                    - 'generic "DP Trainer Kit: Manaphy & Lucario" [ref=e747]'
+                    - generic [ref=e748]: "0"
+                  - generic [ref=e749] [cursor=pointer]:
+                    - checkbox "Mysterious Treasures 0" [ref=e750]
+                    - generic "Mysterious Treasures" [ref=e751]
+                    - generic [ref=e752]: "0"
+                  - generic [ref=e753] [cursor=pointer]:
+                    - checkbox "Diamond and Pearl 0" [ref=e754]
+                    - generic "Diamond and Pearl" [ref=e755]
+                    - generic [ref=e756]: "0"
+                  - generic [ref=e757] [cursor=pointer]:
+                    - checkbox "Diamond and Pearl Promos 1" [ref=e758]
+                    - generic "Diamond and Pearl Promos" [ref=e759]
+                    - generic [ref=e760]: "1"
+                  - generic [ref=e761] [cursor=pointer]:
+                    - checkbox "EX Power Keepers 1" [ref=e762]
+                    - generic "EX Power Keepers" [ref=e763]
+                    - generic [ref=e764]: "1"
+                  - generic [ref=e765] [cursor=pointer]:
+                    - checkbox "EX Dragon Frontiers 1" [ref=e766]
+                    - generic "EX Dragon Frontiers" [ref=e767]
+                    - generic [ref=e768]: "1"
+                  - generic [ref=e769] [cursor=pointer]:
+                    - checkbox "EX Crystal Guardians 1" [ref=e770]
+                    - generic "EX Crystal Guardians" [ref=e771]
+                    - generic [ref=e772]: "1"
+                  - generic [ref=e773] [cursor=pointer]:
+                    - checkbox "EX Holon Phantoms 0" [ref=e774]
+                    - generic "EX Holon Phantoms" [ref=e775]
+                    - generic [ref=e776]: "0"
+                  - generic [ref=e777] [cursor=pointer]:
+                    - checkbox "EX Legend Maker 0" [ref=e778]
+                    - generic "EX Legend Maker" [ref=e779]
+                    - generic [ref=e780]: "0"
+                  - generic [ref=e781] [cursor=pointer]:
+                    - checkbox "EX Delta Species 0" [ref=e782]
+                    - generic "EX Delta Species" [ref=e783]
+                    - generic [ref=e784]: "0"
+                  - generic [ref=e785] [cursor=pointer]:
+                    - checkbox "EX Unseen Forces 0" [ref=e786]
+                    - generic "EX Unseen Forces" [ref=e787]
+                    - generic [ref=e788]: "0"
+                  - generic [ref=e789] [cursor=pointer]:
+                    - checkbox "EX Emerald 0" [ref=e790]
+                    - generic "EX Emerald" [ref=e791]
+                    - generic [ref=e792]: "0"
+                  - generic [ref=e793] [cursor=pointer]:
+                    - checkbox "EX Deoxys 0" [ref=e794]
+                    - generic "EX Deoxys" [ref=e795]
+                    - generic [ref=e796]: "0"
+                  - generic [ref=e797] [cursor=pointer]:
+                    - checkbox "EX Team Rocket Returns 0" [ref=e798]
+                    - generic "EX Team Rocket Returns" [ref=e799]
+                    - generic [ref=e800]: "0"
+                  - generic [ref=e801] [cursor=pointer]:
+                    - checkbox "EX Battle Stadium 0" [ref=e802]
+                    - generic "EX Battle Stadium" [ref=e803]
+                    - generic [ref=e804]: "0"
+                  - generic [ref=e805] [cursor=pointer]:
+                    - checkbox "EX FireRed & LeafGreen 1" [ref=e806]
+                    - generic "EX FireRed & LeafGreen" [ref=e807]
+                    - generic [ref=e808]: "1"
+                  - generic [ref=e809] [cursor=pointer]:
+                    - checkbox "Kids WB Promos 0" [ref=e810]
+                    - generic "Kids WB Promos" [ref=e811]
+                    - generic [ref=e812]: "0"
+                  - generic [ref=e813] [cursor=pointer]:
+                    - checkbox "EX Hidden Legends 0" [ref=e814]
+                    - generic "EX Hidden Legends" [ref=e815]
+                    - generic [ref=e816]: "0"
+                  - generic [ref=e817] [cursor=pointer]:
+                    - checkbox "EX Team Magma vs Team Aqua 0" [ref=e818]
+                    - generic "EX Team Magma vs Team Aqua" [ref=e819]
+                    - generic [ref=e820]: "0"
+                  - generic [ref=e821] [cursor=pointer]:
+                    - checkbox "EX Dragon 1" [ref=e822]
+                    - generic "EX Dragon" [ref=e823]
+                    - generic [ref=e824]: "1"
+                  - generic [ref=e825] [cursor=pointer]:
+                    - checkbox "EX Sandstorm 0" [ref=e826]
+                    - generic "EX Sandstorm" [ref=e827]
+                    - generic [ref=e828]: "0"
+                  - generic [ref=e829] [cursor=pointer]:
+                    - checkbox "EX Ruby and Sapphire 0" [ref=e830]
+                    - generic "EX Ruby and Sapphire" [ref=e831]
+                    - generic [ref=e832]: "0"
+                  - generic [ref=e833] [cursor=pointer]:
+                    - checkbox "Skyridge 1" [ref=e834]
+                    - generic "Skyridge" [ref=e835]
+                    - generic [ref=e836]: "1"
+                  - generic [ref=e837] [cursor=pointer]:
+                    - checkbox "Aquapolis 0" [ref=e838]
+                    - generic "Aquapolis" [ref=e839]
+                    - generic [ref=e840]: "0"
+                  - generic [ref=e841] [cursor=pointer]:
+                    - checkbox "Best of Promos 0" [ref=e842]
+                    - generic "Best of Promos" [ref=e843]
+                    - generic [ref=e844]: "0"
+                  - generic [ref=e845] [cursor=pointer]:
+                    - checkbox "Expedition 3" [ref=e846]
+                    - generic "Expedition" [ref=e847]
+                    - generic [ref=e848]: "3"
+                  - generic [ref=e849] [cursor=pointer]:
+                    - checkbox "e-Reader Sample Cards 0" [ref=e850]
+                    - generic "e-Reader Sample Cards" [ref=e851]
+                    - generic [ref=e852]: "0"
+                  - generic [ref=e853] [cursor=pointer]:
+                    - checkbox "Legendary Collection 1" [ref=e854]
+                    - generic "Legendary Collection" [ref=e855]
+                    - generic [ref=e856]: "1"
+                  - generic [ref=e857] [cursor=pointer]:
+                    - checkbox "Neo Destiny 1" [ref=e858]
+                    - generic "Neo Destiny" [ref=e859]
+                    - generic [ref=e860]: "1"
+                  - generic [ref=e861] [cursor=pointer]:
+                    - checkbox "Neo Revelation 0" [ref=e862]
+                    - generic "Neo Revelation" [ref=e863]
+                    - generic [ref=e864]: "0"
+                  - generic [ref=e865] [cursor=pointer]:
+                    - checkbox "Southern Islands 0" [ref=e866]
+                    - generic "Southern Islands" [ref=e867]
+                    - generic [ref=e868]: "0"
+                  - generic [ref=e869] [cursor=pointer]:
+                    - checkbox "Neo Discovery 0" [ref=e870]
+                    - generic "Neo Discovery" [ref=e871]
+                    - generic [ref=e872]: "0"
+                  - generic [ref=e873] [cursor=pointer]:
+                    - checkbox "Neo Genesis 0" [ref=e874]
+                    - generic "Neo Genesis" [ref=e875]
+                    - generic [ref=e876]: "0"
+                  - generic [ref=e877] [cursor=pointer]:
+                    - checkbox "Gym Challenge 1" [ref=e878]
+                    - generic "Gym Challenge" [ref=e879]
+                    - generic [ref=e880]: "1"
+                  - generic [ref=e881] [cursor=pointer]:
+                    - checkbox "Gym Heroes 0" [ref=e882]
+                    - generic "Gym Heroes" [ref=e883]
+                    - generic [ref=e884]: "0"
+                  - generic [ref=e885] [cursor=pointer]:
+                    - checkbox "Team Rocket 2" [ref=e886]
+                    - generic "Team Rocket" [ref=e887]
+                    - generic [ref=e888]: "2"
+                  - generic [ref=e889] [cursor=pointer]:
+                    - checkbox "Base Set 2 1" [ref=e890]
+                    - generic "Base Set 2" [ref=e891]
+                    - generic [ref=e892]: "1"
+                  - generic [ref=e893] [cursor=pointer]:
+                    - checkbox "Fossil 0" [ref=e894]
+                    - generic "Fossil" [ref=e895]
+                    - generic [ref=e896]: "0"
+                  - generic [ref=e897] [cursor=pointer]:
+                    - checkbox "WoTC Promo 0" [ref=e898]
+                    - generic "WoTC Promo" [ref=e899]
+                    - generic [ref=e900]: "0"
+                  - generic [ref=e901] [cursor=pointer]:
+                    - checkbox "Jungle 0" [ref=e902]
+                    - generic "Jungle" [ref=e903]
+                    - generic [ref=e904]: "0"
+                  - generic [ref=e905] [cursor=pointer]:
+                    - checkbox "Base Set (Shadowless) 1" [ref=e906]
+                    - generic "Base Set (Shadowless)" [ref=e907]
+                    - generic [ref=e908]: "1"
+                  - generic [ref=e909] [cursor=pointer]:
+                    - checkbox "Base Set 2" [ref=e910]
+                    - generic "Base Set" [ref=e911]
+                    - generic [ref=e912]: "2"
+              - generic [ref=e913]:
+                - button "Price (USD)" [ref=e914]
+                - generic [ref=e917]:
+                  - spinbutton "min" [ref=e918]
+                  - generic [ref=e919]: –
+                  - spinbutton "max" [ref=e920]
+                - generic [ref=e921]:
+                  - button "Under $1" [ref=e922]
+                  - button "$1 – $5" [ref=e923]
+                  - button "$5 – $20" [ref=e924]
+                  - button "$20 – $100" [ref=e925]
+                  - button "$100 – $500" [ref=e926]
+                  - button "Over $500" [ref=e927]
+                - generic [ref=e928] [cursor=pointer]:
+                  - checkbox "Only cards with a price" [ref=e929]
+                  - text: Only cards with a price
+              - generic [ref=e930]:
+                - button "Rarity" [ref=e931]
+                - generic [ref=e934]:
+                  - generic [ref=e935] [cursor=pointer]:
+                    - checkbox "Promo 96" [ref=e936]
+                    - generic [ref=e937]: Promo
+                    - generic [ref=e938]: "96"
+                  - generic [ref=e939] [cursor=pointer]:
+                    - checkbox "Ultra Rare 38" [ref=e940]
+                    - generic [ref=e941]: Ultra Rare
+                    - generic [ref=e942]: "38"
+                  - generic [ref=e943] [cursor=pointer]:
+                    - checkbox "Holo Rare 20" [ref=e944]
+                    - generic [ref=e945]: Holo Rare
+                    - generic [ref=e946]: "20"
+                  - generic [ref=e947] [cursor=pointer]:
+                    - checkbox "Secret Rare 11" [ref=e948]
+                    - generic [ref=e949]: Secret Rare
+                    - generic [ref=e950]: "11"
+                  - generic [ref=e951] [cursor=pointer]:
+                    - checkbox "Rare 10" [ref=e952]
+                    - generic [ref=e953]: Rare
+                    - generic [ref=e954]: "10"
+                  - generic [ref=e955] [cursor=pointer]:
+                    - checkbox "Double Rare 10" [ref=e956]
+                    - generic [ref=e957]: Double Rare
+                    - generic [ref=e958]: "10"
+                  - generic [ref=e959] [cursor=pointer]:
+                    - checkbox "Special Illustration Rare 4" [ref=e960]
+                    - generic [ref=e961]: Special Illustration Rare
+                    - generic [ref=e962]: "4"
+                  - generic [ref=e963] [cursor=pointer]:
+                    - checkbox "Classic Collection 3" [ref=e964]
+                    - generic [ref=e965]: Classic Collection
+                    - generic [ref=e966]: "3"
+                  - generic [ref=e967] [cursor=pointer]:
+                    - checkbox "Radiant Rare 3" [ref=e968]
+                    - generic [ref=e969]: Radiant Rare
+                    - generic [ref=e970]: "3"
+                  - generic [ref=e971] [cursor=pointer]:
+                    - checkbox "Uncommon 2" [ref=e972]
+                    - generic [ref=e973]: Uncommon
+                    - generic [ref=e974]: "2"
+                  - generic [ref=e975] [cursor=pointer]:
+                    - checkbox "Rainbow Rare 2" [ref=e976]
+                    - generic [ref=e977]: Rainbow Rare
+                    - generic [ref=e978]: "2"
+                  - generic [ref=e979] [cursor=pointer]:
+                    - checkbox "Shiny Holo Rare 2" [ref=e980]
+                    - generic [ref=e981]: Shiny Holo Rare
+                    - generic [ref=e982]: "2"
+                  - generic [ref=e983] [cursor=pointer]:
+                    - checkbox "Mega Hyper Rare 2" [ref=e984]
+                    - generic [ref=e985]: Mega Hyper Rare
+                    - generic [ref=e986]: "2"
+                  - generic [ref=e987] [cursor=pointer]:
+                    - checkbox "Common 1" [ref=e988]
+                    - generic [ref=e989]: Common
+                    - generic [ref=e990]: "1"
+                  - generic [ref=e991] [cursor=pointer]:
+                    - checkbox "Hyper Rare 1" [ref=e992]
+                    - generic [ref=e993]: Hyper Rare
+                    - generic [ref=e994]: "1"
+              - button "Type" [ref=e996]
+              - button "Stage" [ref=e1000]
+              - button "Print variant" [ref=e1004]
+          - generic [ref=e1007]:
+            - generic [ref=e1008]:
+              - link "Charizard Star (Delta Species) $27,500.00 Charizard Star (Delta Species) EX Dragon Frontiers · 100/101 Ultra Rare HP 90" [ref=e1009] [cursor=pointer]:
+                - /url: /kaart/84198
+                - generic [ref=e1010]:
+                  - img "Charizard Star (Delta Species)" [ref=e1011]
+                  - generic [ref=e1012]: $27,500.00
+                - generic [ref=e1013]:
+                  - generic [ref=e1014]: Charizard Star (Delta Species)
+                  - generic [ref=e1015]: EX Dragon Frontiers · 100/101
+                  - generic [ref=e1016]:
+                    - generic [ref=e1017]: Ultra Rare
+                    - generic [ref=e1018]: HP 90
+              - link "Charizard - 9/12 (Box Topper) $12,000.00 Charizard - 9/12 (Box Topper) Jumbo Cards · 009/012 Promo HP 110" [ref=e1019] [cursor=pointer]:
+                - /url: /kaart/210851
+                - generic [ref=e1020]:
+                  - img "Charizard - 9/12 (Box Topper)" [ref=e1021]
+                  - generic [ref=e1022]: $12,000.00
+                - generic [ref=e1023]:
+                  - generic [ref=e1024]: Charizard - 9/12 (Box Topper)
+                  - generic [ref=e1025]: Jumbo Cards · 009/012
+                  - generic [ref=e1026]:
+                    - generic [ref=e1027]: Promo
+                    - generic [ref=e1028]: HP 110
+              - link "Charizard $2,999.99 Charizard Skyridge · 146/144 Secret Rare HP 110" [ref=e1029] [cursor=pointer]:
+                - /url: /kaart/84186
+                - generic [ref=e1030]:
+                  - img "Charizard" [ref=e1031]
+                  - generic [ref=e1032]: $2,999.99
+                - generic [ref=e1033]:
+                  - generic [ref=e1034]: Charizard
+                  - generic [ref=e1035]: Skyridge · 146/144
+                  - generic [ref=e1036]:
+                    - generic [ref=e1037]: Secret Rare
+                    - generic [ref=e1038]: HP 110
+              - link "Charizard $2,257.87 Charizard Base Set (Shadowless) · 004/102 Holo Rare HP 120" [ref=e1039] [cursor=pointer]:
+                - /url: /kaart/106999
+                - generic [ref=e1040]:
+                  - img "Charizard" [ref=e1041]
+                  - generic [ref=e1042]: $2,257.87
+                - generic [ref=e1043]:
+                  - generic [ref=e1044]: Charizard
+                  - generic [ref=e1045]: Base Set (Shadowless) · 004/102
+                  - generic [ref=e1046]:
+                    - generic [ref=e1047]: Holo Rare
+                    - generic [ref=e1048]: HP 120
+              - link "Shining Charizard $1,300.00 Shining Charizard Neo Destiny · 107/105 Secret Rare HP 100" [ref=e1049] [cursor=pointer]:
+                - /url: /kaart/89163
+                - generic [ref=e1050]:
+                  - img "Shining Charizard" [ref=e1051]
+                  - generic [ref=e1052]: $1,300.00
+                - generic [ref=e1053]:
+                  - generic [ref=e1054]: Shining Charizard
+                  - generic [ref=e1055]: Neo Destiny · 107/105
+                  - generic [ref=e1056]:
+                    - generic [ref=e1057]: Secret Rare
+                    - generic [ref=e1058]: HP 100
+              - link "Charizard - SM158 [Staff] $1,250.00 Charizard - SM158 [Staff] SM Promos · SM158 Promo HP 150" [ref=e1059] [cursor=pointer]:
+                - /url: /kaart/183967
+                - generic [ref=e1060]:
+                  - img "Charizard - SM158 [Staff]" [ref=e1061]
+                  - generic [ref=e1062]: $1,250.00
+                - generic [ref=e1063]:
+                  - generic [ref=e1064]: Charizard - SM158 [Staff]
+                  - generic [ref=e1065]: SM Promos · SM158
+                  - generic [ref=e1066]:
+                    - generic [ref=e1067]: Promo
+                    - generic [ref=e1068]: HP 150
+              - link "Charizard VMAX - 020/189 $1,233.33 Charizard VMAX - 020/189 Prize Pack Series Cards · 020/189 Ultra Rare HP 330" [ref=e1069] [cursor=pointer]:
+                - /url: /kaart/475983
+                - generic [ref=e1070]:
+                  - img "Charizard VMAX - 020/189" [ref=e1071]
+                  - generic [ref=e1072]: $1,233.33
+                - generic [ref=e1073]:
+                  - generic [ref=e1074]: Charizard VMAX - 020/189
+                  - generic [ref=e1075]: Prize Pack Series Cards · 020/189
+                  - generic [ref=e1076]:
+                    - generic [ref=e1077]: Ultra Rare
+                    - generic [ref=e1078]: HP 330
+              - link "Charizard $954.65 Charizard Base Set · 004/102 Holo Rare HP 120" [ref=e1079] [cursor=pointer]:
+                - /url: /kaart/42382
+                - generic [ref=e1080]:
+                  - img "Charizard" [ref=e1081]
+                  - generic [ref=e1082]: $954.65
+                - generic [ref=e1083]:
+                  - generic [ref=e1084]: Charizard
+                  - generic [ref=e1085]: Base Set · 004/102
+                  - generic [ref=e1086]:
+                    - generic [ref=e1087]: Holo Rare
+                    - generic [ref=e1088]: HP 120
+              - link "Charizard - S1/S4 (Box Topper) $900.00 Charizard - S1/S4 (Box Topper) Jumbo Cards · S1/S4 Promo HP 120" [ref=e1089] [cursor=pointer]:
+                - /url: /kaart/210841
+                - generic [ref=e1090]:
+                  - img "Charizard - S1/S4 (Box Topper)" [ref=e1091]
+                  - generic [ref=e1092]: $900.00
+                - generic [ref=e1093]:
+                  - generic [ref=e1094]: Charizard - S1/S4 (Box Topper)
+                  - generic [ref=e1095]: Jumbo Cards · S1/S4
+                  - generic [ref=e1096]:
+                    - generic [ref=e1097]: Promo
+                    - generic [ref=e1098]: HP 120
+              - link "Charizard (Black Dot Error) $899.99 Charizard (Black Dot Error) Base Set · 004/102 Holo Rare HP 120" [ref=e1099] [cursor=pointer]:
+                - /url: /kaart/657516
+                - generic [ref=e1100]:
+                  - img "Charizard (Black Dot Error)" [ref=e1101]
+                  - generic [ref=e1102]: $899.99
+                - generic [ref=e1103]:
+                  - generic [ref=e1104]: Charizard (Black Dot Error)
+                  - generic [ref=e1105]: Base Set · 004/102
+                  - generic [ref=e1106]:
+                    - generic [ref=e1107]: Holo Rare
+                    - generic [ref=e1108]: HP 120
+              - link "Charizard $899.99 Charizard Legendary Collection · 003/110 Holo Rare HP 120" [ref=e1109] [cursor=pointer]:
+                - /url: /kaart/84196
+                - generic [ref=e1110]:
+                  - img "Charizard" [ref=e1111]
+                  - generic [ref=e1112]: $899.99
+                - generic [ref=e1113]:
+                  - generic [ref=e1114]: Charizard
+                  - generic [ref=e1115]: Legendary Collection · 003/110
+                  - generic [ref=e1116]:
+                    - generic [ref=e1117]: Holo Rare
+                    - generic [ref=e1118]: HP 120
+              - link "Charizard GX (Secret) $840.75 Charizard GX (Secret) SM - Burning Shadows · 150/147 Rainbow Rare HP 250" [ref=e1119] [cursor=pointer]:
+                - /url: /kaart/138497
+                - generic [ref=e1120]:
+                  - img "Charizard GX (Secret)" [ref=e1121]
+                  - generic [ref=e1122]: $840.75
+                - generic [ref=e1123]:
+                  - generic [ref=e1124]: Charizard GX (Secret)
+                  - generic [ref=e1125]: SM - Burning Shadows · 150/147
+                  - generic [ref=e1126]:
+                    - generic [ref=e1127]: Rainbow Rare
+                    - generic [ref=e1128]: HP 250
+              - link "M Charizard EX (X) (Secret) $802.12 M Charizard EX (X) (Secret) XY - Flashfire · 108/106 Secret Rare HP 230" [ref=e1129] [cursor=pointer]:
+                - /url: /kaart/91246
+                - generic [ref=e1130]:
+                  - img "M Charizard EX (X) (Secret)" [ref=e1131]
+                  - generic [ref=e1132]: $802.12
+                - generic [ref=e1133]:
+                  - generic [ref=e1134]: M Charizard EX (X) (Secret)
+                  - generic [ref=e1135]: XY - Flashfire · 108/106
+                  - generic [ref=e1136]:
+                    - generic [ref=e1137]: Secret Rare
+                    - generic [ref=e1138]: HP 230
+              - 'link "Charizard GX $768.10 Charizard GX Hidden Fates: Shiny Vault · SV49/SV94 Shiny Holo Rare HP 250" [ref=e1139] [cursor=pointer]':
+                - /url: /kaart/197780
+                - generic [ref=e1140]:
+                  - img "Charizard GX" [ref=e1141]
+                  - generic [ref=e1142]: $768.10
+                - generic [ref=e1143]:
+                  - generic [ref=e1144]: Charizard GX
+                  - generic [ref=e1145]: "Hidden Fates: Shiny Vault · SV49/SV94"
+                  - generic [ref=e1146]:
+                    - generic [ref=e1147]: Shiny Holo Rare
+                    - generic [ref=e1148]: HP 250
+              - link "Charizard $737.50 Charizard Stormfront · 103/100 Secret Rare HP 120" [ref=e1149] [cursor=pointer]:
+                - /url: /kaart/84190
+                - generic [ref=e1150]:
+                  - img "Charizard" [ref=e1151]
+                  - generic [ref=e1152]: $737.50
+                - generic [ref=e1153]:
+                  - generic [ref=e1154]: Charizard
+                  - generic [ref=e1155]: Stormfront · 103/100
+                  - generic [ref=e1156]:
+                    - generic [ref=e1157]: Secret Rare
+                    - generic [ref=e1158]: HP 120
+              - link "Charizard $649.98 Charizard Plasma Storm · 136/135 Secret Rare HP 160" [ref=e1159] [cursor=pointer]:
+                - /url: /kaart/84193
+                - generic [ref=e1160]:
+                  - img "Charizard" [ref=e1161]
+                  - generic [ref=e1162]: $649.98
+                - generic [ref=e1163]:
+                  - generic [ref=e1164]: Charizard
+                  - generic [ref=e1165]: Plasma Storm · 136/135
+                  - generic [ref=e1166]:
+                    - generic [ref=e1167]: Secret Rare
+                    - generic [ref=e1168]: HP 160
+              - 'link "Charizard - SWSH066 (Prerelease) [Staff] $621.21 Charizard - SWSH066 (Prerelease) [Staff] SWSH: Sword & Shield Promo Cards · SWSH066 Promo HP 170" [ref=e1169] [cursor=pointer]':
+                - /url: /kaart/224366
+                - generic [ref=e1170]:
+                  - img "Charizard - SWSH066 (Prerelease) [Staff]" [ref=e1171]
+                  - generic [ref=e1172]: $621.21
+                - generic [ref=e1173]:
+                  - generic [ref=e1174]: Charizard - SWSH066 (Prerelease) [Staff]
+                  - generic [ref=e1175]: "SWSH: Sword & Shield Promo Cards · SWSH066"
+                  - generic [ref=e1176]:
+                    - generic [ref=e1177]: Promo
+                    - generic [ref=e1178]: HP 170
+              - 'link "Mega Charizard X ex - 125/094 $603.80 Mega Charizard X ex - 125/094 ME02: Phantasmal Flames · 125/094 Special Illustration Rare HP 360" [ref=e1179] [cursor=pointer]':
+                - /url: /kaart/662184
+                - generic [ref=e1180]:
+                  - img "Mega Charizard X ex - 125/094" [ref=e1181]
+                  - generic [ref=e1182]: $603.80
+                - generic [ref=e1183]:
+                  - generic [ref=e1184]: Mega Charizard X ex - 125/094
+                  - generic [ref=e1185]: "ME02: Phantasmal Flames · 125/094"
+                  - generic [ref=e1186]:
+                    - generic [ref=e1187]: Special Illustration Rare
+                    - generic [ref=e1188]: HP 360
+              - link "Blaine's Charizard $586.76 Blaine's Charizard Gym Challenge · 002/132 Holo Rare HP 100" [ref=e1189] [cursor=pointer]:
+                - /url: /kaart/83861
+                - generic [ref=e1190]:
+                  - img "Blaine's Charizard" [ref=e1191]
+                  - generic [ref=e1192]: $586.76
+                - generic [ref=e1193]:
+                  - generic [ref=e1194]: Blaine's Charizard
+                  - generic [ref=e1195]: Gym Challenge · 002/132
+                  - generic [ref=e1196]:
+                    - generic [ref=e1197]: Holo Rare
+                    - generic [ref=e1198]: HP 100
+              - link "Charizard (Delta Species) $564.76 Charizard (Delta Species) EX Crystal Guardians · 4/100 Holo Rare HP 120" [ref=e1199] [cursor=pointer]:
+                - /url: /kaart/84195
+                - generic [ref=e1200]:
+                  - img "Charizard (Delta Species)" [ref=e1201]
+                  - generic [ref=e1202]: $564.76
+                - generic [ref=e1203]:
+                  - generic [ref=e1204]: Charizard (Delta Species)
+                  - generic [ref=e1205]: EX Crystal Guardians · 4/100
+                  - generic [ref=e1206]:
+                    - generic [ref=e1207]: Holo Rare
+                    - generic [ref=e1208]: HP 120
+              - link "Charizard ex $500.00 Charizard ex EX FireRed & LeafGreen · 105/112 Ultra Rare HP 160" [ref=e1209] [cursor=pointer]:
+                - /url: /kaart/84199
+                - generic [ref=e1210]:
+                  - img "Charizard ex" [ref=e1211]
+                  - generic [ref=e1212]: $500.00
+                - generic [ref=e1213]:
+                  - generic [ref=e1214]: Charizard ex
+                  - generic [ref=e1215]: EX FireRed & LeafGreen · 105/112
+                  - generic [ref=e1216]:
+                    - generic [ref=e1217]: Ultra Rare
+                    - generic [ref=e1218]: HP 160
+              - link "Charizard $489.99 Charizard EX Dragon · 100/97 Secret Rare HP 120" [ref=e1219] [cursor=pointer]:
+                - /url: /kaart/84187
+                - generic [ref=e1220]:
+                  - img "Charizard" [ref=e1221]
+                  - generic [ref=e1222]: $489.99
+                - generic [ref=e1223]:
+                  - generic [ref=e1224]: Charizard
+                  - generic [ref=e1225]: EX Dragon · 100/97
+                  - generic [ref=e1226]:
+                    - generic [ref=e1227]: Secret Rare
+                    - generic [ref=e1228]: HP 120
+              - link "Charizard (XY Evolutions Prerelease) $479.99 Charizard (XY Evolutions Prerelease) XY Promos · 11/108 Promo HP 150" [ref=e1229] [cursor=pointer]:
+                - /url: /kaart/126022
+                - generic [ref=e1230]:
+                  - img "Charizard (XY Evolutions Prerelease)" [ref=e1231]
+                  - generic [ref=e1232]: $479.99
+                - generic [ref=e1233]:
+                  - generic [ref=e1234]: Charizard (XY Evolutions Prerelease)
+                  - generic [ref=e1235]: XY Promos · 11/108
+                  - generic [ref=e1236]:
+                    - generic [ref=e1237]: Promo
+                    - generic [ref=e1238]: HP 150
+              - link "Charizard G Lv.X $450.72 Charizard G Lv.X Supreme Victors · 143 Ultra Rare HP 120" [ref=e1239] [cursor=pointer]:
+                - /url: /kaart/84201
+                - generic [ref=e1240]:
+                  - img "Charizard G Lv.X" [ref=e1241]
+                  - generic [ref=e1242]: $450.72
+                - generic [ref=e1243]:
+                  - generic [ref=e1244]: Charizard G Lv.X
+                  - generic [ref=e1245]: Supreme Victors · 143
+                  - generic [ref=e1246]:
+                    - generic [ref=e1247]: Ultra Rare
+                    - generic [ref=e1248]: HP 120
+              - link "Charizard (6) $436.08 Charizard (6) Expedition · 006/165 Holo Rare HP 120" [ref=e1249] [cursor=pointer]:
+                - /url: /kaart/84183
+                - generic [ref=e1250]:
+                  - img "Charizard (6)" [ref=e1251]
+                  - generic [ref=e1252]: $436.08
+                - generic [ref=e1253]:
+                  - generic [ref=e1254]: Charizard (6)
+                  - generic [ref=e1255]: Expedition · 006/165
+                  - generic [ref=e1256]:
+                    - generic [ref=e1257]: Holo Rare
+                    - generic [ref=e1258]: HP 120
+              - link "Charizard $419.79 Charizard Base Set 2 · 004/130 Holo Rare HP 120" [ref=e1259] [cursor=pointer]:
+                - /url: /kaart/42479
+                - generic [ref=e1260]:
+                  - img "Charizard" [ref=e1261]
+                  - generic [ref=e1262]: $419.79
+                - generic [ref=e1263]:
+                  - generic [ref=e1264]: Charizard
+                  - generic [ref=e1265]: Base Set 2 · 004/130
+                  - generic [ref=e1266]:
+                    - generic [ref=e1267]: Holo Rare
+                    - generic [ref=e1268]: HP 120
+              - link "Charizard VSTAR - 018/172 $399.29 Charizard VSTAR - 018/172 Prize Pack Series Cards · 018/172 Ultra Rare HP 280" [ref=e1269] [cursor=pointer]:
+                - /url: /kaart/489291
+                - generic [ref=e1270]:
+                  - img "Charizard VSTAR - 018/172" [ref=e1271]
+                  - generic [ref=e1272]: $399.29
+                - generic [ref=e1273]:
+                  - generic [ref=e1274]: Charizard VSTAR - 018/172
+                  - generic [ref=e1275]: Prize Pack Series Cards · 018/172
+                  - generic [ref=e1276]:
+                    - generic [ref=e1277]: Ultra Rare
+                    - generic [ref=e1278]: HP 280
+              - link "Charizard G LV.X - DP45 $375.69 Charizard G LV.X - DP45 Diamond and Pearl Promos · DP45 Promo HP 120" [ref=e1279] [cursor=pointer]:
+                - /url: /kaart/84202
+                - generic [ref=e1280]:
+                  - img "Charizard G LV.X - DP45" [ref=e1281]
+                  - generic [ref=e1282]: $375.69
+                - generic [ref=e1283]:
+                  - generic [ref=e1284]: Charizard G LV.X - DP45
+                  - generic [ref=e1285]: Diamond and Pearl Promos · DP45
+                  - generic [ref=e1286]:
+                    - generic [ref=e1287]: Promo
+                    - generic [ref=e1288]: HP 120
+              - link "Radiant Charizard - 020/159 $331.87 Radiant Charizard - 020/159 Prize Pack Series Cards · 020/159 Radiant Rare HP 160" [ref=e1289] [cursor=pointer]:
+                - /url: /kaart/513804
+                - generic [ref=e1290]:
+                  - img "Radiant Charizard - 020/159" [ref=e1291]
+                  - generic [ref=e1292]: $331.87
+                - generic [ref=e1293]:
+                  - generic [ref=e1294]: Radiant Charizard - 020/159
+                  - generic [ref=e1295]: Prize Pack Series Cards · 020/159
+                  - generic [ref=e1296]:
+                    - generic [ref=e1297]: Radiant Rare
+                    - generic [ref=e1298]: HP 160
+              - link "Charizard (Celebrations Metal Card) $326.77 Charizard (Celebrations Metal Card) Miscellaneous Cards & Products · 004/102 Promo HP 120" [ref=e1299] [cursor=pointer]:
+                - /url: /kaart/252517
+                - generic [ref=e1300]:
+                  - img "Charizard (Celebrations Metal Card)" [ref=e1301]
+                  - generic [ref=e1302]: $326.77
+                - generic [ref=e1303]:
+                  - generic [ref=e1304]: Charizard (Celebrations Metal Card)
+                  - generic [ref=e1305]: Miscellaneous Cards & Products · 004/102
+                  - generic [ref=e1306]:
+                    - generic [ref=e1307]: Promo
+                    - generic [ref=e1308]: HP 120
+              - 'link "Charizard ex - 199/165 $319.84 Charizard ex - 199/165 SV: Scarlet & Violet 151 · 199/165 Special Illustration Rare HP 330" [ref=e1309] [cursor=pointer]':
+                - /url: /kaart/517045
+                - generic [ref=e1310]:
+                  - img "Charizard ex - 199/165" [ref=e1311]
+                  - generic [ref=e1312]: $319.84
+                - generic [ref=e1313]:
+                  - generic [ref=e1314]: Charizard ex - 199/165
+                  - generic [ref=e1315]: "SV: Scarlet & Violet 151 · 199/165"
+                  - generic [ref=e1316]:
+                    - generic [ref=e1317]: Special Illustration Rare
+                    - generic [ref=e1318]: HP 330
+              - link "M Charizard EX (Y) (Secret) $313.61 M Charizard EX (Y) (Secret) XY - Flashfire · 107/106 Secret Rare HP 220" [ref=e1319] [cursor=pointer]:
+                - /url: /kaart/91245
+                - generic [ref=e1320]:
+                  - img "M Charizard EX (Y) (Secret)" [ref=e1321]
+                  - generic [ref=e1322]: $313.61
+                - generic [ref=e1323]:
+                  - generic [ref=e1324]: M Charizard EX (Y) (Secret)
+                  - generic [ref=e1325]: XY - Flashfire · 107/106
+                  - generic [ref=e1326]:
+                    - generic [ref=e1327]: Secret Rare
+                    - generic [ref=e1328]: HP 220
+              - link "Charizard EX (100 Full Art) $295.26 Charizard EX (100 Full Art) XY - Flashfire · 100/106 Ultra Rare HP 180" [ref=e1329] [cursor=pointer]:
+                - /url: /kaart/91238
+                - generic [ref=e1330]:
+                  - img "Charizard EX (100 Full Art)" [ref=e1331]
+                  - generic [ref=e1332]: $295.26
+                - generic [ref=e1333]:
+                  - generic [ref=e1334]: Charizard EX (100 Full Art)
+                  - generic [ref=e1335]: XY - Flashfire · 100/106
+                  - generic [ref=e1336]:
+                    - generic [ref=e1337]: Ultra Rare
+                    - generic [ref=e1338]: HP 180
+              - link "M Charizard EX (X) $289.80 M Charizard EX (X) XY - Flashfire · 69/106 Ultra Rare HP 230" [ref=e1339] [cursor=pointer]:
+                - /url: /kaart/91206
+                - generic [ref=e1340]:
+                  - img "M Charizard EX (X)" [ref=e1341]
+                  - generic [ref=e1342]: $289.80
+                - generic [ref=e1343]:
+                  - generic [ref=e1344]: M Charizard EX (X)
+                  - generic [ref=e1345]: XY - Flashfire · 69/106
+                  - generic [ref=e1346]:
+                    - generic [ref=e1347]: Ultra Rare
+                    - generic [ref=e1348]: HP 230
+              - 'link "Charizard V (Alternate Full Art) $275.24 Charizard V (Alternate Full Art) SWSH09: Brilliant Stars · 154/172 Ultra Rare HP 220" [ref=e1349] [cursor=pointer]':
+                - /url: /kaart/263873
+                - generic [ref=e1350]:
+                  - img "Charizard V (Alternate Full Art)" [ref=e1351]
+                  - generic [ref=e1352]: $275.24
+                - generic [ref=e1353]:
+                  - generic [ref=e1354]: Charizard V (Alternate Full Art)
+                  - generic [ref=e1355]: "SWSH09: Brilliant Stars · 154/172"
+                  - generic [ref=e1356]:
+                    - generic [ref=e1357]: Ultra Rare
+                    - generic [ref=e1358]: HP 220
+              - link "Charizard (Library Exclusive) $275.00 Charizard (Library Exclusive) Miscellaneous Cards & Products · 14/181 Rare HP 150" [ref=e1359] [cursor=pointer]:
+                - /url: /kaart/695469
+                - generic [ref=e1360]:
+                  - img "Charizard (Library Exclusive)" [ref=e1361]
+                  - generic [ref=e1362]: $275.00
+                - generic [ref=e1363]:
+                  - generic [ref=e1364]: Charizard (Library Exclusive)
+                  - generic [ref=e1365]: Miscellaneous Cards & Products · 14/181
+                  - generic [ref=e1366]:
+                    - generic [ref=e1367]: Rare
+                    - generic [ref=e1368]: HP 150
+              - 'link "Mega Charizard Y ex - 294/217 $273.39 Mega Charizard Y ex - 294/217 ME: Ascended Heroes · 294/217 Mega Hyper Rare HP 360" [ref=e1369] [cursor=pointer]':
+                - /url: /kaart/676106
+                - generic [ref=e1370]:
+                  - img "Mega Charizard Y ex - 294/217" [ref=e1371]
+                  - generic [ref=e1372]: $273.39
+                - generic [ref=e1373]:
+                  - generic [ref=e1374]: Mega Charizard Y ex - 294/217
+                  - generic [ref=e1375]: "ME: Ascended Heroes · 294/217"
+                  - generic [ref=e1376]:
+                    - generic [ref=e1377]: Mega Hyper Rare
+                    - generic [ref=e1378]: HP 360
+              - link "Charizard V (Secret) $257.72 Charizard V (Secret) Champion's Path · 79/73 Secret Rare HP 220" [ref=e1379] [cursor=pointer]:
+                - /url: /kaart/223078
+                - generic [ref=e1380]:
+                  - img "Charizard V (Secret)" [ref=e1381]
+                  - generic [ref=e1382]: $257.72
+                - generic [ref=e1383]:
+                  - generic [ref=e1384]: Charizard V (Secret)
+                  - generic [ref=e1385]: Champion's Path · 79/73
+                  - generic [ref=e1386]:
+                    - generic [ref=e1387]: Secret Rare
+                    - generic [ref=e1388]: HP 220
+              - 'link "Charizard ex - 234/091 $257.31 Charizard ex - 234/091 SV: Paldean Fates · 234/091 Special Illustration Rare HP 330" [ref=e1389] [cursor=pointer]':
+                - /url: /kaart/535090
+                - generic [ref=e1390]:
+                  - img "Charizard ex - 234/091" [ref=e1391]
+                  - generic [ref=e1392]: $257.31
+                - generic [ref=e1393]:
+                  - generic [ref=e1394]: Charizard ex - 234/091
+                  - generic [ref=e1395]: "SV: Paldean Fates · 234/091"
+                  - generic [ref=e1396]:
+                    - generic [ref=e1397]: Special Illustration Rare
+                    - generic [ref=e1398]: HP 330
+              - link "Reshiram & Charizard GX (Secret) $244.36 Reshiram & Charizard GX (Secret) SM - Unbroken Bonds · 217/214 Secret Rare HP 270" [ref=e1399] [cursor=pointer]:
+                - /url: /kaart/189319
+                - generic [ref=e1400]:
+                  - img "Reshiram & Charizard GX (Secret)" [ref=e1401]
+                  - generic [ref=e1402]: $244.36
+                - generic [ref=e1403]:
+                  - generic [ref=e1404]: Reshiram & Charizard GX (Secret)
+                  - generic [ref=e1405]: SM - Unbroken Bonds · 217/214
+                  - generic [ref=e1406]:
+                    - generic [ref=e1407]: Secret Rare
+                    - generic [ref=e1408]: HP 270
+              - 'link "Special Delivery Charizard - SWSH075 $204.56 Special Delivery Charizard - SWSH075 SWSH: Sword & Shield Promo Cards · SWSH075 Promo HP 160" [ref=e1409] [cursor=pointer]':
+                - /url: /kaart/282259
+                - generic [ref=e1410]:
+                  - img "Special Delivery Charizard - SWSH075" [ref=e1411]
+                  - generic [ref=e1412]: $204.56
+                - generic [ref=e1413]:
+                  - generic [ref=e1414]: Special Delivery Charizard - SWSH075
+                  - generic [ref=e1415]: "SWSH: Sword & Shield Promo Cards · SWSH075"
+                  - generic [ref=e1416]:
+                    - generic [ref=e1417]: Promo
+                    - generic [ref=e1418]: HP 160
+              - 'link "Mega Charizard X ex - 130/094 $203.13 Mega Charizard X ex - 130/094 ME02: Phantasmal Flames · 130/094 Mega Hyper Rare HP 360" [ref=e1419] [cursor=pointer]':
+                - /url: /kaart/662185
+                - generic [ref=e1420]:
+                  - img "Mega Charizard X ex - 130/094" [ref=e1421]
+                  - generic [ref=e1422]: $203.13
+                - generic [ref=e1423]:
+                  - generic [ref=e1424]: Mega Charizard X ex - 130/094
+                  - generic [ref=e1425]: "ME02: Phantasmal Flames · 130/094"
+                  - generic [ref=e1426]:
+                    - generic [ref=e1427]: Mega Hyper Rare
+                    - generic [ref=e1428]: HP 360
+              - link "Charizard VMAX (Secret) $200.40 Charizard VMAX (Secret) Champion's Path · 74/73 Secret Rare HP 330" [ref=e1429] [cursor=pointer]:
+                - /url: /kaart/223073
+                - generic [ref=e1430]:
+                  - img "Charizard VMAX (Secret)" [ref=e1431]
+                  - generic [ref=e1432]: $200.40
+                - generic [ref=e1433]:
+                  - generic [ref=e1434]: Charizard VMAX (Secret)
+                  - generic [ref=e1435]: Champion's Path · 74/73
+                  - generic [ref=e1436]:
+                    - generic [ref=e1437]: Secret Rare
+                    - generic [ref=e1438]: HP 330
+              - link "Charizard (39) $198.32 Charizard (39) Expedition · 039/165 Rare HP 100" [ref=e1439] [cursor=pointer]:
+                - /url: /kaart/84184
+                - generic [ref=e1440]:
+                  - img "Charizard (39)" [ref=e1441]
+                  - generic [ref=e1442]: $198.32
+                - generic [ref=e1443]:
+                  - generic [ref=e1444]: Charizard (39)
+                  - generic [ref=e1445]: Expedition · 039/165
+                  - generic [ref=e1446]:
+                    - generic [ref=e1447]: Rare
+                    - generic [ref=e1448]: HP 100
+              - link "Charizard EX - XY121 $186.43 Charizard EX - XY121 XY Promos · XY121 Promo HP 180" [ref=e1449] [cursor=pointer]:
+                - /url: /kaart/117267
+                - generic [ref=e1450]:
+                  - img "Charizard EX - XY121" [ref=e1451]
+                  - generic [ref=e1452]: $186.43
+                - generic [ref=e1453]:
+                  - generic [ref=e1454]: Charizard EX - XY121
+                  - generic [ref=e1455]: XY Promos · XY121
+                  - generic [ref=e1456]:
+                    - generic [ref=e1457]: Promo
+                    - generic [ref=e1458]: HP 180
+              - link "Charizard $184.63 Charizard Trading Card Game Classic · 003/034 Classic Collection HP 120" [ref=e1459] [cursor=pointer]:
+                - /url: /kaart/527938
+                - generic [ref=e1460]:
+                  - img "Charizard" [ref=e1461]
+                  - generic [ref=e1462]: $184.63
+                - generic [ref=e1463]:
+                  - generic [ref=e1464]: Charizard
+                  - generic [ref=e1465]: Trading Card Game Classic · 003/034
+                  - generic [ref=e1466]:
+                    - generic [ref=e1467]: Classic Collection
+                    - generic [ref=e1468]: HP 120
+              - link "Charizard $176.65 Charizard EX Power Keepers · 6/108 Holo Rare HP 120" [ref=e1469] [cursor=pointer]:
+                - /url: /kaart/84188
+                - generic [ref=e1470]:
+                  - img "Charizard" [ref=e1471]
+                  - generic [ref=e1472]: $176.65
+                - generic [ref=e1473]:
+                  - generic [ref=e1474]: Charizard
+                  - generic [ref=e1475]: EX Power Keepers · 6/108
+                  - generic [ref=e1476]:
+                    - generic [ref=e1477]: Holo Rare
+                    - generic [ref=e1478]: HP 120
+              - link "Reshiram & Charizard GX - SM201 $173.89 Reshiram & Charizard GX - SM201 SM Promos · SM201 Promo HP 270" [ref=e1479] [cursor=pointer]:
+                - /url: /kaart/196347
+                - generic [ref=e1480]:
+                  - img "Reshiram & Charizard GX - SM201" [ref=e1481]
+                  - generic [ref=e1482]: $173.89
+                - generic [ref=e1483]:
+                  - generic [ref=e1484]: Reshiram & Charizard GX - SM201
+                  - generic [ref=e1485]: SM Promos · SM201
+                  - generic [ref=e1486]:
+                    - generic [ref=e1487]: Promo
+                    - generic [ref=e1488]: HP 270
+              - link "Charizard - 3/110 (WotC Legendary Collection) $160.26 Charizard - 3/110 (WotC Legendary Collection) Deck Exclusives · 003/110 Rare HP 120" [ref=e1489] [cursor=pointer]:
+                - /url: /kaart/118404
+                - generic [ref=e1490]:
+                  - img "Charizard - 3/110 (WotC Legendary Collection)" [ref=e1491]
+                  - generic [ref=e1492]: $160.26
+                - generic [ref=e1493]:
+                  - generic [ref=e1494]: Charizard - 3/110 (WotC Legendary Collection)
+                  - generic [ref=e1495]: Deck Exclusives · 003/110
+                  - generic [ref=e1496]:
+                    - generic [ref=e1497]: Rare
+                    - generic [ref=e1498]: HP 120
+              - link "M Charizard EX $159.64 M Charizard EX Generations · 12/83 Ultra Rare HP 220" [ref=e1499] [cursor=pointer]:
+                - /url: /kaart/113670
+                - generic [ref=e1500]:
+                  - img "M Charizard EX" [ref=e1501]
+                  - generic [ref=e1502]: $159.64
+                - generic [ref=e1503]:
+                  - generic [ref=e1504]: M Charizard EX
+                  - generic [ref=e1505]: Generations · 12/83
+                  - generic [ref=e1506]:
+                    - generic [ref=e1507]: Ultra Rare
+                    - generic [ref=e1508]: HP 220
+              - link "Charizard (40) $149.19 Charizard (40) Expedition · 040/165 Rare HP 120" [ref=e1509] [cursor=pointer]:
+                - /url: /kaart/84185
+                - generic [ref=e1510]:
+                  - img "Charizard (40)" [ref=e1511]
+                  - generic [ref=e1512]: $149.19
+                - generic [ref=e1513]:
+                  - generic [ref=e1514]: Charizard (40)
+                  - generic [ref=e1515]: Expedition · 040/165
+                  - generic [ref=e1516]:
+                    - generic [ref=e1517]: Rare
+                    - generic [ref=e1518]: HP 120
+              - 'link "Charizard $144.23 Charizard Celebrations: Classic Collection · 4/102 Classic Collection HP 120" [ref=e1519] [cursor=pointer]':
+                - /url: /kaart/250320
+                - generic [ref=e1520]:
+                  - img "Charizard" [ref=e1521]
+                  - generic [ref=e1522]: $144.23
+                - generic [ref=e1523]:
+                  - generic [ref=e1524]: Charizard
+                  - generic [ref=e1525]: "Celebrations: Classic Collection · 4/102"
+                  - generic [ref=e1526]:
+                    - generic [ref=e1527]: Classic Collection
+                    - generic [ref=e1528]: HP 120
+              - link "Charizard - 19/113 (Cosmos Holo) $138.46 Charizard - 19/113 (Cosmos Holo) Miscellaneous Cards & Products · 019/113 Promo HP 160" [ref=e1529] [cursor=pointer]:
+                - /url: /kaart/226672
+                - generic [ref=e1530]:
+                  - img "Charizard - 19/113 (Cosmos Holo)" [ref=e1531]
+                  - generic [ref=e1532]: $138.46
+                - generic [ref=e1533]:
+                  - generic [ref=e1534]: Charizard - 19/113 (Cosmos Holo)
+                  - generic [ref=e1535]: Miscellaneous Cards & Products · 019/113
+                  - generic [ref=e1536]:
+                    - generic [ref=e1537]: Promo
+                    - generic [ref=e1538]: HP 160
+              - link "Charizard $137.72 Charizard Secret Wonders · 3/132 Holo Rare HP 130" [ref=e1539] [cursor=pointer]:
+                - /url: /kaart/84189
+                - generic [ref=e1540]:
+                  - img "Charizard" [ref=e1541]
+                  - generic [ref=e1542]: $137.72
+                - generic [ref=e1543]:
+                  - generic [ref=e1544]: Charizard
+                  - generic [ref=e1545]: Secret Wonders · 3/132
+                  - generic [ref=e1546]:
+                    - generic [ref=e1547]: Holo Rare
+                    - generic [ref=e1548]: HP 130
+              - link "Charizard V - 017/172 $137.52 Charizard V - 017/172 Prize Pack Series Cards · 017/172 Ultra Rare HP 220" [ref=e1549] [cursor=pointer]:
+                - /url: /kaart/495194
+                - generic [ref=e1550]:
+                  - img "Charizard V - 017/172" [ref=e1551]
+                  - generic [ref=e1552]: $137.52
+                - generic [ref=e1553]:
+                  - generic [ref=e1554]: Charizard V - 017/172
+                  - generic [ref=e1555]: Prize Pack Series Cards · 017/172
+                  - generic [ref=e1556]:
+                    - generic [ref=e1557]: Ultra Rare
+                    - generic [ref=e1558]: HP 220
+              - link "Charizard & Braixen GX (Secret) $137.23 Charizard & Braixen GX (Secret) SM - Cosmic Eclipse · 251/236 Rainbow Rare HP 270" [ref=e1559] [cursor=pointer]:
+                - /url: /kaart/201611
+                - generic [ref=e1560]:
+                  - img "Charizard & Braixen GX (Secret)" [ref=e1561]
+                  - generic [ref=e1562]: $137.23
+                - generic [ref=e1563]:
+                  - generic [ref=e1564]: Charizard & Braixen GX (Secret)
+                  - generic [ref=e1565]: SM - Cosmic Eclipse · 251/236
+                  - generic [ref=e1566]:
+                    - generic [ref=e1567]: Rainbow Rare
+                    - generic [ref=e1568]: HP 270
+              - 'link "Charizard $134.82 Charizard ME: 30th Celebration Classic Collection · 4/102 Classic Collection HP 120" [ref=e1569] [cursor=pointer]':
+                - /url: /kaart/714372
+                - generic [ref=e1570]:
+                  - img "Charizard" [ref=e1571]
+                  - generic [ref=e1572]: $134.82
+                - generic [ref=e1573]:
+                  - generic [ref=e1574]: Charizard
+                  - generic [ref=e1575]: "ME: 30th Celebration Classic Collection · 4/102"
+                  - generic [ref=e1576]:
+                    - generic [ref=e1577]: Classic Collection
+                    - generic [ref=e1578]: HP 120
+              - link "M Charizard EX (Full Art) $124.72 M Charizard EX (Full Art) XY - Evolutions · 101/108 Ultra Rare HP 220" [ref=e1579] [cursor=pointer]:
+                - /url: /kaart/124114
+                - generic [ref=e1580]:
+                  - img "M Charizard EX (Full Art)" [ref=e1581]
+                  - generic [ref=e1582]: $124.72
+                - generic [ref=e1583]:
+                  - generic [ref=e1584]: M Charizard EX (Full Art)
+                  - generic [ref=e1585]: XY - Evolutions · 101/108
+                  - generic [ref=e1586]:
+                    - generic [ref=e1587]: Ultra Rare
+                    - generic [ref=e1588]: HP 220
+              - link "Charizard - SM158 $116.27 Charizard - SM158 SM Promos · SM158 Promo HP 150" [ref=e1589] [cursor=pointer]:
+                - /url: /kaart/183966
+                - generic [ref=e1590]:
+                  - img "Charizard - SM158" [ref=e1591]
+                  - generic [ref=e1592]: $116.27
+                - generic [ref=e1593]:
+                  - generic [ref=e1594]: Charizard - SM158
+                  - generic [ref=e1595]: SM Promos · SM158
+                  - generic [ref=e1596]:
+                    - generic [ref=e1597]: Promo
+                    - generic [ref=e1598]: HP 150
+              - 'link "Charizard VMAX $115.07 Charizard VMAX Shining Fates: Shiny Vault · SV107/SV122 Shiny Holo Rare HP 330" [ref=e1599] [cursor=pointer]':
+                - /url: /kaart/232496
+                - generic [ref=e1600]:
+                  - img "Charizard VMAX" [ref=e1601]
+                  - generic [ref=e1602]: $115.07
+                - generic [ref=e1603]:
+                  - generic [ref=e1604]: Charizard VMAX
+                  - generic [ref=e1605]: "Shining Fates: Shiny Vault · SV107/SV122"
+                  - generic [ref=e1606]:
+                    - generic [ref=e1607]: Shiny Holo Rare
+                    - generic [ref=e1608]: HP 330
+            - generic [ref=e1610]:
+              - button "Load 60 more" [ref=e1611]
+              - paragraph [ref=e1612]: showing 60 of 205
+    - contentinfo [ref=e1613]:
+      - generic [ref=e1614]:
+        - paragraph [ref=e1615]: Prices from TCGplayer via TCGCSV daily dumps · USD · not affiliated with Nintendo, Creatures or The Pokémon Company.
+        - paragraph [ref=e1616]:
+          - link "Sets" [ref=e1617] [cursor=pointer]:
+            - /url: /sets
+          - link "About & method" [ref=e1618] [cursor=pointer]:
+            - /url: /about
+  - alert [ref=e1619]
+```
+
+# Test source
+
+```ts
+  1  | import { expect, test } from "@playwright/test";
+  2  | 
+  3  | test.describe("catalogue smoke", () => {
+  4  |   test("home loads, catalogue renders cards with prices", async ({ page }) => {
+  5  |     const errors: string[] = [];
+  6  |     page.on("pageerror", (e) => errors.push(String(e)));
+  7  | 
+  8  |     await page.goto("/");
+  9  |     await expect(page.getByRole("heading", { level: 1 })).toContainText(
+  10 |       "complete English Pokémon card index",
+  11 |     );
+  12 | 
+  13 |     // wait for the catalogue to hydrate and paint tiles
+  14 |     const tiles = page.locator('a[href^="/kaart/"]');
+  15 |     await expect(tiles.first()).toBeVisible({ timeout: 30_000 });
+  16 |     expect(await tiles.count()).toBeGreaterThan(20);
+  17 | 
+  18 |     // a price badge is present on at least one tile
+  19 |     await expect(page.locator("text=/\\$\\d/").first()).toBeVisible();
+  20 | 
+  21 |     expect(errors, `uncaught JS errors: ${errors.join(" | ")}`).toHaveLength(0);
+  22 |   });
+  23 | 
+  24 |   test("search narrows the result set", async ({ page }) => {
+  25 |     await page.goto("/");
+  26 |     const count = page.locator("strong.tabular-nums").first();
+  27 |     await expect(count).toBeVisible({ timeout: 30_000 });
+  28 |     const before = await count.innerText();
+  29 | 
+  30 |     await page.getByPlaceholder(/Search 28,000/).fill("charizard");
+  31 |     await page.waitForTimeout(700);
+  32 | 
+  33 |     const after = await count.innerText();
+> 34 |     expect(Number(after.replace(/,/g, ""))).toBeLessThan(Number(before.replace(/,/g, "")));
+     |                                             ^ Error: expect(received).toBeLessThan(expected)
+  35 |     expect(Number(after.replace(/,/g, ""))).toBeGreaterThan(10);
+  36 | 
+  37 |     await expect(page.locator('a[href^="/kaart/"]').first()).toBeVisible();
+  38 |     await expect(page.locator("body")).toContainText(/charizard/i);
+  39 |   });
+  40 | 
+  41 |   test("filters and sorting work and land in the URL", async ({ page }) => {
+  42 |     await page.goto("/?rar=Secret%20Rare&sort=price-desc");
+  43 |     await expect(page.locator('a[href^="/kaart/"]').first()).toBeVisible({ timeout: 30_000 });
+  44 |     await expect(page.locator("body")).toContainText("Secret Rare");
+  45 | 
+  46 |     // price-desc: first tile price >= second tile price
+  47 |     const prices = await page
+  48 |       .locator('a[href^="/kaart/"] .text-poke-gold')
+  49 |       .allInnerTexts();
+  50 |     const nums = prices
+  51 |       .slice(0, 6)
+  52 |       .map((t) => Number(t.replace(/[^0-9.]/g, "")))
+  53 |       .filter((n) => !Number.isNaN(n));
+  54 |     expect(nums.length).toBeGreaterThan(2);
+  55 |     const sorted = [...nums].sort((a, b) => b - a);
+  56 |     expect(nums).toEqual(sorted);
+  57 |   });
+  58 | 
+  59 |   test("card detail page shows price table and metadata", async ({ page }) => {
+  60 |     await page.goto("/?q=charizard");
+  61 |     const first = page.locator('a[href^="/kaart/"]').first();
+  62 |     await expect(first).toBeVisible({ timeout: 30_000 });
+  63 |     await first.click();
+  64 | 
+  65 |     await expect(page).toHaveURL(/\/kaart\/\d+/);
+  66 |     await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
+  67 |     await expect(page.locator("body")).toContainText(/Market price/i);
+  68 |     await expect(page.locator("body")).toContainText(/Prices by print/i);
+  69 |     await expect(page.locator("body")).toContainText(/Price history/i);
+  70 |     await expect(page.locator("body")).toContainText(/TCGplayer/i);
+  71 |   });
+  72 | 
+  73 |   test("sets page lists sets and links into the catalogue", async ({ page }) => {
+  74 |     await page.goto("/sets");
+  75 |     await expect(page.getByRole("heading", { level: 1 })).toContainText("Sets");
+  76 |     const rows = page.locator("tbody tr");
+  77 |     await expect(rows.first()).toBeVisible();
+  78 |     expect(await rows.count()).toBeGreaterThan(100);
+  79 |   });
+  80 | 
+  81 |   test("about page explains the method", async ({ page }) => {
+  82 |     await page.goto("/about");
+  83 |     await expect(page.getByRole("heading", { level: 1 })).toContainText("About");
+  84 |     await expect(page.locator("body")).toContainText("TCGCSV");
+  85 |   });
+  86 | 
+  87 |   test("no horizontal overflow on the current viewport", async ({ page }) => {
+  88 |     for (const path of ["/", "/sets", "/about"]) {
+  89 |       await page.goto(path);
+  90 |       await page.waitForTimeout(1500);
+  91 |       const overflow = await page.evaluate(
+  92 |         () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
+  93 |       );
+  94 |       expect(overflow, `horizontal overflow on ${path}: ${overflow}px`).toBeLessThanOrEqual(2);
+  95 |     }
+  96 |   });
+  97 | });
+  98 | 
+```

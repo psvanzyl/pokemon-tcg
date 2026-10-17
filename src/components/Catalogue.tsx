@@ -379,8 +379,16 @@ export default function Catalogue() {
 
         <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[12px] text-muted">
           <span className="text-slate-fg">
-            <strong className="tabular-nums">{result.length.toLocaleString("en-US")}</strong>{" "}
-            {result.length === 1 ? "card" : "cards"}
+            {loading || cards === null ? (
+              <span className="text-muted">Loading the catalogue…</span>
+            ) : (
+              <>
+                <strong data-testid="result-count" className="tabular-nums">
+                  {result.length.toLocaleString("en-US")}
+                </strong>{" "}
+                {result.length === 1 ? "card" : "cards"}
+              </>
+            )}
           </span>
           {stats && (
             <span>
