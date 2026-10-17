@@ -81,9 +81,10 @@ Dataset: **28,056 singles · 213 sets · 27,667 priced**.
   Playwright on CT141 (`shots.mjs`) is the reliable way to capture page images.
 
 ## Open items
-1. **knuck.eu** — still Strato parking (`217.160.0.18`). Point its A record (and `www`)
-   at `83.85.185.61`, then add `knuck.eu` + `www.knuck.eu` to the Carddex `domains` in
-   Coolify so it gets its own certificate. No other work needed.
+1. **Domain: decided — the site stays on `pokemon.laserraptorai.duckdns.org`.** knuck.eu is
+   deliberately NOT being coupled (boss's call, 2026-10-17). No DNS change, no extra domain,
+   no further work here. Do not re-raise it.
 2. Optional: make the GitHub repo private (needs a new Coolify deploy key on the repo).
 3. Optional: price history holds one snapshot; the chart fills in as the daily cron runs.
-4. `app/shots.mjs` (screenshot helper) is committed — move it under `ops/` or drop it.
+4. `app/ops/shots.mjs` is the Playwright screenshot helper — keep it for page captures when
+   the browser tool's screenshot IPC wedges.
