@@ -55,6 +55,14 @@ export default async function CardPage({
     .slice(0, 12);
 
   const big = card.img.replace("_200w.jpg", "_400w.jpg");
+
+  // normalize.py takes the cheapest print-variant price and falls back to the
+  // mid price when TCGplayer reports no market price for any variant. Label the
+  // headline for the field it actually came from instead of always saying "market".
+  const headline =
+    card.pv.find((v) => (v.mkt ?? v.mid ?? v.low ?? v.high) === card.px) ?? card.pv[0];
+  const headlineIsMarket = headline?.mkt != null;
+
   const meta: [string, string | null][] = [
     ["Set", set?.name ?? null],
     ["Card number", card.num],
@@ -109,12 +117,17 @@ export default async function CardPage({
           <div className="mt-4 flex flex-wrap items-end gap-x-6 gap-y-2 rounded-xl border border-ink-700 bg-ink-850/60 p-4">
             <div>
               <div className="text-[11px] uppercase tracking-wider text-muted">
-                Market price (USD)
+                {headlineIsMarket ? "Market price (USD)" : "Mid price (USD)"}
               </div>
               <div className="text-[28px] font-semibold tabular-nums text-poke-gold">
                 {money(card.px)}
               </div>
             </div>
+            {!headlineIsMarket && card.px != null && (
+              <div className="text-[12px] text-muted">
+                TCGplayer reports no market price for this card — this is its mid price.
+              </div>
+            )}
             {card.pv.length > 1 && (
               <div className="text-[12px] text-muted">
                 cheapest of {card.pv.length} print variants — see the table below
