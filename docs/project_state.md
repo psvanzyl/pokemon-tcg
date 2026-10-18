@@ -1,7 +1,7 @@
 # pokemon-tcg ("Carddex") — project state
 
 **Status: LIVE** — https://pokemon.laserraptorai.duckdns.org (Coolify on CT310)
-**Last updated:** 2026-10-17
+**Last updated:** 2026-10-18
 **Canonical copy:** `/root/projects/pokemon-tcg/project_state.md` on CT141. A copy is
 committed to the app repo as `docs/project_state.md` so it survives disk loss.
 
@@ -131,6 +131,34 @@ Dataset: **28,056 singles · 213 sets · 27,667 priced**.
 - A stale `next start` on port 3001 from an earlier session will silently serve the *old*
   build (the symptom is `/icon.svg` 404). Kill it before QA: `ss -ltnp | grep :3001`.
 
+## Prefetch storm and page caching (2026-10-18, commit c68bb63)
+
+**Why:** CrowdSec's `http-crawl-non_statics` banned the owner's own WAN IP twice (alerts 709 on
+10-17, 779 on 10-18, 59 events) after `?_rsc=` bursts on `/kaart/<id>`. The bouncer drops those
+packets silently, so the site looked like it hung and then recovered — a firewall decision
+masquerading as a performance bug.
+
+**Evidence:** in the Traefik tail, `pokemon.laserraptorai.duckdns.org` served 470 requests of
+which **338 were `?_rsc=`** (72%); the 05:00Z hour produced 74 of them against rugby-cards' 1
+after its own fix. Cause: every `<Link>` prefetched its RSC payload, `page.tsx` and
+`kaart/[id]/page.tsx` were `force-dynamic`, and `layout.tsx` forced the whole subtree dynamic.
+
+**Fix:** `prefetch={false}` on all 11 `<Link>` sites; new `src/app/robots.ts` (disallow
+`/*?_rsc=`, `/api/`, `/data/`, card pages stay indexable); `/kaart/[id]` `force-dynamic` →
+`revalidate 600` + `generateStaticParams` (10 ids — declaring it is what makes a dynamic segment
+cache-eligible in Next 16, so all 28,056 cards cache on demand instead of shipping tens of
+thousands of HTML files); `/`, `/sets`, `/about` → `revalidate 600`; dropped the layout's
+`force-dynamic`. Freshness is unaffected by any of this: `data.ts` parses the JSON once per
+process, so the data only changes when `refresh.sh` restarts the container anyway.
+
+**Verified on the live deploy (c68bb63):** `/`, `/sets`, `/about` `x-nextjs-cache: HIT`, 30–80 ms;
+`/kaart/481893` cold MISS 0.74 s → HIT 0.038 s (local run: MISS 0.18 s → HIT 0.003 s, still HIT
+after a restart); unknown id 404; `?_rsc=` URLs still return 200 so client navigation is intact;
+`/robots.txt` served. Browser: **0 `?_rsc` requests on landing, while scrolling and on hover, and
+exactly 1 per click** (was 30–40). `ops/qa-live.mjs` 9/9 and `ops/qa-mobile.mjs` 6/6 against the
+deployed URL; desktop 1440 + mobile 390 screenshots clean, no overflow. Deploy took ~120 s and the
+`/app/data` volume survived (stats snapshot 2026-10-17, 28,056 cards).
+
 ## Open items
 1. **Domain: decided — the site stays on `pokemon.laserraptorai.duckdns.org`.** knuck.eu is
    deliberately NOT being coupled (boss's call, 2026-10-17). No DNS change, no extra domain,
@@ -144,4 +172,10 @@ Dataset: **28,056 singles · 213 sets · 27,667 priced**.
    viewport (390 px) layout. Run them after any token, layout or table change.
 5. Housekeeping: a `next start` preview of this app sits on CT141 port 3001 and one of
    rugby-cards on 3101, both launched by hand. Production is Coolify — these are only for
-   local QA, so they are safe to kill when the ports are needed.
+   local QA, so they are safe to kill when the ports are needed. **Killed 2026-10-18**
+   (a stale preview silently serves the pre-fix build, which is how a QA pass can lie).
+6. Data-quality guard worth considering: when TCGplayer reports no market price the app prints
+   its `mid` fallback, which can be nonsense — `Eevee - 143/191 (GYM)` (set *Southeast Asia
+   Exclusives*) shows MID $100,000.00. A sanity check (e.g. reject a mid far above the set's
+   median) would stop one bogus field from becoming the headline price. Not caused by the
+   2026-10-18 caching work; pre-existing.
