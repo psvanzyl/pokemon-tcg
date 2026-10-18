@@ -1,1 +1,2712 @@
-[{"id":1414,"name":"POP Series 7","abbr":"POP","released":"2026-10-16","supplemental":false,"cards":17},{"id":1422,"name":"POP Series 1","abbr":"POP","released":"2026-10-16","supplemental":false,"cards":19},{"id":1423,"name":"Nintendo Promos","abbr":"PR","released":"2026-10-16","supplemental":false,"cards":95},{"id":1432,"name":"POP Series 6","abbr":"POP","released":"2026-10-16","supplemental":false,"cards":18},{"id":1439,"name":"POP Series 5","abbr":"POP","released":"2026-10-16","supplemental":false,"cards":17},{"id":1442,"name":"POP Series 3","abbr":"POP","released":"2026-10-16","supplemental":false,"cards":18},{"id":1446,"name":"POP Series 9","abbr":"POP","released":"2026-10-16","supplemental":false,"cards":18},{"id":1447,"name":"POP Series 2","abbr":"POP","released":"2026-10-16","supplemental":false,"cards":18},{"id":1450,"name":"POP Series 8","abbr":"POP","released":"2026-10-16","supplemental":false,"cards":18},{"id":1452,"name":"POP Series 4","abbr":"POP","released":"2026-10-16","supplemental":false,"cards":17},{"id":1542,"name":"EX Trainer Kit 2: Plusle & Minun","abbr":"PR","released":"2026-10-16","supplemental":false,"cards":24},{"id":1543,"name":"EX Trainer Kit 1: Latias & Latios","abbr":"PR","released":"2026-10-16","supplemental":false,"cards":20},{"id":1938,"name":"Alternate Art Promos","abbr":"PR","released":"2026-10-16","supplemental":true,"cards":56},{"id":2175,"name":"Burger King Promos","abbr":"BKP","released":"2026-10-16","supplemental":true,"cards":24},{"id":2205,"name":"Pikachu World Collection Promos","abbr":"PWCP","released":"2026-10-16","supplemental":true,"cards":19},{"id":2289,"name":"Blister Exclusives","abbr":"BLE","released":"2026-10-16","supplemental":true,"cards":144},{"id":2332,"name":"Professor Program Promos","abbr":"PPP","released":"2026-10-16","supplemental":true,"cards":70},{"id":2374,"name":"Miscellaneous Cards & Products","abbr":"MCAP","released":"2026-10-16","supplemental":true,"cards":620},{"id":2776,"name":"First Partner Pack","abbr":"FPP","released":"2026-10-16","supplemental":true,"cards":24},{"id":24722,"name":"ME: 30th Celebration","abbr":"30C","released":"2026-09-16","supplemental":false,"cards":161},{"id":24837,"name":"ME: 30th Celebration Classic Collection","abbr":"30C","released":"2026-09-16","supplemental":true,"cards":30},{"id":24688,"name":"ME05: Pitch Black","abbr":"PBL","released":"2026-07-17","supplemental":false,"cards":120},{"id":24655,"name":"ME04: Chaos Rising","abbr":"CRI","released":"2026-05-22","supplemental":false,"cards":122},{"id":24587,"name":"ME03: Perfect Order","abbr":"POR","released":"2026-03-27","supplemental":false,"cards":124},{"id":24541,"name":"ME: Ascended Heroes","abbr":"ASC","released":"2026-01-30","supplemental":false,"cards":575},{"id":24448,"name":"ME02: Phantasmal Flames","abbr":"PFL","released":"2025-11-14","supplemental":false,"cards":130},{"id":24380,"name":"ME01: Mega Evolution","abbr":"MEG","released":"2025-09-26","supplemental":false,"cards":188},{"id":24451,"name":"ME: Mega Evolution Promo","abbr":"MEP","released":"2025-09-26","supplemental":false,"cards":141},{"id":24461,"name":"MEE: Mega Evolution Energies","abbr":"MEE","released":"2025-09-26","supplemental":false,"cards":16},{"id":24325,"name":"SV: Black Bolt","abbr":"BLK","released":"2025-07-18","supplemental":false,"cards":324},{"id":24326,"name":"SV: White Flare","abbr":"WHT","released":"2025-07-18","supplemental":false,"cards":325},{"id":24269,"name":"SV10: Destined Rivals","abbr":"DRI","released":"2025-05-30","supplemental":false,"cards":244},{"id":24073,"name":"SV09: Journey Together","abbr":"JTG","released":"2025-03-28","supplemental":false,"cards":190},{"id":24163,"name":"McDonald's Promos 2024","abbr":"M24","released":"2025-01-21","supplemental":false,"cards":15},{"id":23821,"name":"SV: Prismatic Evolutions","abbr":"PRE","released":"2025-01-17","supplemental":false,"cards":347},{"id":23651,"name":"SV08: Surging Sparks","abbr":"SSP","released":"2024-11-08","supplemental":false,"cards":252},{"id":23537,"name":"SV07: Stellar Crown","abbr":"SCR","released":"2024-09-13","supplemental":false,"cards":175},{"id":23561,"name":"Trick or Trade BOOster Bundle 2024","abbr":"TTBB24","released":"2024-08-30","supplemental":false,"cards":30},{"id":23529,"name":"SV: Shrouded Fable","abbr":"SFA","released":"2024-08-02","supplemental":false,"cards":107},{"id":23520,"name":"Battle Academy 2024","abbr":"BA24","released":"2024-06-21","supplemental":false,"cards":138},{"id":23473,"name":"SV06: Twilight Masquerade","abbr":"TWM","released":"2024-05-24","supplemental":false,"cards":226},{"id":23381,"name":"SV05: Temporal Forces","abbr":"TEF","released":"2024-03-22","supplemental":false,"cards":218},{"id":23353,"name":"SV: Paldean Fates","abbr":"PAF","released":"2024-01-26","supplemental":false,"cards":245},{"id":23323,"name":"Trading Card Game Classic","abbr":"CL","released":"2023-11-17","supplemental":false,"cards":102},{"id":23286,"name":"SV04: Paradox Rift","abbr":"PAR","released":"2023-11-03","supplemental":false,"cards":266},{"id":23237,"name":"SV: Scarlet & Violet 151","abbr":"MEW","released":"2023-09-22","supplemental":false,"cards":208},{"id":23306,"name":"McDonald's Promos 2023","abbr":"M23","released":"2023-09-12","supplemental":false,"cards":15},{"id":23266,"name":"Trick or Trade BOOster Bundle 2023","abbr":"TTBB23","released":"2023-09-01","supplemental":false,"cards":30},{"id":23228,"name":"SV03: Obsidian Flames","abbr":"OBF","released":"2023-08-11","supplemental":false,"cards":230},{"id":24864,"name":"Southeast Asia Exclusives","abbr":"SEA","released":"2023-08-05","supplemental":false,"cards":36},{"id":23120,"name":"SV02: Paldea Evolved","abbr":"PAL","released":"2023-06-09","supplemental":false,"cards":279},{"id":22872,"name":"SV: Scarlet & Violet Promo Cards","abbr":"SVP","released":"2023-03-31","supplemental":false,"cards":280},{"id":22873,"name":"SV01: Scarlet & Violet Base Set","abbr":"SVI","released":"2023-03-31","supplemental":false,"cards":258},{"id":24382,"name":"SVE: Scarlet & Violet Energies","abbr":"SVE","released":"2023-03-31","supplemental":false,"cards":40},{"id":17688,"name":"SWSH: Crown Zenith","abbr":"CRZ","released":"2023-01-20","supplemental":false,"cards":160},{"id":17689,"name":"SWSH: Crown Zenith: Galarian Gallery","abbr":"CRZ:GG","released":"2023-01-20","supplemental":false,"cards":70},{"id":22880,"name":"Prize Pack Series Cards","abbr":"","released":"2022-11-30","supplemental":false,"cards":849},{"id":17674,"name":"SWSH12: Silver Tempest Trainer Gallery","abbr":"SWSH12: TG","released":"2022-11-11","supplemental":false,"cards":30},{"id":3170,"name":"SWSH12: Silver Tempest","abbr":"SWSH12","released":"2022-11-11","supplemental":false,"cards":215},{"id":3118,"name":"SWSH11: Lost Origin","abbr":"SWSH11","released":"2022-09-09","supplemental":false,"cards":217},{"id":3172,"name":"SWSH11: Lost Origin Trainer Gallery","abbr":"SWSH11: TG","released":"2022-09-09","supplemental":false,"cards":30},{"id":3179,"name":"Trick or Trade BOOster Bundle","abbr":"TTBB","released":"2022-09-01","supplemental":false,"cards":30},{"id":3150,"name":"McDonald's Promos 2022","abbr":"M22","released":"2022-08-03","supplemental":false,"cards":15},{"id":3064,"name":"Pokemon GO","abbr":"PGO","released":"2022-07-01","supplemental":false,"cards":91},{"id":3040,"name":"SWSH10: Astral Radiance","abbr":"SWSH10","released":"2022-05-27","supplemental":false,"cards":216},{"id":3068,"name":"SWSH10: Astral Radiance Trainer Gallery","abbr":"SWSH10:TG","released":"2022-05-27","supplemental":false,"cards":30},{"id":3051,"name":"Battle Academy 2022","abbr":"BA22","released":"2022-04-01","supplemental":false,"cards":101},{"id":2948,"name":"SWSH09: Brilliant Stars","abbr":"SWSH09","released":"2022-02-25","supplemental":false,"cards":186},{"id":3020,"name":"SWSH09: Brilliant Stars Trainer Gallery","abbr":"SWSH09:TG","released":"2022-02-25","supplemental":false,"cards":30},{"id":2906,"name":"SWSH08: Fusion Strike","abbr":"SWSH08","released":"2021-11-12","supplemental":false,"cards":284},{"id":2867,"name":"Celebrations","abbr":"CLB","released":"2021-10-08","supplemental":false,"cards":25},{"id":2931,"name":"Celebrations: Classic Collection","abbr":"CCC","released":"2021-10-08","supplemental":false,"cards":25},{"id":2848,"name":"SWSH07: Evolving Skies","abbr":"SWSH07","released":"2021-08-27","supplemental":false,"cards":237},{"id":2807,"name":"SWSH06: Chilling Reign","abbr":"SWSH06","released":"2021-06-18","supplemental":false,"cards":233},{"id":2765,"name":"SWSH05: Battle Styles","abbr":"SWSH05","released":"2021-03-19","supplemental":false,"cards":183},{"id":2754,"name":"Shining Fates","abbr":"SHF","released":"2021-02-19","supplemental":false,"cards":73},{"id":2781,"name":"Shining Fates: Shiny Vault","abbr":"SHFSV","released":"2021-02-19","supplemental":false,"cards":122},{"id":2782,"name":"McDonald's 25th Anniversary Promos","abbr":"M21","released":"2021-02-09","supplemental":true,"cards":25},{"id":2701,"name":"SWSH04: Vivid Voltage","abbr":"SWSH04","released":"2020-11-13","supplemental":false,"cards":203},{"id":2685,"name":"Champion's Path","abbr":"CHP","released":"2020-09-25","supplemental":false,"cards":80},{"id":2675,"name":"SWSH03: Darkness Ablaze","abbr":"SWSH03","released":"2020-08-14","supplemental":false,"cards":201},{"id":2686,"name":"Battle Academy","abbr":"BTA","released":"2020-07-31","supplemental":true,"cards":101},{"id":2626,"name":"SWSH02: Rebel Clash","abbr":"SWSH02","released":"2020-05-01","supplemental":false,"cards":209},{"id":2585,"name":"SWSH01: Sword & Shield Base Set","abbr":"SWSH01","released":"2020-02-07","supplemental":false,"cards":216},{"id":2545,"name":"SWSH: Sword & Shield Promo Cards","abbr":"SWSD","released":"2019-11-15","supplemental":false,"cards":339},{"id":2534,"name":"SM - Cosmic Eclipse","abbr":"SM12","released":"2019-11-01","supplemental":false,"cards":271},{"id":2555,"name":"McDonald's Promos 2019","abbr":"M19","released":"2019-10-01","supplemental":false,"cards":12},{"id":2480,"name":"Hidden Fates","abbr":"HIF","released":"2019-08-23","supplemental":false,"cards":69},{"id":2594,"name":"Hidden Fates: Shiny Vault","abbr":"HIF:SV","released":"2019-08-23","supplemental":false,"cards":94},{"id":2464,"name":"SM - Unified Minds","abbr":"SM11","released":"2019-08-02","supplemental":false,"cards":258},{"id":2420,"name":"SM - Unbroken Bonds","abbr":"SM10","released":"2019-05-03","supplemental":false,"cards":234},{"id":2409,"name":"Detective Pikachu","abbr":"DEP","released":"2019-04-05","supplemental":false,"cards":18},{"id":2377,"name":"SM - Team Up","abbr":"SM9","released":"2019-02-01","supplemental":false,"cards":196},{"id":2328,"name":"SM - Lost Thunder","abbr":"SM8","released":"2018-11-02","supplemental":false,"cards":236},{"id":2364,"name":"McDonald's Promos 2018","abbr":"M18","released":"2018-11-02","supplemental":true,"cards":12},{"id":2295,"name":"Dragon Majesty","abbr":"DRM","released":"2018-09-07","supplemental":false,"cards":78},{"id":2278,"name":"SM - Celestial Storm","abbr":"CES","released":"2018-08-03","supplemental":false,"cards":183},{"id":2282,"name":"World Championship Decks","abbr":"WCD","released":"2018-07-01","supplemental":false,"cards":1717},{"id":2209,"name":"SM - Forbidden Light","abbr":"SM06","released":"2018-05-04","supplemental":false,"cards":146},{"id":2208,"name":"SM Trainer Kit: Alolan Sandslash & Alolan Ninetales","abbr":"SMK2","released":"2018-04-06","supplemental":true,"cards":34},{"id":2178,"name":"SM - Ultra Prism","abbr":"SM05","released":"2018-02-02","supplemental":false,"cards":173},{"id":2148,"name":"McDonald's Promos 2017","abbr":"M17","released":"2017-11-07","supplemental":true,"cards":12},{"id":2071,"name":"SM - Crimson Invasion","abbr":"SM04","released":"2017-11-03","supplemental":false,"cards":124},{"id":2054,"name":"Shining Legends","abbr":"SHL","released":"2017-10-06","supplemental":false,"cards":78},{"id":1957,"name":"SM - Burning Shadows","abbr":"SM03","released":"2017-08-04","supplemental":false,"cards":169},{"id":1919,"name":"SM - Guardians Rising","abbr":"SM02","released":"2017-05-05","supplemental":false,"cards":169},{"id":2069,"name":"SM Trainer Kit: Lycanroc & Alolan Raichu","abbr":"SMK1","released":"2017-04-21","supplemental":false,"cards":60},{"id":1863,"name":"SM Base Set","abbr":"SM01","released":"2017-02-03","supplemental":false,"cards":163},{"id":1861,"name":"SM Promos","abbr":"SMP","released":"2016-12-14","supplemental":false,"cards":333},{"id":1842,"name":"XY - Evolutions","abbr":"EVO","released":"2016-11-02","supplemental":false,"cards":113},{"id":1840,"name":"Deck Exclusives","abbr":"PR","released":"2016-09-01","supplemental":false,"cards":487},{"id":3087,"name":"McDonald's Promos 2016","abbr":"M16","released":"2016-08-05","supplemental":true,"cards":12},{"id":1815,"name":"XY - Steam Siege","abbr":"STS","released":"2016-08-03","supplemental":false,"cards":116},{"id":1539,"name":"League & Championship Cards","abbr":"PR","released":"2016-06-01","supplemental":false,"cards":521},{"id":1780,"name":"XY - Fates Collide","abbr":"FCO","released":"2016-05-02","supplemental":false,"cards":125},{"id":1796,"name":"XY Trainer Kit: Pikachu Libre & Suicune","abbr":"PR","released":"2016-04-27","supplemental":false,"cards":60},{"id":1728,"name":"Generations","abbr":"GEN","released":"2016-02-22","supplemental":false,"cards":84},{"id":1729,"name":"Generations: Radiant Collection","abbr":"GEN","released":"2016-02-22","supplemental":false,"cards":32},{"id":1701,"name":"XY - BREAKpoint","abbr":"BKP","released":"2016-02-03","supplemental":false,"cards":123},{"id":1694,"name":"McDonald's Promos 2015","abbr":"M15","released":"2015-11-23","supplemental":false,"cards":12},{"id":1661,"name":"XY - BREAKthrough","abbr":"BKT","released":"2015-11-04","supplemental":false,"cards":164},{"id":1576,"name":"XY - Ancient Origins","abbr":"AOR","released":"2015-08-12","supplemental":false,"cards":100},{"id":1534,"name":"XY - Roaring Skies","abbr":"ROS","released":"2015-05-06","supplemental":false,"cards":110},{"id":1536,"name":"XY Trainer Kit: Latias & Latios","abbr":"PR","released":"2015-04-29","supplemental":false,"cards":60},{"id":1528,"name":"Jumbo Cards","abbr":"PR","released":"2015-04-01","supplemental":false,"cards":329},{"id":1525,"name":"Double Crisis","abbr":"DCR","released":"2015-03-25","supplemental":false,"cards":34},{"id":1509,"name":"XY - Primal Clash","abbr":"PRC","released":"2015-02-04","supplemental":false,"cards":164},{"id":1533,"name":"XY Trainer Kit: Bisharp & Wigglytuff","abbr":"PR","released":"2014-11-14","supplemental":false,"cards":60},{"id":1494,"name":"XY - Phantom Forces","abbr":"PHF","released":"2014-11-05","supplemental":false,"cards":122},{"id":1481,"name":"XY - Furious Fists","abbr":"FFI","released":"2014-08-13","supplemental":false,"cards":113},{"id":1692,"name":"McDonald's Promos 2014","abbr":"M14","released":"2014-05-23","supplemental":false,"cards":12},{"id":1464,"name":"XY - Flashfire","abbr":"FLF","released":"2014-05-07","supplemental":false,"cards":109},{"id":1532,"name":"XY Trainer Kit: Sylveon & Noivern","abbr":"PR","released":"2014-03-12","supplemental":false,"cards":60},{"id":1387,"name":"XY Base Set","abbr":"XY","released":"2014-02-05","supplemental":false,"cards":147},{"id":1451,"name":"XY Promos","abbr":"PR","released":"2013-12-16","supplemental":false,"cards":269},{"id":1522,"name":"Kalos Starter Set","abbr":"KSS","released":"2013-11-08","supplemental":false,"cards":39},{"id":1409,"name":"Legendary Treasures","abbr":"LTR","released":"2013-11-06","supplemental":false,"cards":115},{"id":1465,"name":"Legendary Treasures: Radiant Collection","abbr":"LTR","released":"2013-11-06","supplemental":false,"cards":25},{"id":1370,"name":"Plasma Blast","abbr":"PLB","released":"2013-08-14","supplemental":false,"cards":105},{"id":1382,"name":"Plasma Freeze","abbr":"PLF","released":"2013-05-08","supplemental":false,"cards":122},{"id":1413,"name":"Plasma Storm","abbr":"PLS","released":"2013-02-06","supplemental":false,"cards":138},{"id":1408,"name":"Boundaries Crossed","abbr":"BCR","released":"2012-11-07","supplemental":false,"cards":153},{"id":1426,"name":"Dragon Vault","abbr":"DRV","released":"2012-10-05","supplemental":false,"cards":21},{"id":1394,"name":"Dragons Exalted","abbr":"DRX","released":"2012-08-15","supplemental":false,"cards":128},{"id":1427,"name":"McDonald's Promos 2012","abbr":"M12","released":"2012-06-15","supplemental":false,"cards":12},{"id":1386,"name":"Dark Explorers","abbr":"DEX","released":"2012-05-09","supplemental":false,"cards":111},{"id":1412,"name":"Next Destinies","abbr":"NXD","released":"2012-02-08","supplemental":false,"cards":103},{"id":1385,"name":"Noble Victories","abbr":"NVI","released":"2011-11-16","supplemental":false,"cards":102},{"id":1538,"name":"BW Trainer Kit: Excadrill & Zoroark","abbr":"BLW","released":"2011-09-05","supplemental":false,"cards":60},{"id":1424,"name":"Emerging Powers","abbr":"EPO","released":"2011-08-31","supplemental":false,"cards":98},{"id":1401,"name":"McDonald's Promos 2011","abbr":"M11","released":"2011-06-17","supplemental":false,"cards":12},{"id":1400,"name":"Black and White","abbr":"BLW","released":"2011-04-25","supplemental":false,"cards":115},{"id":1407,"name":"Black and White Promos","abbr":"PR","released":"2011-04-25","supplemental":false,"cards":148},{"id":1415,"name":"Call of Legends","abbr":"CL","released":"2011-02-09","supplemental":false,"cards":106},{"id":1381,"name":"Triumphant","abbr":"TM","released":"2010-11-03","supplemental":false,"cards":104},{"id":1403,"name":"Undaunted","abbr":"UD","released":"2010-08-18","supplemental":false,"cards":91},{"id":1399,"name":"Unleashed","abbr":"UL","released":"2010-05-12","supplemental":false,"cards":96},{"id":1540,"name":"HGSS Trainer Kit: Gyarados & Raichu","abbr":"PR","released":"2010-05-12","supplemental":false,"cards":60},{"id":1402,"name":"HeartGold SoulSilver","abbr":"HS","released":"2010-02-10","supplemental":false,"cards":124},{"id":1453,"name":"HGSS Promos","abbr":"PR","released":"2010-02-01","supplemental":false,"cards":38},{"id":1433,"name":"Rumble","abbr":"RUM","released":"2009-11-16","supplemental":false,"cards":16},{"id":1391,"name":"Arceus","abbr":"AR","released":"2009-11-04","supplemental":false,"cards":111},{"id":1384,"name":"Supreme Victors","abbr":"SV","released":"2009-08-19","supplemental":false,"cards":153},{"id":1367,"name":"Rising Rivals","abbr":"RR","released":"2009-05-16","supplemental":false,"cards":120},{"id":1406,"name":"Platinum","abbr":"PL","released":"2009-02-11","supplemental":false,"cards":133},{"id":1369,"name":"Stormfront","abbr":"SF","released":"2008-11-05","supplemental":false,"cards":106},{"id":2155,"name":"Countdown Calendar Promos","abbr":"CCP","released":"2008-10-01","supplemental":true,"cards":24},{"id":1417,"name":"Legends Awakened","abbr":"LA","released":"2008-08-20","supplemental":false,"cards":146},{"id":1390,"name":"Majestic Dawn","abbr":"MD","released":"2008-05-21","supplemental":false,"cards":100},{"id":1405,"name":"Great Encounters","abbr":"GE","released":"2008-02-13","supplemental":false,"cards":106},{"id":1380,"name":"Secret Wonders","abbr":"SW","released":"2007-11-07","supplemental":false,"cards":132},{"id":1541,"name":"DP Trainer Kit: Manaphy & Lucario","abbr":"PR","released":"2007-09-03","supplemental":false,"cards":23},{"id":1368,"name":"Mysterious Treasures","abbr":"MT","released":"2007-08-22","supplemental":false,"cards":124},{"id":1430,"name":"Diamond and Pearl","abbr":"DP","released":"2007-05-23","supplemental":false,"cards":130},{"id":1421,"name":"Diamond and Pearl Promos","abbr":"PR","released":"2007-05-01","supplemental":false,"cards":66},{"id":1383,"name":"EX Power Keepers","abbr":"PK","released":"2007-02-01","supplemental":false,"cards":108},{"id":1411,"name":"EX Dragon Frontiers","abbr":"DF","released":"2006-11-08","supplemental":false,"cards":101},{"id":1395,"name":"EX Crystal Guardians","abbr":"CG","released":"2006-08-30","supplemental":false,"cards":100},{"id":1379,"name":"EX Holon Phantoms","abbr":"HP","released":"2006-05-03","supplemental":false,"cards":111},{"id":1378,"name":"EX Legend Maker","abbr":"LM","released":"2006-02-13","supplemental":false,"cards":93},{"id":1429,"name":"EX Delta Species","abbr":"DS","released":"2005-10-31","supplemental":false,"cards":114},{"id":1398,"name":"EX Unseen Forces","abbr":"UF","released":"2005-08-22","supplemental":false,"cards":145},{"id":1410,"name":"EX Emerald","abbr":"EM","released":"2005-05-09","supplemental":false,"cards":107},{"id":1404,"name":"EX Deoxys","abbr":"DX","released":"2005-02-14","supplemental":false,"cards":108},{"id":1428,"name":"EX Team Rocket Returns","abbr":"RR","released":"2004-11-01","supplemental":false,"cards":111},{"id":1853,"name":"EX Battle Stadium","abbr":"BST","released":"2004-10-18","supplemental":false,"cards":49},{"id":1419,"name":"EX FireRed & LeafGreen","abbr":"RG","released":"2004-08-30","supplemental":false,"cards":116},{"id":2214,"name":"Kids WB Promos","abbr":"KWBP","released":"2004-07-02","supplemental":false,"cards":5},{"id":1416,"name":"EX Hidden Legends","abbr":"HL","released":"2004-06-14","supplemental":false,"cards":102},{"id":1377,"name":"EX Team Magma vs Team Aqua","abbr":"MA","released":"2004-03-15","supplemental":false,"cards":97},{"id":1376,"name":"EX Dragon","abbr":"DR","released":"2003-11-24","supplemental":false,"cards":100},{"id":1392,"name":"EX Sandstorm","abbr":"SS","released":"2003-09-18","supplemental":false,"cards":100},{"id":1393,"name":"EX Ruby and Sapphire","abbr":"RS","released":"2003-06-18","supplemental":false,"cards":109},{"id":1372,"name":"Skyridge","abbr":"SK","released":"2003-05-12","supplemental":false,"cards":182},{"id":1397,"name":"Aquapolis","abbr":"AQ","released":"2003-01-15","supplemental":false,"cards":186},{"id":1455,"name":"Best of Promos","abbr":"PR","released":"2002-12-01","supplemental":false,"cards":15},{"id":1375,"name":"Expedition","abbr":"EX","released":"2002-09-15","supplemental":false,"cards":165},{"id":24493,"name":"e-Reader Sample Cards","abbr":"SAMPLE","released":"2002-08-02","supplemental":false,"cards":1},{"id":1374,"name":"Legendary Collection","abbr":"LC","released":"2002-05-24","supplemental":false,"cards":110},{"id":1444,"name":"Neo Destiny","abbr":"N4","released":"2002-02-28","supplemental":false,"cards":113},{"id":1389,"name":"Neo Revelation","abbr":"N3","released":"2001-09-21","supplemental":false,"cards":66},{"id":648,"name":"Southern Islands","abbr":"SI","released":"2001-07-31","supplemental":false,"cards":18},{"id":1434,"name":"Neo Discovery","abbr":"N2","released":"2001-06-01","supplemental":false,"cards":75},{"id":1396,"name":"Neo Genesis","abbr":"N1","released":"2000-12-16","supplemental":false,"cards":111},{"id":1440,"name":"Gym Challenge","abbr":"G2","released":"2000-10-16","supplemental":false,"cards":132},{"id":1441,"name":"Gym Heroes","abbr":"G1","released":"2000-10-14","supplemental":false,"cards":132},{"id":1373,"name":"Team Rocket","abbr":"TR","released":"2000-04-24","supplemental":false,"cards":83},{"id":605,"name":"Base Set 2","abbr":"BS2","released":"2000-02-24","supplemental":false,"cards":130},{"id":630,"name":"Fossil","abbr":"FO","released":"1999-10-10","supplemental":false,"cards":62},{"id":1418,"name":"WoTC Promo","abbr":"PR","released":"1999-07-01","supplemental":false,"cards":69},{"id":635,"name":"Jungle","abbr":"JU","released":"1999-06-16","supplemental":false,"cards":64},{"id":1663,"name":"Base Set (Shadowless)","abbr":"BSS","released":"1999-01-09","supplemental":false,"cards":102},{"id":604,"name":"Base Set","abbr":"BS","released":"1999-01-09","supplemental":false,"cards":102}]
+[
+ {
+  "id": 1414,
+  "name": "POP Series 7",
+  "abbr": "POP",
+  "released": "2026-10-16",
+  "supplemental": false,
+  "cards": 17,
+  "names": {
+   "fr": "POP Série 7",
+   "de": "POP Serie 7",
+   "it": "POP Serie 7"
+  }
+ },
+ {
+  "id": 1422,
+  "name": "POP Series 1",
+  "abbr": "POP",
+  "released": "2026-10-16",
+  "supplemental": false,
+  "cards": 19,
+  "names": {
+   "fr": "POP Série 1",
+   "de": "POP Serie 1",
+   "it": "POP Serie 1"
+  }
+ },
+ {
+  "id": 1423,
+  "name": "Nintendo Promos",
+  "abbr": "PR",
+  "released": "2026-10-16",
+  "supplemental": false,
+  "cards": 95,
+  "names": {
+   "fr": "Promo Nintendo",
+   "de": "Nintendo Black Star Promos",
+   "es": "Nintendo Black Star Promos",
+   "it": "Nintendo Black Star Promos"
+  }
+ },
+ {
+  "id": 1432,
+  "name": "POP Series 6",
+  "abbr": "POP",
+  "released": "2026-10-16",
+  "supplemental": false,
+  "cards": 18,
+  "names": {
+   "de": "POP Series 6"
+  }
+ },
+ {
+  "id": 1439,
+  "name": "POP Series 5",
+  "abbr": "POP",
+  "released": "2026-10-16",
+  "supplemental": false,
+  "cards": 17,
+  "names": {
+   "de": "POP Serie 5",
+   "it": "POP Serie 5"
+  }
+ },
+ {
+  "id": 1442,
+  "name": "POP Series 3",
+  "abbr": "POP",
+  "released": "2026-10-16",
+  "supplemental": false,
+  "cards": 18,
+  "names": {
+   "fr": "POP Série 3",
+   "de": "POP Serie 3",
+   "it": "POP Serie 3"
+  }
+ },
+ {
+  "id": 1446,
+  "name": "POP Series 9",
+  "abbr": "POP",
+  "released": "2026-10-16",
+  "supplemental": false,
+  "cards": 18,
+  "names": {
+   "fr": "POP Série 9",
+   "de": "POP Serie 9",
+   "it": "POP Serie 9"
+  }
+ },
+ {
+  "id": 1447,
+  "name": "POP Series 2",
+  "abbr": "POP",
+  "released": "2026-10-16",
+  "supplemental": false,
+  "cards": 18,
+  "names": {
+   "fr": "POP Série 2",
+   "de": "POP Serie 2",
+   "it": "POP Serie 2"
+  }
+ },
+ {
+  "id": 1450,
+  "name": "POP Series 8",
+  "abbr": "POP",
+  "released": "2026-10-16",
+  "supplemental": false,
+  "cards": 18,
+  "names": {
+   "de": "POP Series 8"
+  }
+ },
+ {
+  "id": 1452,
+  "name": "POP Series 4",
+  "abbr": "POP",
+  "released": "2026-10-16",
+  "supplemental": false,
+  "cards": 17,
+  "names": {
+   "fr": "POP Série 4",
+   "de": "POP Serie 4",
+   "it": "POP Serie 4"
+  }
+ },
+ {
+  "id": 1542,
+  "name": "EX Trainer Kit 2: Plusle & Minun",
+  "abbr": "PR",
+  "released": "2026-10-16",
+  "supplemental": false,
+  "cards": 24,
+  "names": {
+   "fr": "EX Kit dresseur (Négapi)",
+   "es": "Kit de Entrenador EX (Ninun)",
+   "it": "EX trainer Kit (Ninun)"
+  }
+ },
+ {
+  "id": 1543,
+  "name": "EX Trainer Kit 1: Latias & Latios",
+  "abbr": "PR",
+  "released": "2026-10-16",
+  "supplemental": false,
+  "cards": 20,
+  "names": {
+   "fr": "EX Kit dresseur (Latias)",
+   "de": "EX trainer Kit (Latias)",
+   "es": "Kit de Entrenador EX (Latias)",
+   "it": "EX trainer Kit (Latias)"
+  }
+ },
+ {
+  "id": 1938,
+  "name": "Alternate Art Promos",
+  "abbr": "PR",
+  "released": "2026-10-16",
+  "supplemental": true,
+  "cards": 56,
+  "names": {
+   "fr": "carte alternative A Jaune",
+   "de": "Gelbes-A-Alternativkarten",
+   "es": "Cartas alternativas",
+   "it": "Carta Alternatica A Gialla"
+  }
+ },
+ {
+  "id": 2175,
+  "name": "Burger King Promos",
+  "abbr": "BKP",
+  "released": "2026-10-16",
+  "supplemental": true,
+  "cards": 24
+ },
+ {
+  "id": 2205,
+  "name": "Pikachu World Collection Promos",
+  "abbr": "PWCP",
+  "released": "2026-10-16",
+  "supplemental": true,
+  "cards": 19
+ },
+ {
+  "id": 2289,
+  "name": "Blister Exclusives",
+  "abbr": "BLE",
+  "released": "2026-10-16",
+  "supplemental": true,
+  "cards": 144
+ },
+ {
+  "id": 2332,
+  "name": "Professor Program Promos",
+  "abbr": "PPP",
+  "released": "2026-10-16",
+  "supplemental": true,
+  "cards": 70
+ },
+ {
+  "id": 2374,
+  "name": "Miscellaneous Cards & Products",
+  "abbr": "MCAP",
+  "released": "2026-10-16",
+  "supplemental": true,
+  "cards": 620
+ },
+ {
+  "id": 2776,
+  "name": "First Partner Pack",
+  "abbr": "FPP",
+  "released": "2026-10-16",
+  "supplemental": true,
+  "cards": 24
+ },
+ {
+  "id": 24722,
+  "name": "ME: 30th Celebration",
+  "abbr": "30C",
+  "released": "2026-09-16",
+  "supplemental": false,
+  "cards": 161,
+  "names": {
+   "fr": "30ᵉ Anniversaire",
+   "de": "30 Jahre",
+   "es": "Celebración 30.º Aniversario",
+   "it": "30° Anniversario",
+   "pt": "Celebração de 30 Anos"
+  }
+ },
+ {
+  "id": 24837,
+  "name": "ME: 30th Celebration Classic Collection",
+  "abbr": "30C",
+  "released": "2026-09-16",
+  "supplemental": true,
+  "cards": 30,
+  "names": {
+   "fr": "Collection Classique 30ᵉ Anniversaire",
+   "de": "30 Jahre: Klassische Sammlung",
+   "es": "Colección Clásica del 30.º Aniversario",
+   "it": "Collzione Classica del 30°",
+   "pt": "Coleção Clássica de 30 Anos"
+  }
+ },
+ {
+  "id": 24688,
+  "name": "ME05: Pitch Black",
+  "abbr": "PBL",
+  "released": "2026-07-17",
+  "supplemental": false,
+  "cards": 120,
+  "names": {
+   "fr": "Nuit Noire",
+   "de": "Dunkelnacht",
+   "es": "Oscuridad Absoluta",
+   "it": "Buio Pesto",
+   "pt": "Escuridão Absoluta"
+  }
+ },
+ {
+  "id": 24655,
+  "name": "ME04: Chaos Rising",
+  "abbr": "CRI",
+  "released": "2026-05-22",
+  "supplemental": false,
+  "cards": 122,
+  "names": {
+   "fr": "Chaos Ascendant",
+   "de": "Wachsendes Chaos",
+   "es": "Caos Creciente",
+   "it": "Caos Nascente",
+   "pt": "Caos Ascendente"
+  }
+ },
+ {
+  "id": 24587,
+  "name": "ME03: Perfect Order",
+  "abbr": "POR",
+  "released": "2026-03-27",
+  "supplemental": false,
+  "cards": 124,
+  "names": {
+   "fr": "Équilibre Parfait",
+   "de": "Optimale Ordnung",
+   "es": "Equilibrio Perfecto",
+   "it": "Equilibrio Perfetto",
+   "pt": "Equilíbrio Perfeito"
+  }
+ },
+ {
+  "id": 24541,
+  "name": "ME: Ascended Heroes",
+  "abbr": "ASC",
+  "released": "2026-01-30",
+  "supplemental": false,
+  "cards": 575,
+  "names": {
+   "fr": "Héros Transcendants",
+   "de": "Erhabene Helden",
+   "es": "Héroes Ascendentes",
+   "it": "Ascesa Eroica",
+   "pt": "Heróis Excelsos"
+  }
+ },
+ {
+  "id": 24448,
+  "name": "ME02: Phantasmal Flames",
+  "abbr": "PFL",
+  "released": "2025-11-14",
+  "supplemental": false,
+  "cards": 130,
+  "names": {
+   "fr": "Flammes Fantasmagoriques",
+   "de": "Fatale Flammen",
+   "es": "Fuegos Fantasmales",
+   "it": "Fiamme Spettrali",
+   "pt": "Fogo Fantasmagórico"
+  }
+ },
+ {
+  "id": 24380,
+  "name": "ME01: Mega Evolution",
+  "abbr": "MEG",
+  "released": "2025-09-26",
+  "supplemental": false,
+  "cards": 188,
+  "names": {
+   "fr": "Méga-Évolution",
+   "de": "Mega-Entwicklung",
+   "es": "Megaevolución",
+   "it": "Megaevoluzione",
+   "pt": "Megaevolução"
+  }
+ },
+ {
+  "id": 24451,
+  "name": "ME: Mega Evolution Promo",
+  "abbr": "MEP",
+  "released": "2025-09-26",
+  "supplemental": false,
+  "cards": 141,
+  "names": {
+   "fr": "MEP Black Star Promos",
+   "de": "MEP Black Star Promos",
+   "es": "MEP Black Star Promos",
+   "it": "MEP Black Star Promos",
+   "pt": "MEP Black Star Promos"
+  }
+ },
+ {
+  "id": 24461,
+  "name": "MEE: Mega Evolution Energies",
+  "abbr": "MEE",
+  "released": "2025-09-26",
+  "supplemental": false,
+  "cards": 16
+ },
+ {
+  "id": 24325,
+  "name": "SV: Black Bolt",
+  "abbr": "BLK",
+  "released": "2025-07-18",
+  "supplemental": false,
+  "cards": 324,
+  "names": {
+   "fr": "Foudre Noire",
+   "de": "Schwarze Blitze",
+   "es": "Fulgor Negro",
+   "it": "Luce Nera",
+   "pt": "Raio Preto"
+  }
+ },
+ {
+  "id": 24326,
+  "name": "SV: White Flare",
+  "abbr": "WHT",
+  "released": "2025-07-18",
+  "supplemental": false,
+  "cards": 325,
+  "names": {
+   "fr": "Flamme Blanche",
+   "de": "Weiße Flammen",
+   "es": "Llama Blanca",
+   "it": "Fuoco Bianco",
+   "pt": "Fogo Branco"
+  }
+ },
+ {
+  "id": 24269,
+  "name": "SV10: Destined Rivals",
+  "abbr": "DRI",
+  "released": "2025-05-30",
+  "supplemental": false,
+  "cards": 244,
+  "names": {
+   "fr": "Rivalités Destinées",
+   "de": "Ewige Rivalen",
+   "es": "Rivales Predestinados",
+   "it": "Rivali Predestinati",
+   "pt": "Rivais Predestinados"
+  }
+ },
+ {
+  "id": 24073,
+  "name": "SV09: Journey Together",
+  "abbr": "JTG",
+  "released": "2025-03-28",
+  "supplemental": false,
+  "cards": 190,
+  "names": {
+   "fr": "Aventures Ensemble",
+   "de": "Reisegefährten",
+   "es": "Juntos de Aventuras",
+   "it": "Avventure Insieme",
+   "pt": "Amigos de Jornada"
+  }
+ },
+ {
+  "id": 24163,
+  "name": "McDonald's Promos 2024",
+  "abbr": "M24",
+  "released": "2025-01-21",
+  "supplemental": false,
+  "cards": 15
+ },
+ {
+  "id": 23821,
+  "name": "SV: Prismatic Evolutions",
+  "abbr": "PRE",
+  "released": "2025-01-17",
+  "supplemental": false,
+  "cards": 347,
+  "names": {
+   "fr": "Évolutions Prismatiques",
+   "de": "Prismatische Entwicklungen",
+   "es": "Evoluciones Prismáticas",
+   "it": "Evoluzioni Prismatiche",
+   "pt": "Evoluções Prismáticas"
+  }
+ },
+ {
+  "id": 23651,
+  "name": "SV08: Surging Sparks",
+  "abbr": "SSP",
+  "released": "2024-11-08",
+  "supplemental": false,
+  "cards": 252,
+  "names": {
+   "fr": "Étincelles Déferlantes",
+   "de": "Stürmische Funken",
+   "es": "Chispas Fulgurantes",
+   "it": "Scintille Folgoranti",
+   "pt": "Fagulhas Impetuosas"
+  }
+ },
+ {
+  "id": 23537,
+  "name": "SV07: Stellar Crown",
+  "abbr": "SCR",
+  "released": "2024-09-13",
+  "supplemental": false,
+  "cards": 175,
+  "names": {
+   "fr": "Couronne Stellaire",
+   "de": "Stellarkrone",
+   "es": "Corona Astral",
+   "it": "Corona Astrale",
+   "pt": "Coroa Estelar"
+  }
+ },
+ {
+  "id": 23561,
+  "name": "Trick or Trade BOOster Bundle 2024",
+  "abbr": "TTBB24",
+  "released": "2024-08-30",
+  "supplemental": false,
+  "cards": 30
+ },
+ {
+  "id": 23529,
+  "name": "SV: Shrouded Fable",
+  "abbr": "SFA",
+  "released": "2024-08-02",
+  "supplemental": false,
+  "cards": 107,
+  "names": {
+   "fr": "Fable Nébuleuse",
+   "de": "Nebel der Sagen",
+   "es": "Fabula Sombría",
+   "it": "Segreto Fiabesco",
+   "pt": "Fábulas Nebulosas"
+  }
+ },
+ {
+  "id": 23520,
+  "name": "Battle Academy 2024",
+  "abbr": "BA24",
+  "released": "2024-06-21",
+  "supplemental": false,
+  "cards": 138
+ },
+ {
+  "id": 23473,
+  "name": "SV06: Twilight Masquerade",
+  "abbr": "TWM",
+  "released": "2024-05-24",
+  "supplemental": false,
+  "cards": 226,
+  "names": {
+   "fr": "Mascarade Crépusculaire",
+   "de": "Maskerade im Zwielicht",
+   "es": "Mascarada Crepuscular",
+   "it": "Crepuscolo Mascherato",
+   "pt": "Máscaras do Crepúsculo"
+  }
+ },
+ {
+  "id": 23381,
+  "name": "SV05: Temporal Forces",
+  "abbr": "TEF",
+  "released": "2024-03-22",
+  "supplemental": false,
+  "cards": 218,
+  "names": {
+   "fr": "Forces Temporelles",
+   "de": "Gewalten der Zeit",
+   "es": "Fuerzas Temporales",
+   "it": "Cronoforze",
+   "pt": "Forças Temporais"
+  }
+ },
+ {
+  "id": 23353,
+  "name": "SV: Paldean Fates",
+  "abbr": "PAF",
+  "released": "2024-01-26",
+  "supplemental": false,
+  "cards": 245,
+  "names": {
+   "fr": "Destinées de Paldea",
+   "de": "Paldeas Schicksale",
+   "es": "Destinos de Paldea",
+   "it": "Destino di Paldea",
+   "pt": "Destinos de Paldea"
+  }
+ },
+ {
+  "id": 23323,
+  "name": "Trading Card Game Classic",
+  "abbr": "CL",
+  "released": "2023-11-17",
+  "supplemental": false,
+  "cards": 102
+ },
+ {
+  "id": 23286,
+  "name": "SV04: Paradox Rift",
+  "abbr": "PAR",
+  "released": "2023-11-03",
+  "supplemental": false,
+  "cards": 266,
+  "names": {
+   "fr": "Faille Paradoxe",
+   "de": "Paradoxrift",
+   "es": "Brecha Paradójica",
+   "it": "Paradosso Temporale",
+   "pt": "Fenda Paradoxal"
+  }
+ },
+ {
+  "id": 23237,
+  "name": "SV: Scarlet & Violet 151",
+  "abbr": "MEW",
+  "released": "2023-09-22",
+  "supplemental": false,
+  "cards": 208,
+  "names": {
+   "fr": "151",
+   "de": "151",
+   "es": "151",
+   "it": "151",
+   "pt": "151"
+  }
+ },
+ {
+  "id": 23306,
+  "name": "McDonald's Promos 2023",
+  "abbr": "M23",
+  "released": "2023-09-12",
+  "supplemental": false,
+  "cards": 15
+ },
+ {
+  "id": 23266,
+  "name": "Trick or Trade BOOster Bundle 2023",
+  "abbr": "TTBB23",
+  "released": "2023-09-01",
+  "supplemental": false,
+  "cards": 30
+ },
+ {
+  "id": 23228,
+  "name": "SV03: Obsidian Flames",
+  "abbr": "OBF",
+  "released": "2023-08-11",
+  "supplemental": false,
+  "cards": 230,
+  "names": {
+   "fr": "Flammes Obsidiennes",
+   "de": "Obsidian Flammen",
+   "es": "Llamas Obsidianas",
+   "it": "Ossidiana Infuocata",
+   "pt": "Obsidiana em Chamas"
+  }
+ },
+ {
+  "id": 24864,
+  "name": "Southeast Asia Exclusives",
+  "abbr": "SEA",
+  "released": "2023-08-05",
+  "supplemental": false,
+  "cards": 36
+ },
+ {
+  "id": 23120,
+  "name": "SV02: Paldea Evolved",
+  "abbr": "PAL",
+  "released": "2023-06-09",
+  "supplemental": false,
+  "cards": 279,
+  "names": {
+   "fr": "Évolutions à Paldea",
+   "de": "Entwicklungen in Paldea",
+   "es": "Evoluciones en Paldea",
+   "it": "Evoluzioni a Paldea",
+   "pt": "Evoluções em Paldea"
+  }
+ },
+ {
+  "id": 22872,
+  "name": "SV: Scarlet & Violet Promo Cards",
+  "abbr": "SVP",
+  "released": "2023-03-31",
+  "supplemental": false,
+  "cards": 280,
+  "names": {
+   "fr": "SVP Black Star Promos",
+   "de": "SVP Black Star Promos",
+   "es": "SVP Black Star Promos",
+   "it": "SVP Black Star Promos",
+   "pt": "SVP Black Star Promos"
+  }
+ },
+ {
+  "id": 22873,
+  "name": "SV01: Scarlet & Violet Base Set",
+  "abbr": "SVI",
+  "released": "2023-03-31",
+  "supplemental": false,
+  "cards": 258,
+  "names": {
+   "fr": "Écarlate et Violet",
+   "de": "Karmesin & Purpur",
+   "es": "Escarlata y Púrpura",
+   "it": "Scarlatto e Violetto",
+   "pt": "Escarlate e Violeta"
+  }
+ },
+ {
+  "id": 24382,
+  "name": "SVE: Scarlet & Violet Energies",
+  "abbr": "SVE",
+  "released": "2023-03-31",
+  "supplemental": false,
+  "cards": 40
+ },
+ {
+  "id": 17688,
+  "name": "SWSH: Crown Zenith",
+  "abbr": "CRZ",
+  "released": "2023-01-20",
+  "supplemental": false,
+  "cards": 160,
+  "names": {
+   "fr": "Zénith Suprême",
+   "de": "Zenit der Könige",
+   "es": "Cenit Supremo",
+   "it": "Zenit Regale",
+   "pt": "Realeza Absoluta"
+  }
+ },
+ {
+  "id": 17689,
+  "name": "SWSH: Crown Zenith: Galarian Gallery",
+  "abbr": "CRZ:GG",
+  "released": "2023-01-20",
+  "supplemental": false,
+  "cards": 70
+ },
+ {
+  "id": 22880,
+  "name": "Prize Pack Series Cards",
+  "abbr": "",
+  "released": "2022-11-30",
+  "supplemental": false,
+  "cards": 849
+ },
+ {
+  "id": 17674,
+  "name": "SWSH12: Silver Tempest Trainer Gallery",
+  "abbr": "SWSH12: TG",
+  "released": "2022-11-11",
+  "supplemental": false,
+  "cards": 30
+ },
+ {
+  "id": 3170,
+  "name": "SWSH12: Silver Tempest",
+  "abbr": "SWSH12",
+  "released": "2022-11-11",
+  "supplemental": false,
+  "cards": 215,
+  "names": {
+   "fr": "Tempête Argentée",
+   "de": "Silberne Sturmwinde",
+   "es": "Tempestad Plateada",
+   "it": "Tempesta Argentata",
+   "pt": "Tempestade Prateada"
+  }
+ },
+ {
+  "id": 3118,
+  "name": "SWSH11: Lost Origin",
+  "abbr": "SWSH11",
+  "released": "2022-09-09",
+  "supplemental": false,
+  "cards": 217,
+  "names": {
+   "fr": "Origine Perdue",
+   "de": "Verlorener Ursprung",
+   "es": "Origen Perdido",
+   "it": "Origine Perduta",
+   "pt": "Origem Perdida"
+  }
+ },
+ {
+  "id": 3172,
+  "name": "SWSH11: Lost Origin Trainer Gallery",
+  "abbr": "SWSH11: TG",
+  "released": "2022-09-09",
+  "supplemental": false,
+  "cards": 30
+ },
+ {
+  "id": 3179,
+  "name": "Trick or Trade BOOster Bundle",
+  "abbr": "TTBB",
+  "released": "2022-09-01",
+  "supplemental": false,
+  "cards": 30
+ },
+ {
+  "id": 3150,
+  "name": "McDonald's Promos 2022",
+  "abbr": "M22",
+  "released": "2022-08-03",
+  "supplemental": false,
+  "cards": 15
+ },
+ {
+  "id": 3064,
+  "name": "Pokemon GO",
+  "abbr": "PGO",
+  "released": "2022-07-01",
+  "supplemental": false,
+  "cards": 91,
+  "names": {
+   "fr": "Pokémon GO",
+   "de": "Pokémon GO",
+   "es": "Pokémon GO",
+   "it": "Pokémon GO",
+   "pt": "Pokémon GO"
+  }
+ },
+ {
+  "id": 3040,
+  "name": "SWSH10: Astral Radiance",
+  "abbr": "SWSH10",
+  "released": "2022-05-27",
+  "supplemental": false,
+  "cards": 216,
+  "names": {
+   "fr": "Astres Radieux",
+   "de": "Astralglanz",
+   "es": "Resplandor Astral",
+   "it": "Lucentezza Siderale",
+   "pt": "Estrelas Radiantes"
+  }
+ },
+ {
+  "id": 3068,
+  "name": "SWSH10: Astral Radiance Trainer Gallery",
+  "abbr": "SWSH10:TG",
+  "released": "2022-05-27",
+  "supplemental": false,
+  "cards": 30
+ },
+ {
+  "id": 3051,
+  "name": "Battle Academy 2022",
+  "abbr": "BA22",
+  "released": "2022-04-01",
+  "supplemental": false,
+  "cards": 101
+ },
+ {
+  "id": 2948,
+  "name": "SWSH09: Brilliant Stars",
+  "abbr": "SWSH09",
+  "released": "2022-02-25",
+  "supplemental": false,
+  "cards": 186,
+  "names": {
+   "fr": "Stars Étincelantes",
+   "de": "Strahlende Sterne",
+   "es": "Astros Brillantes",
+   "it": "Astri Lucenti",
+   "pt": "Astros Cintilantes"
+  }
+ },
+ {
+  "id": 3020,
+  "name": "SWSH09: Brilliant Stars Trainer Gallery",
+  "abbr": "SWSH09:TG",
+  "released": "2022-02-25",
+  "supplemental": false,
+  "cards": 30
+ },
+ {
+  "id": 2906,
+  "name": "SWSH08: Fusion Strike",
+  "abbr": "SWSH08",
+  "released": "2021-11-12",
+  "supplemental": false,
+  "cards": 284,
+  "names": {
+   "fr": "Poing de Fusion",
+   "de": "Fusionsangriff",
+   "es": "Golpe Fusión",
+   "it": "Colpo Fusione",
+   "pt": "Golpe Fusão"
+  }
+ },
+ {
+  "id": 2867,
+  "name": "Celebrations",
+  "abbr": "CLB",
+  "released": "2021-10-08",
+  "supplemental": false,
+  "cards": 25,
+  "names": {
+   "fr": "Célébrations",
+   "de": "Celebrations",
+   "es": "Celebraciones",
+   "it": "Gran Festa",
+   "pt": "Celebrações"
+  }
+ },
+ {
+  "id": 2931,
+  "name": "Celebrations: Classic Collection",
+  "abbr": "CCC",
+  "released": "2021-10-08",
+  "supplemental": false,
+  "cards": 25
+ },
+ {
+  "id": 2848,
+  "name": "SWSH07: Evolving Skies",
+  "abbr": "SWSH07",
+  "released": "2021-08-27",
+  "supplemental": false,
+  "cards": 237,
+  "names": {
+   "fr": "Évolution Céleste",
+   "de": "Drachenwandel",
+   "es": "Cielos Evolutivos",
+   "it": "Evoluzioni Eteree",
+   "pt": "Céus em Evolução"
+  }
+ },
+ {
+  "id": 2807,
+  "name": "SWSH06: Chilling Reign",
+  "abbr": "SWSH06",
+  "released": "2021-06-18",
+  "supplemental": false,
+  "cards": 233,
+  "names": {
+   "fr": "Règne de Glace",
+   "de": "Schaurige Herrschaft",
+   "es": "Reinado Escalofriante",
+   "it": "Regno Glaciale",
+   "pt": "Reinado Arrepiante"
+  }
+ },
+ {
+  "id": 2765,
+  "name": "SWSH05: Battle Styles",
+  "abbr": "SWSH05",
+  "released": "2021-03-19",
+  "supplemental": false,
+  "cards": 183,
+  "names": {
+   "fr": "Styles de combat",
+   "de": "Kampfstile",
+   "es": "Estilos de Combate",
+   "it": "Stili di Lotta",
+   "pt": "Estilos de Batalha"
+  }
+ },
+ {
+  "id": 2754,
+  "name": "Shining Fates",
+  "abbr": "SHF",
+  "released": "2021-02-19",
+  "supplemental": false,
+  "cards": 73,
+  "names": {
+   "fr": "Destinées Radieuses",
+   "de": "Glänzendes Schicksal",
+   "es": "Destinos Brillantes",
+   "it": "Destino Splendente",
+   "pt": "Destinos Brilhantes "
+  }
+ },
+ {
+  "id": 2781,
+  "name": "Shining Fates: Shiny Vault",
+  "abbr": "SHFSV",
+  "released": "2021-02-19",
+  "supplemental": false,
+  "cards": 122
+ },
+ {
+  "id": 2782,
+  "name": "McDonald's 25th Anniversary Promos",
+  "abbr": "M21",
+  "released": "2021-02-09",
+  "supplemental": true,
+  "cards": 25
+ },
+ {
+  "id": 2701,
+  "name": "SWSH04: Vivid Voltage",
+  "abbr": "SWSH04",
+  "released": "2020-11-13",
+  "supplemental": false,
+  "cards": 203,
+  "names": {
+   "fr": "Voltage Éclatant",
+   "de": "Farbenschock",
+   "es": "Voltaje Vívido",
+   "it": "Voltaggio Sfolgorante",
+   "pt": "Voltagem Vívida"
+  }
+ },
+ {
+  "id": 2685,
+  "name": "Champion's Path",
+  "abbr": "CHP",
+  "released": "2020-09-25",
+  "supplemental": false,
+  "cards": 80,
+  "names": {
+   "fr": "La Voie du Maître",
+   "de": "Weg des Champs",
+   "es": "Camino de Campeones",
+   "it": "Futuri Campioni",
+   "pt": "Caminho do Campeão"
+  }
+ },
+ {
+  "id": 2675,
+  "name": "SWSH03: Darkness Ablaze",
+  "abbr": "SWSH03",
+  "released": "2020-08-14",
+  "supplemental": false,
+  "cards": 201,
+  "names": {
+   "fr": "Ténèbres Embrasées",
+   "de": "Flammende Finsternis",
+   "es": "Oscuridad Incandescente",
+   "it": "Fiamme Oscure",
+   "pt": "Escuridão Incandescente"
+  }
+ },
+ {
+  "id": 2686,
+  "name": "Battle Academy",
+  "abbr": "BTA",
+  "released": "2020-07-31",
+  "supplemental": true,
+  "cards": 101
+ },
+ {
+  "id": 2626,
+  "name": "SWSH02: Rebel Clash",
+  "abbr": "SWSH02",
+  "released": "2020-05-01",
+  "supplemental": false,
+  "cards": 209,
+  "names": {
+   "fr": "Clash des Rebelles",
+   "de": "Clash der Rebellen",
+   "es": "Choque Rebelde",
+   "it": "Fragore Ribelle",
+   "pt": "Rixa Rebelde"
+  }
+ },
+ {
+  "id": 2585,
+  "name": "SWSH01: Sword & Shield Base Set",
+  "abbr": "SWSH01",
+  "released": "2020-02-07",
+  "supplemental": false,
+  "cards": 216,
+  "names": {
+   "fr": "Épée et Bouclier",
+   "de": "Schwert & Schild",
+   "es": "Espada y Escudo",
+   "it": "Spada e Scudo",
+   "pt": "Espada e Escudo"
+  }
+ },
+ {
+  "id": 2545,
+  "name": "SWSH: Sword & Shield Promo Cards",
+  "abbr": "SWSD",
+  "released": "2019-11-15",
+  "supplemental": false,
+  "cards": 339,
+  "names": {
+   "fr": "Promo SWSH",
+   "de": "SCSC Promokarten",
+   "es": "Cartas de promoción ESES",
+   "it": "SPSC Promo",
+   "pt": "ESES Promos"
+  }
+ },
+ {
+  "id": 2534,
+  "name": "SM - Cosmic Eclipse",
+  "abbr": "SM12",
+  "released": "2019-11-01",
+  "supplemental": false,
+  "cards": 271,
+  "names": {
+   "fr": "Éclipse Cosmique",
+   "de": "Welten im Wandel",
+   "es": "Eclipse Cósmico",
+   "it": "Eclissi Cosmica",
+   "pt": "Eclipse Cósmico"
+  }
+ },
+ {
+  "id": 2555,
+  "name": "McDonald's Promos 2019",
+  "abbr": "M19",
+  "released": "2019-10-01",
+  "supplemental": false,
+  "cards": 12,
+  "names": {
+   "de": "McDonald’s Kollektion 2019",
+   "it": "McDonald's Collection 2019"
+  }
+ },
+ {
+  "id": 2480,
+  "name": "Hidden Fates",
+  "abbr": "HIF",
+  "released": "2019-08-23",
+  "supplemental": false,
+  "cards": 69,
+  "names": {
+   "fr": "Destinées Occultes",
+   "de": "Verborgenes Schicksal",
+   "es": "Destinos Ocultos",
+   "it": "Destino Sfuggente",
+   "pt": "Destinos Ocultos"
+  }
+ },
+ {
+  "id": 2594,
+  "name": "Hidden Fates: Shiny Vault",
+  "abbr": "HIF:SV",
+  "released": "2019-08-23",
+  "supplemental": false,
+  "cards": 94
+ },
+ {
+  "id": 2464,
+  "name": "SM - Unified Minds",
+  "abbr": "SM11",
+  "released": "2019-08-02",
+  "supplemental": false,
+  "cards": 258,
+  "names": {
+   "fr": "Harmonie des Esprits",
+   "de": "Bund der Gleichgesinnten",
+   "es": "Mentes Unidas",
+   "it": "Sintonia Mentale",
+   "pt": "Sintonia Mental "
+  }
+ },
+ {
+  "id": 2420,
+  "name": "SM - Unbroken Bonds",
+  "abbr": "SM10",
+  "released": "2019-05-03",
+  "supplemental": false,
+  "cards": 234,
+  "names": {
+   "fr": "Alliance Infaillible",
+   "de": "Kräfte im Einklang",
+   "es": "Vínculos Indestructibles",
+   "it": "Legami Inossidabili",
+   "pt": "Elos Inquebráveis"
+  }
+ },
+ {
+  "id": 2409,
+  "name": "Detective Pikachu",
+  "abbr": "DEP",
+  "released": "2019-04-05",
+  "supplemental": false,
+  "cards": 18,
+  "names": {
+   "fr": "Détective Pikachu",
+   "de": "Meisterdetektiv Pikachu",
+   "es": "Detective Pikachu",
+   "it": "Detective Pikachu",
+   "pt": "Detetive Pikachu"
+  }
+ },
+ {
+  "id": 2377,
+  "name": "SM - Team Up",
+  "abbr": "SM9",
+  "released": "2019-02-01",
+  "supplemental": false,
+  "cards": 196,
+  "names": {
+   "fr": "Duo de Choc",
+   "de": "Teams Sind Trumpf",
+   "es": "Union de Aliados",
+   "it": "Gioco di Squadra",
+   "pt": "União de Aliados"
+  }
+ },
+ {
+  "id": 2328,
+  "name": "SM - Lost Thunder",
+  "abbr": "SM8",
+  "released": "2018-11-02",
+  "supplemental": false,
+  "cards": 236,
+  "names": {
+   "fr": "Tonnerre Perdu",
+   "de": "Echo des Donners",
+   "es": "Truenos Perdidos",
+   "it": "Tuoni Perduti",
+   "pt": "Trovões Perdidos"
+  }
+ },
+ {
+  "id": 2364,
+  "name": "McDonald's Promos 2018",
+  "abbr": "M18",
+  "released": "2018-11-02",
+  "supplemental": true,
+  "cards": 12,
+  "names": {
+   "it": "McDonald's Collection 2018"
+  }
+ },
+ {
+  "id": 2295,
+  "name": "Dragon Majesty",
+  "abbr": "DRM",
+  "released": "2018-09-07",
+  "supplemental": false,
+  "cards": 78,
+  "names": {
+   "fr": "Majesté Des Dragons",
+   "de": "Majestät Der Drachen",
+   "es": "Majestad De Dragones",
+   "it": "Trionfo Dei Draghi",
+   "pt": "Dragões Soberanos"
+  }
+ },
+ {
+  "id": 2278,
+  "name": "SM - Celestial Storm",
+  "abbr": "CES",
+  "released": "2018-08-03",
+  "supplemental": false,
+  "cards": 183,
+  "names": {
+   "fr": "Tempête Céleste",
+   "de": "Sturm Am Firmament",
+   "es": "Tormenta Celestial",
+   "it": "Tempesta Astrale",
+   "pt": "Tempestade Celestial"
+  }
+ },
+ {
+  "id": 2282,
+  "name": "World Championship Decks",
+  "abbr": "WCD",
+  "released": "2018-07-01",
+  "supplemental": false,
+  "cards": 1717
+ },
+ {
+  "id": 2209,
+  "name": "SM - Forbidden Light",
+  "abbr": "SM06",
+  "released": "2018-05-04",
+  "supplemental": false,
+  "cards": 146,
+  "names": {
+   "fr": "Lumière Interdite",
+   "de": "Grauen Der Lichtfinsternis",
+   "es": "Luz Prohibida",
+   "it": "Apocalisse Di Luce",
+   "pt": "Luz Proibida"
+  }
+ },
+ {
+  "id": 2208,
+  "name": "SM Trainer Kit: Alolan Sandslash & Alolan Ninetales",
+  "abbr": "SMK2",
+  "released": "2018-04-06",
+  "supplemental": true,
+  "cards": 34
+ },
+ {
+  "id": 2178,
+  "name": "SM - Ultra Prism",
+  "abbr": "SM05",
+  "released": "2018-02-02",
+  "supplemental": false,
+  "cards": 173,
+  "names": {
+   "fr": "Ultra-Prisme",
+   "de": "Ultra-Prisma",
+   "es": "Ultraprisma",
+   "it": "Ultraprisma",
+   "pt": "Ultra Prisma"
+  }
+ },
+ {
+  "id": 2148,
+  "name": "McDonald's Promos 2017",
+  "abbr": "M17",
+  "released": "2017-11-07",
+  "supplemental": true,
+  "cards": 12,
+  "names": {
+   "fr": "Collection McDonald's 2017",
+   "de": "McDonald’s Kollektion 2017",
+   "it": "McDonald's Collection 2017"
+  }
+ },
+ {
+  "id": 2071,
+  "name": "SM - Crimson Invasion",
+  "abbr": "SM04",
+  "released": "2017-11-03",
+  "supplemental": false,
+  "cards": 124,
+  "names": {
+   "fr": "Invasion Carmin",
+   "de": "Aufziehen der Sturmröte",
+   "es": "Invasión Carmesí",
+   "it": "Invasione Scarlatta",
+   "pt": "Invasão Carmim"
+  }
+ },
+ {
+  "id": 2054,
+  "name": "Shining Legends",
+  "abbr": "SHL",
+  "released": "2017-10-06",
+  "supplemental": false,
+  "cards": 78,
+  "names": {
+   "fr": "Légendes Brillantes",
+   "de": "Schimmernde Legenden",
+   "es": "Leyendas Luminosas",
+   "it": "Leggende Iridescenti",
+   "pt": "Lendas Luminescentes"
+  }
+ },
+ {
+  "id": 1957,
+  "name": "SM - Burning Shadows",
+  "abbr": "SM03",
+  "released": "2017-08-04",
+  "supplemental": false,
+  "cards": 169,
+  "names": {
+   "fr": "Ombres Ardentes",
+   "de": "Nacht in Flammen",
+   "es": "Sombras Ardientes",
+   "it": "Ombre Infuocate",
+   "pt": "Sombras Ardentes"
+  }
+ },
+ {
+  "id": 1919,
+  "name": "SM - Guardians Rising",
+  "abbr": "SM02",
+  "released": "2017-05-05",
+  "supplemental": false,
+  "cards": 169,
+  "names": {
+   "fr": "Gardiens Ascendants",
+   "de": "Stunde der Wächter",
+   "es": "Albor de Guadianes",
+   "it": "Guardiani Nascenti",
+   "pt": "Guardiões Ascendentes"
+  }
+ },
+ {
+  "id": 2069,
+  "name": "SM Trainer Kit: Lycanroc & Alolan Raichu",
+  "abbr": "SMK1",
+  "released": "2017-04-21",
+  "supplemental": false,
+  "cards": 60,
+  "names": {
+   "fr": "SM Kit du dresseur (Raichu d'Alola)",
+   "es": "Kit de Entrenador Sol y Luna (Raichu de Alola)",
+   "it": "Sole e Luna trainer Kit (Alolan Raichu)"
+  }
+ },
+ {
+  "id": 1863,
+  "name": "SM Base Set",
+  "abbr": "SM01",
+  "released": "2017-02-03",
+  "supplemental": false,
+  "cards": 163,
+  "names": {
+   "fr": "Soleil et Lune",
+   "de": "Sonne & Mond",
+   "es": "Sol y Luna",
+   "it": "Sole e Luna",
+   "pt": "Sol e Lua"
+  }
+ },
+ {
+  "id": 1861,
+  "name": "SM Promos",
+  "abbr": "SMP",
+  "released": "2016-12-14",
+  "supplemental": false,
+  "cards": 333,
+  "names": {
+   "fr": "Promo SM",
+   "de": "SM Promokarten",
+   "es": "SL Cartas de promoción",
+   "it": "SL Promo",
+   "pt": "Sol e Lua Promos"
+  }
+ },
+ {
+  "id": 1842,
+  "name": "XY - Evolutions",
+  "abbr": "EVO",
+  "released": "2016-11-02",
+  "supplemental": false,
+  "cards": 113,
+  "names": {
+   "fr": "Évolutions",
+   "de": "Evolution",
+   "es": "Evoluciones",
+   "it": "Evoluzioni",
+   "pt": "Evoluções"
+  }
+ },
+ {
+  "id": 1840,
+  "name": "Deck Exclusives",
+  "abbr": "PR",
+  "released": "2016-09-01",
+  "supplemental": false,
+  "cards": 487
+ },
+ {
+  "id": 3087,
+  "name": "McDonald's Promos 2016",
+  "abbr": "M16",
+  "released": "2016-08-05",
+  "supplemental": true,
+  "cards": 12,
+  "names": {
+   "fr": "Collection McDonald's 2016",
+   "it": "McDonald's Collection 2016"
+  }
+ },
+ {
+  "id": 1815,
+  "name": "XY - Steam Siege",
+  "abbr": "STS",
+  "released": "2016-08-03",
+  "supplemental": false,
+  "cards": 116,
+  "names": {
+   "fr": "Offensive Vapeur",
+   "de": "Dampfkessel",
+   "es": "Asedio de Vapor",
+   "it": "Vapori Accesi",
+   "pt": "Cerco de Vapor"
+  }
+ },
+ {
+  "id": 1539,
+  "name": "League & Championship Cards",
+  "abbr": "PR",
+  "released": "2016-06-01",
+  "supplemental": false,
+  "cards": 521
+ },
+ {
+  "id": 1780,
+  "name": "XY - Fates Collide",
+  "abbr": "FCO",
+  "released": "2016-05-02",
+  "supplemental": false,
+  "cards": 125,
+  "names": {
+   "fr": "Impact des Destins",
+   "de": "Schicksalsschmiede",
+   "es": "Destinos Enfrentados",
+   "it": "Destini Incrociati",
+   "pt": "Fusão de Destinos"
+  }
+ },
+ {
+  "id": 1796,
+  "name": "XY Trainer Kit: Pikachu Libre & Suicune",
+  "abbr": "PR",
+  "released": "2016-04-27",
+  "supplemental": false,
+  "cards": 60,
+  "names": {
+   "fr": "XY Kit du dresseur (Pikachu Libre)",
+   "es": "Kit de Entrenador XY (Pikachu Enmascarada)",
+   "it": "XY trainer Kit (Pikachu Libre)"
+  }
+ },
+ {
+  "id": 1728,
+  "name": "Generations",
+  "abbr": "GEN",
+  "released": "2016-02-22",
+  "supplemental": false,
+  "cards": 84,
+  "names": {
+   "fr": "Générations",
+   "de": "Generationen",
+   "es": "Generaciones",
+   "it": "Generazioni",
+   "pt": "Gerações"
+  }
+ },
+ {
+  "id": 1729,
+  "name": "Generations: Radiant Collection",
+  "abbr": "GEN",
+  "released": "2016-02-22",
+  "supplemental": false,
+  "cards": 32
+ },
+ {
+  "id": 1701,
+  "name": "XY - BREAKpoint",
+  "abbr": "BKP",
+  "released": "2016-02-03",
+  "supplemental": false,
+  "cards": 123,
+  "names": {
+   "fr": "Rupture Turbo",
+   "de": "TURBOfieber",
+   "es": "TURBOLímite",
+   "it": "Turbo Crash",
+   "pt": "Turbo Colisão"
+  }
+ },
+ {
+  "id": 1694,
+  "name": "McDonald's Promos 2015",
+  "abbr": "M15",
+  "released": "2015-11-23",
+  "supplemental": false,
+  "cards": 12,
+  "names": {
+   "fr": "Collection McDonald's 2015",
+   "it": "McDonald's Collection 2015"
+  }
+ },
+ {
+  "id": 1661,
+  "name": "XY - BREAKthrough",
+  "abbr": "BKT",
+  "released": "2015-11-04",
+  "supplemental": false,
+  "cards": 164,
+  "names": {
+   "fr": "Impulsion Turbo",
+   "de": "TURBOstart",
+   "es": "Turbo Impulso",
+   "it": "Turbo Blitz",
+   "pt": "Turbo Revolução"
+  }
+ },
+ {
+  "id": 1576,
+  "name": "XY - Ancient Origins",
+  "abbr": "AOR",
+  "released": "2015-08-12",
+  "supplemental": false,
+  "cards": 100,
+  "names": {
+   "fr": "Origines Antiques",
+   "de": "Ewiger Anfang",
+   "es": "Antiguos Orígenes",
+   "it": "Antiche Origini",
+   "pt": "Origens Ancestrais"
+  }
+ },
+ {
+  "id": 1534,
+  "name": "XY - Roaring Skies",
+  "abbr": "ROS",
+  "released": "2015-05-06",
+  "supplemental": false,
+  "cards": 110,
+  "names": {
+   "fr": "Ciel Rugissant",
+   "de": "Drachenleuchten",
+   "es": "Cielos Rugientes",
+   "it": "Furie Volanti",
+   "pt": "Céus Estrondosos"
+  }
+ },
+ {
+  "id": 1536,
+  "name": "XY Trainer Kit: Latias & Latios",
+  "abbr": "PR",
+  "released": "2015-04-29",
+  "supplemental": false,
+  "cards": 60,
+  "names": {
+   "fr": "XY Kit du dresseur (Latias)",
+   "es": "Kit de Entrenador XY (Latias)",
+   "it": "XY trainer Kit (Latias)"
+  }
+ },
+ {
+  "id": 1528,
+  "name": "Jumbo Cards",
+  "abbr": "PR",
+  "released": "2015-04-01",
+  "supplemental": false,
+  "cards": 329
+ },
+ {
+  "id": 1525,
+  "name": "Double Crisis",
+  "abbr": "DCR",
+  "released": "2015-03-25",
+  "supplemental": false,
+  "cards": 34,
+  "names": {
+   "fr": "Double Danger",
+   "pt": "Crise Dupla"
+  }
+ },
+ {
+  "id": 1509,
+  "name": "XY - Primal Clash",
+  "abbr": "PRC",
+  "released": "2015-02-04",
+  "supplemental": false,
+  "cards": 164,
+  "names": {
+   "fr": "Primo-Choc",
+   "de": "Protoshock",
+   "es": "Duelos Primigenios",
+   "it": "Scontro Primordiale",
+   "pt": "Conflito Primitivo"
+  }
+ },
+ {
+  "id": 1533,
+  "name": "XY Trainer Kit: Bisharp & Wigglytuff",
+  "abbr": "PR",
+  "released": "2014-11-14",
+  "supplemental": false,
+  "cards": 60,
+  "names": {
+   "fr": "XY Kit du dresseur (Scalproie)",
+   "es": "Kit de Entrenador XY (Bisharp)",
+   "it": "XY trainer Kit (Bisharp)"
+  }
+ },
+ {
+  "id": 1494,
+  "name": "XY - Phantom Forces",
+  "abbr": "PHF",
+  "released": "2014-11-05",
+  "supplemental": false,
+  "cards": 122,
+  "names": {
+   "fr": "Vigueur Spectrale",
+   "de": "Phantomkräfte",
+   "es": "Fuerzas Fantasmales",
+   "it": "Forze Spettrali",
+   "pt": "Força Fantasma"
+  }
+ },
+ {
+  "id": 1481,
+  "name": "XY - Furious Fists",
+  "abbr": "FFI",
+  "released": "2014-08-13",
+  "supplemental": false,
+  "cards": 113,
+  "names": {
+   "fr": "Poings Furieux",
+   "de": "Fliegende Fäuste",
+   "es": "Puños Furiosos",
+   "it": "Colpi Furiosi",
+   "pt": "Punhos Furiosos"
+  }
+ },
+ {
+  "id": 1692,
+  "name": "McDonald's Promos 2014",
+  "abbr": "M14",
+  "released": "2014-05-23",
+  "supplemental": false,
+  "cards": 12,
+  "names": {
+   "fr": "Collection McDonald's 2014",
+   "it": "McDonald's Collection 2014"
+  }
+ },
+ {
+  "id": 1464,
+  "name": "XY - Flashfire",
+  "abbr": "FLF",
+  "released": "2014-05-07",
+  "supplemental": false,
+  "cards": 109,
+  "names": {
+   "fr": "Étincelles",
+   "de": "Flammenmeer",
+   "es": "Destellos de Fuego",
+   "it": "Fuoco Infernale",
+   "pt": "Flash de Fogo"
+  }
+ },
+ {
+  "id": 1532,
+  "name": "XY Trainer Kit: Sylveon & Noivern",
+  "abbr": "PR",
+  "released": "2014-03-12",
+  "supplemental": false,
+  "cards": 60,
+  "names": {
+   "fr": "XY Kit du dresseur (Bruyverne)",
+   "es": "Kit de Entrenador XY (Noivern)",
+   "it": "XY trainer Kit (Noivern)"
+  }
+ },
+ {
+  "id": 1387,
+  "name": "XY Base Set",
+  "abbr": "XY",
+  "released": "2014-02-05",
+  "supplemental": false,
+  "cards": 147,
+  "names": {
+   "fr": "XY",
+   "de": "XY",
+   "es": "XY",
+   "it": "XY",
+   "pt": "XY"
+  }
+ },
+ {
+  "id": 1451,
+  "name": "XY Promos",
+  "abbr": "PR",
+  "released": "2013-12-16",
+  "supplemental": false,
+  "cards": 269,
+  "names": {
+   "fr": "Promo XY",
+   "de": "XY Promokarten",
+   "es": "XY Cartas de promoción",
+   "it": "XY Promo"
+  }
+ },
+ {
+  "id": 1522,
+  "name": "Kalos Starter Set",
+  "abbr": "KSS",
+  "released": "2013-11-08",
+  "supplemental": false,
+  "cards": 39,
+  "names": {
+   "fr": "Bienvenue à Kalos",
+   "de": "Willkommen in Kalos",
+   "it": "Benvenuti a Kalos",
+   "pt": "Conjunto para Iniciantes Kalos"
+  }
+ },
+ {
+  "id": 1409,
+  "name": "Legendary Treasures",
+  "abbr": "LTR",
+  "released": "2013-11-06",
+  "supplemental": false,
+  "cards": 115,
+  "names": {
+   "pt": "Tesouros Lendários"
+  }
+ },
+ {
+  "id": 1465,
+  "name": "Legendary Treasures: Radiant Collection",
+  "abbr": "LTR",
+  "released": "2013-11-06",
+  "supplemental": false,
+  "cards": 25
+ },
+ {
+  "id": 1370,
+  "name": "Plasma Blast",
+  "abbr": "PLB",
+  "released": "2013-08-14",
+  "supplemental": false,
+  "cards": 105,
+  "names": {
+   "fr": "Explosion Plasma",
+   "de": "Plasma-Blaster",
+   "it": "Esplosione Plasma",
+   "pt": "Explosão de Plasma"
+  }
+ },
+ {
+  "id": 1382,
+  "name": "Plasma Freeze",
+  "abbr": "PLF",
+  "released": "2013-05-08",
+  "supplemental": false,
+  "cards": 122,
+  "names": {
+   "fr": "Glaciation Plasma",
+   "de": "Plasma-Frost",
+   "es": "Glaciación Plasma",
+   "it": "Glaciazione Plasma",
+   "pt": "Congelamento de Plasma"
+  }
+ },
+ {
+  "id": 1413,
+  "name": "Plasma Storm",
+  "abbr": "PLS",
+  "released": "2013-02-06",
+  "supplemental": false,
+  "cards": 138,
+  "names": {
+   "fr": "Tempète Plasma",
+   "de": "Plasma-Sturm",
+   "es": "Tormenta Plasma",
+   "it": "Uragano Plasma",
+   "pt": "Tempestade de Plasma"
+  }
+ },
+ {
+  "id": 1408,
+  "name": "Boundaries Crossed",
+  "abbr": "BCR",
+  "released": "2012-11-07",
+  "supplemental": false,
+  "cards": 153,
+  "names": {
+   "fr": "Frontières Franchies",
+   "de": "Überschrittene Schwellen",
+   "es": "Fronteras Cruzadas",
+   "it": "Confini Varcati",
+   "pt": "Fronteiras Cruzadas"
+  }
+ },
+ {
+  "id": 1426,
+  "name": "Dragon Vault",
+  "abbr": "DRV",
+  "released": "2012-10-05",
+  "supplemental": false,
+  "cards": 21,
+  "names": {
+   "fr": "Coffre des Dragons",
+   "de": "Drachengruft",
+   "es": "Tesoro de Dragones",
+   "it": "Tesoro dei Draghi",
+   "pt": "Cofre do Dragão"
+  }
+ },
+ {
+  "id": 1394,
+  "name": "Dragons Exalted",
+  "abbr": "DRX",
+  "released": "2012-08-15",
+  "supplemental": false,
+  "cards": 128,
+  "names": {
+   "fr": "Dragons Éxaltés",
+   "de": "Hoheit der Drachen",
+   "es": "Dragones Majestuosos",
+   "it": "Stirpe dei Draghi",
+   "pt": "Dragões Enaltecidos"
+  }
+ },
+ {
+  "id": 1427,
+  "name": "McDonald's Promos 2012",
+  "abbr": "M12",
+  "released": "2012-06-15",
+  "supplemental": false,
+  "cards": 12,
+  "names": {
+   "fr": "Collection McDonald's 2012",
+   "es": "Colección de McDonald's 2012",
+   "it": "McDonald's Collection 2012"
+  }
+ },
+ {
+  "id": 1386,
+  "name": "Dark Explorers",
+  "abbr": "DEX",
+  "released": "2012-05-09",
+  "supplemental": false,
+  "cards": 111,
+  "names": {
+   "fr": "Explorateurs Obscurs",
+   "de": "Erforscher der Finsternis",
+   "es": "Oscuros Exploradores",
+   "it": "Esploratori delle Tenebre",
+   "pt": "Exploradores da Escuridão"
+  }
+ },
+ {
+  "id": 1412,
+  "name": "Next Destinies",
+  "abbr": "NXD",
+  "released": "2012-02-08",
+  "supplemental": false,
+  "cards": 103,
+  "names": {
+   "fr": "Destinées Futures",
+   "de": "Kommende Schicksale",
+   "es": "Próximos Destinos",
+   "it": "Destini Futuri",
+   "pt": "Próximos Destinos"
+  }
+ },
+ {
+  "id": 1385,
+  "name": "Noble Victories",
+  "abbr": "NVI",
+  "released": "2011-11-16",
+  "supplemental": false,
+  "cards": 102,
+  "names": {
+   "fr": "Nobles Victoires",
+   "de": "Königliche Siege",
+   "es": "Nobles Victorias",
+   "it": "Vittorie Regali",
+   "pt": "Vitórias Nobres"
+  }
+ },
+ {
+  "id": 1538,
+  "name": "BW Trainer Kit: Excadrill & Zoroark",
+  "abbr": "BLW",
+  "released": "2011-09-05",
+  "supplemental": false,
+  "cards": 60,
+  "names": {
+   "fr": "BW Kit du dresseur (Minitaupe)",
+   "es": "Kit de Entrenador BW (Excadrill)"
+  }
+ },
+ {
+  "id": 1424,
+  "name": "Emerging Powers",
+  "abbr": "EPO",
+  "released": "2011-08-31",
+  "supplemental": false,
+  "cards": 98,
+  "names": {
+   "fr": "Pouvoirs Émergents",
+   "de": "Aufstreben der Mächtigen",
+   "es": "Fuerzas Emergentes",
+   "it": "Nuove Forze",
+   "pt": "Poderes Emergentes"
+  }
+ },
+ {
+  "id": 1401,
+  "name": "McDonald's Promos 2011",
+  "abbr": "M11",
+  "released": "2011-06-17",
+  "supplemental": false,
+  "cards": 12,
+  "names": {
+   "fr": "Collection McDonald's 2011",
+   "de": "McDonald’s Kollektion 2011",
+   "es": "Colección de McDonald's 2011",
+   "it": "McDonald's Collection"
+  }
+ },
+ {
+  "id": 1400,
+  "name": "Black and White",
+  "abbr": "BLW",
+  "released": "2011-04-25",
+  "supplemental": false,
+  "cards": 115,
+  "names": {
+   "fr": "Noir & Blanc",
+   "de": "Schwarz & Weiß",
+   "es": "Negro y Blanco",
+   "it": "Nero e Bianco",
+   "pt": "Black & White"
+  }
+ },
+ {
+  "id": 1407,
+  "name": "Black and White Promos",
+  "abbr": "PR",
+  "released": "2011-04-25",
+  "supplemental": false,
+  "cards": 148,
+  "names": {
+   "fr": "Promo BW",
+   "de": "SW Promokarten",
+   "es": "NB Promo",
+   "it": "NB Promo"
+  }
+ },
+ {
+  "id": 1415,
+  "name": "Call of Legends",
+  "abbr": "CL",
+  "released": "2011-02-09",
+  "supplemental": false,
+  "cards": 106,
+  "names": {
+   "fr": "L'appel des Légendes",
+   "de": "Ruf der Legenden",
+   "es": "Llamada de las Leyendas",
+   "it": "Richiamo delle Leggende",
+   "pt": "Chamado das Lendas"
+  }
+ },
+ {
+  "id": 1381,
+  "name": "Triumphant",
+  "abbr": "TM",
+  "released": "2010-11-03",
+  "supplemental": false,
+  "cards": 104,
+  "names": {
+   "fr": "Triomphant",
+   "de": "Triumph",
+   "it": "Battaglie Trionfali",
+   "pt": "Triunfante"
+  }
+ },
+ {
+  "id": 1403,
+  "name": "Undaunted",
+  "abbr": "UD",
+  "released": "2010-08-18",
+  "supplemental": false,
+  "cards": 91,
+  "names": {
+   "fr": "Indomptable",
+   "de": "Unerschrocken",
+   "it": "Senza Paura",
+   "pt": "Destemido"
+  }
+ },
+ {
+  "id": 1399,
+  "name": "Unleashed",
+  "abbr": "UL",
+  "released": "2010-05-12",
+  "supplemental": false,
+  "cards": 96,
+  "names": {
+   "fr": "Déchaînement",
+   "de": "Entfesselt",
+   "es": "Liberados",
+   "it": "Forze Scatenate",
+   "pt": "Revelado"
+  }
+ },
+ {
+  "id": 1540,
+  "name": "HGSS Trainer Kit: Gyarados & Raichu",
+  "abbr": "PR",
+  "released": "2010-05-12",
+  "supplemental": false,
+  "cards": 60,
+  "names": {
+   "fr": "HS Kit du dresseur (Léviator)",
+   "es": "Kit de Entrenador HeatGold & SoulSilver (Gyarados)",
+   "it": "HS trainer Kit (Gyarados)"
+  }
+ },
+ {
+  "id": 1402,
+  "name": "HeartGold SoulSilver",
+  "abbr": "HS",
+  "released": "2010-02-10",
+  "supplemental": false,
+  "cards": 124,
+  "names": {
+   "fr": "HeartGold SoulSilver",
+   "de": "HeartGold SoulSilver",
+   "es": "HeartGold SoulSilver",
+   "it": "HeartGold SoulSilver",
+   "pt": "HeartGold SoulSilver"
+  }
+ },
+ {
+  "id": 1453,
+  "name": "HGSS Promos",
+  "abbr": "PR",
+  "released": "2010-02-01",
+  "supplemental": false,
+  "cards": 38,
+  "names": {
+   "fr": "Promo HGSS",
+   "de": "Promo HGSS",
+   "es": "HGSS Black Star Promos",
+   "it": "HGSS Promo"
+  }
+ },
+ {
+  "id": 1433,
+  "name": "Rumble",
+  "abbr": "RUM",
+  "released": "2009-11-16",
+  "supplemental": false,
+  "cards": 16,
+  "names": {
+   "es": "Pokémon Rumble"
+  }
+ },
+ {
+  "id": 1391,
+  "name": "Arceus",
+  "abbr": "AR",
+  "released": "2009-11-04",
+  "supplemental": false,
+  "cards": 111,
+  "names": {
+   "de": "Arceus",
+   "es": "Arceus",
+   "it": "Arceus"
+  }
+ },
+ {
+  "id": 1384,
+  "name": "Supreme Victors",
+  "abbr": "SV",
+  "released": "2009-08-19",
+  "supplemental": false,
+  "cards": 153,
+  "names": {
+   "fr": "Vainqueurs Suprêmes",
+   "de": "Ultimative Sieger"
+  }
+ },
+ {
+  "id": 1367,
+  "name": "Rising Rivals",
+  "abbr": "RR",
+  "released": "2009-05-16",
+  "supplemental": false,
+  "cards": 120,
+  "names": {
+   "fr": "Rivaux Émergeants",
+   "de": "Aufstieg der Rivalen",
+   "it": "L'Ascesa dei Rivali"
+  }
+ },
+ {
+  "id": 1406,
+  "name": "Platinum",
+  "abbr": "PL",
+  "released": "2009-02-11",
+  "supplemental": false,
+  "cards": 133,
+  "names": {
+   "fr": "Platine",
+   "de": "Platin",
+   "es": "Platino",
+   "it": "Platino"
+  }
+ },
+ {
+  "id": 1369,
+  "name": "Stormfront",
+  "abbr": "SF",
+  "released": "2008-11-05",
+  "supplemental": false,
+  "cards": 106,
+  "names": {
+   "fr": "Tempête",
+   "de": "Sturmtief",
+   "es": "Frente Tormentoso",
+   "it": "Fronte di Tempesta"
+  }
+ },
+ {
+  "id": 2155,
+  "name": "Countdown Calendar Promos",
+  "abbr": "CCP",
+  "released": "2008-10-01",
+  "supplemental": true,
+  "cards": 24
+ },
+ {
+  "id": 1417,
+  "name": "Legends Awakened",
+  "abbr": "LA",
+  "released": "2008-08-20",
+  "supplemental": false,
+  "cards": 146,
+  "names": {
+   "fr": "Éveil des Légendes",
+   "de": "Erwachte Legenden",
+   "es": "Despertar de las Leyendas",
+   "it": "Il Risveglio dei Miti"
+  }
+ },
+ {
+  "id": 1390,
+  "name": "Majestic Dawn",
+  "abbr": "MD",
+  "released": "2008-05-21",
+  "supplemental": false,
+  "cards": 100,
+  "names": {
+   "fr": "Aube Majestueuse",
+   "de": "Majestätischer Morgen",
+   "it": "Alba Suprema"
+  }
+ },
+ {
+  "id": 1405,
+  "name": "Great Encounters",
+  "abbr": "GE",
+  "released": "2008-02-13",
+  "supplemental": false,
+  "cards": 106,
+  "names": {
+   "fr": "Duels au Sommets",
+   "de": "Epische Begegnungen",
+   "es": "Grandes Encuentros",
+   "it": "Incontri Leggendari"
+  }
+ },
+ {
+  "id": 1380,
+  "name": "Secret Wonders",
+  "abbr": "SW",
+  "released": "2007-11-07",
+  "supplemental": false,
+  "cards": 132,
+  "names": {
+   "fr": "Merveilles Secrètes",
+   "de": "Rätselhafte Wunder",
+   "es": "Maravillas Secretas",
+   "it": "Prodigi Segreti",
+   "pt": "Maravilhas Secretas"
+  }
+ },
+ {
+  "id": 1541,
+  "name": "DP Trainer Kit: Manaphy & Lucario",
+  "abbr": "PR",
+  "released": "2007-09-03",
+  "supplemental": false,
+  "cards": 23
+ },
+ {
+  "id": 1368,
+  "name": "Mysterious Treasures",
+  "abbr": "MT",
+  "released": "2007-08-22",
+  "supplemental": false,
+  "cards": 124,
+  "names": {
+   "fr": "Trésors Mystérieux",
+   "de": "Geheimnisvolle Schätze",
+   "es": "Tesoros Misteriosos",
+   "it": "Tesori Misteriosi",
+   "pt": "Tesouros Misteriosos"
+  }
+ },
+ {
+  "id": 1430,
+  "name": "Diamond and Pearl",
+  "abbr": "DP",
+  "released": "2007-05-23",
+  "supplemental": false,
+  "cards": 130,
+  "names": {
+   "fr": "Diamant & Perle",
+   "de": "Diamant & Perl",
+   "es": "Diamante & Perla",
+   "it": "Diamante & Perla",
+   "pt": "Diamante & Pérola"
+  }
+ },
+ {
+  "id": 1421,
+  "name": "Diamond and Pearl Promos",
+  "abbr": "PR",
+  "released": "2007-05-01",
+  "supplemental": false,
+  "cards": 66,
+  "names": {
+   "fr": "Promo DP",
+   "de": "Promo DP",
+   "es": "DP Black Star Promos",
+   "it": "DP Black Star Promos"
+  }
+ },
+ {
+  "id": 1383,
+  "name": "EX Power Keepers",
+  "abbr": "PK",
+  "released": "2007-02-01",
+  "supplemental": false,
+  "cards": 108,
+  "names": {
+   "fr": "EX Gardiens du Pouvoir",
+   "de": "EX Power Keepers"
+  }
+ },
+ {
+  "id": 1411,
+  "name": "EX Dragon Frontiers",
+  "abbr": "DF",
+  "released": "2006-11-08",
+  "supplemental": false,
+  "cards": 101,
+  "names": {
+   "fr": "EX Île des Dragons",
+   "de": "EX Dragon Frontiers",
+   "it": "EX L'Isola dei Draghi"
+  }
+ },
+ {
+  "id": 1395,
+  "name": "EX Crystal Guardians",
+  "abbr": "CG",
+  "released": "2006-08-30",
+  "supplemental": false,
+  "cards": 100,
+  "names": {
+   "fr": "EX Gardiens de Cristal",
+   "de": "EX Crystal Guardians",
+   "it": "EX Guardiani dei Cristalli"
+  }
+ },
+ {
+  "id": 1379,
+  "name": "EX Holon Phantoms",
+  "abbr": "HP",
+  "released": "2006-05-03",
+  "supplemental": false,
+  "cards": 111,
+  "names": {
+   "fr": "EX Fantômes Holon",
+   "de": "EX Holon Phantoms",
+   "it": "EX Fantasmi di Holon"
+  }
+ },
+ {
+  "id": 1378,
+  "name": "EX Legend Maker",
+  "abbr": "LM",
+  "released": "2006-02-13",
+  "supplemental": false,
+  "cards": 93,
+  "names": {
+   "fr": "EX Créateurs de légendes",
+   "de": "EX Legend Maker",
+   "it": "EX La Leggenda di Mew"
+  }
+ },
+ {
+  "id": 1429,
+  "name": "EX Delta Species",
+  "abbr": "DS",
+  "released": "2005-10-31",
+  "supplemental": false,
+  "cards": 114,
+  "names": {
+   "fr": "EX Espèces Delta",
+   "de": "EX Delta Species",
+   "it": "EX Specie Delta"
+  }
+ },
+ {
+  "id": 1398,
+  "name": "EX Unseen Forces",
+  "abbr": "UF",
+  "released": "2005-08-22",
+  "supplemental": false,
+  "cards": 145,
+  "names": {
+   "fr": "EX Forces Cachées",
+   "de": "EX Verborgene Mächte",
+   "es": "EX Fuerzas Ocultas",
+   "it": "EX Forze Segrete",
+   "pt": "EX Forças Ocultas"
+  }
+ },
+ {
+  "id": 1410,
+  "name": "EX Emerald",
+  "abbr": "EM",
+  "released": "2005-05-09",
+  "supplemental": false,
+  "cards": 107,
+  "names": {
+   "fr": "EX Émeraude",
+   "de": "EX Smaragd",
+   "it": "EX Smeraldo",
+   "pt": "EX Esmeralda"
+  }
+ },
+ {
+  "id": 1404,
+  "name": "EX Deoxys",
+  "abbr": "DX",
+  "released": "2005-02-14",
+  "supplemental": false,
+  "cards": 108,
+  "names": {
+   "fr": "EX Deoxys",
+   "de": "EX Deoxys",
+   "it": "EX Deoxys",
+   "pt": "EX Deoxys"
+  }
+ },
+ {
+  "id": 1428,
+  "name": "EX Team Rocket Returns",
+  "abbr": "RR",
+  "released": "2004-11-01",
+  "supplemental": false,
+  "cards": 111,
+  "names": {
+   "pt": "EX O Retorno da Equipe Rocket "
+  }
+ },
+ {
+  "id": 1853,
+  "name": "EX Battle Stadium",
+  "abbr": "BST",
+  "released": "2004-10-18",
+  "supplemental": false,
+  "cards": 49
+ },
+ {
+  "id": 1419,
+  "name": "EX FireRed & LeafGreen",
+  "abbr": "RG",
+  "released": "2004-08-30",
+  "supplemental": false,
+  "cards": 116,
+  "names": {
+   "fr": "EX Rouge Feu & Vert Feuille",
+   "de": "EX Feuerrot & Blattgrün",
+   "it": "EX RossoFuoco e VerdeFoglia"
+  }
+ },
+ {
+  "id": 2214,
+  "name": "Kids WB Promos",
+  "abbr": "KWBP",
+  "released": "2004-07-02",
+  "supplemental": false,
+  "cards": 5
+ },
+ {
+  "id": 1416,
+  "name": "EX Hidden Legends",
+  "abbr": "HL",
+  "released": "2004-06-14",
+  "supplemental": false,
+  "cards": 102,
+  "names": {
+   "fr": "EX Légendes Oubliées",
+   "it": "EX Leggende Nascoste"
+  }
+ },
+ {
+  "id": 1377,
+  "name": "EX Team Magma vs Team Aqua",
+  "abbr": "MA",
+  "released": "2004-03-15",
+  "supplemental": false,
+  "cards": 97,
+  "names": {
+   "fr": "EX Team Magma vs Team Aqua",
+   "de": "EX Team Magma vs Team Aqua",
+   "it": "EX Team Magma vs Team Idro"
+  }
+ },
+ {
+  "id": 1376,
+  "name": "EX Dragon",
+  "abbr": "DR",
+  "released": "2003-11-24",
+  "supplemental": false,
+  "cards": 100,
+  "names": {
+   "fr": "EX Dragon",
+   "de": "EX Drache",
+   "it": "EX Drago"
+  }
+ },
+ {
+  "id": 1392,
+  "name": "EX Sandstorm",
+  "abbr": "SS",
+  "released": "2003-09-18",
+  "supplemental": false,
+  "cards": 100,
+  "names": {
+   "fr": "EX Tempête de sable",
+   "de": "EX Sandsturm",
+   "it": "EX Tempesta di Sabbia"
+  }
+ },
+ {
+  "id": 1393,
+  "name": "EX Ruby and Sapphire",
+  "abbr": "RS",
+  "released": "2003-06-18",
+  "supplemental": false,
+  "cards": 109,
+  "names": {
+   "fr": "EX Rubis & Saphir",
+   "de": "EX Rubin & Saphir",
+   "es": "Rubí & Zafiro",
+   "it": "EX Rubino & Zaffiro",
+   "pt": "EX Rubi e Safira"
+  }
+ },
+ {
+  "id": 1372,
+  "name": "Skyridge",
+  "abbr": "SK",
+  "released": "2003-05-12",
+  "supplemental": false,
+  "cards": 182,
+  "names": {
+   "de": "Skyridge",
+   "it": "Skyridge"
+  }
+ },
+ {
+  "id": 1397,
+  "name": "Aquapolis",
+  "abbr": "AQ",
+  "released": "2003-01-15",
+  "supplemental": false,
+  "cards": 186,
+  "names": {
+   "fr": "Aquapolis",
+   "de": "Aquapolis",
+   "it": "Aquapolis"
+  }
+ },
+ {
+  "id": 1455,
+  "name": "Best of Promos",
+  "abbr": "PR",
+  "released": "2002-12-01",
+  "supplemental": false,
+  "cards": 15
+ },
+ {
+  "id": 1375,
+  "name": "Expedition",
+  "abbr": "EX",
+  "released": "2002-09-15",
+  "supplemental": false,
+  "cards": 165,
+  "names": {
+   "fr": "Expedition",
+   "de": "Expedition",
+   "it": "Expedition Set Base"
+  }
+ },
+ {
+  "id": 24493,
+  "name": "e-Reader Sample Cards",
+  "abbr": "SAMPLE",
+  "released": "2002-08-02",
+  "supplemental": false,
+  "cards": 1
+ },
+ {
+  "id": 1374,
+  "name": "Legendary Collection",
+  "abbr": "LC",
+  "released": "2002-05-24",
+  "supplemental": false,
+  "cards": 110
+ },
+ {
+  "id": 1444,
+  "name": "Neo Destiny",
+  "abbr": "N4",
+  "released": "2002-02-28",
+  "supplemental": false,
+  "cards": 113,
+  "names": {
+   "fr": "Neo Destiny",
+   "de": "Neo Destiny",
+   "it": "Neo Destiny"
+  }
+ },
+ {
+  "id": 1389,
+  "name": "Neo Revelation",
+  "abbr": "N3",
+  "released": "2001-09-21",
+  "supplemental": false,
+  "cards": 66,
+  "names": {
+   "fr": "Neo Revelation",
+   "de": "Neo Revelation",
+   "it": "Neo Revelation"
+  }
+ },
+ {
+  "id": 648,
+  "name": "Southern Islands",
+  "abbr": "SI",
+  "released": "2001-07-31",
+  "supplemental": false,
+  "cards": 18
+ },
+ {
+  "id": 1434,
+  "name": "Neo Discovery",
+  "abbr": "N2",
+  "released": "2001-06-01",
+  "supplemental": false,
+  "cards": 75,
+  "names": {
+   "fr": "Neo Discovery",
+   "de": "Neo Entdeckung",
+   "it": "Neo Discovery"
+  }
+ },
+ {
+  "id": 1396,
+  "name": "Neo Genesis",
+  "abbr": "N1",
+  "released": "2000-12-16",
+  "supplemental": false,
+  "cards": 111,
+  "names": {
+   "fr": "Neo Genesis",
+   "de": "Neo Genesis",
+   "es": "Neo Genesis",
+   "it": "Neo Genesis"
+  }
+ },
+ {
+  "id": 1440,
+  "name": "Gym Challenge",
+  "abbr": "G2",
+  "released": "2000-10-16",
+  "supplemental": false,
+  "cards": 132
+ },
+ {
+  "id": 1441,
+  "name": "Gym Heroes",
+  "abbr": "G1",
+  "released": "2000-10-14",
+  "supplemental": false,
+  "cards": 132
+ },
+ {
+  "id": 1373,
+  "name": "Team Rocket",
+  "abbr": "TR",
+  "released": "2000-04-24",
+  "supplemental": false,
+  "cards": 83,
+  "names": {
+   "fr": "Team Rocket",
+   "de": "Team Rocket",
+   "it": "Team Rocket"
+  }
+ },
+ {
+  "id": 605,
+  "name": "Base Set 2",
+  "abbr": "BS2",
+  "released": "2000-02-24",
+  "supplemental": false,
+  "cards": 130
+ },
+ {
+  "id": 630,
+  "name": "Fossil",
+  "abbr": "FO",
+  "released": "1999-10-10",
+  "supplemental": false,
+  "cards": 62,
+  "names": {
+   "fr": "Fossile",
+   "de": "Fossil",
+   "es": "Fósil",
+   "it": "Fossil",
+   "pt": "Fóssil"
+  }
+ },
+ {
+  "id": 1418,
+  "name": "WoTC Promo",
+  "abbr": "PR",
+  "released": "1999-07-01",
+  "supplemental": false,
+  "cards": 69
+ },
+ {
+  "id": 635,
+  "name": "Jungle",
+  "abbr": "JU",
+  "released": "1999-06-16",
+  "supplemental": false,
+  "cards": 64,
+  "names": {
+   "fr": "Jungle",
+   "de": "Dschungel",
+   "es": "Jungla",
+   "it": "Jungle",
+   "pt": "Selva"
+  }
+ },
+ {
+  "id": 1663,
+  "name": "Base Set (Shadowless)",
+  "abbr": "BSS",
+  "released": "1999-01-09",
+  "supplemental": false,
+  "cards": 102
+ },
+ {
+  "id": 604,
+  "name": "Base Set",
+  "abbr": "BS",
+  "released": "1999-01-09",
+  "supplemental": false,
+  "cards": 102,
+  "names": {
+   "fr": "Set de Base",
+   "de": "Grundset",
+   "es": "Edición Básica",
+   "it": "Set Base",
+   "pt": "Coleção Básica"
+  }
+ }
+]

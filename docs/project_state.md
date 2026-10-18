@@ -179,3 +179,22 @@ deployed URL; desktop 1440 + mobile 390 screenshots clean, no overflow. Deploy t
    Exclusives*) shows MID $100,000.00. A sanity check (e.g. reject a mid far above the set's
    median) would stop one bogus field from becoming the headline price. Not caused by the
    2026-10-18 caching work; pre-existing.
+
+## Competitive landscape & positioning (2026-10-18)
+Research on the question "how does Carddex differentiate itself?" plus the French-card
+request (Caninos de Hisui). **Full detail: `app/docs/competitive-landscape-2026-10-18.md`.**
+Headlines:
+- FR card identity verified: `Caninos de Hisui` = Hisuian Growlithe = Hisui-Fukano, one
+  TCGdex id `swsh10-070` (Cardmarket 658659 / TCGplayer 272271), with per-language names
+  AND per-language card scans.
+- "Multilingual" is already table stakes (Tcggraph, TCG CollectWorld, Eyevo, Listrune);
+  the free French incumbent is **Pokecardex** — Carddex shipping French content risks
+  reading as a knockoff. Differentiation must be the free language-agnostic *identity*
+  layer, EUR+USD with provenance, and the open dataset/API — not "we have French too".
+- **Hard limit measured: TCGdex Cardmarket prices are per product, NOT per language**
+  (identical EUR for en/fr/de/it/es). The "French copy is cheaper than English" premium is
+  Cardmarket listing-level data we do not have. FR price coverage ~51% of printings.
+- Print languages in TCGdex: EN 23,770 / FR 22,155 / DE 20,483 / **NL 0**.
+  Crosswalk test: FR `thirdParty.tcgplayer` ids resolved into our 28,056-card dataset 78/78.
+- Open decision for boss: positioning (identity layer first?), and whether the open free
+  API/dataset becomes part of the public pitch.

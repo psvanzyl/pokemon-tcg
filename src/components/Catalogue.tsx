@@ -2,11 +2,23 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { LayoutGrid, Rows3, Search, SlidersHorizontal, X } from "lucide-react";
-import type { Card, SetInfo, SortKey, Stats } from "@/lib/types";
+import type { Card, CardLanguage, SetInfo, SortKey, Stats } from "@/lib/types";
+import { LANG_LABEL, LANG_SHORT } from "@/lib/types";
 import CardTile from "./CardTile";
 import FilterPanel, { countActive, EMPTY_FILTERS, type Filters } from "./FilterPanel";
 
 const PAGE = 60;
+
+/** One multilingual name-lookup hit, as returned by /api/lookup. */
+type AltHit = { tid: string; lang: CardLanguage; name: string; en: string | null };
+type AltMatch = {
+  query: string;
+  matches: AltHit[];
+  lang: CardLanguage | null;
+  name: string | null;
+  total: number;
+  truncated: boolean;
+};
 
 const SORTS: { key: SortKey; label: string }[] = [
   { key: "price-desc", label: "Price: high → low" },
@@ -106,6 +118,8 @@ export default function Catalogue() {
   const [visible, setVisible] = useState(PAGE);
   const [drawer, setDrawer] = useState(false);
   const [ready, setReady] = useState(false);
+  const [alt, setAlt] = useState<AltMatch | null>(null);
+  const [altBusy, setAltBusy] = useState(false);
 
   // ---- load data -------------------------------------------------------
   useEffect(() => {
@@ -283,9 +297,47 @@ export default function Catalogue() {
     };
   }, [cards, filters, setMap]);
 
+  const altByTid = useMemo(() => new Map((alt?.matches ?? []).map((m) => [m.tid, m])), [alt]);
+  const altCards = useMemo(
+    () => (cards ?? []).filter((c) => c.t && altByTid.has(c.t)),
+    [cards, altByTid],
+  );
+  const usingAlt = result.length === 0 && altCards.length > 0;
+
+  // English search runs entirely in the browser. When it comes up empty, ask the server
+  // whether the query matches a French, German, Spanish, Italian or Portuguese printed
+  // name — "Caninos de Hisui", "Dracaufeu", "Glurak" — and show those cards instead.
+  useEffect(() => {
+    const q = filters.q.trim();
+    if (!ready || result.length > 0 || q.length < 3) {
+      setAlt(null);
+      setAltBusy(false);
+      return;
+    }
+    const ctl = new AbortController();
+    let live = true;
+    setAltBusy(true);
+    const timer = setTimeout(() => {
+      fetch(`/api/lookup?q=${encodeURIComponent(q)}`, { signal: ctl.signal })
+        .then((r) => (r.ok ? r.json() : null))
+        .then((d: AltMatch | null) => {
+          if (live && d) setAlt(d);
+        })
+        .catch(() => {})
+        .finally(() => {
+          if (live) setAltBusy(false);
+        });
+    }, 250);
+    return () => {
+      live = false;
+      clearTimeout(timer);
+      ctl.abort();
+    };
+  }, [filters.q, result.length, ready]);
+
   useEffect(() => {
     setVisible(PAGE);
-  }, [filters, sort]);
+  }, [filters, sort, usingAlt]);
 
   const sentinel = useRef<HTMLDivElement | null>(null);
   useEffect(() => {
@@ -304,6 +356,7 @@ export default function Catalogue() {
   }, [result.length]);
 
   const shown = result.slice(0, visible);
+  const tiles = usingAlt ? altCards : shown;
   const activeCount = countActive(filters);
   const loading = !ready && !error;
 
@@ -315,7 +368,7 @@ export default function Catalogue() {
             <input
               value={raw}
               onChange={(e) => setRaw(e.target.value)}
-              placeholder="Search 28,000+ cards — name, set or card number (e.g. Charizard, 4/102)"
+              placeholder="Search 28,000+ cards in English, French, German, Spanish, Italian or Portuguese — e.g. Charizard, Dracaufeu, 4/102"
               className="w-full rounded-xl border border-line-strong bg-field py-2.5 pl-10 pr-9 text-[14px] outline-none transition placeholder:text-muted/60 focus:border-poke-red/70 focus:bg-field"
             />
             <Search className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-muted" />
@@ -454,41 +507,94 @@ export default function Catalogue() {
             </div>
           )}
 
-          {!loading && !error && result.length === 0 && (
+          {!loading && !error && result.length === 0 && !usingAlt && (
             <div className="rounded-xl border border-line bg-surface p-10 text-center">
-              <p className="text-[15px] text-fg">No cards match these filters.</p>
-              <p className="mt-1 text-[13px] text-muted">
-                Try a broader search, or reset the filters.
+              <p className="text-[15px] text-fg">
+                {altBusy
+                  ? "Nothing in English matched — checking the other five print languages…"
+                  : "No cards match these filters."}
               </p>
+              {!altBusy && (
+                <p className="mx-auto mt-1 max-w-[60ch] text-[13px] leading-relaxed text-muted">
+                  Try a broader search, or reset the filters. Search also covers the French,
+                  German, Spanish, Italian and Portuguese printed names — “Caninos de Hisui”,
+                  “Dracaufeu” and “Glurak” all find their card.
+                </p>
+              )}
+            </div>
+          )}
+
+          {usingAlt && (
+            <div className="mb-3 rounded-xl border border-poke-red/40 bg-poke-red/5 px-3 py-2.5 text-[13px] leading-relaxed text-fg">
+              Nothing in English matches{" "}
+              <span className="font-semibold">“{filters.q.trim()}”</span> — showing{" "}
+              {altCards.length.toLocaleString("en-US")} card
+              {altCards.length === 1 ? "" : "s"} matched by the{" "}
+              {alt?.lang ? LANG_LABEL[alt.lang] : "localised"} printed name
+              {alt?.name ? (
+                <>
+                  {" "}
+                  (closest: <span className="font-semibold">{alt.name}</span>)
+                </>
+              ) : null}
+              .{alt && alt.total > alt.matches.length ? ` ${alt.total.toLocaleString("en-US")} distinct cards match in total.` : ""}
             </div>
           )}
 
           {view === "grid" ? (
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
-              {shown.map((c) => (
-                <CardTile
-                  key={c.id}
-                  card={c}
-                  setName={setNames.get(c.set) ?? `Set ${c.set}`}
-                  view="grid"
-                />
-              ))}
+              {tiles.map((c) => {
+                const hit = altByTid.get(c.t ?? "");
+                return (
+                  <div key={c.id} className="flex min-w-0 flex-col gap-1">
+                    {usingAlt && hit && (
+                      <div
+                        className="truncate rounded-md border border-poke-red/40 bg-poke-red/10 px-2 py-0.5 text-[10px] text-fg"
+                        title={`${LANG_LABEL[hit.lang]} printed name${hit.en ? ` · English: ${hit.en}` : ""}`}
+                      >
+                        <span className="font-mono text-[10px] text-muted">
+                          {LANG_SHORT[hit.lang]}
+                        </span>{" "}
+                        {hit.name}
+                      </div>
+                    )}
+                    <CardTile card={c} setName={setNames.get(c.set) ?? `Set ${c.set}`} view="grid" />
+                  </div>
+                );
+              })}
             </div>
           ) : (
             <div className="space-y-2">
-              {shown.map((c) => (
-                <CardTile
-                  key={c.id}
-                  card={c}
-                  setName={setNames.get(c.set) ?? `Set ${c.set}`}
-                  view="list"
-                />
-              ))}
+              {tiles.map((c) => {
+                const hit = altByTid.get(c.t ?? "");
+                return (
+                  <div key={c.id} className="min-w-0">
+                    {usingAlt && hit && (
+                      <div
+                        className="mb-1 inline-block truncate rounded-md border border-poke-red/40 bg-poke-red/10 px-2 py-0.5 text-[10px] text-fg"
+                        title={`${LANG_LABEL[hit.lang]} printed name${hit.en ? ` · English: ${hit.en}` : ""}`}
+                      >
+                        <span className="font-mono text-[10px] text-muted">
+                          {LANG_SHORT[hit.lang]}
+                        </span>{" "}
+                        {hit.name}
+                      </div>
+                    )}
+                    <CardTile card={c} setName={setNames.get(c.set) ?? `Set ${c.set}`} view="list" />
+                  </div>
+                );
+              })}
             </div>
           )}
 
           <div ref={sentinel} className="h-10" />
-          {visible < result.length && (
+          {usingAlt && (
+            <p className="pb-2 text-center text-[11px] text-muted">
+              showing {altCards.length.toLocaleString("en-US")} matched card
+              {altCards.length === 1 ? "" : "s"} · English search covers the whole catalogue
+            </p>
+          )}
+          {!usingAlt && visible < result.length && (
             <div className="py-4 text-center">
               <button
                 type="button"

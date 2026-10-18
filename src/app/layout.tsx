@@ -14,16 +14,16 @@ const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"]
 // settings on the pages below.
 export const metadata: Metadata = {
   title: {
-    default: "Carddex — every Pokémon card, with prices",
+    default: "Carddex — every Pokémon card, in every language, with prices",
     template: "%s · Carddex",
   },
   description:
-    "Search, filter and sort the complete English Pokémon TCG single-card catalogue: 28,000+ cards with daily TCGplayer market prices.",
+    "The whole Pokémon TCG single-card catalogue with a language-independent identity: every card named in English, French, German, Spanish, Italian and Portuguese, with daily prices in USD (TCGplayer) and EUR (Cardmarket).",
   metadataBase: new URL("https://pokemon.laserraptorai.duckdns.org"),
   openGraph: {
-    title: "Carddex — every Pokémon card, with prices",
+    title: "Carddex — every Pokémon card, in every language, with prices",
     description:
-      "28,000+ Pokémon cards with daily market prices. Search, filter and sort the whole English catalogue.",
+      "28,000+ Pokémon cards, one identity per card, six printed names, USD and EUR prices from the marketplaces themselves.",
     type: "website",
   },
 };
@@ -77,7 +77,7 @@ export default function RootLayout({
                   <div className="font-medium text-fg/90">
                     {stats ? `${stats.cards.toLocaleString("en-US")} cards · ${stats.sets} sets` : "28,000+ cards"}
                   </div>
-                  <div>USD market prices, refreshed daily</div>
+                  <div>6 print languages · USD &amp; EUR prices, daily</div>
                 </div>
                 <ThemeToggle />
               </div>
@@ -87,12 +87,17 @@ export default function RootLayout({
           <footer className="border-t border-line/80 bg-surface/60">
             <div className="mx-auto flex w-full max-w-[1600px] flex-col gap-1.5 px-3 py-5 text-[11px] text-muted sm:flex-row sm:items-center sm:justify-between sm:px-5">
               <p>
-                Prices from TCGplayer via TCGCSV daily dumps · USD · not affiliated
-                with Nintendo, Creatures or The Pokémon Company.
+                Prices from TCGplayer (USD, via TCGCSV dumps) and Cardmarket (EUR, via
+                their public price guide) · card text and scans in six languages from
+                TCGdex (MIT) · not affiliated with Nintendo, Creatures or The Pokémon
+                Company.
               </p>
               <p className="flex gap-3">
                 <Link prefetch={false} href="/sets" className="hover:text-fg">
                   Sets
+                </Link>
+                <Link prefetch={false} href="/about#languages" className="hover:text-fg">
+                  Languages
                 </Link>
                 <Link prefetch={false} href="/about" className="hover:text-fg">
                   About &amp; method
