@@ -10,7 +10,13 @@ import FilterPanel, { countActive, EMPTY_FILTERS, type Filters } from "./FilterP
 const PAGE = 60;
 
 /** One multilingual name-lookup hit, as returned by /api/lookup. */
-type AltHit = { tid: string; lang: CardLanguage; name: string; en: string | null };
+type AltHit = {
+  tid: string;
+  lang: CardLanguage;
+  name: string;
+  en: string | null;
+  img?: string | null;
+};
 type AltMatch = {
   query: string;
   matches: AltHit[];
@@ -558,7 +564,11 @@ export default function Catalogue() {
                         {hit.name}
                       </div>
                     )}
-                    <CardTile card={c} setName={setNames.get(c.set) ?? `Set ${c.set}`} view="grid" />
+                    <CardTile
+                      card={hit?.img ? { ...c, img: hit.img } : c}
+                      setName={setNames.get(c.set) ?? `Set ${c.set}`}
+                      view="grid"
+                    />
                   </div>
                 );
               })}
@@ -580,7 +590,11 @@ export default function Catalogue() {
                         {hit.name}
                       </div>
                     )}
-                    <CardTile card={c} setName={setNames.get(c.set) ?? `Set ${c.set}`} view="list" />
+                    <CardTile
+                      card={hit?.img ? { ...c, img: hit.img } : c}
+                      setName={setNames.get(c.set) ?? `Set ${c.set}`}
+                      view="list"
+                    />
                   </div>
                 );
               })}

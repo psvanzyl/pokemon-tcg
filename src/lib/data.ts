@@ -146,6 +146,8 @@ export type LocalisedHit = {
   lang: CardLanguage;
   name: string;
   en: string | null;
+  /** Low-res scan of the card *as printed in that language*, or null if TCGdex has none. */
+  img: string | null;
 };
 
 export type LocalisedMatches = {
@@ -185,11 +187,14 @@ export function searchLocalised(query: string, limit = 120): LocalisedMatches {
   const matches: LocalisedHit[] = [];
   for (const row of ranked) {
     if (matches.some((m) => m.tid === row.tid)) continue;
+    const rec = content[row.tid];
+    const base = rec?.imgs?.[row.lang];
     matches.push({
       tid: row.tid,
       lang: row.lang,
       name: row.name,
-      en: content[row.tid]?.n?.en ?? null,
+      en: rec?.n?.en ?? null,
+      img: base ? `${base}/low.webp` : null,
     });
     if (matches.length >= limit) break;
   }
