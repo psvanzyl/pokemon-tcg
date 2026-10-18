@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import type { Card } from "@/lib/types";
-import { marketPrice, money } from "@/lib/format";
+import type { Card, CardLanguage } from "@/lib/types";
+import { money } from "@/lib/format";
 
 // Rarity chips: the light tone is the base, the dark tone sits behind `dark:`
 // so the coloured label stays legible on a white card and on a near-black one.
@@ -38,17 +38,24 @@ export default function CardTile({
   card,
   setName,
   view,
+  lang,
 }: {
   card: Card;
   setName: string;
   view: "grid" | "list";
+  /**
+   * Printing language of the scan we were handed. When a tile carries, say, a German
+   * scan, the click has to land on the German page — otherwise the visitor finds the
+   * card under its German name and is dropped back into English.
+   */
+  lang?: CardLanguage | null;
 }) {
   const big = card.img.replace("_200w.jpg", "_400w.jpg");
 
   if (view === "list") {
     return (
       <Link prefetch={false}
-        href={`/kaart/${card.id}`}
+        href={`/kaart/${card.id}${lang ? `?lang=${lang}` : ""}`}
         className="group flex items-center gap-4 rounded-xl border border-line bg-panel p-3 shadow-sm transition hover:border-poke-red/60 hover:bg-raised"
       >
         <img
@@ -81,7 +88,7 @@ export default function CardTile({
         </div>
         <div className="flex-none text-right">
           <div className="text-base font-semibold tabular-nums text-poke-gold">
-            {money(marketPrice(card))}
+            {money(card.px)}
           </div>
           <div className="text-[10px] uppercase tracking-wide text-muted">market</div>
         </div>
@@ -91,7 +98,7 @@ export default function CardTile({
 
   return (
     <Link prefetch={false}
-      href={`/kaart/${card.id}`}
+      href={`/kaart/${card.id}${lang ? `?lang=${lang}` : ""}`}
       className="group flex flex-col overflow-hidden rounded-xl border border-line bg-panel shadow-sm transition hover:-translate-y-0.5 hover:border-poke-red/60 hover:shadow-[0_10px_30px_-12px_rgba(238,59,59,0.45)]"
     >
       <div className="relative aspect-[245/342] w-full overflow-hidden bg-surface">
@@ -102,9 +109,9 @@ export default function CardTile({
           loading="lazy"
           className="h-full w-full object-contain transition duration-300 group-hover:scale-[1.03]"
         />
-        {marketPrice(card) != null && (
+        {card.px != null && (
           <span className="absolute right-1.5 top-1.5 rounded-md bg-canvas/85 px-1.5 py-0.5 text-[11px] font-semibold tabular-nums text-poke-gold backdrop-blur">
-            {money(marketPrice(card))}
+            {money(card.px)}
           </span>
         )}
       </div>

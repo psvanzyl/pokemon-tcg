@@ -567,6 +567,7 @@ export default function Catalogue() {
                     <CardTile
                       card={hit?.img ? { ...c, img: hit.img } : c}
                       setName={setNames.get(c.set) ?? `Set ${c.set}`}
+                      lang={hit?.lang ?? null}
                       view="grid"
                     />
                   </div>
@@ -593,6 +594,7 @@ export default function Catalogue() {
                     <CardTile
                       card={hit?.img ? { ...c, img: hit.img } : c}
                       setName={setNames.get(c.set) ?? `Set ${c.set}`}
+                      lang={hit?.lang ?? null}
                       view="list"
                     />
                   </div>
