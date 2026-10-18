@@ -174,11 +174,19 @@ deployed URL; desktop 1440 + mobile 390 screenshots clean, no overflow. Deploy t
    rugby-cards on 3101, both launched by hand. Production is Coolify — these are only for
    local QA, so they are safe to kill when the ports are needed. **Killed 2026-10-18**
    (a stale preview silently serves the pre-fix build, which is how a QA pass can lie).
-6. Data-quality guard worth considering: when TCGplayer reports no market price the app prints
-   its `mid` fallback, which can be nonsense — `Eevee - 143/191 (GYM)` (set *Southeast Asia
-   Exclusives*) shows MID $100,000.00. A sanity check (e.g. reject a mid far above the set's
-   median) would stop one bogus field from becoming the headline price. Not caused by the
-   2026-10-18 caching work; pre-existing.
+6. **FIXED 2026-10-18 (commit `a419f63`): never price a card off an estimate.** `normalize.py`
+   fell back to TCGplayer's `mid` whenever a print had no market price, so **126 cards** shipped
+   a headline price that no market price justified — worst case `Eevee - 143/191 (GYM)` at
+   $100,000.00 (a mid; TCGplayer reports no market price for it at all). Now `px` is the cheapest
+   **market** price across the prints, or null, and an unpriced card says so everywhere: card-page
+   headline ("Market price (USD) / Not reported" plus a note), metadata description, the
+   schema.org offer (omitted), tiles and set rollups. `marketPrice()` in `lib/format.ts` derives
+   the figure from the print variants, so the UI cannot be lied to by a stale published `px`
+   again. The 126 ids live in `data/fabricated_price_ids.json` and their 252 fabricated points
+   were stripped from `data/history.jsonl` (both days that carried them).
+   Low/Mid/High stay in `PriceTable` as TCGplayer's own labelled, greyed estimates under the new
+   footnote — they are never the card's value, and 507 cards now sit in the explicit
+   "no market price" bucket (`stats.json` → `unpriced`).
 
 ## Competitive landscape & positioning (2026-10-18)
 Research on the question "how does Carddex differentiate itself?" plus the French-card
