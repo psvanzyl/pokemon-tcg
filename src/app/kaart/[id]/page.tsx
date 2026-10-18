@@ -76,7 +76,7 @@ export async function generateMetadata({
         : `${card.n} — ${card.num}`,
     description: `${card.n} from ${set?.name ?? "the Pokémon TCG"}${
       card.rar ? ` (${card.rar})` : ""
-    }${altName}, printed in ${locals.length} language${locals.length === 1 ? "" : "s"}.${price != null ? ` USD ${money(price)}` : " No market price reported."}${euro != null ? ` · EUR ${eur(euro)}` : ""}.`,
+    }${altName}, printed in ${locals.length} language${locals.length === 1 ? "" : "s"}.${price != null ? ` USD ${money(price)}` : " No market price reported"}${euro != null ? ` · EUR ${eur(euro)}` : ""}.`,
     alternates: {
       canonical: `/kaart/${card.id}`,
       languages: Object.fromEntries(
