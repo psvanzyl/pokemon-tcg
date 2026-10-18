@@ -198,3 +198,32 @@ Headlines:
   Crosswalk test: FR `thirdParty.tcgplayer` ids resolved into our 28,056-card dataset 78/78.
 - Open decision for boss: positioning (identity layer first?), and whether the open free
   API/dataset becomes part of the public pitch.
+
+## 2026-10-18 — visual QA pass + catalogue fixes (commit e5db2a0)
+
+Deployed live after the multilingual layer:
+
+    https://pokemon.laserraptorai.duckdns.org   (Coolify uuid dpjl3npkr7pxq4xkcwu78tio)
+
+### QA'd on the live site (screenshots, desktop 1400px + mobile 390x844)
+
+| surface | result |
+|---|---|
+| `/kaart/272271?lang=fr` desktop + mobile | French scan (assets.tcgdex.net/fr/…/low|high.webp), French H1 "Caninos de Hisui", localised breadcrumb "Astres Radieux", French attack/effect text, PRINTED IN row with FR active, USD + EUR tables with the product-level provenance line. No overflow at 390px. |
+| `/kaart/272271` (EN) | English scan, "Also printed as FR/DE/ES/IT/PT …", USD (Normal $0.20 / Reverse Holofoil $0.33) + EUR (Non-holo €0.05 / Holo €0.21), price-history chart renders, snapshot 2026-10-18. |
+| catalogue fallback, FR query | "Nothing in English matches “Dracaufeu” — showing 111 cards matched by the Français printed name (closest: Dracaufeu)" + per-tile FR chip. English typing still finds nothing/fallback only on empty result, ≥3 chars. |
+| home hero | "The card, not the English card" (was still "The complete English Pokémon card index"). |
+| `/about` | worked example box (six printed names), coverage 23,071/28,056 = 82.2% with the remainder explained, data provenance (TCGdex MIT, TCGplayer via TCGCSV, Cardmarket public downloads). |
+
+### Two defects found by QA, fixed, redeployed in e5db2a0
+
+1. **Hero contradicted the product.** `src/app/page.tsx` still sold "the complete *English* Pokémon card index" while the header, footer and the entire multilingual layer said otherwise. Rewritten to the approved positioning and naming the six print languages.
+2. **Fallback hits wore a French badge over an English scan.** `/api/lookup` returned only names, so a tile badged "FR Caninos de Hisui" rendered the TCGplayer English art — the exact confusion the identity layer exists to remove. `searchLocalised()` now returns `img` (`imgs[lang]` base from `content.json.gz` + `/low.webp`) and `Catalogue.tsx` uses it for alt tiles in both grid and list views.
+
+Both verified live afterwards; the tiles now show `assets.tcgdex.net/fr/…`.
+
+### Housekeeping / warnings
+
+- **The working tree is shared and dirty.** An **untracked accounts/collection feature** lives in `app/src/` (`app/login`, `app/account`, `app/api/{auth,collection,cards/search}`, `lib/{auth,accounts}.ts`, `AccountClient/AccountMenu/CollectionAddButton/GoogleSignInButton/LoginForm.tsx` — ~600+ lines). It is NOT in GitHub `main` (hence live `/login` and `/account` return 404) and it was deliberately **excluded** from this deploy. A `next-server` dev process from this same tree is listening on **:3009**. Never `git add -A` in this repo — commit named files only.
+- Prices remain **product-level**: both marketplaces publish one figure per product, identical across the six print languages. The UI states this rather than inventing a split.
+- Cold catalogue load fetches ~28k cards before it can decide to fall back; a FR query typed during that window shows the plain "No cards match" empty state until the payload lands. Not a bug, but a latency edge worth remembering during QA.
