@@ -184,9 +184,13 @@ deployed URL; desktop 1440 + mobile 390 screenshots clean, no overflow. Deploy t
    the figure from the print variants, so the UI cannot be lied to by a stale published `px`
    again. The 126 ids live in `data/fabricated_price_ids.json` and their 252 fabricated points
    were stripped from `data/history.jsonl` (both days that carried them).
-   Low/Mid/High stay in `PriceTable` as TCGplayer's own labelled, greyed estimates under the new
-   footnote — they are never the card's value, and 507 cards now sit in the explicit
-   "no market price" bucket (`stats.json` → `unpriced`).
+   Low/Mid/High stay in `PriceTable` as TCGplayer's own labelled, greyed estimates, but only for a
+   print that also carries a market price; where TCGplayer reports no price the cells are blank —
+   the Eevee's three all read $100,000.00, an estimate sitting on the page looking like a price.
+   **Verified live:** 507 cards in the explicit "no market price" bucket (`stats.json` →
+   `unpriced`) and the dearest card in the whole catalogue is a real one (`Mewtwo Star`, $9,200.00).
+7. Follow-up when the account feature lands: `api/cards/search/route.ts` ranks hits by `b.px - a.px`,
+   which NaN-orders the 507 unpriced cards — make the comparison null-safe (they sort last).
 
 ## Competitive landscape & positioning (2026-10-18)
 Research on the question "how does Carddex differentiate itself?" plus the French-card
