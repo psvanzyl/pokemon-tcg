@@ -1,3 +1,17 @@
+/**
+ * The cheapest TCGplayer MARKET price across a card's prints, or null when it has none.
+ *
+ * Deliberately not px: px is what the pipeline publishes and it has to agree with this, but mid, low
+ * and high are TCGplayer estimates that are sometimes absurd (a promo Eevee carries a mid of
+ * $100,000). A card with no market price is worth nothing here, and the UI shows it as unpriced
+ * rather than pricing it off an estimate. Mirrors ops/normalize.py.
+ */
+export function marketPrice(card: { pv: { mkt: number | null }[] }): number | null {
+  let best: number | null = null;
+  for (const v of card.pv) if (v.mkt != null && (best === null || v.mkt < best)) best = v.mkt;
+  return best;
+}
+
 export function money(v: number | null | undefined, opts?: { compact?: boolean }) {
   if (v == null || Number.isNaN(v)) return "—";
   if (opts?.compact && v >= 10000) return `$${(v / 1000).toFixed(0)}k`;

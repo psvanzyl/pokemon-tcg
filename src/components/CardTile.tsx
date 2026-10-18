@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import type { Card } from "@/lib/types";
-import { money } from "@/lib/format";
+import { marketPrice, money } from "@/lib/format";
 
 // Rarity chips: the light tone is the base, the dark tone sits behind `dark:`
 // so the coloured label stays legible on a white card and on a near-black one.
@@ -81,7 +81,7 @@ export default function CardTile({
         </div>
         <div className="flex-none text-right">
           <div className="text-base font-semibold tabular-nums text-poke-gold">
-            {money(card.px)}
+            {money(marketPrice(card))}
           </div>
           <div className="text-[10px] uppercase tracking-wide text-muted">market</div>
         </div>
@@ -102,9 +102,9 @@ export default function CardTile({
           loading="lazy"
           className="h-full w-full object-contain transition duration-300 group-hover:scale-[1.03]"
         />
-        {card.px != null && (
+        {marketPrice(card) != null && (
           <span className="absolute right-1.5 top-1.5 rounded-md bg-canvas/85 px-1.5 py-0.5 text-[11px] font-semibold tabular-nums text-poke-gold backdrop-blur">
-            {money(card.px)}
+            {money(marketPrice(card))}
           </span>
         )}
       </div>

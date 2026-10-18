@@ -8,7 +8,7 @@ import EurPricesTable from "@/components/EurPricesTable";
 import PriceChart from "@/components/PriceChart";
 import CardTile from "@/components/CardTile";
 import { LanguageChips, LocalisedCardText, LocalisedNames, availableLanguages } from "@/components/Languages";
-import { eur, money } from "@/lib/format";
+import { eur, marketPrice, money } from "@/lib/format";
 import { LANGS, LANG_LABEL, LANG_SHORT, type CardContent, type CardLanguage } from "@/lib/types";
 
 export const revalidate = 600;
@@ -68,6 +68,7 @@ export async function generateMetadata({
   const locals = availableLanguages(content);
   const euro = headlineEur(content);
   const altName = localName && lang !== "en" ? ` (\u201c${localName}\u201d)` : "";
+  const price = marketPrice(card);
   return {
     title:
       localName && lang !== "en"
@@ -75,9 +76,7 @@ export async function generateMetadata({
         : `${card.n} — ${card.num}`,
     description: `${card.n} from ${set?.name ?? "the Pokémon TCG"}${
       card.rar ? ` (${card.rar})` : ""
-    }${altName}, printed in ${locals.length} language${locals.length === 1 ? "" : "s"}. USD ${
-      money(card.px)
-    }${euro != null ? ` · EUR ${eur(euro)}` : ""}.`,
+    }${altName}, printed in ${locals.length} language${locals.length === 1 ? "" : "s"}.${price != null ? ` USD ${money(price)}` : " No market price reported."}${euro != null ? ` · EUR ${eur(euro)}` : ""}.`,
     alternates: {
       canonical: `/kaart/${card.id}`,
       languages: Object.fromEntries(
@@ -130,12 +129,11 @@ export default async function CardPage({
     : `${card.img} 1x, ${big} 2x`;
   const euro = headlineEur(content);
 
-  // normalize.py takes the cheapest print-variant price and falls back to the
-  // mid price when TCGplayer reports no market price for any variant. Label the
-  // headline for the field it actually came from instead of always saying "market".
-  const headline =
-    card.pv.find((v) => (v.mkt ?? v.mid ?? v.low ?? v.high) === card.px) ?? card.pv[0];
-  const headlineIsMarket = headline?.mkt != null;
+  // The headline is the cheapest MARKET price across this card's prints, and when TCGplayer reports
+  // none the card is shown unpriced. Mid, low and high are TCGplayer's own estimates and for some
+  // cards they are wildly off — a promo Eevee carries a mid of $100,000 — so they are never used as
+  // the card's value.
+  const headlinePrice = marketPrice(card);
 
   const meta: [string, string | null][] = [
     ["Set", localSetName],
@@ -242,11 +240,15 @@ export default async function CardPage({
           <div className="mt-4 flex flex-wrap items-end gap-x-6 gap-y-2 rounded-xl border border-line bg-surface p-4">
             <div>
               <div className="text-[11px] uppercase tracking-wider text-muted">
-                {headlineIsMarket ? "Market price (USD)" : "Mid price (USD)"}
+                Market price (USD)
               </div>
-              <div className="text-[28px] font-semibold tabular-nums text-poke-gold">
-                {money(card.px)}
-              </div>
+              {headlinePrice != null ? (
+                <div className="text-[28px] font-semibold tabular-nums text-poke-gold">
+                  {money(headlinePrice)}
+                </div>
+              ) : (
+                <div className="text-[22px] font-semibold text-muted">Not reported</div>
+              )}
             </div>
             {euro != null && (
               <div>
@@ -258,12 +260,14 @@ export default async function CardPage({
                 </div>
               </div>
             )}
-            {!headlineIsMarket && card.px != null && (
+            {headlinePrice == null && (
               <div className="text-[12px] text-muted">
-                TCGplayer reports no market price for this card — this is its mid price.
+                TCGplayer reports no market price for this card, and its low, mid and high figures
+                are estimates of its own, so this card is left unpriced here rather than valued off
+                one of them.
               </div>
             )}
-            {card.pv.length > 1 && (
+            {headlinePrice != null && card.pv.length > 1 && (
               <div className="text-[12px] text-muted">
                 cheapest of {card.pv.length} print variants — see the tables below
               </div>
@@ -279,6 +283,10 @@ export default async function CardPage({
             <h2 className="mb-2 text-[13px] font-semibold uppercase tracking-wider text-muted">
               Prices by print (USD, TCGplayer)
             </h2>
+            <p className="mb-2 text-[11px] text-muted">
+              Market price is the only figure this site values a card at; low, mid and high are
+              TCGplayer&rsquo;s own estimates and for some promos they are wildly off.
+            </p>
             <PriceTable variants={card.pv} />
           </section>
 
@@ -382,10 +390,10 @@ export default async function CardPage({
             category: "Trading Card",
             brand: { "@type": "Brand", name: "Pokémon TCG" },
             offers: [
-              card.px
+              headlinePrice
                 ? {
                     "@type": "Offer",
-                    price: card.px,
+                    price: headlinePrice,
                     priceCurrency: "USD",
                     availability: "https://schema.org/InStock",
                   }

@@ -83,11 +83,15 @@ def main():
                 if any(v[k] is not None for k in ("low", "mid", "high", "mkt")):
                     variants.append(v)
             variants.sort(key=lambda v: (v["mkt"] is None, v["mkt"] or 0))
+            # Market price or nothing. TCGplayer's mid/low/high are estimates of its own and for
+            # some cards they are wildly off (a promo Eevee carries a mid of $100,000), so using one
+            # of them as the card's price invents a value. A card with no market price ships
+            # unpriced and the UI says so.
             cheapest = None
             for v in variants:
-                cand = v["mkt"] if v["mkt"] is not None else v["mid"]
-                if cand is not None:
-                    cheapest = cand if cheapest is None else min(cheapest, cand)
+                if v["mkt"] is None:
+                    continue
+                cheapest = v["mkt"] if cheapest is None else min(cheapest, v["mkt"])
             card = {
                 "id": pid,
                 "n": clean(p.get("name")) or p["name"],

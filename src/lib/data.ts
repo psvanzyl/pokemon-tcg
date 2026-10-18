@@ -3,6 +3,7 @@ import path from "node:path";
 import zlib from "node:zlib";
 import type { Card, CardContent, CardLanguage, SetInfo, Stats } from "./types";
 import { LANGS } from "./types";
+import { marketPrice } from "./format";
 
 /**
  * Data resolution order:
@@ -89,8 +90,9 @@ export function getHistory(): History | null {
 export function setValues(): Map<number, number> {
   const out = new Map<number, number>();
   for (const c of getCards()) {
-    if (c.px == null) continue;
-    out.set(c.set, (out.get(c.set) ?? 0) + c.px);
+    const px = marketPrice(c);
+    if (px == null) continue;
+    out.set(c.set, (out.get(c.set) ?? 0) + px);
   }
   return out;
 }
