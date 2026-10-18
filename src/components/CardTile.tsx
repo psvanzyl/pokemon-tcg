@@ -47,7 +47,7 @@ export default function CardTile({
 
   if (view === "list") {
     return (
-      <Link
+      <Link prefetch={false}
         href={`/kaart/${card.id}`}
         className="group flex items-center gap-4 rounded-xl border border-line bg-panel p-3 shadow-sm transition hover:border-poke-red/60 hover:bg-raised"
       >
@@ -90,7 +90,7 @@ export default function CardTile({
   }
 
   return (
-    <Link
+    <Link prefetch={false}
       href={`/kaart/${card.id}`}
       className="group flex flex-col overflow-hidden rounded-xl border border-line bg-panel shadow-sm transition hover:-translate-y-0.5 hover:border-poke-red/60 hover:shadow-[0_10px_30px_-12px_rgba(238,59,59,0.45)]"
     >

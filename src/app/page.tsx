@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Catalogue from "@/components/Catalogue";
 import { getStats } from "@/lib/data";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 600;
 
 export const metadata: Metadata = {
   title: "Every Pokémon card, with prices",

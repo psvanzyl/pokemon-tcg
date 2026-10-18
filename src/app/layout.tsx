@@ -9,8 +9,9 @@ import "./globals.css";
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
-export const dynamic = "force-dynamic";
-
+// No route segment config here on purpose: `export const dynamic = "force-dynamic"` in a layout
+// forces every route in the subtree to re-render per request, silently defeating the revalidate
+// settings on the pages below.
 export const metadata: Metadata = {
   title: {
     default: "Carddex — every Pokémon card, with prices",
@@ -45,26 +46,26 @@ export default function RootLayout({
         <div className="flex min-h-screen flex-col">
           <header className="sticky top-0 z-40 border-b border-line/80 bg-canvas/85 backdrop-blur">
             <div className="mx-auto flex h-14 w-full max-w-[1600px] items-center gap-3 px-3 sm:px-5">
-              <Link href="/" className="flex items-center gap-2.5" aria-label="Carddex home">
+              <Link prefetch={false} href="/" className="flex items-center gap-2.5" aria-label="Carddex home">
                 <PokeBall className="h-8 w-8 flex-none drop-shadow-sm" />
                 <span className="text-[15px] font-semibold tracking-tight">
                   Card<span className="text-poke-red">dex</span>
                 </span>
               </Link>
               <nav className="ml-2 hidden items-center gap-1 text-sm text-muted sm:flex">
-                <Link
+                <Link prefetch={false}
                   href="/"
                   className="rounded-md px-2.5 py-1.5 transition hover:bg-raised hover:text-fg"
                 >
                   Catalogue
                 </Link>
-                <Link
+                <Link prefetch={false}
                   href="/sets"
                   className="rounded-md px-2.5 py-1.5 transition hover:bg-raised hover:text-fg"
                 >
                   Sets
                 </Link>
-                <Link
+                <Link prefetch={false}
                   href="/about"
                   className="rounded-md px-2.5 py-1.5 transition hover:bg-raised hover:text-fg"
                 >
@@ -90,10 +91,10 @@ export default function RootLayout({
                 with Nintendo, Creatures or The Pokémon Company.
               </p>
               <p className="flex gap-3">
-                <Link href="/sets" className="hover:text-fg">
+                <Link prefetch={false} href="/sets" className="hover:text-fg">
                   Sets
                 </Link>
-                <Link href="/about" className="hover:text-fg">
+                <Link prefetch={false} href="/about" className="hover:text-fg">
                   About &amp; method
                 </Link>
               </p>

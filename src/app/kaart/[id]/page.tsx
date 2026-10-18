@@ -8,7 +8,19 @@ import PriceChart from "@/components/PriceChart";
 import CardTile from "@/components/CardTile";
 import { money } from "@/lib/format";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 600;
+
+// Declaring generateStaticParams is what makes a dynamic segment cache-eligible in Next 16: with
+// it the first request renders (x-nextjs-cache: MISS) and every later request is a HIT with
+// s-maxage=600, kept in .next/server/route-cache across restarts. Only a handful of ids are
+// prerendered - the point is the mode, not the list. All 28,056 cards then cache on demand
+// instead of shipping tens of thousands of HTML files (on the sibling app, prerendering 200 of
+// 1,928 pages cost 179 MB of HTML per build). dynamicParams stays true, so an unknown id still
+// renders on first request and 404s through notFound().
+export function generateStaticParams() {
+  return getCards().slice(0, 10).map((c) => ({ id: String(c.id) }));
+}
+
 
 function numKey(num: string) {
   const m = num.match(/\d+/);
@@ -76,11 +88,11 @@ export default async function CardPage({
   return (
     <div className="mx-auto w-full max-w-[1200px] px-3 py-5 sm:px-5">
       <nav className="mb-4 flex flex-wrap items-center gap-1.5 text-[12px] text-muted">
-        <Link href="/" className="hover:text-fg">
+        <Link prefetch={false} href="/" className="hover:text-fg">
           Catalogue
         </Link>
         <span>/</span>
-        <Link href={`/?sets=${card.set}`} className="hover:text-fg">
+        <Link prefetch={false} href={`/?sets=${card.set}`} className="hover:text-fg">
           {set?.name ?? `Set ${card.set}`}
         </Link>
         <span>/</span>

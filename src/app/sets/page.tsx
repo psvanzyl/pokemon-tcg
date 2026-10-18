@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { getSets, getStats, setValues } from "@/lib/data";
 import { moneyShort } from "@/lib/format";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 600;
 
 export const metadata: Metadata = {
   title: "All sets",
@@ -67,7 +67,7 @@ export default function SetsPage() {
               return (
                 <tr key={s.id} className="border-t border-line/70 hover:bg-surface">
                   <td className="px-3 py-2">
-                    <Link href={`/?sets=${s.id}`} className="text-fg hover:text-poke-red">
+                    <Link prefetch={false} href={`/?sets=${s.id}`} className="text-fg hover:text-poke-red">
                       {s.name}
                     </Link>
                     {s.supplemental && (
