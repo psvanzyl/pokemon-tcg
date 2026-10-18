@@ -440,6 +440,14 @@ export default function Catalogue() {
           <span className="text-fg">
             {loading || cards === null ? (
               <span className="text-muted">Loading the catalogue…</span>
+            ) : usingAlt ? (
+              <>
+                <strong data-testid="result-count" className="tabular-nums">
+                  {altCards.length.toLocaleString("en-US")}
+                </strong>{" "}
+                {altCards.length === 1 ? "card" : "cards"} matched by the{" "}
+                {alt?.lang ? LANG_LABEL[alt.lang] : "localised"} name
+              </>
             ) : (
               <>
                 <strong data-testid="result-count" className="tabular-nums">
@@ -451,8 +459,17 @@ export default function Catalogue() {
           </span>
           {stats && (
             <span>
-              of {stats.cards.toLocaleString("en-US")} · snapshot {stats.snapshot} ·{" "}
-              {stats.sets} sets
+              {usingAlt ? (
+                <>
+                  {stats.cards.toLocaleString("en-US")} cards in the English index · snapshot{" "}
+                  {stats.snapshot} · {stats.sets} sets
+                </>
+              ) : (
+                <>
+                  of {stats.cards.toLocaleString("en-US")} · snapshot {stats.snapshot} ·{" "}
+                  {stats.sets} sets
+                </>
+              )}
             </span>
           )}
           {activeCount > 0 && (
