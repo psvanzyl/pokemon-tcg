@@ -7,6 +7,7 @@ import PriceTable from "@/components/PriceTable";
 import EurPricesTable from "@/components/EurPricesTable";
 import PriceChart from "@/components/PriceChart";
 import CardTile from "@/components/CardTile";
+import CollectionAddButton from "@/components/CollectionAddButton";
 import { LanguageChips, LocalisedCardText, LocalisedNames, availableLanguages } from "@/components/Languages";
 import { eur, marketPrice, money } from "@/lib/format";
 import { LANGS, LANG_LABEL, LANG_SHORT, type CardContent, type CardLanguage } from "@/lib/types";
@@ -277,6 +278,13 @@ export default async function CardPage({
                 snapshot {stats.snapshot}
               </div>
             )}
+          </div>
+
+          <div className="mt-4">
+            <CollectionAddButton
+              cardId={card.id}
+              variants={card.pv.map((v) => ({ v: v.v, mkt: v.mkt }))}
+            />
           </div>
 
           <section className="mt-5">

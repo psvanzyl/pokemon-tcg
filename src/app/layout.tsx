@@ -4,6 +4,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { getStats } from "@/lib/data";
 import PokeBall from "@/components/PokeBall";
 import ThemeToggle from "@/components/ThemeToggle";
+import AccountMenu from "@/components/AccountMenu";
 import "./globals.css";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
@@ -79,6 +80,7 @@ export default function RootLayout({
                   </div>
                   <div>6 print languages · USD &amp; EUR prices, daily</div>
                 </div>
+                <AccountMenu />
                 <ThemeToggle />
               </div>
             </div>
@@ -95,6 +97,9 @@ export default function RootLayout({
               <p className="flex gap-3">
                 <Link prefetch={false} href="/sets" className="hover:text-fg">
                   Sets
+                </Link>
+                <Link prefetch={false} href="/account" className="hover:text-fg">
+                  My collection
                 </Link>
                 <Link prefetch={false} href="/about#languages" className="hover:text-fg">
                   Languages
