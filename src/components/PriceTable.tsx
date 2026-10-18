@@ -28,9 +28,19 @@ export default function PriceTable({ variants }: { variants: PriceVariant[] }) {
               <td className="px-3 py-2 text-right font-semibold tabular-nums text-poke-gold">
                 {money(v.mkt)}
               </td>
-              <td className="px-3 py-2 text-right tabular-nums text-muted">{money(v.low)}</td>
-              <td className="px-3 py-2 text-right tabular-nums text-muted">{money(v.mid)}</td>
-              <td className="px-3 py-2 text-right tabular-nums text-muted">{money(v.high)}</td>
+              {/* Low/mid/high are TCGplayer's own estimates and only mean anything alongside a
+                  market price it actually reports. For a print it has no market price for they are
+                  unsourced — a promo Eevee carries $100,000 in all three — so they stay blank here
+                  rather than sitting on the page looking like a price. */}
+              <td className="px-3 py-2 text-right tabular-nums text-muted">
+                {money(v.mkt == null ? null : v.low)}
+              </td>
+              <td className="px-3 py-2 text-right tabular-nums text-muted">
+                {money(v.mkt == null ? null : v.mid)}
+              </td>
+              <td className="px-3 py-2 text-right tabular-nums text-muted">
+                {money(v.mkt == null ? null : v.high)}
+              </td>
             </tr>
           ))}
         </tbody>

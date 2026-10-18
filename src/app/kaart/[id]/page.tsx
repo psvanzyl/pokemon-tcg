@@ -262,9 +262,9 @@ export default async function CardPage({
             )}
             {headlinePrice == null && (
               <div className="text-[12px] text-muted">
-                TCGplayer reports no market price for this card, and its low, mid and high figures
-                are estimates of its own, so this card is left unpriced here rather than valued off
-                one of them.
+                TCGplayer reports no market price for this card. Its low, mid and high figures are
+                estimates rather than prices, so this card is left unpriced here rather than valued
+                off one of them.
               </div>
             )}
             {headlinePrice != null && card.pv.length > 1 && (
