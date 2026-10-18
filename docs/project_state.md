@@ -239,3 +239,59 @@ Both verified live afterwards; the tiles now show `assets.tcgdex.net/fr/…`.
 - **The working tree is shared and dirty.** An **untracked accounts/collection feature** lives in `app/src/` (`app/login`, `app/account`, `app/api/{auth,collection,cards/search}`, `lib/{auth,accounts}.ts`, `AccountClient/AccountMenu/CollectionAddButton/GoogleSignInButton/LoginForm.tsx` — ~600+ lines). It is NOT in GitHub `main` (hence live `/login` and `/account` return 404) and it was deliberately **excluded** from this deploy. A `next-server` dev process from this same tree is listening on **:3009**. Never `git add -A` in this repo — commit named files only.
 - Prices remain **product-level**: both marketplaces publish one figure per product, identical across the six print languages. The UI states this rather than inventing a split.
 - Cold catalogue load fetches ~28k cards before it can decide to fall back; a FR query typed during that window shows the plain "No cards match" empty state until the payload lands. Not a bug, but a latency edge worth remembering during QA.
+
+---
+
+## 2026-10-18 (later) — DE/ES/IT/PT confirmed in the DB; localisation reaches the UI
+
+**Question answered:** are German/Spanish/Italian cards in the DB? **Yes** — they went in with the
+multilingual layer (FR/DE/ES/IT/PT names, attack names, effect text, per-language scans), not just
+French. Measured against the 23,071 products that carry a card identity:
+
+| lang | printed name | attack text | effect text |
+|------|--------------|-------------|-------------|
+| en | 23,071 (100%) | 19,186 (83.2%) | 15,186 |
+| fr | 21,809 (94.5%) | 18,059 (78.3%) | 14,200 |
+| de | 21,537 (93.4%) | 17,948 (77.8%) | 14,137 |
+| es | 15,482 (67.1%) | 11,779 (51.1%) | 8,886 |
+| it | 15,732 (68.2%) | 11,961 (51.8%) | 8,987 |
+| pt | 15,500 (67.2%) | 11,791 (51.1%) | 8,895 |
+
+The ES/IT/PT gap is **TCGdex's own incompleteness** (it has no name at all for ~6,600-6,700 cards in
+each of those languages, and 1,390 in German), not a merge failure. Where the name is missing the site
+degrades correctly: `resolveLang()` falls back to English and the chip row offers only the languages
+that page can actually serve (verified: product 42386 "Abra" + `?lang=es` → English page, no dead ES chip).
+
+**Shipped this pass (two commits, deployed and QA'd live):**
+
+1. `7ebf517` — `CardTile` gains `lang`, so a tile handed a localised scan links to
+   `/kaart/<id>?lang=<lang>`. Before this a German query found the card and then dropped the visitor
+   into English — the lookup's whole point undone at the click.
+2. `7ebf517` — `/sets?lang=<lg>`: server-rendered language chips (EN/FR/DE/ES/IT/PT), localised set
+   name as the primary column with the English name underneath, and the honest coverage count.
+   Set-name coverage from `sets.json`: **de 146 / fr 154 / es 119 / it 155 / pt 104 of 213**.
+   Set ids, dates, card counts and values stay the English catalogue's; only the name column moves.
+   Invalid `?lang=` falls back to English (HTTP 200, no breakage).
+3. `06e0acc` — the catalogue counter said "0 cards of 28,056" directly above four matched localised
+   tiles (it was reporting the English index while the grid showed the lookup's hits). Now
+   "N cards matched by the <language> name — 28,056 cards in the English index".
+
+**Known rough edge (not fixed, deliberate):** in localised-fallback mode the left filter panel's
+facet counts render as 0 (they are computed from the empty English result) and toggling a filter does
+not narrow the localised results. Either hide the panel in that mode or compute facets from the
+matched set — needs a decision, it is not a data bug.
+
+**Shared-tree hazard — read before touching this project's source.**
+The CT141 tree at `192.168.178.20:/root/projects/pokemon-tcg/app` is **edited by another party**
+(untracked accounts/collection feature ~600 lines: `src/app/login`, `src/app/account`,
+`src/app/api/{auth,collection,cards/search}`, `src/lib/{auth,accounts}.ts`, 5 components; plus a
+`next start -p 3009` server from the same tree; `/login` and `/account` are 404 live because none of
+it is in `main`). Rules that follow:
+- **Sync per file** (`scp src/<the one file you changed>`), never `tar czf src | tar xzf` over the
+  tree — a whole-`src` push overwrites files the other party is mid-edit on. A full-src sync was run
+  twice here; it happened to be harmless (the mirror had captured their edits byte-identical, verified
+  by diff), but it was luck, not design.
+- `git add` **named paths only**, never `-A`.
+- Read `git status` after every sync: foreign `M` entries are someone else's work in flight.
+- Deploy builds from GitHub `main`, so uncommitted foreign edits never reach the live site — that is
+  what kept this pass safe.
