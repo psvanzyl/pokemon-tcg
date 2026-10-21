@@ -3,6 +3,7 @@
 import Link from "next/link";
 import type { Card, CardLanguage } from "@/lib/types";
 import { money } from "@/lib/format";
+import CardImage from "@/components/CardImage";
 
 // Rarity chips: the light tone is the base, the dark tone sits behind `dark:`
 // so the coloured label stays legible on a white card and on a near-black one.
@@ -58,10 +59,9 @@ export default function CardTile({
         href={`/kaart/${card.id}${lang ? `?lang=${lang}` : ""}`}
         className="group flex items-center gap-4 rounded-xl border border-line bg-panel p-3 shadow-sm transition hover:border-poke-red/60 hover:bg-raised"
       >
-        <img
+        <CardImage
           src={card.img}
           alt={card.n}
-          loading="lazy"
           className="h-20 w-[58px] flex-none rounded-md bg-surface object-contain"
         />
         <div className="min-w-0 flex-1">
@@ -102,11 +102,10 @@ export default function CardTile({
       className="group flex flex-col overflow-hidden rounded-xl border border-line bg-panel shadow-sm transition hover:-translate-y-0.5 hover:border-poke-red/60 hover:shadow-[0_10px_30px_-12px_rgba(238,59,59,0.45)]"
     >
       <div className="relative aspect-[245/342] w-full overflow-hidden bg-surface">
-        <img
+        <CardImage
           src={card.img}
           srcSet={`${card.img} 1x, ${big} 2x`}
           alt={card.n}
-          loading="lazy"
           className="h-full w-full object-contain transition duration-300 group-hover:scale-[1.03]"
         />
         {card.px != null && (

@@ -8,6 +8,7 @@ import EurPricesTable from "@/components/EurPricesTable";
 import PriceChart from "@/components/PriceChart";
 import CardTile from "@/components/CardTile";
 import CollectionAddButton from "@/components/CollectionAddButton";
+import CardImage from "@/components/CardImage";
 import { LanguageChips, LocalisedCardText, LocalisedNames, availableLanguages } from "@/components/Languages";
 import { eur, marketPrice, money } from "@/lib/format";
 import { LANGS, LANG_LABEL, LANG_SHORT, type CardContent, type CardLanguage } from "@/lib/types";
@@ -164,11 +165,13 @@ export default async function CardPage({
 
       <div className="grid gap-6 md:grid-cols-[300px_minmax(0,1fr)]">
         <div className="mx-auto w-full max-w-[300px]">
-          <img
+          <CardImage
             src={imgSrc}
             srcSet={imgSrcSet}
             alt={localName}
+            loading="eager"
             className="w-full rounded-xl border border-line bg-surface object-contain"
+            fallbackClassName="aspect-[245/342]"
           />
           {scan && (
             <p className="mt-1.5 text-center text-[11px] text-muted">

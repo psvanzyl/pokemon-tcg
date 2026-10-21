@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { money, moneyShort } from "@/lib/format";
+import CardImage from "@/components/CardImage";
 
 type Line = {
   cardId: number;
@@ -191,7 +192,7 @@ export default function AccountClient({
                 <li key={`${l.cardId}|${l.variant}`} className="flex items-center gap-3 py-2">
                   <Link prefetch={false} href={`/kaart/${l.cardId}`} className="flex min-w-0 flex-1 items-center gap-3 hover:text-poke-red">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={l.img} alt="" className="h-10 w-[29px] flex-none rounded border border-line object-cover" loading="lazy" />
+                    <CardImage src={l.img} alt="" className="h-10 w-[29px] flex-none rounded border border-line object-cover" />
                     <span className="min-w-0">
                       <span className="block truncate font-medium">{l.name}</span>
                       <span className="block truncate text-[11px] text-muted">
@@ -308,7 +309,7 @@ export default function AccountClient({
                 <li key={`${l.cardId}|${l.variant}`} className="flex flex-wrap items-center gap-3 px-3 py-2.5">
                   <Link prefetch={false} href={`/kaart/${l.cardId}`} className="flex min-w-0 flex-1 items-center gap-3">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={l.img} alt="" className="h-12 w-[35px] flex-none rounded border border-line object-cover" loading="lazy" />
+                    <CardImage src={l.img} alt="" className="h-12 w-[35px] flex-none rounded border border-line object-cover" />
                     <span className="min-w-0">
                       <span className="block truncate text-[13px] font-medium hover:text-poke-red">{l.name}</span>
                       <span className="block truncate text-[11px] text-muted">
@@ -484,7 +485,7 @@ function AddBySearch({ onAdded }: { onAdded: () => void | Promise<void> }) {
             return (
               <li key={h.id} className="flex flex-wrap items-center gap-3 px-3 py-2">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={h.img} alt="" className="h-11 w-8 flex-none rounded border border-line object-cover" loading="lazy" />
+                <CardImage src={h.img} alt="" className="h-11 w-8 flex-none rounded border border-line object-cover" />
                 <Link prefetch={false} href={`/kaart/${h.id}`} className="min-w-0 flex-1 hover:text-poke-red">
                   <span className="block truncate text-[13px] font-medium">{h.name}</span>
                   <span className="block truncate text-[11px] text-muted">
