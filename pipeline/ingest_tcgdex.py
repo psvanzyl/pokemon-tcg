@@ -31,9 +31,12 @@ import re
 import sys
 from collections import Counter, defaultdict
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SRC = os.path.join(ROOT, "data", "tcgdex-source", "data")
-OUT = os.path.join(ROOT, "data")
+HOME = os.environ.get("CARDDEX_HOME", "/root/projects/pokemon-tcg")
+# The project home holds data/ (raw dumps + published artefacts). Every pipeline
+# script resolves it through CARDDEX_HOME so the scripts work from any directory
+# and there is exactly one place that knows where the project lives.
+SRC = os.path.join(HOME, "data", "tcgdex-source", "data")
+OUT = os.path.join(HOME, "data")
 
 LANGS = ["en", "fr", "de", "es", "it", "pt"]
 

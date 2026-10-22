@@ -16,12 +16,15 @@ import re
 import sys
 import time
 
-ROOT = "/root/projects/pokemon-tcg"
-RAW = os.path.join(ROOT, "data/raw")
-OUT_CARDS = os.path.join(ROOT, "data/cards.json.gz")
-OUT_SETS = os.path.join(ROOT, "data/sets.json")
-OUT_STATS = os.path.join(ROOT, "data/stats.json")
-HIST = os.path.join(ROOT, "data/history.jsonl")
+HOME = os.environ.get("CARDDEX_HOME", "/root/projects/pokemon-tcg")
+# The project home holds data/ (raw dumps + published artefacts). Every pipeline
+# script resolves it through CARDDEX_HOME so the scripts work from any directory
+# and there is exactly one place that knows where the project lives.
+RAW = os.path.join(HOME, "data/raw")
+OUT_CARDS = os.path.join(HOME, "data/cards.json.gz")
+OUT_SETS = os.path.join(HOME, "data/sets.json")
+OUT_STATS = os.path.join(HOME, "data/stats.json")
+HIST = os.path.join(HOME, "data/history.jsonl")
 
 PRICE_KEYS = ("marketPrice", "midPrice", "lowPrice", "highPrice")
 

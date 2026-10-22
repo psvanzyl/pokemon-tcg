@@ -35,8 +35,11 @@ import sys
 import urllib.request
 from datetime import date, datetime, timezone
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-OUT = os.path.join(ROOT, "data", "cardmarket")
+HOME = os.environ.get("CARDDEX_HOME", "/root/projects/pokemon-tcg")
+# The project home holds data/ (raw dumps + published artefacts). Every pipeline
+# script resolves it through CARDDEX_HOME so the scripts work from any directory
+# and there is exactly one place that knows where the project lives.
+OUT = os.path.join(HOME, "data", "cardmarket")
 RAW = os.path.join(OUT, "raw")
 GAME = 6  # Pokémon
 BASE = "https://downloads.s3.cardmarket.com/productCatalog"

@@ -11,10 +11,15 @@ import sys
 import time
 import urllib.request
 
+# The project home holds data/ (raw dumps + published artefacts). Every pipeline
+# script resolves it through CARDDEX_HOME so the scripts work from any directory
+# and there is exactly one place that knows where the project lives.
+HOME = os.environ.get("CARDDEX_HOME", "/root/projects/pokemon-tcg")
+
 BASE = "https://tcgcsv.com/tcgplayer"
 CAT = 3
-OUT = "/root/projects/pokemon-tcg/data/raw"
-LOG = "/root/projects/pokemon-tcg/data/harvest.log"
+OUT = os.path.join(HOME, "data", "raw")
+LOG = os.path.join(HOME, "data", "harvest.log")
 UA = {"User-Agent": "pokemon-tcg-index/0.1 (homelab personal project)"}
 
 

@@ -34,8 +34,11 @@ import sys
 import unicodedata
 from collections import Counter
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DATA = os.path.join(ROOT, "data")
+HOME = os.environ.get("CARDDEX_HOME", "/root/projects/pokemon-tcg")
+# The project home holds data/ (raw dumps + published artefacts). Every pipeline
+# script resolves it through CARDDEX_HOME so the scripts work from any directory
+# and there is exactly one place that knows where the project lives.
+DATA = os.path.join(HOME, "data")
 
 LANGS = ["en", "fr", "de", "es", "it", "pt"]
 LANG_ORDER = {l: i for i, l in enumerate(LANGS)}

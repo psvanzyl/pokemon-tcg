@@ -8,9 +8,12 @@ import gzip
 import json
 import os
 
-ROOT = "/root/projects/pokemon-tcg"
-SRC = os.path.join(ROOT, "data/history.jsonl")
-OUT = os.path.join(ROOT, "data/history.json.gz")
+HOME = os.environ.get("CARDDEX_HOME", "/root/projects/pokemon-tcg")
+# The project home holds data/ (raw dumps + published artefacts). Every pipeline
+# script resolves it through CARDDEX_HOME so the scripts work from any directory
+# and there is exactly one place that knows where the project lives.
+SRC = os.path.join(HOME, "data/history.jsonl")
+OUT = os.path.join(HOME, "data/history.json.gz")
 
 
 def main():
