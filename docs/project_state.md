@@ -15,14 +15,14 @@ Dataset: **28,056 singles · 213 sets · 27,667 priced**.
 |---|---|
 | Project home | CT141 `192.168.178.20` → `/root/projects/pokemon-tcg` |
 | App source | `.../app` (Next 16 + React 19 + Tailwind 4, standalone Docker) |
-| Pipeline | `.../scripts/` — harvest.py, normalize.py, build_history.py, refresh.sh, seed_volume.sh |
+| Pipeline | `app/pipeline/` (in git) — harvest.py, normalize.py, build_history.py, ingest_tcgdex.py, fetch_cardmarket.py, merge_multilingual.py, refresh.sh, seed_volume.sh |
 | Raw dumps | `.../data/raw/` — 220 gzipped TCGCSV group files |
 | Published artefacts | `data/{cards.json.gz,sets.json,stats.json,history.jsonl,history.json.gz}` |
 | Repo | https://github.com/psvanzyl/pokemon-tcg (public, branch main) |
 | Coolify app | uuid `dpjl3npkr7pxq4xkcwu78tio`, project `8rit1jscgztegqxaivwsdgkr`, env `xrhqqxbxdxxbpny8zbwtdoqh` |
 | Coolify server | `hff16ilrvechplni0w97qy2t` = CT310 `192.168.178.132` |
 | Data volume | docker volume `dpjl3npkr7pxq4xkcwu78tio-pokemon-data` → `/app/data`; staged via host dir `/data/coolify/pokemon-data` |
-| Daily refresh | CT141 crontab **04:20** → `scripts/refresh.sh >> data/refresh.log 2>&1` |
+| Daily refresh | CT141 crontab **04:20** → `app/pipeline/refresh.sh >> data/refresh.log 2>&1` |
 
 ## Architecture facts (hard-won)
 - **Data source: TCGCSV** (`https://tcgcsv.com/tcgplayer/3/{groups,<gid>/products,<gid>/prices}`).
@@ -362,3 +362,54 @@ Google was never the culprit — it was simply the first thing to try to write a
 - A store read that "fails open" (returns empty) is a data-loss bug waiting to happen.
   Only `ENOENT` may be treated as empty.
 - Reproduce permission bugs as the unprivileged user, never as root.
+
+## Pipeline consolidation — 2026-10-22
+
+Two problems with the daily refresh, found while fixing the sign-in incident.
+
+**1. The cron ran a copy that was not in git.** The crontab pointed at
+`/root/projects/pokemon-tcg/scripts/refresh.sh` — a copy outside any repository —
+and that copy had **drifted**: it was missing the whole multilingual layer
+(TCGdex identity, Cardmarket EUR, `content.json.gz`). The version-controlled copy
+in `app/ops/refresh.sh` had that layer; the runtime copy did not. So the daily job
+had been silently skipping the card-text and euro refresh, while the repo showed a
+`refresh.sh` that looked correct. The copies of `ingest_tcgdex.py`,
+`fetch_cardmarket.py` and `merge_multilingual.py` inside `app/ops/pipeline/` had a
+second, subtler bug: they resolved their project home with
+`dirname(dirname(__file__))`, which pointed them at `app/ops/` rather than the
+project home, so running them from the repo would have written into the wrong tree.
+
+**2. The refresh never committed its snapshot.** It copied the new artefacts into
+`app/public/data/` and stopped there. That directory is the catalogue baked into
+the Docker image, so the image's fallback drifted further from the live volume
+every day — a rebuild months later would have baked in a stale catalogue. The
+commit was still sitting uncommitted in the working tree from the 04:20 run.
+
+**The fix.**
+
+- The pipeline now lives in exactly one place, `app/pipeline/`, inside the repo.
+  The project home's `scripts/` is a **symlink** to it, so the old `scripts/…`
+  paths still resolve but the runtime can never drift from git again.
+- The cron names the canonical path: `app/pipeline/refresh.sh`.
+- Every pipeline script resolves the project home the same way —
+  `HOME = os.environ.get("CARDDEX_HOME", "/root/projects/pokemon-tcg")` — so no
+  script can silently point at the wrong tree. `CARDDEX_HOME` also allows pointing
+  the pipeline at a scratch copy for testing.
+- The refresh now **commits and pushes** `public/data/` at the end (only that path
+  is ever staged, so nothing else in the working tree can ride along), and takes a
+  `flock` so a manual run cannot collide with the 04:20 job.
+- `content.json.gz` is now published to the volume as part of every run, and the
+  refresh checks the multilingual layer end-to-end (the French name "Caninos de
+  Hisui" must resolve) instead of only checking `/api/sets`.
+
+**Verified 2026-10-22.** A full run of the consolidated pipeline:
+`== live /api/sets -> HTTP 200 ==` · `== multilingual lookup OK ==` ·
+`== snapshot committed and pushed ==` (commit `b522ff3`, 28 067 cards). The live
+stats afterwards: 213 sets, 27 530 priced, `eurPriced 12 738` (60.8 % coverage),
+`eurUpdated 2026-10-22T18:39:35Z` — the EUR layer now refreshes for real.
+Playwright 18/18 against the live site. The accounts directory stayed `0755`
+through the run and both accounts were intact.
+
+The old runtime copies were kept in `scripts.bak.20261022` while this was verified;
+they were strictly older versions of the same files (the canonical ones are
+supersets) and have been removed.

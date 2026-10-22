@@ -1,5 +1,9 @@
 # ops/ — Playwright probes for the live site
 
+> The **data pipeline** (harvest, normalise, identity/EUR, publish, refresh) lives in
+> [`../pipeline/`](../pipeline/README.md) — that is the version-controlled copy the
+> 04:20 cron runs. Nothing in this directory is part of the data pipeline.
+
 Throwaway QA tooling. Run from the app root on CT141: `node ops/<script>.mjs`.
 Every script hits the **live** site (`https://pokemon.laserraptorai.duckdns.org`) unless noted,
 and writes screenshots to `/tmp/<script-name>/`. None of them mutate catalogue data; the ones that
