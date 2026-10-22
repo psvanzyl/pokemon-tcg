@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { currentUser } from "@/lib/auth";
 import { applyImport, matchImportText } from "@/lib/collection";
+import { jsonRoute } from "@/lib/http";
 
 export const dynamic = "force-dynamic";
 
@@ -15,7 +16,7 @@ const MAX_ROWS = 5000;
  * The preview is the contract: the client shows matched/ambiguous/unmatched and only sends back the
  * matched rows it displayed. The server re-validates every card id and variant before writing.
  */
-export async function POST(req: Request) {
+const handler_POST = async (req: Request) => {
   const user = await currentUser(req);
   if (!user) {
     return NextResponse.json({ error: "unauthorized" }, { status: 401 });
@@ -50,4 +51,6 @@ export async function POST(req: Request) {
 
   const report = matchImportText(text);
   return NextResponse.json({ ok: true, preview: true, ...report }, { headers: { "Cache-Control": "no-store" } });
-}
+};
+
+export const POST = jsonRoute("collection-import", { POST: handler_POST });

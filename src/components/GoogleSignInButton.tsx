@@ -54,8 +54,19 @@ export default function GoogleSignInButton({ clientId, next = "/account" }: { cl
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ credential: resp.credential }),
           });
-          const j = (await r.json()) as { message?: string };
-          if (!r.ok) throw new Error(j?.message || "Google sign-in failed.");
+          // Read the body as text first: if the server answered with an empty or non-JSON
+          // body, `r.json()` throws "Unexpected end of JSON input" and swallows the real
+          // status code and message.
+          const raw = await r.text();
+          let j: { message?: string } = {};
+          try {
+            j = raw ? (JSON.parse(raw) as { message?: string }) : {};
+          } catch {
+            j = {};
+          }
+          if (!r.ok) {
+            throw new Error(j?.message || `Google sign-in failed (HTTP ${r.status}).`);
+          }
           window.location.href = next;
         } catch (e) {
           setError(e instanceof Error ? e.message : "Google sign-in failed.");

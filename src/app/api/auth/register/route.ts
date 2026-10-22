@@ -10,12 +10,14 @@ import {
   isValidPassword,
   originAllowed,
   rateLimit,
+  serverErrorResponse,
   withSessionCookie,
 } from "@/lib/auth";
+import { jsonRoute } from "@/lib/http";
 
 export const dynamic = "force-dynamic";
 
-export async function POST(req: Request) {
+const handler_POST = async (req: Request) => {
   if (!originAllowed(req)) {
     return NextResponse.json({ error: "bad_origin" }, { status: 403 });
   }
@@ -68,14 +70,28 @@ export async function POST(req: Request) {
     );
   }
 
-  const user = await createUser({
-    id: randomUUID(),
-    email,
-    passwordHash: await hashPassword(password),
-    createdAt: new Date().toISOString(),
-    lastLoginAt: new Date().toISOString(),
-  });
+  try {
+    const user = await createUser({
+      id: randomUUID(),
+      email,
+      passwordHash: await hashPassword(password),
+      createdAt: new Date().toISOString(),
+      lastLoginAt: new Date().toISOString(),
+    });
 
-  const res = NextResponse.json({ ok: true, user: { email: user.email, name: user.name ?? null } });
-  return withSessionCookie(res, req, user.id);
-}
+    const res = NextResponse.json({ ok: true, user: { email: user.email, name: user.name ?? null } });
+    return withSessionCookie(res, req, user.id);
+  } catch (e) {
+    // createUser raises this when the address is taken (e.g. two concurrent sign-ups
+    // for the same address) -- that is a conflict, not a server fault.
+    if (e instanceof Error && e.message === "email_taken") {
+      return NextResponse.json(
+        { error: "email_taken", message: "That email already has an account - sign in instead." },
+        { status: 409 },
+      );
+    }
+    return serverErrorResponse(e, "register");
+  }
+};
+
+export const POST = jsonRoute("auth-register", { POST: handler_POST });

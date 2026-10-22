@@ -11,6 +11,8 @@
  *      x-forwarded-proto), so production is https-only while local http QA still works.
  */
 import { createHmac, randomBytes, scrypt as _scrypt, timingSafeEqual } from "node:crypto";
+import { NextResponse } from "next/server";
+import { jsonError } from "@/lib/http";
 import { promisify } from "node:util";
 import { getUser, type UserRecord } from "@/lib/accounts";
 
@@ -192,4 +194,16 @@ export function rateLimit(key: string, limit: number, windowMs: number): { ok: b
   b.n += 1;
   if (b.n > limit) return { ok: false, retryAfter: Math.ceil((b.reset - now) / 1000) };
   return { ok: true, retryAfter: 0 };
+}
+
+/**
+ * Turn an unexpected server-side failure into a JSON body.
+ *
+ * An unhandled error inside a route handler produces a 500 with an EMPTY body, and the
+ * browser then fails with "Failed to execute 'json' on 'Response': Unexpected end of JSON
+ * input" -- which tells the user nothing and hides the real cause from us. Every auth
+ * route wraps its work in this so the client always gets parseable JSON.
+ */
+export function serverErrorResponse(e: unknown, where: string): NextResponse {
+  return jsonError(e, where, 500, "Sign-in failed on our side. Please try again in a moment.");
 }

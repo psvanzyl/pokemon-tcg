@@ -36,13 +36,21 @@ export default function LoginForm({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
       });
-      const j = (await r.json()) as { message?: string; error?: string };
+      // Read as text first so a non-JSON body (e.g. an empty 500) reports the status
+      // instead of dying with "Unexpected end of JSON input".
+      const raw = await r.text();
+      let j: { message?: string; error?: string } = {};
+      try {
+        j = raw ? (JSON.parse(raw) as { message?: string; error?: string }) : {};
+      } catch {
+        j = {};
+      }
       if (!r.ok) {
         if (j.error === "email_taken") {
           setError(j.message ?? "That email already has an account.");
           return;
         }
-        throw new Error(j.message || "That did not work.");
+        throw new Error(j.message || `That did not work (HTTP ${r.status}).`);
       }
       setNotice(isRegister ? "Account created." : "Signed in.");
       // Hard navigation: the header account widget sits in the layout and has to see the new session

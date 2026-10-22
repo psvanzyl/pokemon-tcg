@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { getStats } from "@/lib/data";
 import { currentUser } from "@/lib/auth";
 import { readCollection } from "@/lib/accounts";
+import { jsonRoute } from "@/lib/http";
 import {
   addToCollection,
   buildCollection,
@@ -26,7 +27,7 @@ function unauthorized() {
  * GET  /api/collection                 — totals + one page of owned rows (?q=&sort=&offset=&limit=)
  * GET  /api/collection?cardId=123      — just that card's owned variants (used by the card page)
  */
-export async function GET(req: Request) {
+const handler_GET = async (req: Request) => {
   const user = await currentUser(req);
   if (!user) return unauthorized();
 
@@ -64,7 +65,7 @@ export async function GET(req: Request) {
  * POST /api/collection — add or set a quantity.
  *   { cardId, variant, mode: "add" | "set", qty }
  */
-export async function POST(req: Request) {
+const handler_POST = async (req: Request) => {
   const user = await currentUser(req);
   if (!user) return unauthorized();
 
@@ -104,7 +105,7 @@ export async function POST(req: Request) {
 }
 
 /** DELETE /api/collection?cardId=123&variant=Holofoil */
-export async function DELETE(req: Request) {
+const handler_DELETE = async (req: Request) => {
   const user = await currentUser(req);
   if (!user) return unauthorized();
 
@@ -123,4 +124,8 @@ export async function DELETE(req: Request) {
   }
   await removeFromCollection(user.id, cardId, variant);
   return NextResponse.json({ ok: true }, { headers: NO_STORE });
-}
+};
+
+export const GET = jsonRoute("collection", { GET: handler_GET });
+export const POST = jsonRoute("collection", { POST: handler_POST });
+export const DELETE = jsonRoute("collection", { DELETE: handler_DELETE });

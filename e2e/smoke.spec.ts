@@ -7,7 +7,7 @@ test.describe("catalogue smoke", () => {
 
     await page.goto("/");
     await expect(page.getByRole("heading", { level: 1 })).toContainText(
-      "complete English Pokémon card index",
+      "The card, not the English card",
     );
 
     // wait for the catalogue to hydrate and paint tiles

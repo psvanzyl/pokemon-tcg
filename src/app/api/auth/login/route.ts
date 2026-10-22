@@ -5,16 +5,18 @@ import {
   clientIp,
   originAllowed,
   rateLimit,
+  serverErrorResponse,
   verifyPassword,
   withSessionCookie,
 } from "@/lib/auth";
+import { jsonRoute } from "@/lib/http";
 
 export const dynamic = "force-dynamic";
 
 /** One generic failure for every bad-credential case — never reveal whether the email exists. */
 const BAD = { error: "invalid_credentials", message: "Wrong email or password." };
 
-export async function POST(req: Request) {
+const handler_POST = async (req: Request) => {
   if (!originAllowed(req)) {
     return NextResponse.json({ error: "bad_origin" }, { status: 403 });
   }
@@ -52,13 +54,21 @@ export async function POST(req: Request) {
     );
   }
 
-  const user = email ? await findUserByEmail(email) : undefined;
-  const ok = user ? await verifyPassword(password, user.passwordHash) : false;
-  if (!user || !ok) {
-    return NextResponse.json(BAD, { status: 401 });
-  }
+  try {
+    const user = email ? await findUserByEmail(email) : undefined;
+    const ok = user ? await verifyPassword(password, user.passwordHash) : false;
+    if (!user || !ok) {
+      return NextResponse.json(BAD, { status: 401 });
+    }
 
-  await updateUser(user.id, { lastLoginAt: new Date().toISOString() });
-  const res = NextResponse.json({ ok: true, user: { email: user.email, name: user.name ?? null } });
-  return withSessionCookie(res, req, user.id);
-}
+    await updateUser(user.id, { lastLoginAt: new Date().toISOString() });
+    const res = NextResponse.json({ ok: true, user: { email: user.email, name: user.name ?? null } });
+    return withSessionCookie(res, req, user.id);
+  } catch (e) {
+    // Without this the 500 has an empty body and the browser reports
+    // "Unexpected end of JSON input" instead of anything useful.
+    return serverErrorResponse(e, "login");
+  }
+};
+
+export const POST = jsonRoute("auth-login", { POST: handler_POST });
