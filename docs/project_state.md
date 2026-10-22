@@ -1,7 +1,7 @@
 # pokemon-tcg ("Carddex") — project state
 
 **Status: LIVE** — https://pokemon.laserraptorai.duckdns.org (Coolify on CT310)
-**Last updated:** 2026-10-18
+**Last updated:** 2026-10-22
 **Canonical copy:** `/root/projects/pokemon-tcg/project_state.md` on CT141. A copy is
 committed to the app repo as `docs/project_state.md` so it survives disk loss.
 
@@ -295,3 +295,70 @@ it is in `main`). Rules that follow:
 - Read `git status` after every sync: foreign `M` entries are someone else's work in flight.
 - Deploy builds from GitHub `main`, so uncommitted foreign edits never reach the live site — that is
   what kept this pass safe.
+
+## Incident — 2026-10-22: Google sign-in returned "Unexpected end of JSON input"
+
+**Symptom.** Signing in with Google on the live site failed with
+`Failed to execute 'json' on 'Response': Unexpected end of JSON input`. The browser was
+telling the truth, but about the wrong thing: the response body was **empty**.
+
+**Root cause — not Google.** The daily refresh publishes the catalogue into the app's
+Docker volume with `ops/seed_volume.sh`, which ended with `chmod 644 /dst/*`. The wildcard
+hit the `accounts/` **directory** as well as the files. A directory needs its execute bit
+to be traversable, so the 04:20 run left `/app/data/accounts` as `drw-r--r--`. The app
+user (`nextjs`, uid 1001 / gid 65533) could no longer enter the directory, and every
+account write died with:
+
+    EACCES: permission denied, open '/app/data/accounts/accounts.json.1.tmp'
+
+The route threw, Next.js returned a **500 with an empty body**, and `r.json()` failed.
+Google was never the culprit — it was simply the first thing to try to write an account.
+
+**Three further bugs the fix surfaced (all in `src/lib/accounts.ts`):**
+
+1. **Silent data loss.** `readAccounts()` caught *every* error and returned an empty store.
+   A failed read therefore looked like "there are no accounts", and the next write
+   persisted that emptiness — wiping every account. Now only `ENOENT` means empty; any
+   other error propagates and aborts the write. `readCollection()` had the same shape.
+2. **Lost update.** `createUser()`/`updateUser()` did their read-modify-write *outside*
+   the serialised write chain, so two concurrent sign-ups both read the same snapshot and
+   the second write dropped the first account. The whole read-modify-write now runs
+   inside the chain.
+3. **Empty-body 500s on the collection routes.** `currentUser()` reads the account store
+   *before* the handler body, so a store error escaped as an empty 500.
+
+**The fix (commit `1704254`, deployed).**
+
+- `ops/seed_volume.sh` — `chmod` only regular files (`find /dst -maxdepth 1 -type f`),
+  and explicitly restore `0755` + `1001:65533` on `accounts/`.
+- `src/lib/accounts.ts` — new `ensureStoreDir()`: the app repairs the store directory
+  itself, so a stripped execute bit **heals on the next request** (verified live: the dir
+  went `644 → register 200 → 775`).
+- `src/lib/http.ts` (new) — `jsonRoute()`: any unhandled error in any API route returns
+  parseable JSON with a readable message instead of an empty body. Applied to all auth
+  and collection routes.
+- Clients (`GoogleSignInButton.tsx`, `LoginForm.tsx`) — read the body as **text** before
+  parsing, so a non-JSON response reports its status instead of dying on the parse.
+
+**Verification.**
+
+- 30/30 auth checks green against the standalone server running **as uid 1001**. Running
+  the test as root is a trap: root bypasses DAC, so the EACCES repro "passes" without
+  ever hitting the failure. Use `setpriv --reuid 1001 --regid 65533`.
+- Covered: junk-credential → clean 401 JSON; register/login + session cookie; self-heal
+  after stripping the execute bit; unrepairable dir → JSON 500 **with** a message and no
+  data loss; 8 concurrent sign-ups all persisted; duplicate address → 409 not 500.
+- Playwright **18/18** (the h1 expectation in `e2e/smoke.spec.ts` was stale — the hero
+  copy changed to "The card, not the English card" in `e5db2a0`).
+- Live: register/login/collection-add all 200 on the deployed commit; the fixed seed
+  script leaves `accounts/` at 0755.
+
+**Lessons to keep.**
+
+- A `chmod` wildcard over a directory is a write to that directory's mode. Never
+  `chmod 644 /dst/*` — use `find … -type f`.
+- An empty 500 body is a bug report in disguise. Wrap every route so a crash still
+  returns JSON, and have the client read text before parsing.
+- A store read that "fails open" (returns empty) is a data-loss bug waiting to happen.
+  Only `ENOENT` may be treated as empty.
+- Reproduce permission bugs as the unprivileged user, never as root.
