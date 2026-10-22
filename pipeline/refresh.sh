@@ -96,13 +96,29 @@ cd "$APP"
 git add -- public/data
 if git diff --cached --quiet -- public/data; then
   echo "== snapshot unchanged — nothing to commit =="
+  # Still make sure the branch is not left behind origin/main.
+  git fetch -q origin main
+  if ! git merge-base --is-ancestor origin/main HEAD; then
+    if git diff --quiet && git diff --cached --quiet; then
+      git rebase origin/main && git push -q origin main && echo "== branch synced with origin/main =="
+    else
+      echo "!! origin/main has moved on and the working tree has local changes — not syncing."
+    fi
+  fi
 else
   CARDS=$(python3 -c "import json;print(json.load(open('$ROOT/data/stats.json')).get('cards','?'))" 2>/dev/null || echo "?")
   git commit -q -m "data: catalogue snapshot $(date +%F) (${CARDS} cards)" -- public/data
   git fetch -q origin main
   if ! git merge-base --is-ancestor origin/main HEAD; then
-    echo "== rebasing onto origin/main =="
-    git rebase origin/main
+    # Rebase only on a clean tree: `git rebase` refuses to run with unstaged
+    # changes, and the refresh must not fail because someone is mid-edit.
+    if git diff --quiet && git diff --cached --quiet; then
+      echo "== rebasing onto origin/main =="
+      git rebase origin/main
+    else
+      echo "!! origin/main has moved on and the working tree has local changes."
+      echo "!! skipping the rebase — the snapshot stays local until this is resolved."
+    fi
   fi
   PUSHED=0
   for attempt in 1 2 3; do
