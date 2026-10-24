@@ -80,6 +80,12 @@ async function ensureStoreDir(): Promise<void> {
   const dir = dataDir();
   await fs.mkdir(dir, { recursive: true, mode: 0o775 });
   await fs.chmod(dir, 0o775).catch(() => {});
+  // The collections live in a SUBDIRECTORY, and a fresh volume does not have it yet.
+  // Writing a collection file then fails with ENOENT and the add box answers 500.
+  // Creating it here means a fresh deployment works on the very first add.
+  const collections = path.join(dir, "collections");
+  await fs.mkdir(collections, { recursive: true, mode: 0o775 });
+  await fs.chmod(collections, 0o775).catch(() => {});
 }
 
 function accountsPath(): string {

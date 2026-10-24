@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { money, moneyShort } from "@/lib/format";
 import CardImage from "@/components/CardImage";
+import { LANG_SHORT, type CardLanguage } from "@/lib/types";
 
 type Line = {
   cardId: number;
@@ -43,6 +44,14 @@ type SearchHit = {
   img: string;
   primary: string;
   variants: { v: string; mkt: number | null }[];
+  /** the name the card was printed under, when the query named it that way */
+  printed?: {
+    name: string;
+    lang: CardLanguage;
+    img: string | null;
+    /** TCGdex identity, when the product has one */
+    tid: string | null;
+  } | null;
 };
 
 type Preview = {
@@ -473,7 +482,7 @@ function AddBySearch({ onAdded }: { onAdded: () => void | Promise<void> }) {
       <input
         value={term}
         onChange={(e) => setTerm(e.target.value)}
-        placeholder="Search by card name or number (e.g. Charizard 4/102)…"
+        placeholder="Search by card name or number, in any print language (e.g. Charizard 4/102, Caninos de Hisui)…"
         className={field}
       />
       {done && <p className="mt-2 text-[12px] text-poke-gold">{done}</p>}
@@ -486,9 +495,21 @@ function AddBySearch({ onAdded }: { onAdded: () => void | Promise<void> }) {
               <li key={h.id} className="flex flex-wrap items-center gap-3 px-3 py-2">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <CardImage src={h.img} alt="" className="h-11 w-8 flex-none rounded border border-line object-cover" />
-                <Link prefetch={false} href={`/kaart/${h.id}`} className="min-w-0 flex-1 hover:text-poke-red">
-                  <span className="block truncate text-[13px] font-medium">{h.name}</span>
+                <Link
+                  prefetch={false}
+                  href={h.printed?.tid ? `/kaart/${h.id}?lang=${h.printed.lang}` : `/kaart/${h.id}`}
+                  className="min-w-0 flex-1 hover:text-poke-red"
+                >
+                  <span className="block truncate text-[13px] font-medium">
+                    {h.printed ? h.printed.name : h.name}
+                  </span>
                   <span className="block truncate text-[11px] text-muted">
+                    {h.printed ? (
+                      <>
+                        <span className="font-mono text-[10px]">{LANG_SHORT[h.printed.lang]}</span>{" "}
+                        {h.name} ·{" "}
+                      </>
+                    ) : null}
                     {h.abbr ? `${h.abbr} · ` : ""}
                     {h.setName} · {h.num}
                     {h.variants.length === 1 && variant ? ` · ${variant}` : ""}

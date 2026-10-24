@@ -504,26 +504,25 @@ function printedMatch(c: Card, probe: string): 0 | 1 | 2 {
   return loose;
 }
 
-let tidIndex: Map<string, Card[]> | null = null;
+let idIndex: Map<number, Card> | null = null;
 
 /**
  * The importer is English-first because the catalogue is — but the whole point of the identity
  * layer is that "Hisuian Growlithe", "Caninos de Hisui" and "Hisui-Fukano" name the same card, so
  * a collection list written in French must import as happily as one written in English. When no
- * English name matches, ask the localised index (the same one /api/lookup serves) before giving up.
+ * English name matches, ask the printed-name index (the same one /api/lookup serves) before
+ * giving up.
+ *
+ * The index covers every product, not only the ones TCGdex describes, so a French list can also
+ * name the promo prints that have no identity at all.
  */
 function localisedMatch(
   name: string,
   setHint: number | null = null,
 ): { cards: Card[]; lang: CardLanguage; printed: string } | null {
-  if (!tidIndex) {
-    tidIndex = new Map();
-    for (const c of getCards()) {
-      if (!c.t) continue;
-      const arr = tidIndex.get(c.t);
-      if (arr) arr.push(c);
-      else tidIndex.set(c.t, [c]);
-    }
+  if (!idIndex) {
+    idIndex = new Map();
+    for (const c of getCards()) idIndex.set(c.id, c);
   }
   const best = searchLocalised(name, 12);
   const top = best.matches[0];
@@ -531,11 +530,10 @@ function localisedMatch(
   const cards: Card[] = [];
   const seenIds = new Set<number>();
   for (const hit of best.matches) {
-    for (const c of tidIndex.get(hit.tid) ?? []) {
-      if (seenIds.has(c.id)) continue;
-      seenIds.add(c.id);
-      cards.push(c);
-    }
+    const c = idIndex.get(hit.id);
+    if (!c || seenIds.has(c.id)) continue;
+    seenIds.add(c.id);
+    cards.push(c);
   }
   const scoped = setHint == null ? cards : cards.filter((c) => c.set === setHint);
   const use = scoped.length ? scoped : cards;

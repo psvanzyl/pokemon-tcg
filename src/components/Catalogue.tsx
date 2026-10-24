@@ -11,7 +11,10 @@ const PAGE = 60;
 
 /** One multilingual name-lookup hit, as returned by /api/lookup. */
 type AltHit = {
-  tid: string;
+  /** TCGdex identity, when the product has one */
+  tid: string | null;
+  /** our product id (TCGplayer productId) */
+  id: number;
   lang: CardLanguage;
   name: string;
   en: string | null;
@@ -239,37 +242,39 @@ export default function Catalogue() {
     setFilters((f) => ({ ...f, ...p }));
   }, []);
 
+  const compare = useCallback((a: Card, b: Card) => {
+    const rel = (c: Card) => setMap.get(c.set)?.released ?? "";
+    switch (sort) {
+      case "price-asc":
+        return (a.px ?? Infinity) - (b.px ?? Infinity);
+      case "price-desc":
+        return (b.px ?? -1) - (a.px ?? -1);
+      case "name-asc":
+        return a.n.localeCompare(b.n) || numKey(a.num) - numKey(b.num);
+      case "name-desc":
+        return b.n.localeCompare(a.n);
+      case "set-new":
+        return rel(b).localeCompare(rel(a)) || numKey(a.num) - numKey(b.num);
+      case "set-old":
+        return rel(a).localeCompare(rel(b)) || numKey(a.num) - numKey(b.num);
+      case "rarity":
+        return rarityRank(b.rar) - rarityRank(a.rar) || (b.px ?? -1) - (a.px ?? -1);
+      case "number":
+        return (
+          (setNames.get(a.set) ?? "").localeCompare(setNames.get(b.set) ?? "") ||
+          numKey(a.num) - numKey(b.num)
+        );
+      default:
+        return 0;
+    }
+  }, [setMap, setNames, sort]);
+
   const result = useMemo(() => {
     if (!cards) return [];
     const out = cards.filter((c) => matches(c, filters, setMap));
-    const rel = (c: Card) => setMap.get(c.set)?.released ?? "";
-    out.sort((a, b) => {
-      switch (sort) {
-        case "price-asc":
-          return (a.px ?? Infinity) - (b.px ?? Infinity);
-        case "price-desc":
-          return (b.px ?? -1) - (a.px ?? -1);
-        case "name-asc":
-          return a.n.localeCompare(b.n) || numKey(a.num) - numKey(b.num);
-        case "name-desc":
-          return b.n.localeCompare(a.n);
-        case "set-new":
-          return rel(b).localeCompare(rel(a)) || numKey(a.num) - numKey(b.num);
-        case "set-old":
-          return rel(a).localeCompare(rel(b)) || numKey(a.num) - numKey(b.num);
-        case "rarity":
-          return rarityRank(b.rar) - rarityRank(a.rar) || (b.px ?? -1) - (a.px ?? -1);
-        case "number":
-          return (
-            (setNames.get(a.set) ?? "").localeCompare(setNames.get(b.set) ?? "") ||
-            numKey(a.num) - numKey(b.num)
-          );
-        default:
-          return 0;
-      }
-    });
+    out.sort(compare);
     return out;
-  }, [cards, filters, setMap, setNames, sort]);
+  }, [cards, filters, setMap, compare]);
 
   // facet values + live counts
   const facets = useMemo(() => {
@@ -303,10 +308,15 @@ export default function Catalogue() {
     };
   }, [cards, filters, setMap]);
 
-  const altByTid = useMemo(() => new Map((alt?.matches ?? []).map((m) => [m.tid, m])), [alt]);
+  // The lookup hits are keyed by our product id, not by the TCGdex identity: the
+  // promo prints of a Hisuian Pokémon have no identity at all, and they must show up
+  // in the results just like the ones that have.
+  const altById = useMemo(() => new Map((alt?.matches ?? []).map((m) => [m.id, m])), [alt]);
+  // The localised hits are sorted with the same order as the English results, so the
+  // sort control means the same thing on both paths.
   const altCards = useMemo(
-    () => (cards ?? []).filter((c) => c.t && altByTid.has(c.t)),
-    [cards, altByTid],
+    () => (cards ?? []).filter((c) => altById.has(c.id)).sort(compare),
+    [cards, altById, compare],
   );
   const usingAlt = result.length === 0 && altCards.length > 0;
 
@@ -567,7 +577,7 @@ export default function Catalogue() {
           {view === "grid" ? (
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
               {tiles.map((c) => {
-                const hit = altByTid.get(c.t ?? "");
+                const hit = altById.get(c.id);
                 return (
                   <div key={c.id} className="flex min-w-0 flex-col gap-1">
                     {usingAlt && hit && (
@@ -594,7 +604,7 @@ export default function Catalogue() {
           ) : (
             <div className="space-y-2">
               {tiles.map((c) => {
-                const hit = altByTid.get(c.t ?? "");
+                const hit = altById.get(c.id);
                 return (
                   <div key={c.id} className="min-w-0">
                     {usingAlt && hit && (

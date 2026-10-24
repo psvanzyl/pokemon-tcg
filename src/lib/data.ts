@@ -4,6 +4,14 @@ import zlib from "node:zlib";
 import type { Card, CardContent, CardLanguage, SetInfo, Stats } from "./types";
 import { LANGS } from "./types";
 import { marketPrice } from "./format";
+import {
+  buildAliasTable,
+  buildNameIndex,
+  fold,
+  searchPrintedNames,
+  speciesOf,
+  type NameIndex,
+} from "./names";
 
 /**
  * Data resolution order:
@@ -116,35 +124,13 @@ export function getCardContent(card: Card | null | undefined): CardContent | nul
 }
 
 /** Accent- and punctuation-insensitive comparison key ("Dracaufeu" === "dracaufeu"). */
-export function fold(s: string): string {
-  return s
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "");
-}
-
-type LangRow = { key: string; tid: string; lang: CardLanguage; name: string };
-
-let langIndexCache: LangRow[] | null = null;
-
-/** Every non-English name in the dataset, folded once, for the /api/lookup route. */
-function langIndex(): LangRow[] {
-  if (langIndexCache) return langIndexCache;
-  const rows: LangRow[] = [];
-  for (const [tid, rec] of Object.entries(getContent())) {
-    for (const [lang, name] of Object.entries(rec.n ?? {})) {
-      if (lang === "en" || !name) continue;
-      const key = fold(name);
-      if (key.length > 1) rows.push({ key, tid, lang: lang as CardLanguage, name });
-    }
-  }
-  langIndexCache = rows;
-  return rows;
-}
+export { fold } from "./names";
 
 export type LocalisedHit = {
-  tid: string;
+  /** TCGdex identity of the card, when the product has one. */
+  tid: string | null;
+  /** our product id (TCGplayer productId) */
+  id: number;
   lang: CardLanguage;
   name: string;
   en: string | null;
@@ -162,53 +148,88 @@ export type LocalisedMatches = {
 };
 
 /**
- * Search the other five print languages. The catalogue payload only carries English names,
- * so the browser does the normal instant search locally and falls back to this when an
- * English query finds nothing — which is exactly when "Caninos de Hisui" happens.
- * Exact matches rank above prefix matches, above substrings, and shorter names rank above
- * longer ones inside each tier ("Glurak" beats "Glurak VMAX" for the query "glurak").
+ * The printed-name index for the whole catalogue, built once per process.
+ *
+ * It covers every product, not only the ones TCGdex describes: a product without a
+ * TCGdex identity still gets the printed names of its species, learned from a sibling
+ * print that has one. That is how "Caninos de Hisui" finds the "Deck Exclusives" and
+ * "Prize Pack Series Cards" prints of Hisuian Growlithe.
+ */
+let nameIndexCache: NameIndex | null = null;
+
+export function getNameIndex(): NameIndex {
+  if (!nameIndexCache) nameIndexCache = buildNameIndex(getCards(), getContent());
+  return nameIndexCache;
+}
+
+let aliasCache: Map<string, Partial<Record<CardLanguage, string>>> | null = null;
+
+function getAliasTable(): Map<string, Partial<Record<CardLanguage, string>>> {
+  if (!aliasCache) aliasCache = buildAliasTable(getCards(), getContent());
+  return aliasCache;
+}
+
+/**
+ * The names the species is printed under, for a product that has no TCGdex identity.
+ *
+ * A promo print that TCGdex does not describe has no content record of its own, but
+ * its species still prints under a name in every language — "Hisuian Growlithe" is
+ * "Caninos de Hisui" in French. These are the names of the SPECIES, not of this
+ * particular print, so the page presents them as "also printed as".
+ */
+export function printedAliasNames(card: Card): { lang: CardLanguage; name: string }[] {
+  if (card.t) return [];
+  const alias = getAliasTable().get(speciesOf(card.n));
+  if (!alias) return [];
+  const out: { lang: CardLanguage; name: string }[] = [];
+  for (const lang of LANGS) {
+    if (lang === "en") continue;
+    const name = alias[lang];
+    if (name) out.push({ lang, name });
+  }
+  return out;
+}
+
+/**
+ * Search the printed names in all six languages.
+ *
+ * The catalogue payload the browser holds carries English names only, so the browser
+ * does the normal instant search locally and falls back to this when an English query
+ * finds nothing — which is exactly when "Caninos de Hisui" happens.
+ *
+ * The match is word-based, not substring-based: "Hisui Caninos" finds "Caninos de
+ * Hisui", "Caninos de Husui" finds it despite the typo, and "Caninos de Hisui V"
+ * finds it despite the trailing qualifier.
  */
 export function searchLocalised(query: string, limit = 120): LocalisedMatches {
-  const q = fold(query);
-  if (q.length < 3)
-    return { query, matches: [], lang: null, name: null, total: 0, truncated: false };
-  const exact: LangRow[] = [];
-  const prefix: LangRow[] = [];
-  const partial: LangRow[] = [];
-  for (const row of langIndex()) {
-    if (row.key === q) exact.push(row);
-    else if (row.key.startsWith(q)) prefix.push(row);
-    else if (row.key.includes(q)) partial.push(row);
-  }
-  for (const bucket of [exact, prefix, partial]) {
-    bucket.sort((a, b) => a.key.length - b.key.length);
-  }
-  const ranked = [...exact, ...prefix, ...partial];
-  const allTids = new Set(ranked.map((r) => r.tid));
-  const content = getContent();
-  const matches: LocalisedHit[] = [];
-  for (const row of ranked) {
-    if (matches.some((m) => m.tid === row.tid)) continue;
-    const rec = content[row.tid];
-    const base = rec?.imgs?.[row.lang];
-    matches.push({
-      tid: row.tid,
-      lang: row.lang,
-      name: row.name,
-      en: rec?.n?.en ?? null,
-      img: base ? `${base}/low.webp` : null,
-    });
-    if (matches.length >= limit) break;
-  }
-  const best = ranked[0];
+  const found = searchPrintedNames(getNameIndex(), getCards(), getContent(), query, limit);
+  const matches: LocalisedHit[] = found.hits.map((h) => ({
+    tid: h.tid,
+    id: h.id,
+    lang: h.lang,
+    name: h.name,
+    en: h.en,
+    img: h.img,
+  }));
   return {
     query,
     matches,
-    lang: best?.lang ?? null,
-    name: best?.name ?? null,
-    total: allTids.size,
-    truncated: matches.length < allTids.size,
+    lang: found.lang,
+    name: found.name,
+    total: found.total,
+    truncated: found.truncated,
   };
+}
+
+/**
+ * Every printed name of every product, for the collection's add box.
+ *
+ * The add box is where a collector adds what they own in the box, so it must accept
+ * the name the card was printed under — "Caninos de Hisui" as well as "Hisuian
+ * Growlithe" — and it must accept a card number or a set name next to it.
+ */
+export function searchPrinted(query: string, limit = 25): LocalisedHit[] {
+  return searchLocalised(query, limit).matches;
 }
 
 /** All localised names of a card, in a stable language order, English excluded. */

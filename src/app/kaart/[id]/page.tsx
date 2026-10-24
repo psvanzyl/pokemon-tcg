@@ -2,7 +2,15 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { ExternalLink } from "lucide-react";
-import { getCard, getCardContent, getCards, getSets, getStats, otherNames } from "@/lib/data";
+import {
+  getCard,
+  getCardContent,
+  getCards,
+  getSets,
+  getStats,
+  otherNames,
+  printedAliasNames,
+} from "@/lib/data";
 import PriceTable from "@/components/PriceTable";
 import EurPricesTable from "@/components/EurPricesTable";
 import PriceChart from "@/components/PriceChart";
@@ -105,7 +113,12 @@ export default async function CardPage({
   const lang = resolveLang(rawLang, card.id);
   const content = getCardContent(card);
   const locals = availableLanguages(content);
-  const others = otherNames(content);
+  // A print that TCGdex does not describe has no content of its own, but its species
+  // still prints under a name in every language — so show those names as well.
+  const own = otherNames(content);
+  const alias = printedAliasNames(card);
+  const others = own.length ? own : alias;
+  const aliasOnly = own.length === 0 && alias.length > 0;
   const enName = content?.n?.en ?? card.n;
   const localName = content?.n?.[lang] ?? card.n;
 
@@ -221,20 +234,31 @@ export default async function CardPage({
                 <span key={o.lang}>
                   {i > 0 ? " · " : ""}
                   <span className="font-mono text-[11px] text-muted">{LANG_SHORT[o.lang]}</span>{" "}
-                  <Link
-                    prefetch={false}
-                    href={`/kaart/${card.id}?lang=${o.lang}`}
-                    title={LANG_LABEL[o.lang]}
-                    className={
-                      o.lang === lang
-                        ? "font-semibold text-fg"
-                        : "text-fg/90 hover:text-fg hover:underline"
-                    }
-                  >
-                    {o.name}
-                  </Link>
+                  {aliasOnly ? (
+                    <span className="text-fg/90">{o.name}</span>
+                  ) : (
+                    <Link
+                      prefetch={false}
+                      href={`/kaart/${card.id}?lang=${o.lang}`}
+                      title={LANG_LABEL[o.lang]}
+                      className={
+                        o.lang === lang
+                          ? "font-semibold text-fg"
+                          : "text-fg/90 hover:text-fg hover:underline"
+                      }
+                    >
+                      {o.name}
+                    </Link>
+                  )}
                 </span>
               ))}
+              {aliasOnly && (
+                <>
+                  {" "}
+                  — the names this species is printed under; this print has no scan of
+                  its own in those languages.
+                </>
+              )}
             </p>
           )}
           <div className="mt-3">
