@@ -583,18 +583,23 @@ export default function Catalogue() {
                     {usingAlt && hit && (
                       <div
                         className="truncate rounded-md border border-poke-red/40 bg-poke-red/10 px-2 py-0.5 text-[10px] text-fg"
-                        title={`${LANG_LABEL[hit.lang]} printed name${hit.en ? ` · English: ${hit.en}` : ""}`}
+                        title={`${LANG_LABEL[hit.lang]} printed name${hit.en ? ` · English: ${hit.en}` : ""}${
+                          hit.img ? "" : " · no scan in this language for this print"
+                        }`}
                       >
                         <span className="font-mono text-[10px] text-muted">
                           {LANG_SHORT[hit.lang]}
                         </span>{" "}
                         {hit.name}
+                        {!hit.img && (
+                          <span className="text-muted"> · no scan</span>
+                        )}
                       </div>
                     )}
                     <CardTile
                       card={hit?.img ? { ...c, img: hit.img } : c}
                       setName={setNames.get(c.set) ?? `Set ${c.set}`}
-                      lang={hit?.lang ?? null}
+                      lang={hit?.img ? hit.lang : null}
                       view="grid"
                     />
                   </div>
@@ -610,18 +615,21 @@ export default function Catalogue() {
                     {usingAlt && hit && (
                       <div
                         className="mb-1 inline-block truncate rounded-md border border-poke-red/40 bg-poke-red/10 px-2 py-0.5 text-[10px] text-fg"
-                        title={`${LANG_LABEL[hit.lang]} printed name${hit.en ? ` · English: ${hit.en}` : ""}`}
+                        title={`${LANG_LABEL[hit.lang]} printed name${hit.en ? ` · English: ${hit.en}` : ""}${
+                          hit.img ? "" : " · no scan in this language for this print"
+                        }`}
                       >
                         <span className="font-mono text-[10px] text-muted">
                           {LANG_SHORT[hit.lang]}
                         </span>{" "}
                         {hit.name}
+                        {!hit.img && <span className="text-muted"> · no scan</span>}
                       </div>
                     )}
                     <CardTile
                       card={hit?.img ? { ...c, img: hit.img } : c}
                       setName={setNames.get(c.set) ?? `Set ${c.set}`}
-                      lang={hit?.lang ?? null}
+                      lang={hit?.img ? hit.lang : null}
                       view="list"
                     />
                   </div>
