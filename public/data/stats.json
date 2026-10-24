@@ -1,10 +1,10 @@
 {
- "snapshot": "2026-10-23",
- "snapshotTs": 1792729349,
- "cards": 28067,
+ "snapshot": "2026-10-24",
+ "snapshotTs": 1792815766,
+ "cards": 28068,
  "sets": 213,
- "priced": 27533,
- "unpriced": 534,
+ "priced": 27530,
+ "unpriced": 538,
  "dupeIds": 0,
  "rarities": 29,
  "types": 96,
@@ -39,10 +39,10 @@
  "eurPriced": 12738,
  "eurProducts": 12747,
  "eurCoverage": 60.8,
- "usdPriced": 27533,
+ "usdPriced": 27530,
  "eurSource": "Cardmarket public price guide (product-level, not per language)",
- "eurUpdated": "2026-10-23T04:22:38Z",
- "eurPriceDay": "2026-10-22T02:45:11+0200",
+ "eurUpdated": "2026-10-24T04:22:57Z",
+ "eurPriceDay": "2026-10-24T02:45:46+0200",
  "cardContentSource": "TCGdex cards-database (MIT)",
- "pricesUpdated": "2026-10-23"
+ "pricesUpdated": "2026-10-24"
 }
