@@ -47,8 +47,8 @@ export default function RootLayout({
         <div className="flex min-h-screen flex-col">
           <header className="sticky top-0 z-40 border-b border-line/80 bg-canvas/85 backdrop-blur">
             <div className="mx-auto flex h-14 w-full max-w-[1600px] items-center gap-3 px-3 sm:px-5">
-              <Link prefetch={false} href="/" className="flex items-center gap-2.5" aria-label="Carddex home">
-                <PokeBall className="h-8 w-8 flex-none drop-shadow-sm" />
+              <Link prefetch={false} href="/" className="group flex items-center gap-2.5" aria-label="Carddex home">
+                <PokeBall className="h-8 w-8 flex-none drop-shadow-sm transition-transform duration-300 group-hover:rotate-180" />
                 <span className="text-[15px] font-semibold tracking-tight">
                   Card<span className="text-poke-red">dex</span>
                 </span>
