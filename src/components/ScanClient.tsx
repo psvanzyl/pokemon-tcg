@@ -129,7 +129,7 @@ export default function ScanClient() {
             type="button"
             onClick={() => inputRef.current?.click()}
             disabled={busy}
-            className="rounded-xl bg-accent px-4 py-2 text-[13px] font-semibold text-white disabled:opacity-60"
+            className="rounded-lg bg-poke-red px-3 py-1.5 text-[13px] font-semibold text-white transition hover:opacity-90 disabled:opacity-60"
             data-testid="scan-button"
           >
             {busy ? "Scanning…" : "Take a photo"}
@@ -138,14 +138,14 @@ export default function ScanClient() {
             type="button"
             onClick={() => inputRef.current?.click()}
             disabled={busy}
-            className="rounded-xl border border-line px-4 py-2 text-[13px] disabled:opacity-60"
+            className="rounded-lg border border-line px-3 py-1.5 text-[13px] transition hover:bg-raised disabled:opacity-60"
           >
             Choose an existing photo
           </button>
           {elapsed !== null && <span className="text-[12px] text-muted">scanned in {elapsed}s</span>}
         </div>
 
-        {error && <p className="mt-3 text-[13px] text-accent">{error}</p>}
+        {error && <p className="mt-3 text-[13px] text-poke-red">{error}</p>}
         {flash && <p className="mt-3 text-[13px] text-muted">{flash}</p>}
       </div>
 
@@ -224,12 +224,12 @@ export default function ScanClient() {
               type="button"
               onClick={addSelected}
               disabled={adding || selected.length === 0}
-              className="rounded-xl bg-accent px-4 py-2 text-[13px] font-semibold text-white disabled:opacity-60"
+              className="rounded-lg bg-poke-red px-3 py-1.5 text-[13px] font-semibold text-white transition hover:opacity-90 disabled:opacity-60"
               data-testid="scan-add"
             >
               {adding ? "Adding…" : `Add ${selected.length} to collection`}
             </button>
-            <Link href="/account" className="text-[13px] text-muted hover:text-accent">
+            <Link href="/account" className="text-[13px] text-muted hover:text-poke-red">
               Go to my collection
             </Link>
           </div>
