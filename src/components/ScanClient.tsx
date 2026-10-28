@@ -119,7 +119,6 @@ export default function ScanClient() {
           ref={inputRef}
           type="file"
           accept="image/*"
-          capture="environment"
           onChange={onFile}
           className="hidden"
           data-testid="scan-input"
