@@ -20,6 +20,7 @@ export const dynamic = "force-dynamic";
  * email gets the Google subject linked to it, so both routes reach the same collection.
  */
 const handler_POST = async (req: Request) => {
+  console.log(`[auth-google] hit origin=${req.headers.get("origin")} site=${req.headers.get("sec-fetch-site")} ua=${(req.headers.get("user-agent") || "").slice(0, 50)}`);
   if (!originAllowed(req)) {
     return NextResponse.json({ error: "bad_origin" }, { status: 403 });
   }
@@ -54,6 +55,7 @@ const handler_POST = async (req: Request) => {
   try {
     identity = await verifyGoogleIdToken(credential);
   } catch (e) {
+    console.error(`[auth-google] verify failed: ${e instanceof Error ? e.message : e}`);
     return NextResponse.json(
       {
         error: "google_verification_failed",
@@ -84,6 +86,7 @@ const handler_POST = async (req: Request) => {
       })) ?? user;
     }
 
+    console.log(`[auth-google] ok email=${email}`);
     const res = NextResponse.json({ ok: true, user: { email: user.email, name: user.name ?? null } });
     return withSessionCookie(res, req, user.id);
   } catch (e) {
