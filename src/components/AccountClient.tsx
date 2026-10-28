@@ -169,9 +169,14 @@ export default function AccountClient({
             {totals.snapshot ? ` · prices from TCGplayer, snapshot ${totals.snapshot}` : ""}
           </p>
         </div>
-        <button type="button" onClick={signOut} className={btn}>
-          Sign out
-        </button>
+        <div className="flex items-center gap-2">
+          <Link prefetch={false} href="/scan" className="rounded-lg bg-poke-red px-3 py-1.5 text-[13px] font-semibold text-white transition hover:opacity-90">
+            Scan cards
+          </Link>
+          <button type="button" onClick={signOut} className={btn}>
+            Sign out
+          </button>
+        </div>
       </div>
 
       {/* ---- headline numbers ---- */}

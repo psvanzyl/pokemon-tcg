@@ -81,6 +81,13 @@ export default function AccountMenu() {
       </Link>
       <Link
         prefetch={false}
+        href="/scan"
+        className="rounded-md px-2.5 py-1.5 text-sm text-muted transition hover:bg-raised hover:text-fg"
+      >
+        Scan cards
+      </Link>
+      <Link
+        prefetch={false}
         href="/account"
         title={label}
         className="hidden max-w-[14rem] items-center gap-2 rounded-md border border-line-strong bg-panel px-2 py-1 text-[12px] text-fg sm:flex"
