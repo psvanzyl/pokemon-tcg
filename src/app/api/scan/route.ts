@@ -86,7 +86,22 @@ export async function POST(req: Request) {
       })
       .filter((v): v is { card: NonNullable<ReturnType<typeof getCard>>; candidate: ScanCandidate } => v !== null);
 
-    const top = resolved[0];
+    const resolvedCards = resolved.map(({ card }) => {
+      const variant = primaryVariant(card);
+      return {
+        cardId: card.id,
+        name: card.n,
+        num: card.num,
+        setId: card.set,
+        setName: sets.get(String(card.set)) ?? "",
+        img: card.img,
+        variant,
+        variants: variantNames(card),
+        price: unitPrice(card, variant),
+      };
+    });
+
+    const top = resolvedCards[0];
     if (!top) {
       return {
         index: c.index,
@@ -94,24 +109,25 @@ export async function POST(req: Request) {
         ocr_number: c.ocr_number ?? null,
         name_guess: c.name_guess ?? null,
         confidence: c.det_conf ?? 0,
+        candidates: [],
       };
     }
-    const { card } = top;
-    const variant = primaryVariant(card);
     return {
       index: c.index,
       matched: true,
-      cardId: card.id,
-      name: card.n,
-      num: card.num,
-      setId: card.set,
-      setName: sets.get(String(card.set)) ?? top.candidate.set_name ?? "",
-      img: card.img,
-      variant,
-      variants: variantNames(card),
-      price: unitPrice(card, variant),
+      cardId: top.cardId,
+      name: top.name,
+      num: top.num,
+      setId: top.setId,
+      setName: top.setName,
+      img: top.img,
+      variant: top.variant,
+      variants: top.variants,
+      price: top.price,
       ocr_number: c.ocr_number ?? null,
+      name_guess: c.name_guess ?? null,
       confidence: c.det_conf ?? 0,
+      candidates: resolvedCards,
     };
   });
 

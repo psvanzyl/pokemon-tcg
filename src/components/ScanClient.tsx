@@ -17,12 +17,40 @@ type ScannedCard = {
   ocr_number?: string | null;
   name_guess?: string | null;
   confidence?: number;
+  candidates?: ScannedCard[];
 };
 
-type Row = ScannedCard & { include: boolean; chosenVariant: string };
+type Row = ScannedCard & { include: boolean; chosenVariant: string; chosenIndex: number };
 
 const money = (v: number | null | undefined) =>
   typeof v === "number" ? `$${v.toFixed(2)}` : "no price";
+
+async function compressImage(file: File): Promise<Blob> {
+  return new Promise((resolve) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      const img = new Image();
+      img.onload = () => {
+        const max = 1920;
+        let width = img.width;
+        let height = img.height;
+        if (width > max || height > max) {
+          const scale = max / Math.max(width, height);
+          width = Math.round(width * scale);
+          height = Math.round(height * scale);
+        }
+        const canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext("2d");
+        if (ctx) ctx.drawImage(img, 0, 0, width, height);
+        canvas.toBlob((blob) => resolve(blob ?? file), "image/jpeg", 0.85);
+      };
+      img.src = reader.result as string;
+    };
+    reader.readAsDataURL(file);
+  });
+}
 
 export default function ScanClient() {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -41,8 +69,9 @@ export default function ScanClient() {
     setRows(null);
     setBusy(true);
     try {
+      const blob = await compressImage(file);
       const form = new FormData();
-      form.append("image", file);
+      form.append("image", blob, (file.name.replace(/\.[^.]+$/, "") || "scan") + ".jpg");
       const res = await fetch("/api/scan", { method: "POST", body: form });
       const json = (await res.json()) as {
         cards?: ScannedCard[];
@@ -64,6 +93,7 @@ export default function ScanClient() {
           ...c,
           include: Boolean(c.matched),
           chosenVariant: c.variant ?? "",
+          chosenIndex: 0,
         })),
       );
       if (json.cards.length === 0) setError("No cards found in that photo. Get closer and avoid glare.");
@@ -119,6 +149,7 @@ export default function ScanClient() {
           ref={inputRef}
           type="file"
           accept="image/*"
+          capture="environment"
           onChange={onFile}
           className="hidden"
           data-testid="scan-input"
@@ -195,6 +226,39 @@ export default function ScanClient() {
                 </div>
                 {row.matched && (
                   <div className="flex items-center gap-2">
+                    {row.candidates && row.candidates.length > 1 && (
+                      <select
+                        value={row.chosenIndex}
+                        onChange={(e) => {
+                          const ci = Number(e.target.value);
+                          const cand = row.candidates?.[ci];
+                          if (!cand) return;
+                          const next = [...(rows ?? [])];
+                          next[i] = {
+                            ...row,
+                            chosenIndex: ci,
+                            cardId: cand.cardId,
+                            name: cand.name,
+                            num: cand.num,
+                            setName: cand.setName,
+                            img: cand.img,
+                            variant: cand.variant,
+                            variants: cand.variants,
+                            price: cand.price,
+                            chosenVariant: cand.variant ?? "",
+                          };
+                          setRows(next);
+                        }}
+                        className="rounded-xl border border-line-strong bg-field px-2.5 py-2 text-[13px]"
+                        aria-label={`Choose card for ${row.name}`}
+                      >
+                        {row.candidates.map((cand, ci) => (
+                          <option key={`${cand.cardId}-${ci}`} value={ci}>
+                            {cand.name} · {cand.num} · {cand.setName}
+                          </option>
+                        ))}
+                      </select>
+                    )}
                     <select
                       value={row.chosenVariant}
                       onChange={(e) => {
