@@ -100,6 +100,7 @@ def main():
                 "n": clean(p.get("name")) or p["name"],
                 "set": gid,
                 "num": number,
+                "cat": group.get("categoryId") or 3,
                 "rar": clean(em.get("Rarity")),
                 "typ": clean(em.get("Card Type")),
                 "hp": clean(em.get("HP")),
@@ -109,6 +110,8 @@ def main():
                 "px": cheapest,
                 "pv": variants,
             }
+            if int(group.get("categoryId") or 3) == 85:
+                card["jp"] = True
             if not card["img"]:
                 card["img"] = f"https://tcgplayer-cdn.tcgplayer.com/product/{pid}_200w.jpg"
             cards.append(card)

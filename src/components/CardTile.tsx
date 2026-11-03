@@ -113,6 +113,11 @@ export default function CardTile({
         <div className="min-w-0 flex-1">
           <div className="truncate font-medium text-fg group-hover:text-poke-red">
             {card.n}
+            {card.jp && (
+              <span className="ml-2 rounded border border-line-strong px-1 py-0.5 align-middle text-[9px] font-semibold text-muted">
+                JP
+              </span>
+            )}
           </div>
           <div className="truncate text-xs text-muted">
             {setName} · {card.num}
@@ -170,6 +175,11 @@ export default function CardTile({
       <div className="flex flex-1 flex-col gap-1 p-2.5">
         <div className="truncate text-sm font-medium text-fg group-hover:text-poke-red">
           {card.n}
+          {card.jp && (
+            <span className="ml-2 rounded border border-line-strong px-1 py-0.5 align-middle text-[9px] font-semibold text-muted">
+              JP
+            </span>
+          )}
         </div>
         <div className="truncate text-[11px] text-muted">
           {setName} · {card.num}

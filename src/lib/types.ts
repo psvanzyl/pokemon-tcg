@@ -19,6 +19,8 @@ export type Card = {
   url: string;
   px: number | null; // cheapest market price across variants (USD)
   pv: PriceVariant[];
+  cat?: number; // TCGplayer category: 3 = Pokemon, 85 = Pokemon Japan
+  jp?: boolean; // true for a Japanese-category product
   t?: string; // language-independent card id (TCGdex), set when an identity was resolved
 };
 
