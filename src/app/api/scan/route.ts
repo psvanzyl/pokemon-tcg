@@ -94,7 +94,9 @@ export async function POST(req: Request) {
         name: card.n,
         num: card.num,
         setId: card.set,
-        setName: sets.get(String(card.set)) ?? "",
+        setName: `${sets.get(String(card.set)) ?? ""}${
+          card.zh ? (card.zh === "zh-cn" ? " (简)" : " (繁)") : ""
+        }`,
         img: card.img,
         variant,
         variants: variantNames(card),

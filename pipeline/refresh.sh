@@ -50,6 +50,8 @@ else
   echo "!! restore: git clone --depth 1 https://github.com/tcgdex/cards-database $ROOT/data/tcgdex-source"
 fi
 
+python3 "$PIPELINE/import_chinese.py"
+
 python3 "$PIPELINE/build_history.py"
 
 # snapshot for the image fallback (also keeps the repo's bundled copy current)

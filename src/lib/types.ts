@@ -21,6 +21,8 @@ export type Card = {
   pv: PriceVariant[];
   cat?: number; // TCGplayer category: 3 = Pokemon, 85 = Pokemon Japan
   jp?: boolean; // true for a Japanese-category product
+  zh?: "zh-cn" | "zh-tw"; // set for an unpriced Chinese-layer card
+  zhid?: string; // TCGdex id for a Chinese-layer card
   t?: string; // language-independent card id (TCGdex), set when an identity was resolved
 };
 
@@ -118,6 +120,8 @@ export type SetInfo = {
   released: string | null;
   supplemental: boolean;
   cards: number;
+  cat?: number;
+  zh?: "zh-cn" | "zh-tw";
   names?: Localised; // set name per printing language
 };
 

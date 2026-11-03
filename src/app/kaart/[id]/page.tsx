@@ -191,14 +191,20 @@ export default async function CardPage({
               {LANG_LABEL[lang]} printing · scan via TCGdex
             </p>
           )}
-          <a
-            href={card.url}
-            target="_blank"
-            rel="noopener noreferrer nofollow"
-            className="mt-3 flex items-center justify-center gap-1.5 rounded-lg border border-line bg-panel px-3 py-2 text-center text-[13px] text-fg transition hover:border-poke-red/60"
-          >
-            View on TCGplayer <ExternalLink className="h-3.5 w-3.5" />
-          </a>
+          {card.url ? (
+            <a
+              href={card.url}
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+              className="mt-3 flex items-center justify-center gap-1.5 rounded-lg border border-line bg-panel px-3 py-2 text-center text-[13px] text-fg transition hover:border-poke-red/60"
+            >
+              View on TCGplayer <ExternalLink className="h-3.5 w-3.5" />
+            </a>
+          ) : (
+            <p className="mt-3 rounded-lg border border-line bg-panel px-3 py-2 text-center text-[13px] text-muted">
+              {card.zh ? "Chinese print · no TCGplayer listing" : "No TCGplayer listing"}
+            </p>
+          )}
           {content?.cm && (
             <a
               href={`https://www.cardmarket.com/en/Pokemon/Products/Search?searchString=${encodeURIComponent(

@@ -118,6 +118,14 @@ export default function CardTile({
                 JP
               </span>
             )}
+            {card.zh && (
+              <span
+                title={card.zh === "zh-cn" ? "Simplified Chinese" : "Traditional Chinese"}
+                className="ml-2 rounded border border-line-strong px-1 py-0.5 align-middle text-[9px] font-semibold text-muted"
+              >
+                {card.zh === "zh-cn" ? "简" : "繁"}
+              </span>
+            )}
           </div>
           <div className="truncate text-xs text-muted">
             {setName} · {card.num}
@@ -178,6 +186,14 @@ export default function CardTile({
           {card.jp && (
             <span className="ml-2 rounded border border-line-strong px-1 py-0.5 align-middle text-[9px] font-semibold text-muted">
               JP
+            </span>
+          )}
+          {card.zh && (
+            <span
+              title={card.zh === "zh-cn" ? "Simplified Chinese" : "Traditional Chinese"}
+              className="ml-2 rounded border border-line-strong px-1 py-0.5 align-middle text-[9px] font-semibold text-muted"
+            >
+              {card.zh === "zh-cn" ? "简" : "繁"}
             </span>
           )}
         </div>
