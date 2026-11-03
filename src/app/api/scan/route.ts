@@ -26,6 +26,7 @@ type ScanCard = {
   ocr_conf?: number;
   name_guess?: string | null;
   candidates?: ScanCandidate[];
+  confident?: boolean;
 };
 
 /**
@@ -101,7 +102,7 @@ export async function POST(req: Request) {
       };
     });
 
-    const top = resolvedCards[0];
+    const top = c.confident === false ? undefined : resolvedCards[0];
     if (!top) {
       return {
         index: c.index,
