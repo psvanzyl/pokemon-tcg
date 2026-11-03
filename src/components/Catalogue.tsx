@@ -716,6 +716,9 @@ export default function Catalogue() {
                           {LANG_SHORT[hit.lang]}
                         </span>{" "}
                         {hit.name}
+                        {hit.en && hit.en !== hit.name && (
+                          <span className="text-muted"> → {hit.en}</span>
+                        )}
                         {!hit.img && (
                           <span className="text-muted"> · no scan</span>
                         )}
@@ -753,6 +756,9 @@ export default function Catalogue() {
                           {LANG_SHORT[hit.lang]}
                         </span>{" "}
                         {hit.name}
+                        {hit.en && hit.en !== hit.name && (
+                          <span className="text-muted"> → {hit.en}</span>
+                        )}
                         {!hit.img && <span className="text-muted"> · no scan</span>}
                       </div>
                     )}
