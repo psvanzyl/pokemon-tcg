@@ -130,6 +130,131 @@ export default function Catalogue() {
   const [alt, setAlt] = useState<AltMatch | null>(null);
   const [altBusy, setAltBusy] = useState(false);
 
+  // ---- collection (logged-in only) ------------------------------------
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [owned, setOwned] = useState<Map<number, Record<string, number>>>(new Map());
+  const [busyCard, setBusyCard] = useState<number | null>(null);
+
+  useEffect(() => {
+    let alive = true;
+    (async () => {
+      try {
+        const r = await fetch("/api/auth/me", { cache: "no-store" });
+        if (!r.ok) return;
+        const j = (await r.json()) as { authenticated?: boolean };
+        if (!alive || !j.authenticated) return;
+        setLoggedIn(true);
+        const lines: { cardId: number; variant: string; qty: number }[] = [];
+        let offset = 0;
+        while (true) {
+          const cr = await fetch(`/api/collection?limit=500&offset=${offset}`, { cache: "no-store" });
+          if (!cr.ok) break;
+          const cj = (await cr.json()) as { lines?: { cardId: number; variant: string; qty: number }[]; matchedCount?: number };
+          lines.push(...(cj.lines ?? []));
+          const total = cj.matchedCount ?? lines.length;
+          if (lines.length >= total) break;
+          if ((cj.lines?.length ?? 0) < 500) break;
+          offset += 500;
+        }
+        if (!alive) return;
+        const m = new Map<number, Record<string, number>>();
+        for (const l of lines) {
+          const rec = m.get(l.cardId) ?? {};
+          rec[l.variant] = (rec[l.variant] ?? 0) + l.qty;
+          m.set(l.cardId, rec);
+        }
+        setOwned(m);
+      } catch {
+        /* not logged in or fetch failed — leave anonymous */
+      }
+    })();
+    return () => {
+      alive = false;
+    };
+  }, []);
+
+  const totalOwned = useCallback((cardId: number) => {
+    const rec = owned.get(cardId);
+    return rec ? Object.values(rec).reduce((a, b) => a + b, 0) : 0;
+  }, [owned]);
+
+  const primaryVariantOf = useCallback(
+    (cardId: number) => {
+      const c = (cards ?? []).find((x) => x.id === cardId);
+      return c?.pv?.[0]?.v ?? "";
+    },
+    [cards],
+  );
+
+  async function addCardToCollection(cardId: number) {
+    if (busyCard != null) return;
+    setBusyCard(cardId);
+    const variant = primaryVariantOf(cardId);
+    try {
+      const r = await fetch("/api/collection", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ cardId, variant, mode: "add", qty: 1 }),
+      });
+      if (r.status === 401) {
+        window.location.href = "/login";
+        return;
+      }
+      const j = (await r.json()) as { qty?: number };
+      if (!r.ok) throw new Error("failed");
+      setOwned((prev) => {
+        const next = new Map(prev);
+        const rec = { ...(next.get(cardId) ?? {}) };
+        rec[variant] = j.qty ?? (rec[variant] ?? 0) + 1;
+        next.set(cardId, rec);
+        return next;
+      });
+    } catch {
+      /* ignore */
+    } finally {
+      setBusyCard(null);
+    }
+  }
+
+  async function removeCardFromCollection(cardId: number) {
+    if (busyCard != null) return;
+    const rec = owned.get(cardId) ?? {};
+    let variant = primaryVariantOf(cardId);
+    if (!(rec[variant] > 0)) {
+      const found = Object.keys(rec).find((v) => rec[v] > 0);
+      if (found) variant = found;
+    }
+    if (!variant && Object.keys(rec).length) variant = Object.keys(rec)[0];
+    const current = rec[variant] ?? 0;
+    if (current <= 0) return;
+    setBusyCard(cardId);
+    try {
+      const r = await fetch("/api/collection", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ cardId, variant, mode: "set", qty: current - 1 }),
+      });
+      if (r.status === 401) {
+        window.location.href = "/login";
+        return;
+      }
+      const j = (await r.json()) as { qty?: number };
+      if (!r.ok) throw new Error("failed");
+      setOwned((prev) => {
+        const next = new Map(prev);
+        const r2 = { ...(next.get(cardId) ?? {}) };
+        if (j.qty) r2[variant] = j.qty;
+        else delete r2[variant];
+        next.set(cardId, r2);
+        return next;
+      });
+    } catch {
+      /* ignore */
+    } finally {
+      setBusyCard(null);
+    }
+  }
+
   // ---- load data -------------------------------------------------------
   useEffect(() => {
     let alive = true;
@@ -601,6 +726,11 @@ export default function Catalogue() {
                       setName={setNames.get(c.set) ?? `Set ${c.set}`}
                       lang={hit?.img ? hit.lang : null}
                       view="grid"
+                      loggedIn={loggedIn}
+                      collectionQty={totalOwned(c.id)}
+                      collectionBusy={busyCard === c.id}
+                      onCollectionAdd={addCardToCollection}
+                      onCollectionRemove={removeCardFromCollection}
                     />
                   </div>
                 );
@@ -631,6 +761,11 @@ export default function Catalogue() {
                       setName={setNames.get(c.set) ?? `Set ${c.set}`}
                       lang={hit?.img ? hit.lang : null}
                       view="list"
+                      loggedIn={loggedIn}
+                      collectionQty={totalOwned(c.id)}
+                      collectionBusy={busyCard === c.id}
+                      onCollectionAdd={addCardToCollection}
+                      onCollectionRemove={removeCardFromCollection}
                     />
                   </div>
                 );

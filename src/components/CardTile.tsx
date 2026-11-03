@@ -40,6 +40,11 @@ export default function CardTile({
   setName,
   view,
   lang,
+  loggedIn = false,
+  collectionQty = 0,
+  collectionBusy = false,
+  onCollectionAdd,
+  onCollectionRemove,
 }: {
   card: Card;
   setName: string;
@@ -50,11 +55,52 @@ export default function CardTile({
    * card under its German name and is dropped back into English.
    */
   lang?: CardLanguage | null;
+  loggedIn?: boolean;
+  collectionQty?: number;
+  collectionBusy?: boolean;
+  onCollectionAdd?: (cardId: number) => void;
+  onCollectionRemove?: (cardId: number) => void;
 }) {
   const big = card.img.replace("_200w.jpg", "_400w.jpg");
 
+  const control = loggedIn ? (
+    <div className="pointer-events-auto absolute bottom-2 right-2 z-10 flex items-center gap-1 rounded-lg border border-line bg-panel/95 px-1.5 py-1 text-[11px] shadow-sm backdrop-blur">
+      {collectionQty > 0 && (
+        <>
+          <span className="tabular-nums font-semibold text-fg">×{collectionQty}</span>
+          <button
+            type="button"
+            disabled={collectionBusy}
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              onCollectionRemove?.(card.id);
+            }}
+            className="rounded px-1 text-muted transition hover:text-fg disabled:opacity-60"
+            aria-label="Remove one from collection"
+          >
+            −
+          </button>
+        </>
+      )}
+      <button
+        type="button"
+        disabled={collectionBusy}
+        onClick={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          onCollectionAdd?.(card.id);
+        }}
+        className="rounded px-1 text-poke-red transition hover:opacity-80 disabled:opacity-60"
+        aria-label="Add to collection"
+      >
+        +
+      </button>
+    </div>
+  ) : null;
+
   if (view === "list") {
-    return (
+    const tile = (
       <Link prefetch={false}
         href={`/kaart/${card.id}${lang ? `?lang=${lang}` : ""}`}
         className="group flex items-center gap-4 rounded-xl border border-line bg-panel p-3 shadow-sm transition hover:border-poke-red/60 hover:bg-raised"
@@ -94,9 +140,16 @@ export default function CardTile({
         </div>
       </Link>
     );
+    if (!loggedIn) return tile;
+    return (
+      <div className="relative">
+        {tile}
+        {control}
+      </div>
+    );
   }
 
-  return (
+  const tile = (
     <Link prefetch={false}
       href={`/kaart/${card.id}${lang ? `?lang=${lang}` : ""}`}
       className="group flex flex-col overflow-hidden rounded-xl border border-line bg-panel shadow-sm transition hover:-translate-y-0.5 hover:border-poke-red/60 hover:shadow-[0_10px_30px_-12px_rgba(238,59,59,0.45)]"
@@ -137,5 +190,12 @@ export default function CardTile({
         </div>
       </div>
     </Link>
+  );
+  if (!loggedIn) return tile;
+  return (
+    <div className="relative">
+      {tile}
+      {control}
+    </div>
   );
 }
