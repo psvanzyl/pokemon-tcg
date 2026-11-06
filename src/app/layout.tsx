@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   },
   description:
     "The whole Pokémon TCG single-card catalogue with a language-independent identity: every card named in English, French, German, Spanish, Italian and Portuguese, with daily prices in USD (TCGplayer) and EUR (Cardmarket).",
-  metadataBase: new URL("https://pokemon.laserraptorai.duckdns.org"),
+  metadataBase: new URL("https://pokemon.dex.laserraptor.eu"),
   openGraph: {
     title: "Carddex — every Pokémon card, in every language, with prices",
     description:
