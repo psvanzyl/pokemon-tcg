@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import GoogleSignInButton from "@/components/GoogleSignInButton";
 
-type Mode = "signin" | "register";
+type Mode = "signin" | "register" | "forgot";
 
 export default function LoginForm({
   initialMode = "signin",
@@ -24,6 +24,7 @@ export default function LoginForm({
   const [notice, setNotice] = useState<string | null>(null);
 
   const isRegister = mode === "register";
+  const isForgot = mode === "forgot";
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
@@ -31,10 +32,11 @@ export default function LoginForm({
     setError(null);
     setNotice(null);
     try {
-      const r = await fetch(isRegister ? "/api/auth/register" : "/api/auth/login", {
+      const url = isForgot ? "/api/auth/forgot-password" : isRegister ? "/api/auth/register" : "/api/auth/login";
+      const r = await fetch(url, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify(isForgot ? { email } : { email, password }),
       });
       // Read as text first so a non-JSON body (e.g. an empty 500) reports the status
       // instead of dying with "Unexpected end of JSON input".
@@ -51,6 +53,12 @@ export default function LoginForm({
           return;
         }
         throw new Error(j.message || `That did not work (HTTP ${r.status}).`);
+      }
+      if (isForgot) {
+        // Deliberate non-disclosure: same notice whether or not the address has an account.
+        setNotice("If an account exists for this email, a reset link is on its way. Check your inbox.");
+        setMode("signin");
+        return;
       }
       setNotice(isRegister ? "Account created." : "Signed in.");
       // Hard navigation: the header account widget sits in the layout and has to see the new session
@@ -109,6 +117,7 @@ export default function LoginForm({
           />
         </label>
 
+        {!isForgot && (
         <label className="flex flex-col gap-1.5">
           <span className="text-[12px] font-medium text-muted">Password</span>
           <div className="relative">
@@ -131,6 +140,17 @@ export default function LoginForm({
             </button>
           </div>
         </label>
+        )}
+
+        {mode === "signin" && (
+          <button
+            type="button"
+            onClick={() => { setMode("forgot"); setError(null); setNotice(null); }}
+            className="self-start text-[12px] text-muted underline transition hover:text-fg"
+          >
+            Forgot password?
+          </button>
+        )}
 
         {error && (
           <p className="rounded-lg border border-poke-red/40 bg-poke-red/10 px-3 py-2 text-[13px] text-poke-red">
@@ -146,7 +166,7 @@ export default function LoginForm({
           disabled={busy}
           className="rounded-lg bg-poke-red px-4 py-2.5 text-sm font-semibold text-white transition hover:opacity-90 disabled:opacity-60"
         >
-          {busy ? "Working…" : isRegister ? "Create account" : "Sign in"}
+          {busy ? "Working…" : isForgot ? "Send reset link" : isRegister ? "Create account" : "Sign in"}
         </button>
       </form>
 
